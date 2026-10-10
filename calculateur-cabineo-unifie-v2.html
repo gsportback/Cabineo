@@ -50,14 +50,18 @@ button:focus-visible{outline:3px solid #168ac4;outline-offset:3px}
 </style></head>
 <body>
 
-<div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:18px 22px;background:#080808;flex-wrap:wrap">
-  <a href="/index.html" style="display:inline-flex;align-items:center;gap:6px;border:1px solid #405064;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:750;color:#fff;text-decoration:none;white-space:nowrap">
-    ← Accueil
-  </a>
-  <a href="/index.html" style="display:inline-flex;align-items:center;gap:6px;border:1px solid #7fc7f2;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:750;background:#7fc7f2;color:#08131c;text-decoration:none;white-space:nowrap">
-    ⌂ Menu Cabineo
-  </a>
+
+<div style="background:#080808;padding:18px 22px">
+  <div style="max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <a href="/index.html" style="font-size:30px;font-weight:950;letter-spacing:-1.7px;text-decoration:none;color:#fff;white-space:nowrap">CABI<span style="color:#7fc7f2">NEO</span></a>
+    <nav style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <a href="/index.html" style="border:1px solid #405064;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:750;color:#fff;text-decoration:none;white-space:nowrap">← Accueil</a>
+      <a href="/index.html" style="border:1px solid #7fc7f2;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:750;background:#7fc7f2;color:#08131c;text-decoration:none;white-space:nowrap">⌂ Menu Cabineo</a>
+    </nav>
+  </div>
 </div>
+
+  
 <h2>1. Ta journée</h2>
 <div class="day-layout"><div class="day-inputs">
 <div class="field"><label for="start">Heure de début de service</label><input id="start" type="time" value="06:00"><p class="help">Sert à calculer le temps écoulé depuis le début du service. Cela ne modifie pas à lui seul la limite de conduite.</p></div>
