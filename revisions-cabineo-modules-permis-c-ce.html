@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111318">
+<title>Révisions Permis C & CE — Cabineo</title>
+<style>
+:root {
+ --fond:#f3f6f8; --noir:#111318; --bleu:#8ed8ff;
+ --texte:#171a20; --gris:#687381; --ligne:#dfe5eb;
+}
+* { box-sizing:border-box; }
+body {
+ margin:0; background:var(--fond); color:var(--texte);
+ font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+header.hero { background:#111318; color:white; padding:34px 18px 38px; border-bottom:4px solid var(--bleu); }
+.topnav { background:#080808; padding:14px 20px; }
+.topnav-inner { max-width:1180px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.nav-brand { font-size:1.85rem; font-weight:950; letter-spacing:-1.5px; color:#fff; text-decoration:none; white-space:nowrap; }
+.nav-brand span { color:var(--bleu); }
+.nav-actions { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.nav-link { display:inline-flex; align-items:center; justify-content:center; border:1px solid #405064; border-radius:10px; padding:9px 12px; font-size:13px; font-weight:750; color:#fff; text-decoration:none; white-space:nowrap; }
+.nav-home { background:#7fc7f2; border-color:#7fc7f2; color:#08131c; }
+.hero .wrap { max-width:1180px; }
+.hero h1 { margin:0 0 12px; font-size:clamp(2.2rem,5vw,3.4rem); letter-spacing:-.04em; }
+.hero p { margin:0; font-size:1.1rem; }
+.wrap, main { max-width:1000px; margin:auto; }
+.brand { font-size:1.5rem; font-weight:900; }
+.brand span { color:var(--bleu); }
+h1 { font-size:clamp(2rem,6vw,3rem); line-height:1.1; }
+header p { color:#cbd3dc; }
+main { padding:18px 14px 40px; }
+.notice {
+ background:#eaf7ff; border:1px solid #c9ebff;
+ border-radius:14px; padding:14px; margin-bottom:18px;
+}
+nav.module-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:0 0 22px; }
+.module { display:flex; flex-direction:column; align-items:flex-start; gap:5px; text-align:left; min-height:112px; padding:16px; border:1px solid #dce5ed; border-radius:16px; background:#fff; box-shadow:0 3px 12px #11131808; }
+.module strong { font-size:1rem; }
+.module small { color:var(--gris); font-size:.83rem; line-height:1.35; }
+.module-icon { display:grid; place-items:center; width:30px; height:30px; border-radius:9px; background:#edf8ff; color:#1678a8; font-size:1.15rem; font-weight:800; }
+.module.active { background:#7fcff5; border-color:#7fcff5; color:#08131c; }
+.module.active small { color:#12364a; }
+.module.active .module-icon { background:#fff9; color:#08131c; }
+.quiz-launch { margin-top:12px; }
+.back-module { margin-bottom:12px; background:#fff; }
+button {
+ font:inherit; cursor:pointer; padding:11px 14px;
+ border:1px solid var(--ligne); border-radius:11px;
+ background:white; color:var(--texte);
+}
+nav button.active, .primary { background:var(--bleu); font-weight:bold; }
+.panel,.card,.oral {
+ background:white; border:1px solid var(--ligne);
+ border-radius:16px; padding:16px; margin-bottom:12px;
+}
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.muted { color:var(--gris); font-size:.9rem; }
+.view[hidden] { display:none; }
+details { border-top:1px solid var(--ligne); padding-top:10px; margin-top:10px; }
+summary { cursor:pointer; font-weight:bold; }
+.oral-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.quizq { padding:14px 0; border-top:1px solid var(--ligne); }
+.quizq label { display:block; padding:6px 0; }
+.result { font-weight:bold; margin-top:12px; }
+footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); font-size:.85rem; }
+@media(max-width:760px) { nav.module-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:520px) { nav.module-grid,.grid,.oral-grid { grid-template-columns:1fr; } .module { min-height:88px; } .topnav { padding:12px 14px; } .nav-brand { font-size:1.55rem; } }
+</style>
+</head>
+<body>
+<div class="topnav">
+ <div class="topnav-inner">
+ <a class="nav-brand" href="/index.html">CABI<span>NEO</span></a>
+ <div class="nav-actions">
+ <a class="nav-link" href="/index.html">← Accueil</a>
+ <a class="nav-link nav-home" href="/index.html">⌂ Menu Cabineo</a>
+ </div>
+ </div>
+</div>
+<header class="hero">
+ <div class="wrap">
+ <h1>Formation CTRMP</h1>
+ <p>Comprendre, réviser et s’entraîner pour les permis C et CE.</p>
+ </div>
+</header>
+<main>
+<nav class="module-grid" aria-label="Choisir un module">
+<button class="module active" data-tab="rse"><span class="module-icon">◷</span><strong>RSE / RSN</strong><small>Conduite, repos et temps de service</small></button>
+<button class="module" data-tab="double"><span class="module-icon">⇄</span><strong>Double équipage</strong><small>Organisation de la journée à deux</small></button>
+<button class="module" data-tab="oral"><span class="module-icon">▤</span><strong>Fiches orales permis C</strong><small>Les 12 thèmes à présenter</small></button>
+<button class="module" data-tab="oralCE"><span class="module-icon">▤</span><strong>Fiches orales permis CE</strong><small>Thèmes groupe lourd et spécificités CE</small></button>
+<button class="module" data-tab="ecritC"><span class="module-icon">▧</span><strong>Fiches écrites permis C</strong><small>Révision hors circulation</small></button>
+<button class="module" data-tab="ecritCE"><span class="module-icon">▧</span><strong>Fiches écrites permis CE</strong><small>Révision ensemble articulé</small></button>
+</nav>
+
+<section class="view" id="rse">
+<div class="panel">
+<h2>RSE — Réglementation sociale européenne</h2>
+<p>La RSE encadre notamment les temps de conduite, les pauses et les repos des conducteurs concernés. <strong>Lorsqu’un transport entre dans son champ d’application, elle est obligatoire</strong> : ce n’est pas une règle facultative. Des exemptions existent pour certains véhicules ou certaines opérations ; il faut vérifier le cas précis.</p>
+<div class="grid">
+<article class="card"><h3>1. Temps de conduite</h3>
+<ul>
+<li><strong>Conduite continue :</strong> maximum 4 h 30 avant une pause réglementaire.</li>
+<li><strong>Pause de 45 minutes :</strong> elle peut être prise en une fois ou fractionnée dans l’ordre suivant : au moins 15 minutes, puis au moins 30 minutes, avant de dépasser les 4 h 30 de conduite.</li>
+<li><strong>Attention à l’ordre :</strong> 30 minutes prises en premier ne remplacent pas la première pause de 15 minutes. Une pause de 14 minutes ne compte pas comme une pause réglementaire de 15 minutes ; une pause de 29 minutes ne compte pas comme 30 minutes.</li>
+<li><strong>Conduite journalière :</strong> normalement 9 h, avec une prolongation à 10 h possible au maximum deux fois par semaine.</li>
+<li><strong>Conduite hebdomadaire :</strong> maximum 56 h sur une semaine calendaire.</li>
+<li><strong>Deux semaines consécutives :</strong> maximum 90 h au total.</li>
+</ul><p class="example"><strong>Exemple :</strong> après 2 h 30 de conduite, une pause de 15 minutes peut constituer la première partie. Il faudra ensuite prendre au moins 30 minutes avant d’atteindre 4 h 30 de conduite cumulée.</p></article>
+<article class="card"><h3>2. Repos journalier</h3>
+<ul>
+<li><strong>Repos normal :</strong> au moins 11 h consécutives.</li>
+<li><strong>Repos réduit :</strong> au moins 9 h, mais moins de 11 h. Il peut être pris au maximum trois fois entre deux repos hebdomadaires.</li>
+<li><strong>Repos fractionné :</strong> au moins 3 h consécutives, puis au moins 9 h consécutives. Cela représente 12 h au total. L’ordre est important : 3 h puis 9 h.</li>
+</ul><p>Le repos journalier doit être pris dans la période réglementaire qui suit la fin du repos journalier ou hebdomadaire précédent. Le fractionnement ne signifie pas que l’on peut répartir librement les heures en plusieurs petites pauses.</p><p class="example"><strong>Exemple :</strong> un repos de 3 h + 9 h est un repos journalier fractionné de 12 h au total. Un repos de 9 h seul est un repos réduit, pas un repos fractionné.</p></article>
+<article class="card"><h3>3. Repos hebdomadaire</h3>
+<ul>
+<li><strong>Repos hebdomadaire normal :</strong> au moins 45 h consécutives.</li>
+<li><strong>Repos hebdomadaire réduit :</strong> au moins 24 h consécutives, mais moins de 45 h.</li>
+<li>Sur deux semaines consécutives, il faut prendre les repos hebdomadaires requis par la réglementation : on ne peut pas enchaîner deux repos hebdomadaires réduits sans respecter la combinaison obligatoire.</li>
+<li><strong>Compensation :</strong> la différence entre 45 h et le repos réellement pris doit être récupérée. Pour un repos réduit de 24 h, la différence est de 21 h.</li>
+<li>La compensation doit être prise en un seul bloc, accolée à un autre repos d’au moins 9 h, et au plus tard à la fin de la troisième semaine suivant la semaine concernée.</li>
+</ul><p class="example"><strong>Exemple :</strong> repos hebdomadaire de 24 h → il manque 21 h. Ces 21 h doivent être ajoutées intégralement à un repos journalier ou hebdomadaire admissible avant l’échéance réglementaire. Exemple de planning : semaine 1 = 45 h de repos ; semaine 2 = 24 h de repos ; semaine 3 = 45 h + 21 h de compensation = 66 h.</p></article>
+<article class="card"><h3>4. RSE : véhicules concernés et exemptions</h3>
+<p>La RSE permet de limiter la concurrence déloyale, d’améliorer les conditions de travail et de garantir la sécurité routière. Lorsqu’un transport entre dans son champ d’application, son respect est obligatoire.</p><p><strong>Véhicules non assujettis :</strong></p><ul><li>Les dépanneurs dans un rayon de 100 km autour de leur base.</li><li>Les véhicules dont le tonnage est inférieur à 7,5 tonnes.</li><li>Les véhicules historiques de plus de 3,5 tonnes.</li><li>Les véhicules de secours publics et ceux de l’armée.</li><li>Les véhicules de transport en commun dans un rayon maximal de 50 km autour de leur dépôt.</li></ul></article>
+</div></div>
+
+<div class="panel"><h2>RSN — Réglementation sociale nationale</h2>
+<p>La RSN complète le cadre applicable au transport routier, notamment pour le temps de travail, le temps de service, les coupures et l’organisation de la semaine. Les règles varient selon le statut et la catégorie de transport : Les limites applicables dépendent du statut du conducteur et de la catégorie de transport.</p>
+<div class="grid">
+<article class="card"><h3>1. Semaine et jours travaillés</h3><ul><li>La semaine calendaire commence le <strong>lundi à 00 h</strong> et se termine le <strong>dimanche à 23 h 59</strong>.</li><li>Il ne faut pas travailler plus de <strong>six jours consécutifs</strong>.</li><li>En travaillant six jours, une journée peut atteindre 12 h de temps de service ; en travaillant cinq jours, deux journées peuvent atteindre cette durée. Ces possibilités ne suppriment pas les autres limites applicables.</li><li>Le temps de travail des catégories petit roulant, moyen roulant et grand roulant est régularisé sur un quadrimestre. Un dépassement du quota applicable engage la responsabilité de l’entreprise.</li></ul></article>
+<article class="card"><h3>2. Coupures pendant le service</h3><ul><li>Après <strong>6 h de temps de service</strong>, une coupure de <strong>30 minutes</strong> doit être prise.</li><li>Cette coupure peut être fractionnée en <strong>15 min + 15 min</strong>, à condition de prendre les fractions avant d’atteindre la limite concernée.</li><li>Après <strong>9 h de temps de service</strong>, la coupure totale doit atteindre <strong>45 minutes</strong>.</li></ul><p class="example"><strong>Exemple :</strong> 15 min après 3 h de service, 15 min avant/au plus tard à la limite des 6 h, puis 15 min supplémentaires selon l’organisation du service pour atteindre la coupure totale requise. Les pauses RSN ne doivent pas être confondues avec la pause de conduite RSE de 45 minutes.</p></article>
+<article class="card"><h3>3. À ne pas confondre</h3><ul><li>La <strong>conduite</strong> correspond au temps passé à conduire.</li><li>Le <strong>temps de service</strong> comprend toutes les activités professionnelles enregistrées par les pictogrammes du chronotachygraphe, sauf le repos (symbole du lit).</li><li>L’<strong>amplitude</strong> est la période qui s’écoule entre le début et la fin du service, pauses comprises ; elle ne se confond pas avec le temps de conduite.</li></ul></article>
+</div></div>
+
+<div class="panel"><h2>Conduite, temps de service et amplitude</h2>
+<div class="grid">
+<article class="card"><h3><strong>Temps de conduite</strong></h3><p>C’est le temps pendant lequel le conducteur conduit effectivement le véhicule. Il sert notamment à vérifier la limite de 4 h 30 de conduite continue, les limites journalières, hebdomadaires et sur deux semaines.</p></article>
+<article class="card"><h3><strong>Temps de service</strong></h3><p>Le temps de service englobe <strong>toutes les activités du chronotachygraphe sauf le lit (repos)</strong> : conduite (volant), autres travaux (marteaux), disponibilité selon le régime et les activités professionnelles enregistrées. Il comprend donc plus que la seule conduite : chargement, déchargement, contrôles, entretien, formalités, carburant et tâches administratives liées au transport, selon l’activité réellement effectuée.</p></article>
+<article class="card"><h3><strong>Amplitude</strong></h3><p>L’amplitude est le temps écoulé entre le début et la fin du service, pauses comprises. Elle se calcule à partir de l’insertion de la carte conducteur dans le chronotachygraphe jusqu’à son retrait. Les pauses à l’intérieur de cette période augmentent l’amplitude sans être du temps de conduite.</p><p>Pour ce calcul, on part d’une période de 24 h et on soustrait le repos journalier pris :</p><ul><li>Repos fractionné de 3 h + 9 h = 12 h de repos au total : amplitude indiquée de 12 h.</li><li>Repos normal de 11 h : amplitude indiquée de 13 h.</li><li>Repos réduit de 9 h : amplitude indiquée de 15 h, possible trois fois entre deux repos hebdomadaires.</li></ul><p>Ces chiffres sont des repères de calcul ; les situations concrètes doivent respecter l’ensemble des règles applicables.</p></article>
+<article class="card"><h3>Exemple pour distinguer les trois</h3><p>Un conducteur commence à 06 h, conduit 3 h, effectue un chargement pendant 1 h, prend une pause de 30 min, puis conduit encore 2 h. Son temps de conduite est de 5 h ; son temps de service comprend la conduite et le chargement, ainsi que les autres activités de service concernées ; son amplitude va de 06 h jusqu’à la fin effective du service et comprend aussi la pause de 30 min.</p></article>
+</div></div>
+
+<div class="panel"><h2>Travail de nuit</h2>
+<div class="grid">
+<article class="card"><h3>Quand est-on considéré comme travailleur de nuit ?</h3><p>La plage de nuit est comprise entre <strong>00 h et 05 h</strong>. Si le conducteur travaille pendant cette plage, il est considéré comme travailleur de nuit, qu’il <strong>commence son service</strong> pendant cette période, qu’il la <strong>traverse</strong> au cours de son service ou qu’il <strong>termine son service</strong> pendant cette plage.</p><p><strong>Exemples :</strong> service de 22 h à 06 h : le conducteur travaille entre 00 h et 05 h ; service de 04 h à 12 h : il travaille entre 04 h et 05 h ; service de 20 h à 02 h : il travaille entre 00 h et 02 h. Dans les trois cas, le conducteur travaille pendant la plage de nuit.</p></article>
+<article class="card"><h3>Quelles limites retenir ?</h3><ul><li><strong>Temps de service :</strong> il faut retenir une limite de 10 h pour le travail de nuit, contre 12 h en journée dans les cas qu’il décrit.</li><li><strong>Amplitude :</strong> il faut retenir un maximum de 15 h, sous réserve des règles applicables au repos précédent et à l’organisation du service.</li></ul><p>Ne confonds pas la limite de 10 h de temps de service avec 10 h de conduite : le temps de service comprend aussi les autres activités professionnelles concernées.</p></article>
+</div></div>
+
+<div class="panel"><h2>Double équipage</h2>
+<p>Le double équipage signifie que deux conducteurs sont présents dans le véhicule pour se relayer. L’organisation du double équipage se présente sur une période de <strong>30 h</strong> au lieu du repère habituel de 24 h utilisé pour expliquer le repos journalier.</p>
+<div class="grid">
+<article class="card"><h3>Décomposition des 30 heures</h3><ul><li><strong>30 h au total</strong> pour la période pédagogique décrite.</li><li><strong>9 h de repos journalier simultané</strong> pour les deux conducteurs.</li><li>30 h − 9 h = <strong>21 h d’amplitude</strong> disponibles dans ce schéma.</li><li>Sur ces 21 h, on compte <strong>18 h de conduite au total</strong> et <strong>3 h d’autres tâches</strong>.</li></ul></article>
+<article class="card"><h3>Comment se répartissent les 18 h de conduite ?</h3><p>Chaque conducteur effectue deux périodes de 4 h 30 dans ce schéma :</p><ul><li>Conducteur A : 4 h 30 + 4 h 30 = <strong>9 h</strong>.</li><li>Conducteur B : 4 h 30 + 4 h 30 = <strong>9 h</strong>.</li><li>Au total : 9 h + 9 h = <strong>18 h de conduite du véhicule</strong>.</li></ul><p>Les conducteurs alternent afin que l’un puisse conduire pendant que l’autre est disponible dans le véhicule, sous réserve des conditions réglementaires applicables.</p></article>
+<article class="card"><h3>Que représentent les 3 h d’autres tâches ?</h3><p>Les autres tâches comprennent notamment le ravitaillement en carburant, le chargement, le déchargement et les tâches administratives. Ce sont des activités de service : elles ne sont pas du temps de conduite, mais elles prennent du temps dans l’organisation de la journée.</p></article>
+<article class="card"><h3>Exemple de calcul à retenir</h3><p><strong>30 h = 9 h de repos simultané + 21 h d’amplitude.</strong><br>Dans les 21 h : <strong>18 h de conduite + 3 h d’autres tâches</strong>.<br>Dans les 18 h de conduite : <strong>2 × 4 h 30 pour le conducteur A + 2 × 4 h 30 pour le conducteur B</strong>.</p><p>Ces 30 h constituent le schéma pédagogique présenté ici ; il faut aussi respecter les conditions exactes du double équipage et du chronotachygraphe.</p></article>
+</div></div>
+
+<div class="panel"><h2>Lettre de voiture et documents de transport</h2><div class="grid">
+<article class="card"><h3>Port dû</h3><p><strong>Le destinataire paie le transporteur.</strong> Le transport n’a donc pas été réglé à l’avance par l’expéditeur selon la modalité indiquée sur la lettre de voiture. Le conducteur doit vérifier les consignes et les mentions du document ; il ne décide pas seul de changer le mode de règlement.</p></article>
+<article class="card"><h3>Port payé</h3><p><strong>L’expéditeur a déjà payé le transport.</strong> Le destinataire reçoit la marchandise sans payer une seconde fois le prix du transport au titre du port. Il peut toutefois exister d’autres sommes ou opérations distinctes mentionnées dans les documents.</p></article>
+<article class="card"><h3>Contre-remboursement</h3><p>Le conducteur doit percevoir auprès du destinataire la somme indiquée en échange de la remise de la marchandise, conformément aux instructions. <strong>Tant que ce montant n’est pas acquitté, la marchandise ne doit pas être remise ; respecte les consignes de livraison et de règlement</strong> sans suivre les consignes prévues. Il faut contrôler le montant, le mode de règlement accepté et les justificatifs à remettre.</p></article>
+<article class="card"><h3>Valeur déclarée</h3><p>La valeur de la marchandise est déclarée dans les documents pour la garantie ou l’assurance prévue en cas de perte ou d’avarie, selon les conditions contractuelles applicables. Ce n’est pas automatiquement une garantie illimitée : la déclaration et les conditions du contrat doivent être vérifiées.</p></article>
+<article class="card"><h3>Transport pour compte d’autrui</h3><p>L’entreprise transporte la marchandise d’un client. Les documents à prévoir comprennent notamment la FIMO/FCO du conducteur, la copie conforme de la licence communautaire dans les cas concernés et la lettre de voiture ; pour un transport international, il cite la CMR. Les documents précis dépendent de l’opération.</p></article>
+<article class="card"><h3>Transport pour compte propre</h3><p>L’entreprise transporte ses propres marchandises pour les besoins de son activité. Prévois la carte conducteur et le bon de livraison, selon l’opération. Les documents réellement nécessaires dépendent de la situation et des textes applicables.</p></article>
+<article class="card"><h3>Licence communautaire</h3><p>La licence communautaire est un document attestant la capacité de l’entreprise à réaliser certains transports de marchandises pour compte d’autrui. Elle est détenue par l’entreprise et la copie conforme doit se trouver à bord du véhicule lorsque l’opération est soumise à cette obligation. Elle est délivrée par l’autorité compétente (DREAL en France) ; les conditions d’application dépendent du transport effectué.</p></article>
+</div></div>
+<button class="primary quiz-launch" type="button" onclick="ouvrirQuiz('quizRse')">S’entraîner avec le quiz RSE / RSN →</button>
+</section>
+
+<section class="view" id="oral" hidden>
+<div class="panel"><h2>12 fiches orales du permis C</h2><p>Chaque fiche présente les idées à expliquer à l’examinateur. Lis le titre, ouvre la fiche et entraîne-toi à répondre avec tes propres mots en conservant les points essentiels.</p><div id="oralCards" class="oral-grid"></div><button class="primary quiz-launch" type="button" onclick="ouvrirQuiz('quizOral')">S’entraîner avec le quiz des fiches orales →</button></div>
+</section>
+
+<section class="view" id="double" hidden>
+<div class="panel"><h2>Double équipage</h2>
+<p>Deux conducteurs se relaient dans le même véhicule. Le double équipage s’organise autour d’une période de 30 heures dans le schéma pédagogique présenté ici.</p>
+<div class="grid">
+<article class="card"><h3>Décomposer les 30 heures</h3><ul><li><strong>30 h :</strong> durée totale du schéma pédagogique.</li><li><strong>9 h de repos journalier :</strong> les deux conducteurs prennent le repos simultanément.</li><li><strong>21 h d’amplitude :</strong> 30 h − 9 h de repos.</li><li><strong>18 h de conduite du véhicule :</strong> deux périodes de 4 h 30 pour chacun des conducteurs.</li><li><strong>3 h d’autres tâches :</strong> carburant, chargement/déchargement et administratif.</li></ul></article>
+<article class="card"><h3>Répartition de la conduite</h3><p><strong>Conducteur A :</strong> 4 h 30 + 4 h 30 = 9 h.</p><p><strong>Conducteur B :</strong> 4 h 30 + 4 h 30 = 9 h.</p><p><strong>Total :</strong> 9 h + 9 h = 18 h de conduite du véhicule.</p><p>Le roulement permet au camion de poursuivre sa route pendant que les conducteurs se relaient, sans arrêter le véhicule pour chaque pause de 45 minutes, dans le respect des conditions réglementaires applicables.</p></article>
+<article class="card"><h3>Les 3 heures d’autres tâches</h3><p>Le temps restant dans les 21 h d’amplitude représente 3 h : ravitaillement en carburant, opérations de chargement et de déchargement, tâches administratives et autres opérations liées à la mission.</p></article>
+</div><button class="primary quiz-launch" type="button" onclick="ouvrirQuiz('quizRse')">Réviser les règles avec le quiz →</button></div>
+</section>
+<section class="view" id="oralCE" hidden><div class="panel"><h2>Fiches orales permis CE</h2><p>Retrouve les 12 thèmes du groupe lourd et les points spécifiques au permis CE. Ouvre une fiche pour revoir les notions principales.</p><div class="oral-grid">
+<article class="oral"><details><summary>1. Conduite par intempéries et de nuit</summary><p>Visibilité, adhérence, feux, distances de sécurité, fatigue et adaptation de la vitesse.</p></details></article>
+<article class="oral"><details><summary>2. Comportement en cas d’accident</summary><p>Protéger, alerter, secourir ; sécuriser les lieux sans se mettre en danger et donner des informations précises aux secours.</p></details></article>
+<article class="oral"><details><summary>3. Conduite en montagne</summary><p>Préparer l’itinéraire, choisir le rapport adapté, anticiper la pente et utiliser le frein moteur et le ralentisseur.</p></details></article>
+<article class="oral"><details><summary>4. Gestes et postures</summary><p>Prévenir les blessures, utiliser les trois points d’appui et adopter des gestes de manutention adaptés.</p></details></article>
+<article class="oral"><details><summary>5. Chargement et arrimage</summary><p>Répartir et arrimer la charge, respecter les limites de masse et contrôler la stabilité.</p></details></article>
+<article class="oral"><details><summary>6. Dépassement</summary><p>Évaluer visibilité, distance disponible, circulation opposée et possibilité de se rabattre sans danger.</p></details></article>
+<article class="oral"><details><summary>7. Dynamique du véhicule</summary><p>Vitesse, centre de gravité, force centrifuge et adaptation de la conduite. <strong>Spécifique CE :</strong> conduite d’un tracteur routier en solo.</p></details></article>
+<article class="oral"><details><summary>8. Alcool, drogues, médicaments et fatigue</summary><p>Connaître les effets sur la vigilance et ne pas conduire lorsque l’aptitude est altérée.</p></details></article>
+<article class="oral"><details><summary>9. Éco-conduite</summary><p>Anticiper, conduire souplement, limiter les accélérations et freinages inutiles et contrôler les pneumatiques.</p></details></article>
+<article class="oral"><details><summary>10. Porte-à-faux</summary><p>Surveiller le balayage avant et arrière, utiliser les rétroviseurs et adapter la trajectoire aux dimensions de l’ensemble.</p></details></article>
+<article class="oral"><details><summary>11. Tunnel et passage à niveau</summary><p>Respecter les feux et distances, ne jamais s’engager sans pouvoir dégager complètement et appliquer les consignes d’urgence.</p></details></article>
+<article class="oral"><details><summary>12. Systèmes de sécurité et aides à la conduite</summary><p>ABS, ESP, AFU, limiteur et aides de détection : connaître leur rôle et garder à l’esprit qu’ils ne remplacent pas la vigilance du conducteur.</p></details></article>
+</div><button class="primary quiz-launch" type="button" onclick="ouvrirQuiz('quizOral')">S’entraîner avec le quiz oral →</button></div></section>
+<section class="view" id="ecritC" hidden><div class="panel"><h2>Fiches écrites permis C</h2><p>Module de révision pour l’épreuve hors circulation du permis C.</p><div class="grid"><article class="card"><h3>Préparer les questions écrites</h3><p>Travaille les règles de sécurité, la réglementation, les vérifications du véhicule, le chargement, les masses et dimensions, ainsi que les comportements à adopter en situation professionnelle.</p></article><article class="card"><h3>Méthode de révision</h3><p>Lis la question jusqu’au bout, repère les mots importants, élimine les réponses incompatibles avec la sécurité et vérifie les chiffres et unités avant de valider.</p></article></div></div></section>
+<section class="view" id="ecritCE" hidden><div class="panel"><h2>Fiches écrites permis CE</h2><p>Module de révision pour l’épreuve hors circulation du permis CE et la conduite d’un ensemble articulé.</p><div class="grid"><article class="card"><h3>Points à travailler</h3><p>Entraîne-toi à raisonner sur l’ensemble tracteur + remorque/semi-remorque, les vérifications de sécurité, l’attelage/dételage, les masses et dimensions, la stabilité et les règles de circulation applicables.</p></article><article class="card"><h3>Méthode de révision</h3><p>Pour chaque situation, identifie les risques spécifiques de l’ensemble, les contrôles à effectuer et l’ordre des opérations. Ne te limite pas à apprendre une réponse sans comprendre la raison.</p></article></div></div></section>
+
+<section class="view" id="quizRse" hidden>
+<div class="panel">
+<h2>Quiz RSE / RSN</h2><button type="button" class="back-module" onclick="ouvrirModule('rse')">← Retour aux modules</button>
+<p class="muted">Questions détaillées sur la RSE / RSN. Chaque correction explique la règle à retenir.</p>
+<form id="formRse"></form>
+<button class="primary" type="button" onclick="corriger('formRse','scoreRse')">Corriger mon quiz</button>
+<div class="result" id="scoreRse" aria-live="polite"></div>
+</div>
+</section>
+
+<section class="view" id="quizOral" hidden>
+<div class="panel">
+<h2>Quiz fiches orales</h2><button type="button" class="back-module" onclick="ouvrirModule('oral')">← Retour aux modules</button>
+<p class="muted">Questions d’entraînement sur les 12 fiches. Une explication s’affiche avec chaque correction.</p>
+<form id="formOral"></form>
+<button class="primary" type="button" onclick="corriger('formOral','scoreOral')">Corriger mon quiz</button>
+<div class="result" id="scoreOral" aria-live="polite"></div>
+</div>
+</section>
+</main>
+
+<footer>Cabineo — Révisions transport routier de marchandises.</footer>
+
+<script>
+const fiches = [
+["1. Conduite par intempéries et de nuit","La visibilité et l’adhérence diminuent, et la perception des reliefs peut être faussée la nuit. Avant le départ, vérifier pneus, essuie-glaces, lave-glace, propreté et fonctionnement des feux. Adapter la vitesse, anticiper les freinages et augmenter les distances de sécurité : on retient 4 à 5 secondes sous la pluie et jusqu’à 7 secondes sous la neige. Utiliser les feux adaptés ; ne pas employer les feux de route dans le brouillard pour éviter l’éblouissement. Utiliser les feux adaptés et les antibrouillards lorsque la visibilité tombe sous 50 m, conformément aux règles applicables."],
+["2. Comportement en cas d’accident","Retenir l’ordre : protéger, alerter, secourir. Mettre les feux de détresse, enfiler le gilet et placer le triangle uniquement si cela peut être fait sans danger. Appeler les secours (15, 17, 18 ou 112 selon la situation) et donner le lieu précis, le nombre de véhicules, le nombre de blessés et les risques. Rassurer et surveiller les victimes. Ne déplacer personne sauf danger immédiat. Rester sur place et agir calmement."],
+["3. Conduite en montagne","Avant le départ, vérifier météo, itinéraire, chaînes, freins et carburant ; anticiper les temps de conduite. En montée, choisir un rapport adapté et maintenir une allure régulière. En descente, rétrograder avant la pente, utiliser le frein moteur et le ralentisseur, augmenter les distances de sécurité et surveiller la température des freins. Ne jamais descendre au point mort ni freiner uniquement avec le frein principal."],
+["4. Gestes et postures","Utiliser trois points d’appui pour monter ou descendre de la cabine ; ne jamais sauter. Régler correctement le siège, le volant et les rétroviseurs avant de partir. Pour manipuler une charge, se rapprocher de la charge, plier les genoux, garder le dos aussi droit que possible, éviter les torsions et demander une aide mécanique ou humaine si nécessaire. Porter les équipements de protection adaptés."],
+["5. Chargement et surcharge","Respecter le PTAC et la répartition par essieu. Placer les charges lourdes au centre et le plus bas possible, puis répartir les charges plus légères autour et au-dessus, en respectant la charge maximale autorisée par essieu indiquée par le constructeur. Avant le départ, faire le tour du véhicule et contrôler stabilité, répartition et arrimage ; refaire un contrôle après quelques kilomètres. Ne jamais partir avec une surcharge ou une marchandise mal sécurisée : le chargement peut se déplacer, déséquilibrer le véhicule ou provoquer un renversement. Les sanctions en cas de surcharge dépendent de la situation et des textes en vigueur ; vérifie les montants actualisés avant de les apprendre."],
+["6. Dépassement","Avant de dépasser, vérifier la visibilité, la signalisation, la circulation en sens inverse, la distance disponible et l’absence de véhicule déjà en train de dépasser. Signaler la manœuvre, accélérer uniquement si elle est autorisée et sûre, garder une trajectoire stable puis se rabattre sans couper la route lorsque le véhicule dépassé est visible dans le rétroviseur intérieur. Renoncer si la visibilité ou la distance sont insuffisantes."],
+["7. Dynamique du véhicule","L’énergie cinétique augmente avec la masse et la vitesse ; au freinage, cette énergie se transforme notamment en chaleur. La force centrifuge tend à entraîner le camion vers l’extérieur du virage : elle augmente avec la vitesse et la masse, et dépend aussi du rayon de la courbe. La force centripète est dirigée vers l’intérieur de la courbe. Le centre de gravité dépend du véhicule et varie avec la hauteur, la masse et la répartition du chargement ; il doit rester aussi bas et bien réparti que possible. Adapter la vitesse au poids transporté et au virage, conduire souplement et éviter les transferts brusques de charge."],
+["8. Alcool, stupéfiants et médicaments","Repère indicatif : environ deux verres peuvent correspondre à 0,5 g/L de sang (0,25 mg/L d’air expiré), mais le taux réel varie selon la personne, la fatigue, l’état de santé, le stress et d’autres facteurs. Les sanctions varient selon le taux constaté et la situation. Vérifier les seuils et montants en vigueur avant l’examen. La conduite après usage de stupéfiants est interdite et altère la vigilance. Pour les médicaments, lire la notice et tenir compte du pictogramme et du risque de somnolence. Ne pas mélanger alcool, stupéfiants et médicaments : on retient une multiplication par 15 du risque d’accident mortel pour le mélange."],
+["9. Éco-conduite","L’éco-conduite vise à réduire la consommation et l’impact environnemental tout en restant en sécurité. Anticiper le trafic pour utiliser l’inertie et éviter les arrêts inutiles ; choisir le rapport adapté pour préserver la mécanique ; stabiliser l’allure, car une vitesse plus élevée augmente fortement la consommation ; vérifier la pression des pneus, car le sous-gonflage augmente la consommation et l’usure ; entretenir le véhicule pour limiter la pollution. Couper le moteur lors des livraisons ou des arrêts prolongés lorsque les conditions le permettent."],
+["10. Porte-à-faux et angles morts","Les angles morts se trouvent devant, sur les côtés et à l’arrière ; surveiller particulièrement les piétons, cyclistes et motards. Le porte-à-faux est la partie comprise entre l’axe de la roue et l’aplomb de l’extrémité du véhicule. Le porte-à-faux arrière peut se déporter vers l’extérieur dans un virage. Prendre davantage d’espace lorsque c’est nécessaire, ralentir, anticiper le déport et contrôler constamment les rétroviseurs. Lors d’un changement de direction, regarder du côté opposé au virage pour surveiller le balayage du porte-à-faux et éviter d’accrocher un usager ou un obstacle."],
+["11. Tunnels et passages à niveau","Dans un tunnel, allumer les feux de croisement, réduire la vitesse et respecter les distances de sécurité indiquées, notamment par les diodes bleues lorsqu’elles sont présentes (il faut retenir deux diodes pour une distance optimale). Il est interdit de dépasser dans un tunnel lorsque la réglementation ou la signalisation l’interdit. Avant d’entrer, vérifier le carburant et le temps de conduite. En cas de panne, serrer sa voie, rejoindre une niche si elle est prévue et accessible sans danger, signaler l’incident, laisser les clés sur le contact selon les consignes et prévenir les agents de régulation par une borne de secours. Au passage à niveau, ralentir, respecter les signaux et s’arrêter avant la ligne blanche si les barrières sont fermées ou en train de se fermer. Ne s’engager que si l’on peut traverser complètement ; ne pas dépasser. En cas de panne sur les voies, évacuer le véhicule et prévenir immédiatement le service ferroviaire via le dispositif d’appel spécialisé. Les passages à niveau peuvent être sans barrières, équipés de barrières manuelles ou de demi-barrières automatiques."],
+["12. Aides à la conduite","Les aides à la conduite sont un soutien, mais elles ne remplacent jamais la vigilance. L’ABS fonctionne automatiquement lors d’un freinage appuyé : il aide à empêcher le blocage des roues et permet de conserver la capacité de diriger le véhicule, sans abolir les limites d’adhérence ni raccourcir toutes les distances de freinage. Le GPS spécial poids lourd aide à éviter les ponts trop bas et les routes interdites ou inadaptées au gabarit et aux caractéristiques du véhicule ; il doit être paramétré correctement et la signalisation réelle reste prioritaire. Le blocage de différentiel peut aider à récupérer de la motricité sur un terrain difficile ou sinueux ; l’utiliser conformément aux consignes du constructeur. Le conducteur reste responsable d’anticiper, d’adapter sa vitesse et de garder la maîtrise du véhicule."]
+];
+
+document.getElementById("oralCards").innerHTML = fiches.map(f =>
+'<article class="oral"><h3>'+f[0]+'</h3><details><summary>Voir les points à retenir</summary><p>'+f[1]+'</p></details></article>'
+).join("");
+
+const qRse = [
+["Après combien de conduite continue faut-il prendre une pause ?",["4 h","4 h 30","5 h"],1,"Il faut retenir 4 h 30 de conduite continue avant une pause de 45 minutes."],
+["Comment fractionner la pause de 45 minutes ?",["30 puis 15 min","15 puis 30 min","20 puis 25 min"],1,"L'ordre compte : 15 minutes, puis 30 minutes, avant d'atteindre 4 h 30 de conduite."],
+["Quel maximum hebdomadaire de conduite il faut retenir-t-il ?",["45 h","56 h","60 h"],1,"Il faut retenir 56 heures de conduite maximum sur une semaine calendaire."],
+["Quel cumul de conduite sur deux semaines est indiqué ?",["80 h","90 h","100 h"],1,"Le cumul ne doit pas dépasser 90 heures sur deux semaines ."],
+["Quelle est la durée du repos journalier normal ?",["9 h","10 h","11 h"],2,"Le repos journalier normal indiqué est de 11 heures."],
+["Quelle est la durée du repos hebdomadaire normal ?",["24 h","36 h","45 h"],2,"Le repos hebdomadaire normal est de 45 heures minimum ."],
+["Quelle coupure est prévue après 6 h de service ?",["15 min","30 min","45 min"],1," RSN indique une coupure de 30 minutes après 6 heures de temps de service ; il décrit un fractionnement possible en deux périodes de 15 minutes avant les 6 heures."],
+["Que signifie « port dû » ?",["Le destinataire paie le transport","L'expéditeur a déjà payé le transport","Le chauffeur paie la marchandise"],0,"Port dû : le destinataire règle le transport au transporteur."],
+["Comment se prend le repos journalier fractionné ?",["2 h + 10 h","3 h puis 9 h","6 h + 6 h"],1,"Le fractionnement présenté est de 3 heures, puis 9 heures, soit 12 heures au total."],
+["Combien faut-il compenser après un repos hebdomadaire réduit de 24 h au lieu de 45 h ?",["15 h","21 h","24 h"],1,"La différence est de 21 heures. Il faut retenir que ce complément doit être rattrapé dans les trois semaines, accolé à un repos et pris en un seul bloc."],
+["Quelle plage horaire définit le travail de nuit ?",["22 h à 06 h","00 h à 05 h","01 h à 04 h"],1,"Le travail effectué entre minuit et 5 heures caractérise le travail de nuit. Le service peut commencer pendant cette plage, la traverser ou se terminer pendant celle-ci."],
+["Quelle limite de temps de service de nuit il faut retenir-t-il ?",["8 h","10 h","12 h"],1,"Il faut retenir un maximum de 10 heures de temps de service pour le travail de nuit, contre 12 heures en journée dans le cadre décrit."],
+["Dans le schéma de double équipage, quelle est la durée de repos simultané ?",["6 h","9 h","11 h"],1,"Le schéma fourni prévoit 9 heures de repos journalier prises simultanément par les deux conducteurs."],
+["Dans le schéma du double équipage, combien d'heures de conduite sont prévues au total ?",["9 h","15 h","18 h"],2,"Le schéma répartit 18 heures de conduite sur la période, soit deux périodes de 4 h 30 par conducteur."],
+["Que signifie « port payé » ?",["Le destinataire règle le transport à la livraison","L'expéditeur a déjà payé le transport","Le transport est gratuit"],1,"Port payé : le transport a déjà été payé par l'expéditeur."],
+["Que signifie « contre-remboursement » ?",["Le destinataire doit payer une somme pour obtenir la marchandise","Le transport est toujours gratuit","Le conducteur avance les frais de carburant"],0,"Le montant indiqué doit être perçu auprès du destinataire en échange de la marchandise. Il faut retenir de ne pas se mettre à quai tant que ce montant n'est pas acquitté."],
+["À quoi correspond la valeur déclarée dans la lettre de voiture ?",["Au poids total du camion","À la valeur de la marchandise déclarée à l'assurance en cas d'avarie","Au prix du carburant"],1," la présente comme la valeur de la marchandise déclarée à l'assurance en cas d'avarie."],
+["Que désigne le temps de service ?",["Uniquement le temps au volant","Toutes les activités du chronotachygraphe sauf le lit (repos)","Uniquement le chargement"],1," décrit le temps de service comme le temps passé sur tous les pictogrammes d'activités — volant, marteaux, etc. — à l'exception du lit, qui correspond au repos."],
+["Comment définit-il l'amplitude ?",["Le temps de conduite uniquement","Le temps de service en incluant les pauses, mais pas le repos journalier ou hebdomadaire","Le temps passé à charger uniquement"],1,"L'amplitude comprend le temps de service et les pauses. Elle se calcule entre l'insertion et le retrait de la carte conducteur ."],
+[", quelle amplitude est associée à un repos journalier normal de 11 h ?",["12 h","13 h","15 h"],1,"Le calcul présenté est 24 h moins 11 h de repos, soit 13 h d'amplitude."],
+[", quelle amplitude est associée à un repos réduit de 9 h ?",["12 h","13 h","15 h"],2,"Le calcul présenté est 24 h moins 9 h de repos, soit 15 h d'amplitude."],
+["Quelle amplitude correspond au repos fractionné de 3 h + 9 h ?",["12 h","13 h","15 h"],0,"Il faut retenir 12 heures d'amplitude pour un repos fractionné de 3 heures + 9 heures."],
+["Dans le schéma de double équipage, combien de temps reste-t-il dans les 21 h d'amplitude après les 18 h de conduite ?",["1 h","3 h","6 h"],1,"21 heures d'amplitude moins 18 heures de conduite donnent 3 heures consacrées aux autres tâches dans le schéma ."],
+["D'après , que signifie le transport pour compte d'autrui ?",["L'entreprise transporte ses propres marchandises","L'entreprise transporte les marchandises d'un client","Le conducteur transporte ses affaires personnelles"],1,"Le transport pour compte d'autrui consiste à transporter pour un client. On retient notamment la lettre de voiture et, selon l'opération, la copie conforme de la licence communautaire."],
+["D'après , que signifie le transport pour compte propre ?",["L'entreprise transporte ses propres marchandises","L'entreprise transporte toujours à l'international","Le destinataire devient transporteur"],0,"Le transport pour compte propre correspond au transport des marchandises de l'entreprise pour ses propres besoins, selon la formulation ."],
+["Quel document on retient-t-il pour un transport international de marchandises pour compte d'autrui ?",["La CMR","Le carnet de santé","Le permis de conduire seul"],0,"On retient la lettre de voiture, ou la CMR lors d'un transport international."],
+["En RSN, quand commence et se termine la semaine de référence ?",["Dimanche 00 h au samedi 23 h 59","Lundi 00 h au dimanche 23 h 59","Le premier jour de chaque mois"],1,"La semaine de référence commence le lundi à 00 h et se termine le dimanche à 23 h 59."],
+[" RSN, combien de jours consécutifs au maximum peut-on travailler ?",["5 jours","6 jours","7 jours"],1,"Il faut retenir qu'on ne peut pas travailler plus de 6 jours consécutifs."],
+["Que faut-il faire du complément de repos hebdomadaire à récupérer ?",["Le diviser librement en petites pauses","Le prendre d'un seul bloc, accolé à un repos journalier ou hebdomadaire","Le remplacer par du temps de conduite"],1,"Il faut retenir que le complément doit être pris d'un seul bloc et accolé à un repos journalier ou hebdomadaire, dans le délai indiqué de trois semaines."],
+["Quelle est la différence entre conduite et temps de service ?",["Ce sont toujours des durées identiques","La conduite est une activité ; le temps de service englobe toutes les activités du chrono sauf le lit/repos","Le temps de service ne comprend que les pauses"],1,"Le temps de conduite est seulement l'activité de conduite. Le temps de service est plus large et comprend les activités du chronotachygraphe autres que le repos sur le lit, ."]
+];
+
+const qOral = [
+["En cas d'accident, quel ordre retenir ?",["Alerter, partir, revenir","Protéger, alerter, secourir","Secourir puis déplacer"],1,"Il faut retenir l'ordre : protéger, alerter, secourir."],
+["En descente de montagne, que faut-il éviter ?",["Utiliser le frein moteur","Rétrograder avant la pente","Descendre au point mort"],2,"La règle à retenir est de de rétrograder avant la pente et d'utiliser le frein moteur et le ralentisseur ; il déconseille de descendre au point mort."],
+["Pour monter ou descendre de la cabine, que faut-il faire ?",["Utiliser trois points d'appui","Sauter pour gagner du temps","Tenir seulement la porte"],0,"La fiche gestes et postures recommande trois points d'appui et de ne jamais sauter de la cabine."],
+["Avant un dépassement, que faut-il vérifier ?",["Uniquement la puissance du camion","La visibilité et l'absence de danger","Que le camion devant ralentisse"],1,"Il faut contrôler la visibilité, la signalisation, la circulation en sens inverse, la distance disponible et l'absence de véhicule qui dépasse déjà."],
+["L'énergie cinétique dépend notamment…",["De la masse et de la vitesse","De la couleur du véhicule","Du lave-glace"],0,"La fiche dynamique du véhicule précise que l'énergie cinétique augmente avec la masse et la vitesse."],
+["Face à un médicament pouvant provoquer une somnolence, que faut-il faire ?",["Ignorer la notice","Vérifier les effets et ne pas conduire si l'on n'est pas apte","Boire du café et partir"],1,"Il faut lire la notice, tenir compte du pictogramme et du risque de somnolence."],
+["En éco-conduite, on cherche à…",["Accélérer et freiner fort","Anticiper et conduire souplement","Rouler au point mort"],1,"Anticiper permet d'utiliser l'inertie et d'éviter les arrêts inutiles ; la conduite doit rester souple et sûre."],
+["Le GPS spécial poids lourd aide notamment à…",["Remplacer le conducteur","Éviter les itinéraires incompatibles avec le gabarit","Supprimer les contrôles"],1,"Le GPS poids lourd peut aider à éviter les ponts trop bas et les routes interdites ou inadaptées, mais la signalisation réelle reste prioritaire."],
+["Au passage à niveau, on s'engage seulement si…",["Les barrières descendent","On peut traverser complètement","Le véhicule devant s'engage"],1,"La fiche indique qu'il ne faut s'engager que si l'on peut traverser complètement le passage à niveau."],
+["Sous la pluie, quelle distance de sécurité la règle à retenir est de-t-il ?",["1 seconde","4 à 5 secondes","10 secondes exactement"],1,"La fiche intempéries cite 4 à 5 secondes sous la pluie et jusqu'à 7 secondes sous la neige."],
+["Selon la fiche intempéries, que faut-il éviter dans le brouillard ?",["Les feux de croisement","Les feux de route qui risquent d'éblouir","Toute adaptation de vitesse"],1,"Ne jamais utiliser les feux de route dans le brouillard pour éviter l'éblouissement."],
+["Quels numéros appeler pour joindre les secours ?",["15, 17, 18 ou 112 selon la situation","Uniquement le 118","Le numéro de l'entreprise uniquement"],0,"Appeler le 15, le 17, le 18 ou le 112 selon la situation, en précisant le lieu, le nombre de véhicules, les blessés et les risques."],
+["En montée de montagne, quelle conduite est recommandée ?",["Choisir un rapport adapté et garder une allure régulière","Rouler au point mort","Freiner en continu"],0,"La fiche montagne recommande un rapport adapté et une vitesse régulière pour éviter de patiner et garder la maîtrise du véhicule."],
+["En descente, quand faut-il rétrograder ?",["Avant la pente","Après une surchauffe des freins","Uniquement à l'arrêt"],0,"La fiche recommande de rétrograder avant la pente et d'utiliser le frein moteur et le ralentisseur."],
+["Pour soulever ou manipuler une charge, quelle posture est recommandée ?",["Dos courbé et jambes tendues","Se rapprocher, plier les genoux et éviter les torsions","Tourner le dos pendant le port"],1,"La fiche gestes et postures recommande de se rapprocher de la charge, de plier les genoux et d'éviter les torsions."],
+["Comment répartir la charge selon la fiche ?",["Le plus haut possible","Charges lourdes au centre et le plus bas possible, dans les limites autorisées","Tout sur un seul côté"],1,"La fiche chargement recommande une charge répartie et sécurisée, avec les charges lourdes au centre et le plus bas possible, en respectant les limites par essieu."],
+["Quand peut-on se rabattre après un dépassement, ?",["Dès que le camion dépasse le pare-chocs du véhicule","Quand le véhicule dépassé est visible dans le rétroviseur intérieur et que le rabattement est sûr","Sans contrôler les rétroviseurs"],1,"La fiche recommande de se rabattre sans couper la route lorsque le véhicule dépassé est visible dans le rétroviseur intérieur."],
+["Dans un virage, vers où tend la force centrifuge ?",["Vers l'intérieur de la courbe","Vers l'extérieur de la courbe","Toujours vers le bas"],1,"La fiche dynamique explique que la force centrifuge tend à entraîner le véhicule vers l'extérieur du virage."],
+["Pourquoi faut-il éviter le sous-gonflage des pneus ?",["Il augmente la consommation et l'usure","Il réduit toujours la consommation","Il améliore toujours l'adhérence"],0,"La fiche éco-conduite indique que le sous-gonflage augmente la consommation et l'usure des pneus."],
+["Quel est l'ordre de priorité en cas d'accident ?",["Déplacer immédiatement toutes les victimes","Protéger les lieux, alerter les secours puis secourir sans se mettre en danger","Quitter les lieux"],1,"La fiche demande de protéger, alerter et secourir, sans déplacer une victime sauf danger immédiat."],
+["Qu'est-ce que le porte-à-faux ?",["La distance entre l'axe d'une roue et l'extrémité du véhicule","La hauteur totale du véhicule","La charge utile"],0,"La fiche porte-à-faux définit cette distance entre l'axe de la roue et l'extrémité avant ou arrière du véhicule."],
+["Lors d'un changement de direction, comment surveiller le porte-à-faux arrière ?",["Regarder uniquement devant","Contrôler les rétroviseurs et regarder du côté opposé au virage pour surveiller le balayage","Accélérer pour réduire le temps du virage"],1,"La fiche insiste sur les rétroviseurs et sur le regard vers l'arrière, du côté opposé à la direction empruntée, pour surveiller le balayage."],
+["Dans un tunnel, quelle règle de base rappelle ?",["Éteindre les feux","Allumer les feux de croisement et respecter les distances de sécurité","S'arrêter dans la voie sans raison"],1,"La fiche tunnels recommande les feux de croisement, une vitesse adaptée et le respect des distances de sécurité."],
+["En cas de panne sur un passage à niveau, que faut-il faire ?",["Attendre dans le véhicule sans prévenir personne","Évacuer le véhicule et prévenir immédiatement le service ferroviaire par le dispositif prévu","Essayer de pousser le véhicule seul sur les voies"],1,"La fiche demande d'évacuer le véhicule et de prévenir immédiatement le service ferroviaire via le dispositif d'appel spécialisé."],
+["À quoi sert l'ABS, selon la fiche aides à la conduite ?",["À empêcher le blocage des roues et aider à conserver la capacité de diriger","À supprimer toute distance de freinage","À remplacer l'attention du conducteur"],0,"L'ABS aide à éviter le blocage des roues lors d'un freinage appuyé et à conserver la capacité de diriger ; il ne supprime pas les limites d'adhérence."],
+["Le blocage de différentiel peut aider à…",["Améliorer la motricité dans certaines situations difficiles","Raccourcir toutes les distances de freinage","Remplacer les chaînes dans tous les cas"],0,"Il faut retenir qu'il peut aider à récupérer de la motricité sur un terrain difficile ou sinueux, en suivant les consignes du constructeur."],
+["Quelle est la bonne réaction si la visibilité est insuffisante pour dépasser ?",["Dépasser rapidement","Renoncer au dépassement","Suivre de très près le véhicule devant"],1,"La fiche dépassement recommande de renoncer si la visibilité ou la distance disponible ne permettent pas une manœuvre sûre."],
+["Pourquoi faut-il garder un centre de gravité bas et une charge bien répartie ?",["Pour limiter les risques de déséquilibre et de renversement","Pour augmenter le porte-à-faux","Pour éviter les contrôles"],0,"La fiche dynamique explique que la hauteur et la répartition du chargement influencent le centre de gravité et la stabilité du véhicule."],
+["Quelle est la bonne attitude concernant les aides à la conduite ?",["Le conducteur peut leur déléguer toute sa vigilance","Elles assistent le conducteur mais ne le remplacent pas","Elles garantissent l'absence d'accident"],1,"La fiche rappelle que les aides ne remplacent jamais la vigilance et que le conducteur reste responsable de sa conduite."],
+["Que faut-il contrôler après quelques kilomètres suivant le chargement ?",["Uniquement la radio","La stabilité et l'arrimage de la charge","Rien si le trajet est court"],1,"La fiche chargement recommande de refaire un contrôle après quelques kilomètres pour vérifier la stabilité et l'arrimage."]
+];
+
+function creerQuiz(id,questions) {
+ document.getElementById(id).innerHTML = questions.map((q,i) =>
+ '<div class="quizq"><p>'+(i+1)+'. '+q[0]+'</p>'+
+ q[1].map((a,j)=>'<label><input type="radio" name="'+id+'_'+i+'" value="'+j+'"> '+a+'</label>').join('')+
+ '<div class="muted" id="'+id+'_fb_'+i+'"></div></div>'
+ ).join('');
+}
+
+function corriger(formId,scoreId) {
+ const questions = formId === "formRse" ? qRse : qOral;
+ let score = 0;
+ questions.forEach((q,i) => {
+ const choix = document.querySelector('input[name="'+formId+'_'+i+'"]:checked');
+ const retour = document.getElementById(formId+'_fb_'+i);
+ if (choix && Number(choix.value) === q[2]) {
+ score++;
+ retour.textContent = "✓ Bonne réponse. " + (q[3] || "");
+ retour.style.color = "#18794e";
+ } else {
+ retour.textContent = "Réponse attendue : " + q[1][q[2]] + ". " + (q[3] || "");
+ retour.style.color = "#a13b32";
+ }
+ });
+ document.getElementById(scoreId).textContent =
+ "Résultat : "+score+" / "+questions.length+". Recommence pour progresser.";
+}
+
+function ouvrirModule(id) {
+ document.querySelectorAll(".view").forEach(s => s.hidden = s.id !== id);
+ document.querySelectorAll("[data-tab]").forEach(b => b.classList.toggle("active",b.dataset.tab===id));
+}
+function ouvrirQuiz(id) {
+ document.querySelectorAll(".view").forEach(s => s.hidden = s.id !== id);
+ document.querySelectorAll("[data-tab]").forEach(b => b.classList.remove("active"));
+}
+document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => ouvrirModule(b.dataset.tab)));
+
+creerQuiz("formRse",qRse);
+creerQuiz("formOral",qOral);
+</script>
+</body>
+</html>
