@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,60 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cabineo — La boîte à outils du chauffeur</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f6fb;
-      color: #10233f;
-    }
-    header {
-      background: #10233f;
-      color: white;
-      padding: 22px;
-      font-size: 25px;
-      font-weight: bold;
-    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f3f6fb; color: #10233f; }
+    header { background: #10233f; color: white; padding: 22px; font-size: 25px; font-weight: bold; }
     header span { color: #5e91ff; }
-    main {
-      max-width: 850px;
-      margin: 45px auto;
-      padding: 20px;
-    }
-    .hero {
-      background: white;
-      border-radius: 18px;
-      padding: 30px;
-      box-shadow: 0 8px 30px #10233f10;
-    }
+    main { max-width: 1000px; margin: 45px auto; padding: 20px; }
+    .hero { background: white; border-radius: 18px; padding: 30px; box-shadow: 0 8px 30px #10233f10; }
     h1 { font-size: 35px; line-height: 1.15; }
     p { color: #64748b; line-height: 1.7; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 22px;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 14px;
-      border: 1px solid #e0e7f0;
-    }
-    .button {
-      display: inline-block;
-      background: #246bfd;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 9px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #64748b;
-      font-size: 13px;
-    }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 22px; }
+    .card { display: block; background: white; padding: 22px; border-radius: 14px; border: 1px solid #e0e7f0; color: inherit; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+    a.card:hover, a.card:focus-visible { transform: translateY(-3px); border-color: #246bfd; box-shadow: 0 8px 24px #10233f12; outline: none; }
+    .card h2 { margin-top: 0; font-size: 21px; }
+    .card .link-label { display: inline-block; margin-top: 8px; color: #246bfd; font-weight: bold; }
+    .card.soon { background: #f9fbfe; }
+    .soon-label { display: inline-block; margin-top: 8px; padding: 5px 9px; border-radius: 20px; background: #edf2f8; color: #64748b; font-size: 12px; font-weight: bold; }
+    .button { display: inline-block; background: #246bfd; color: white; padding: 12px 18px; border-radius: 9px; text-decoration: none; font-weight: bold; }
+    footer { text-align: center; padding: 30px; color: #64748b; font-size: 13px; }
+    @media (max-width: 600px) { main { margin: 22px auto; } .hero { padding: 23px; } h1 { font-size: 30px; } }
   </style>
 </head>
 <body>
@@ -72,17 +35,20 @@
       <a class="button" href="#outils">Découvrir les outils</a>
     </div>
     <div class="cards" id="outils">
-      <div class="card">
+      <a class="card" href="/calculateur-cabineo-simple-v9.html">
         <h2>🧮 Outils pratiques</h2>
-        <p>Des calculateurs et des aides pour le quotidien du chauffeur.</p>
-      </div>
-      <div class="card">
+        <p>Accède au calculateur de conduite, aux compteurs journaliers et aux alertes de pause RSE.</p>
+        <span class="link-label">Ouvrir le calculateur →</span>
+      </a>
+      <div class="card soon">
         <h2>📄 Documents</h2>
         <p>Des modèles et des documents personnalisés selon tes besoins.</p>
+        <span class="soon-label">Bientôt disponible</span>
       </div>
-      <div class="card">
+      <div class="card soon">
         <h2>🎓 Formation CTRMP</h2>
         <p>Des fiches de révision et des quiz pour préparer ton titre professionnel.</p>
+        <span class="soon-label">Bientôt disponible</span>
       </div>
     </div>
   </main>
