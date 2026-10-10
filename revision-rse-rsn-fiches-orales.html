@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111318">
+<title>Révisions PL/SPL - Cabineo</title>
+<style>
+:root {
+  --fond:#f3f6f8; --noir:#111318; --bleu:#8ed8ff;
+  --texte:#171a20; --gris:#687381; --ligne:#dfe5eb;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; background:var(--fond); color:var(--texte);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+header { background:var(--noir); color:white; padding:25px 18px; }
+.wrap, main { max-width:1000px; margin:auto; }
+.brand { font-size:1.5rem; font-weight:900; }
+.brand span { color:var(--bleu); }
+h1 { font-size:clamp(2rem,6vw,3rem); line-height:1.1; }
+header p { color:#cbd3dc; }
+main { padding:18px 14px 40px; }
+.notice {
+  background:#eaf7ff; border:1px solid #c9ebff;
+  border-radius:14px; padding:14px; margin-bottom:18px;
+}
+nav { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+button {
+  font:inherit; cursor:pointer; padding:11px 14px;
+  border:1px solid var(--ligne); border-radius:11px;
+  background:white; color:var(--texte);
+}
+nav button.active, .primary { background:var(--bleu); font-weight:bold; }
+.panel,.card,.oral {
+  background:white; border:1px solid var(--ligne);
+  border-radius:16px; padding:16px; margin-bottom:12px;
+}
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.muted { color:var(--gris); font-size:.9rem; }
+.view[hidden] { display:none; }
+details { border-top:1px solid var(--ligne); padding-top:10px; margin-top:10px; }
+summary { cursor:pointer; font-weight:bold; }
+.oral-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.quizq { padding:14px 0; border-top:1px solid var(--ligne); }
+.quizq label { display:block; padding:6px 0; }
+.result { font-weight:bold; margin-top:12px; }
+footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); font-size:.85rem; }
+@media(max-width:650px) {
+  .grid,.oral-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <div class="brand">CABI<span>NEO</span></div>
+  <h1>Révise, entraîne-toi, progresse.</h1>
+  <p>RSE, RSN et fiches orales du permis C avec quiz interactifs.</p>
+ </div>
+</header>
+
+<main>
+<div class="notice">
+<strong>Important :</strong> cette page reprend les mémos PDF fournis.
+Les règles, chiffres et sanctions doivent être vérifiés auprès de ton
+formateur et des sources officielles avant l'examen.
+</div>
+
+<nav>
+<button class="active" data-tab="rse">RSE / RSN</button>
+<button data-tab="oral">12 fiches orales</button>
+<button data-tab="quizRse">Quiz RSE / RSN</button>
+<button data-tab="quizOral">Quiz oral</button>
+</nav>
+
+<section class="view" id="rse">
+<div class="panel">
+<h2>RSE — Réglementation sociale européenne</h2>
+<p class="muted">Résumé des chiffres figurant dans ton PDF.</p>
+<div class="grid">
+<article class="card">
+<h3>Temps de conduite</h3>
+<ul>
+<li>4 h 30 de conduite avant une pause de 45 minutes.</li>
+<li>Pause fractionnée : 15 minutes puis 30 minutes.</li>
+<li>9 h de conduite journalière, avec possibilité de 10 h deux fois par semaine selon le mémo.</li>
+<li>56 h maximum sur une semaine selon le mémo.</li>
+<li>90 h maximum sur deux semaines selon le mémo.</li>
+</ul>
+</article>
+<article class="card">
+<h3>Repos journalier</h3>
+<ul>
+<li>Repos normal : 11 h.</li>
+<li>Repos réduit : 9 h.</li>
+<li>Repos fractionné présenté dans le mémo : 3 h + 9 h.</li>
+</ul>
+</article>
+<article class="card">
+<h3>Repos hebdomadaire</h3>
+<ul>
+<li>Repos normal : 45 h.</li>
+<li>Repos réduit : 24 h.</li>
+<li>Le mémo évoque 21 h de rattrapage sous trois semaines après un repos réduit.</li>
+</ul>
+</article>
+<article class="card">
+<h3>Amplitude et nuit</h3>
+<p>Le mémo indique des amplitudes de 12 h, 13 h ou 15 h selon le repos précédent.</p>
+<p>Il présente le travail de nuit comme la période de 00 h à 05 h et cite une limite de 10 h de service.</p>
+</article>
+</div>
+</div>
+
+<div class="panel">
+<h2>RSN — Réglementation sociale nationale</h2>
+<div class="grid">
+<article class="card">
+<h3>Semaine de travail</h3>
+<p>Le mémo situe la semaine du lundi à 00 h au dimanche à 23 h 59.</p>
+<p>Il indique qu'on ne peut pas travailler plus de six jours consécutifs.</p>
+</article>
+<article class="card">
+<h3>Coupures</h3>
+<p>Selon le résumé du PDF, après 6 h de service : coupure de 30 minutes, fractionnable en 15 + 15 avant les 6 h.</p>
+<p>Après 9 h de service, le mémo indique une coupure de 45 minutes.</p>
+</article>
+</div>
+</div>
+
+<div class="panel">
+<h2>Autres notions du mémo</h2>
+<div class="grid">
+<article class="card">
+<h3>Double équipage</h3>
+<p>Le PDF décrit une période de 30 h, avec 9 h de repos simultané et une amplitude de 21 h dans son résumé.</p>
+</article>
+<article class="card">
+<h3>Lettre de voiture</h3>
+<ul>
+<li><strong>Port dû :</strong> le destinataire paie le transport.</li>
+<li><strong>Port payé :</strong> l'expéditeur a déjà payé.</li>
+<li><strong>Contre-remboursement :</strong> somme à percevoir selon les instructions.</li>
+<li><strong>Valeur déclarée :</strong> valeur de marchandise déclarée à l'assurance.</li>
+</ul>
+</article>
+<article class="card">
+<h3>Types de transport</h3>
+<p>Le mémo distingue le transport pour compte d'autrui et le transport pour compte propre. Les documents nécessaires dépendent de la mission.</p>
+</article>
+<article class="card">
+<h3>Licence communautaire</h3>
+<p>Le PDF la présente comme un document lié au transport de marchandises pour compte d'autrui, détenu par l'entreprise.</p>
+</article>
+</div>
+</div>
+</section>
+
+<section class="view" id="oral" hidden>
+<div class="panel">
+<h2>Mémo des 12 fiches orales — permis C</h2>
+<p class="muted">Ouvre chaque fiche pour retrouver les principaux points de ton PDF.</p>
+<div class="oral-grid" id="oralCards"></div>
+</div>
+</section>
+
+<section class="view" id="quizRse" hidden>
+<div class="panel">
+<h2>Quiz RSE / RSN</h2>
+<p class="muted">Questions basées sur les chiffres du mémo fourni.</p>
+<form id="formRse"></form>
+<button class="primary" type="button" onclick="corriger('formRse','scoreRse')">Corriger mon quiz</button>
+<div class="result" id="scoreRse" aria-live="polite"></div>
+</div>
+</section>
+
+<section class="view" id="quizOral" hidden>
+<div class="panel">
+<h2>Quiz fiches orales</h2>
+<form id="formOral"></form>
+<button class="primary" type="button" onclick="corriger('formOral','scoreOral')">Corriger mon quiz</button>
+<div class="result" id="scoreOral" aria-live="polite"></div>
+</div>
+</section>
+</main>
+
+<footer>Cabineo — Support pédagogique construit à partir des PDF fournis. Vérifie les règles en vigueur avec ton formateur.</footer>
+
+<script>
+const fiches = [
+["1. Conduite par intempéries et de nuit","Vérifier pneus, essuie-glaces, lave-glace et feux avant de partir. Adapter la vitesse, augmenter les distances de sécurité et anticiper les freinages. Le mémo cite 4 à 5 secondes sous la pluie et jusqu'à 7 secondes sous la neige."],
+["2. Comportement en cas d'accident","Retenir : protéger, alerter, secourir. Feux de détresse, gilet et triangle si possible sans danger. Indiquer aux secours le lieu, le nombre de véhicules, le nombre de blessés et les risques. Ne pas déplacer une victime sauf danger immédiat."],
+["3. Conduite en montagne","Vérifier météo, itinéraire, chaînes, freins et carburant. En montée, choisir un rapport adapté. En descente, rétrograder avant la pente, utiliser le frein moteur et le ralentisseur, garder ses distances et ne jamais descendre au point mort."],
+["4. Gestes et postures","Utiliser trois points d'appui pour monter ou descendre. Ne jamais sauter de la cabine. Régler siège, volant et rétroviseurs. Pour manipuler une charge, plier les genoux, garder le dos droit et porter les équipements de protection."],
+["5. Chargement et surcharge","Respecter le PTAC et les limites par essieu. Répartir et sécuriser la charge. Contrôler la stabilité avant le départ et après quelques kilomètres. Ne jamais partir avec un chargement mal sécurisé."],
+["6. Dépassement","Vérifier la visibilité, l'absence de danger et la circulation opposée. Signaler le dépassement, garder une trajectoire stable et se rabattre lorsque le véhicule dépassé est visible dans le rétroviseur. Renoncer si les conditions ne sont pas sûres."],
+["7. Dynamique du véhicule","L'énergie cinétique augmente avec la masse et la vitesse. La force centrifuge pousse le véhicule vers l'extérieur du virage. Adapter la vitesse au chargement, garder un centre de gravité bas et conduire souplement."],
+["8. Alcool, stupéfiants et médicaments","L'alcool et les stupéfiants diminuent vigilance et réflexes. Lire les notices des médicaments et vérifier les risques de somnolence. Les seuils et sanctions cités dans le PDF doivent être vérifiés dans les règles à jour."],
+["9. Éco-conduite","Anticiper le trafic, utiliser l'inertie, éviter les arrêts inutiles, choisir le bon rapport, stabiliser l'allure, vérifier la pression des pneus et entretenir le véhicule."],
+["10. Porte-à-faux et angles morts","Repérer les angles morts avant, sur les côtés et à l'arrière. Faire attention aux piétons, cyclistes et motards. Anticiper le déport arrière dans les virages, ralentir et contrôler l'environnement."],
+["11. Tunnels et passages à niveau","Dans un tunnel, allumer les feux de croisement, adapter la vitesse et respecter les distances. Au passage à niveau, ne s'engager que si l'on peut traverser complètement. En cas de panne, suivre les consignes de sécurité et prévenir les services concernés."],
+["12. Aides à la conduite","Les aides ne remplacent pas la vigilance. Le mémo cite l'ABS, le GPS poids lourd pour éviter les routes incompatibles avec le gabarit et le blocage de différentiel pour aider la motricité dans certaines situations."]
+];
+
+document.getElementById("oralCards").innerHTML = fiches.map(f =>
+'<article class="oral"><h3>'+f[0]+'</h3><details><summary>Voir les points à retenir</summary><p>'+f[1]+'</p></details></article>'
+).join("");
+
+const qRse = [
+["Après combien de conduite continue le mémo prévoit-il une pause ?",["4 h","4 h 30","5 h"],1],
+["Comment le mémo fractionne-t-il la pause de 45 minutes ?",["30 puis 15 min","15 puis 30 min","20 puis 25 min"],1],
+["Quel maximum hebdomadaire de conduite le mémo indique-t-il ?",["45 h","56 h","60 h"],1],
+["Quel cumul sur deux semaines est indiqué ?",["80 h","90 h","100 h"],1],
+["Quelle durée de repos journalier normal est citée ?",["9 h","10 h","11 h"],2],
+["Quel repos hebdomadaire normal est cité ?",["24 h","36 h","45 h"],2],
+["Selon le résumé RSN, quelle coupure après 6 h de service ?",["15 min","30 min","45 min"],1],
+["Que signifie « port dû » ?",["Le destinataire paie le transport","L'expéditeur paie le transport","Le chauffeur paie la marchandise"],0]
+];
+
+const qOral = [
+["En cas d'accident, quel ordre retenir ?",["Alerter, partir, revenir","Protéger, alerter, secourir","Secourir puis déplacer"],1],
+["En descente de montagne, que faut-il éviter ?",["Utiliser le frein moteur","Rétrograder avant la pente","Descendre au point mort"],2],
+["Pour monter ou descendre de la cabine ?",["Utiliser trois points d'appui","Sauter pour gagner du temps","Tenir seulement la porte"],0],
+["Avant un dépassement, il faut vérifier…",["Uniquement la puissance du camion","La visibilité et l'absence de danger","Que le camion devant ralentisse"],1],
+["L'énergie cinétique dépend notamment…",["De la masse et de la vitesse","De la couleur du véhicule","Du lave-glace"],0],
+["Face à un médicament pouvant provoquer une somnolence ?",["Ignorer la notice","Vérifier les effets et ne pas conduire si inapte","Boire du café et partir"],1],
+["En éco-conduite, on cherche à…",["Accélérer et freiner fort","Anticiper et conduire souplement","Rouler au point mort"],1],
+["Le GPS poids lourd aide notamment à…",["Remplacer le conducteur","Éviter des itinéraires incompatibles avec le gabarit","Supprimer les contrôles"],1],
+["Au passage à niveau, on s'engage seulement si…",["Les barrières descendent","On peut traverser complètement","Le véhicule devant s'engage"],1]
+];
+
+function creerQuiz(id,questions) {
+ document.getElementById(id).innerHTML = questions.map((q,i) =>
+ '<div class="quizq"><p>'+(i+1)+'. '+q[0]+'</p>'+
+ q[1].map((a,j)=>'<label><input type="radio" name="'+id+'_'+i+'" value="'+j+'"> '+a+'</label>').join('')+
+ '<div class="muted" id="'+id+'_fb_'+i+'"></div></div>'
+ ).join('');
+}
+
+function corriger(formId,scoreId) {
+ const questions = formId === "formRse" ? qRse : qOral;
+ let score = 0;
+ questions.forEach((q,i) => {
+  const choix = document.querySelector('input[name="'+formId+'_'+i+'"]:checked');
+  const retour = document.getElementById(formId+'_fb_'+i);
+  if (choix && Number(choix.value) === q[2]) {
+   score++;
+   retour.textContent = "✓ Bonne réponse";
+   retour.style.color = "#18794e";
+  } else {
+   retour.textContent = "Réponse attendue : " + q[1][q[2]];
+   retour.style.color = "#a13b32";
+  }
+ });
+ document.getElementById(scoreId).textContent =
+ "Résultat : "+score+" / "+questions.length+". Recommence pour progresser.";
+}
+
+document.querySelectorAll("[data-tab]").forEach(b => {
+ b.addEventListener("click", () => {
+  document.querySelectorAll("[data-tab]").forEach(x => x.classList.toggle("active",x===b));
+  document.querySelectorAll(".view").forEach(s => s.hidden = s.id !== b.dataset.tab);
+ });
+});
+
+creerQuiz("formRse",qRse);
+creerQuiz("formOral",qOral);
+</script>
+</body>
+</html>
