@@ -9,7 +9,7 @@
 <style>
 :root{--bg:#f3f6f8;--ink:#171a20;--muted:#687381;--line:#dfe5eb;--blue:#8ed8ff;--navy:#111318;--green:#18794e;--red:#a13b32}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 header{background:var(--navy);color:white;padding:26px 18px 30px}
 .wrap,main,footer{max-width:1050px;margin:auto}
 .brand{font-size:1.55rem;font-weight:900;letter-spacing:-1px}
@@ -19,416 +19,515 @@ header p{color:#cbd3dc;margin:0}
 main{padding:20px 14px 40px}
 .notice{background:#eaf7ff;border:1px solid #c9ebff;border-radius:14px;padding:14px;margin-bottom:18px}
 nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-button,select{font:inherit;cursor:pointer;padding:11px 14px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink)}
+button,select{font:inherit;cursor:pointer;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink)}
 nav button.active,.primary{background:var(--blue);border-color:var(--blue);font-weight:800}
 .panel,.card,.oral{background:white;border:1px solid var(--line);border-radius:16px;padding:17px;margin-bottom:12px}
-.panel h2{margin-top:0}
+.panel h2{margin-top:0;line-height:1.3}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.muted{color:var(--muted);font-size:.92rem}
+.muted,.small{color:var(--muted);font-size:.92rem}
 .view[hidden]{display:none}
-.card h3,.oral h3{margin-top:0}
-.card li{margin-bottom:7px}
-.oral-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-details{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+.card h3,.oral h3{margin-top:0;line-height:1.35}
+.oral-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+details{border-top:1px solid var(--line);padding-top:11px;margin-top:12px}
 summary{cursor:pointer;font-weight:750}
+details p{margin-bottom:8px}
+details li{margin-bottom:7px}
 .quizq{padding:15px 0;border-top:1px solid var(--line)}
 .quizq:first-child{border-top:0}
 .quizq p{font-weight:750;margin:0 0 8px}
-.quizq label{display:block;padding:8px;margin:4px 0;border:1px solid var(--line);border-radius:9px;cursor:pointer}
+.quizq label{display:block;padding:9px;margin:5px 0;border:1px solid var(--line);border-radius:9px;cursor:pointer}
 .quizq label:has(input:checked){background:#eaf7ff;border-color:#78c9f3}
 .quizq input{margin-right:7px}
-.feedback{font-size:.94rem;margin-top:10px;padding:10px;border-radius:9px;background:#f6f8fa}
+.feedback{font-size:.94rem;margin-top:10px;padding:11px;border-radius:9px;background:#f6f8fa}
 .result{font-weight:800;margin:14px 0}
 .progress{height:8px;background:#e4e9ee;border-radius:8px;overflow:hidden;margin:12px 0}
 .progress div{height:100%;background:#62b9e9;width:0;transition:width .2s}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-.small{font-size:.86rem;color:var(--muted)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.tag{display:inline-block;background:#edf5fa;padding:3px 8px;border-radius:8px;font-size:.8rem;margin-bottom:8px}
 footer{padding:0 14px 28px;color:var(--muted);font-size:.85rem}
 @media(max-width:650px){.grid,.oral-grid{grid-template-columns:1fr}nav button{flex:1 1 42%}.panel,.card,.oral{padding:15px}}
 </style>
 </head>
 <body>
 <header>
-  <div class="wrap">
-    <div class="brand">CABI<span>NEO</span></div>
-    <h1>Formation CTRMP</h1>
-    <p>Comprendre, réviser et s'entraîner avant l'examen.</p>
-  </div>
+ <div class="wrap">
+  <div class="brand">CABI<span>NEO</span></div>
+  <h1>Formation CTRMP</h1>
+  <p>Comprendre, réviser et s'entraîner avant l'examen.</p>
+ </div>
 </header>
 
 <main>
-  <div class="notice">
-    <strong>Bienvenue dans tes révisions.</strong>
-    Choisis un module, réponds aux questions, puis corrige ton quiz.
-    En cas d'erreur, la bonne réponse et une explication apparaissent.
+ <div class="notice">
+  <strong>Bienvenue dans tes révisions.</strong>
+  Les fiches orales développent les notions à connaître, les risques et les précautions.
+  Dans les quiz, chaque mauvaise réponse est accompagnée de la bonne réponse et d'une explication.
+ </div>
+
+ <nav aria-label="Modules de formation">
+  <button class="active" data-tab="rse">RSE / RSN</button>
+  <button data-tab="double">Double équipage</button>
+  <button data-tab="reglement">Réglementation</button>
+  <button data-tab="oral">Fiches orales C</button>
+  <button data-tab="ecritC">Écrit permis C</button>
+  <button data-tab="ecritCE">Écrit permis CE</button>
+ </nav>
+
+ <section class="view" id="rse">
+  <div class="panel">
+   <h2>RSE / RSN : les notions essentielles</h2>
+   <div class="grid">
+    <article class="card">
+     <h3>Temps de conduite</h3>
+     <ul>
+      <li>Après 4 h 30 de conduite, une pause totale de 45 minutes est normalement requise.</li>
+      <li>Cette pause peut être fractionnée en une première pause d'au moins 15 minutes, suivie d'une seconde d'au moins 30 minutes.</li>
+      <li>La conduite journalière est normalement limitée à 9 heures. Elle peut être portée à 10 heures deux fois par semaine, dans les conditions prévues.</li>
+      <li>La limite hebdomadaire est de 56 heures et la limite sur deux semaines consécutives de 90 heures.</li>
+     </ul>
+    </article>
+    <article class="card">
+     <h3>Repos journalier</h3>
+     <ul>
+      <li>Le repos journalier normal est généralement de 11 heures.</li>
+      <li>Un repos journalier réduit peut être de 9 heures, sous conditions et dans les limites prévues.</li>
+      <li>Le repos fractionné doit respecter les durées et l'ordre réglementaires.</li>
+      <li>Le repos doit être réellement pris : une période d'attente ou une période sans conduite n'est pas automatiquement un repos.</li>
+     </ul>
+    </article>
+    <article class="card">
+     <h3>Repos hebdomadaire</h3>
+     <ul>
+      <li>Le repos hebdomadaire normal est de 45 heures.</li>
+      <li>Un repos réduit peut être possible dans certaines situations.</li>
+      <li>Une réduction peut entraîner une compensation, à prendre selon les délais et modalités réglementaires.</li>
+     </ul>
+    </article>
+    <article class="card">
+     <h3>Conduite, service et amplitude</h3>
+     <ul>
+      <li>Le temps de conduite correspond au temps passé à conduire.</li>
+      <li>Le temps de service englobe d'autres activités professionnelles, selon le régime applicable.</li>
+      <li>L'amplitude est la période entre le début et la fin de la journée de travail.</li>
+      <li>Le travail de nuit et les règles nationales peuvent entraîner des obligations spécifiques.</li>
+     </ul>
+    </article>
+   </div>
+   <p class="muted">Les règles exactes peuvent dépendre du transport, du véhicule, du régime applicable et des exceptions prévues par les textes.</p>
   </div>
+  <div class="panel">
+   <h2>Quiz RSE / RSN</h2>
+   <p class="muted">Les questions sont mélangées à chaque nouvelle tentative. Corrige tes réponses pour afficher les explications.</p>
+   <div id="quiz-rse"></div>
+  </div>
+ </section>
 
-  <nav aria-label="Modules de formation">
-    <button class="active" data-tab="rse">RSE / RSN</button>
-    <button data-tab="double">Double équipage</button>
-    <button data-tab="reglement">Réglementation</button>
-    <button data-tab="oral">Fiches orales C</button>
-    <button data-tab="ecritC">Écrit permis C</button>
-    <button data-tab="ecritCE">Écrit permis CE</button>
-  </nav>
+ <section class="view" id="double" hidden>
+  <div class="panel">
+   <h2>Comprendre le double équipage</h2>
+   <p>Le double équipage permet à deux conducteurs de se relayer au cours d'un transport. Cette organisation exige de coordonner les relais, de suivre les temps de chaque conducteur et d'utiliser correctement le chronotachygraphe.</p>
+   <h3>Les points à maîtriser</h3>
+   <ul>
+    <li>Chaque conducteur doit enregistrer correctement ses activités.</li>
+    <li>Le conducteur qui ne conduit pas n'est pas automatiquement en repos journalier : le statut de la période dépend de la situation et des règles applicables.</li>
+    <li>Les pauses, repos et limites de conduite continuent de s'appliquer au double équipage.</li>
+    <li>Les relais doivent être organisés sans compromettre la sécurité et dans le respect des temps réglementaires.</li>
+    <li>La présence d'un second conducteur ne permet ni de dépasser les masses autorisées, ni de négliger l'état du véhicule ou l'arrimage.</li>
+   </ul>
+  </div>
+  <div class="panel">
+   <h2>Quiz double équipage</h2>
+   <div id="quiz-double"></div>
+  </div>
+ </section>
 
-  <section class="view" id="rse">
-    <div class="panel">
-      <h2>RSE / RSN : cours de révision</h2>
-      <p class="muted">Les principales notions à connaître. Les cas particuliers doivent être étudiés avec les règles applicables à ton activité.</p>
-      <div class="grid">
-        <article class="card">
-          <h3>Conduite</h3>
-          <ul>
-            <li>Après 4 h 30 de conduite, une pause totale de 45 minutes est normalement requise.</li>
-            <li>La pause peut être fractionnée en 15 minutes puis 30 minutes.</li>
-            <li>La conduite journalière est normalement limitée à 9 heures, avec des extensions réglementées à 10 heures.</li>
-            <li>La limite hebdomadaire de conduite est de 56 heures et celle sur deux semaines de 90 heures.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Repos journalier</h3>
-          <ul>
-            <li>Repos journalier normal : 11 heures.</li>
-            <li>Repos journalier réduit : 9 heures, dans les limites prévues.</li>
-            <li>Le repos fractionné doit respecter les durées et l'ordre réglementaires.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Repos hebdomadaire</h3>
-          <ul>
-            <li>Repos hebdomadaire normal : 45 heures.</li>
-            <li>Un repos réduit peut être possible sous conditions.</li>
-            <li>Les compensations doivent respecter les délais et modalités prévus.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Temps de service</h3>
-          <p>Le temps de conduite n'est pas identique au temps de service. L'amplitude désigne la période entre le début et la fin de la journée de travail.</p>
-          <p>Le travail de nuit et le régime national peuvent entraîner des règles spécifiques.</p>
-        </article>
-      </div>
-    </div>
-    <div class="panel">
-      <h2>Quiz RSE / RSN</h2>
-      <p class="muted">Une série aléatoire de 12 questions. La sélection change à chaque nouvelle tentative.</p>
-      <div id="quiz-rse"></div>
-    </div>
-  </section>
+ <section class="view" id="reglement" hidden>
+  <div class="panel">
+   <h2>Réglementation du transport</h2>
+   <div class="grid">
+    <article class="card"><h3>Documents de transport</h3><p>Les documents doivent correspondre à l'opération réalisée. Le conducteur vérifie les informations utiles et signale les anomalies au responsable concerné.</p></article>
+    <article class="card"><h3>Lettre de voiture</h3><p>Elle permet de documenter l'opération de transport et les informations relatives à la marchandise, à l'expéditeur, au destinataire et au transport.</p><p><strong>Port payé :</strong> le transport a déjà été payé. <strong>Port dû :</strong> le transport reste à payer par le destinataire, selon les conditions convenues.</p></article>
+    <article class="card"><h3>Compte propre et compte d'autrui</h3><p>Le transport pour compte d'autrui est effectué pour un client. Le transport pour compte propre concerne les marchandises liées à l'activité de l'entreprise qui les transporte.</p></article>
+    <article class="card"><h3>Chargement et masses</h3><p>Le chargement doit être réparti et arrimé correctement. Il faut respecter les masses maximales, les charges par essieu et les dimensions autorisées.</p></article>
+    <article class="card"><h3>Gabarit et itinéraire</h3><p>La hauteur, la largeur, la longueur et la masse du véhicule doivent être compatibles avec l'itinéraire. La signalisation prévaut sur les indications d'un GPS.</p></article>
+    <article class="card"><h3>Chronotachygraphe</h3><p>Il enregistre les activités et les temps concernés. Les conducteurs doivent sélectionner et utiliser correctement les fonctions adaptées à leur situation.</p></article>
+   </div>
+  </div>
+  <div class="panel">
+   <h2>Quiz réglementation</h2>
+   <div id="quiz-reglement"></div>
+  </div>
+ </section>
 
-  <section class="view" id="double" hidden>
-    <div class="panel">
-      <h2>Double équipage</h2>
-      <p>Deux conducteurs se relaient pendant le transport. Ils doivent organiser leur activité et leurs repos conformément aux règles applicables au double équipage.</p>
-      <p>La présence d'un deuxième conducteur ne supprime pas les règles de conduite, de pause, de repos ni l'utilisation correcte du chronotachygraphe.</p>
-    </div>
-    <div class="panel">
-      <h2>Quiz double équipage</h2>
-      <p class="muted">Questions sur l'organisation à deux, les pauses, les repos et les situations pratiques.</p>
-      <div id="quiz-double"></div>
-    </div>
-  </section>
+ <section class="view" id="oral" hidden>
+  <div class="panel">
+   <h2>Fiches orales du permis C</h2>
+   <p>Les 12 thèmes sont développés à partir du document « Fiches orales groupe lourd – 2026 ». Ouvre chaque rubrique pour réviser le contenu, les risques et les précautions.</p>
+   <div class="oral-grid" id="oralCards"></div>
+  </div>
+  <div class="panel">
+   <h2>Quiz des fiches orales</h2>
+   <p class="muted">Questions sur les douze thèmes. Chaque correction rappelle la règle ou la précaution à retenir.</p>
+   <div id="quiz-oral"></div>
+  </div>
+ </section>
 
-  <section class="view" id="reglement" hidden>
-    <div class="panel">
-      <h2>Réglementation du transport</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Documents</h3>
-          <p>Le conducteur doit connaître les documents associés au véhicule, au transport, à la marchandise et à son activité. Les documents requis dépendent de l'opération réalisée.</p>
-        </article>
-        <article class="card">
-          <h3>Chargement</h3>
-          <p>Respecter les limites de masse et de dimensions, la répartition de la charge et son arrimage. Le chargement ne doit pas compromettre la stabilité ni la sécurité.</p>
-        </article>
-        <article class="card">
-          <h3>Transport pour autrui ou pour compte propre</h3>
-          <p>Le transport pour compte d'autrui est réalisé pour un client. Le compte propre concerne les marchandises liées à l'activité de l'entreprise elle-même.</p>
-        </article>
-        <article class="card">
-          <h3>Lettre de voiture</h3>
-          <p>Ce document décrit l'opération de transport. « Port dû » signifie que le transport reste à payer par le destinataire ; « port payé » indique qu'il a déjà été payé.</p>
-        </article>
-      </div>
-    </div>
-    <div class="panel">
-      <h2>Quiz réglementation</h2>
-      <p class="muted">Documents, chargement, masses, sécurité, tachygraphe et règles professionnelles.</p>
-      <div id="quiz-reglement"></div>
-    </div>
-  </section>
+ <section class="view" id="ecritC" hidden>
+  <div class="panel">
+   <h2>Fiches écrites — permis C</h2>
+   <p>Réponds aux questions dans un ordre mélangé. Les propositions sont formulées pour que chaque réponse soit compréhensible sans interprétation.</p>
+   <div id="quiz-ecritC"></div>
+  </div>
+ </section>
 
-  <section class="view" id="oral" hidden>
-    <div class="panel">
-      <h2>Fiches orales du permis C</h2>
-      <p class="muted">Ouvre un thème pour retrouver les points essentiels.</p>
-      <div class="oral-grid" id="oralCards"></div>
-    </div>
-    <div class="panel">
-      <h2>Quiz des fiches orales</h2>
-      <p class="muted">Questions variées sur les 12 thèmes de l'oral.</p>
-      <div id="quiz-oral"></div>
-    </div>
-  </section>
-
-  <section class="view" id="ecritC" hidden>
-    <div class="panel">
-      <h2>Fiches écrites — permis C</h2>
-      <p>Entraîne-toi sur des questions mélangées afin de ne pas mémoriser un ordre fixe.</p>
-      <p class="muted">Cette base contient des questions d'entraînement inspirées des thèmes présents dans ton PDF. Elle ne constitue pas encore une retranscription complète des 200 questions officielles du document.</p>
-      <div id="quiz-ecritC"></div>
-    </div>
-  </section>
-
-  <section class="view" id="ecritCE" hidden>
-    <div class="panel">
-      <h2>Fiches écrites — permis CE</h2>
-      <p>Entraîne-toi sur des questions mélangées concernant l'ensemble articulé, les masses, l'attelage et la sécurité.</p>
-      <p class="muted">Cette base contient des questions d'entraînement inspirées des thèmes présents dans ton PDF. Elle ne constitue pas encore une retranscription complète des 200 questions officielles du document.</p>
-      <div id="quiz-ecritCE"></div>
-    </div>
-  </section>
+ <section class="view" id="ecritCE" hidden>
+  <div class="panel">
+   <h2>Fiches écrites — permis CE</h2>
+   <p>Entraîne-toi sur les notions liées à l'ensemble articulé, à l'attelage, au gabarit et à la sécurité.</p>
+   <div id="quiz-ecritCE"></div>
+  </div>
+ </section>
 </main>
 
-<footer>
-  Cabineo — Support de révision CTRMP. Vérifie les règles réglementaires et leurs exceptions dans les textes à jour et auprès de ton formateur.
-</footer>
+<footer>Cabineo — Support de révision CTRMP. Les informations réglementaires doivent être appliquées selon les textes en vigueur et les particularités de chaque transport.</footer>
 
 <script>
 const fichesOrales = [
-["1. Conduite par intempéries et de nuit","Vérifier les feux, les pneus et les essuie-glaces. Adapter la vitesse, augmenter les distances de sécurité et anticiper les freinages. La pluie, la neige et l'obscurité réduisent la visibilité et l'adhérence."],
-["2. Accident","Retenir : protéger, alerter, secourir. Se mettre en sécurité, prévenir les secours et donner une localisation précise. Ne pas déplacer une victime sauf danger immédiat."],
-["3. Conduite en montagne","Préparer l'itinéraire et la météo. En descente, choisir un rapport adapté avant la pente, utiliser le frein moteur et éviter de solliciter les freins en continu."],
-["4. Gestes et postures","Utiliser trois points d'appui pour monter ou descendre de la cabine. Régler le siège et les rétroviseurs. Adapter sa posture lors de la manutention."],
-["5. Chargement et surcharge","Respecter les limites de masse, répartir la charge et vérifier l'arrimage. Un chargement instable peut provoquer une perte de contrôle."],
-["6. Dépassement","Contrôler la visibilité, la signalisation, la distance disponible et le trafic opposé. Renoncer si les conditions ne permettent pas de dépasser en sécurité."],
-["7. Dynamique du véhicule","La masse et la vitesse influencent l'énergie cinétique. Adapter la vitesse aux virages, au chargement et à l'adhérence."],
-["8. Alcool, drogues et médicaments","Ces substances peuvent altérer les réflexes et la vigilance. Vérifier les notices des médicaments et ne pas conduire si l'on n'est pas apte."],
-["9. Éco-conduite","Anticiper le trafic, accélérer progressivement, limiter les freinages inutiles et entretenir le véhicule."],
-["10. Porte-à-faux et angles morts","Surveiller les zones non visibles, notamment les usagers vulnérables. Anticiper le déport arrière dans les virages."],
-["11. Tunnels et passages à niveau","Respecter les distances et la signalisation. Ne jamais s'engager sur un passage à niveau si l'on ne peut pas le dégager complètement."],
-["12. Aides à la conduite","L'ABS aide à éviter le blocage des roues au freinage. Les aides ne remplacent jamais la vigilance et la responsabilité du conducteur."]
+{
+titre:"1. Conditions atmosphériques difficiles et conduite de nuit",
+intro:"La pluie, le brouillard, le vent, la neige, le verglas et l'obscurité réduisent la visibilité ou l'adhérence. Un véhicule lourd demande une anticipation importante en raison de sa masse et de ses distances d'arrêt.",
+sections:[
+["Sous la pluie",["Réduire la vitesse et augmenter les distances de sécurité.","Éviter les freinages brusques et utiliser le frein moteur lorsque c'est adapté.","Allumer les feux nécessaires. Ne pas utiliser les feux arrière de brouillard sous la pluie.","Utiliser la ventilation, la climatisation et le dégivrage pour conserver une bonne visibilité."]],
+["Dans le brouillard",["Réduire la vitesse et respecter les distances de sécurité.","Utiliser les feux adaptés aux conditions et à la réglementation.","S'aider du marquage au sol, sans suivre aveuglément les feux du véhicule qui précède."]],
+["En cas de vent",["Réduire la vitesse et anticiper les écarts de trajectoire.","Être particulièrement vigilant au passage d'une zone abritée à une zone exposée, sur un pont ou lors d'un dépassement.","Un véhicule peu chargé peut être plus sensible aux rafales latérales."]],
+["Neige et verglas",["Réduire la vitesse, augmenter les distances et agir avec souplesse sur les commandes.","Préférer les grands axes dégagés et s'informer de l'état des routes et des barrières de dégel.","Utiliser uniquement les équipements antidérapants autorisés et adaptés.","Ne pas dépasser les engins de déneigement lorsque cela est interdit ou dangereux."]],
+["Conduite de nuit",["La visibilité est réduite et les obstacles sont perçus plus tardivement.","La fatigue et l'éblouissement diminuent la vigilance et la qualité de la vision.","Ralentir davantage en virage, car la courbe est plus difficile à apprécier.","En cas d'éblouissement, regarder vers le bord droit de la route, le plus loin possible, sans quitter la route des yeux."]],
+["Avant le départ et pendant le trajet",["Vérifier la propreté, le réglage et le fonctionnement des feux.","Contrôler l'état de la batterie et disposer des équipements de dépannage prévus.","Prévoir des pauses plus fréquentes et adapter la vitesse aux conditions réelles.","Consulter les informations routières et météorologiques avant de partir."]]
+]},
+{
+titre:"2. Comportement en cas d'accident",
+intro:"La priorité est d'éviter un suraccident et de protéger les personnes. En présence d'un accident corporel, appliquer la logique : protéger, alerter, secourir.",
+sections:[
+["Protéger",["Se rendre visible et porter le gilet de haute visibilité lorsque l'on doit sortir du véhicule.","Allumer les feux de détresse et signaler le danger lorsque cela peut être fait sans se mettre en danger.","Le triangle ne doit être placé que si l'opération est possible en sécurité. Sur voie rapide, ne pas s'exposer à la circulation.","Éviter de rester sur une voie circulée ou de créer un nouvel obstacle."]],
+["Alerter",["Prévenir les secours, la police ou la gendarmerie selon la situation.","Donner une localisation précise, le nombre de véhicules impliqués, le nombre de blessés et les dangers présents.","Signaler la présence éventuelle de marchandises dangereuses ou de risques particuliers.","Sur autoroute, utiliser les dispositifs d'appel adaptés lorsqu'ils sont accessibles sans danger."]],
+["Secourir",["Rester auprès des victimes si cela ne présente pas de danger.","Les couvrir et leur parler calmement en attendant les secours.","Ne pas donner à boire à une victime.","Ne pas déplacer un blessé ni retirer le casque d'un motard, sauf nécessité immédiate liée à un danger grave.","Ne pas pratiquer de gestes que l'on ne maîtrise pas."]],
+["Accident matériel",["Garder son calme et rester courtois.","Si le véhicule gêne la circulation et peut être déplacé en sécurité, dégager les lieux dès que possible.","Prévenir l'entreprise et recueillir les informations nécessaires.","Le constat amiable permet de décrire les circonstances, les véhicules et les dommages. Remplir les rubriques avec soin et conserver une copie.","Respecter les délais de déclaration applicables à son contrat et à la situation."]]
+]},
+{
+titre:"3. Conduite en montagne ou en zone accidentée",
+intro:"Les déclivités, les virages, les croisements, la météo et la masse du véhicule rendent la conduite en montagne particulièrement exigeante.",
+sections:[
+["Les principaux dangers",["En descente, la vitesse peut augmenter rapidement sous l'effet de la pente et de l'inertie.","Les virages peuvent être serrés et la visibilité limitée. Le gabarit complique certains croisements.","Un freinage mal géré peut provoquer l'échauffement des freins et réduire leur efficacité.","En montée, le moteur peut chauffer davantage et la progression être ralentie.","La neige, le brouillard et le verglas peuvent rendre la chaussée glissante."]],
+["Adapter la vitesse et les rapports",["Réduire la vitesse avant d'entrer dans une forte pente ou un virage.","Choisir un rapport adapté pour profiter du frein moteur.","Ne pas descendre au point mort et ne pas compter uniquement sur la pédale de frein.","Utiliser correctement le ralentisseur et les systèmes de freinage, conformément aux consignes du véhicule.","Conserver une marge suffisante pour pouvoir s'arrêter."]],
+["Préparer l'itinéraire",["S'informer de l'état des routes et de l'ouverture des cols et tunnels.","Vérifier les restrictions de circulation et les équipements requis.","Prévoir des équipements antidérapants autorisés lorsque les conditions l'exigent.","Préférer, lorsque l'itinéraire et les conditions le permettent, un tunnel adapté plutôt qu'un col difficile.","Signaler sa présence lorsque les conditions et la configuration de la route le justifient."]]
+]},
+{
+titre:"4. Gestes et postures — accident du travail",
+intro:"Les accidents peuvent survenir à l'arrêt comme en circulation. Les chutes de cabine, les glissades et les blessures lors de la manutention font partie des risques à prévenir.",
+sections:[
+["Monter et descendre de la cabine",["Ne jamais sauter du véhicule.","Conserver trois points d'appui et faire face aux marchepieds lors de la descente.","Vérifier que les marchepieds et les chaussures ne sont pas glissants.","Utiliser les poignées et les accès prévus."]],
+["Manutention des charges",["Garder le dos aussi droit que possible et fléchir les jambes pour soulever une charge.","Placer les pieds de manière stable et garder la charge près du corps.","Éviter les torsions du dos en portant une charge.","Utiliser les aides à la manutention lorsqu'elles sont disponibles."]],
+["Nettoyage et équipements",["Être vigilant sur les sols mouillés dans les stations de lavage.","Utiliser les marchepieds et poignées prévus pour nettoyer les parties hautes du véhicule.","Porter les équipements de protection adaptés : chaussures de sécurité, gants et vêtements nécessaires."]],
+["Position de conduite",["Régler le siège et les rétroviseurs avant de partir.","Attacher la ceinture de sécurité.","Ajuster la position pour accéder aux commandes sans tension excessive.","Éviter les postures prolongées inconfortables et profiter des pauses pour bouger."]],
+["Prévenir les accidents",["Repérer les risques de chute, de pincement, d'écrasement et de manutention.","Maintenir les accès dégagés et signaler les défauts dangereux.","Ne pas improviser une intervention lorsqu'un équipement ou une charge présente un danger."]]
+]},
+{
+titre:"5. Chargement et surcharge",
+intro:"Le chargement influe sur la stabilité, le freinage, la tenue de route et les risques de chute de marchandises. Le conducteur doit s'assurer que le véhicule peut circuler en sécurité.",
+sections:[
+["Organiser le chargement",["Respecter les masses maximales autorisées.","Répartir la charge de façon équilibrée et éviter une concentration excessive sur un essieu.","Arrimer la marchandise pour empêcher son déplacement pendant les freinages et les virages.","Pour des livraisons multiples, organiser la disposition en tenant compte de l'ordre des déchargements.","S'assurer que la charge ne masque pas la visibilité et ne risque pas de tomber sur la chaussée."]],
+["Risques d'un chargement défectueux",["Déséquilibre et risque de renversement du véhicule.","Détérioration du véhicule et des marchandises.","Dommages à la chaussée, aux ponts ou aux autres ouvrages.","Obstruction de la visibilité et chute de marchandises sur la route.","Conséquences possibles sur la responsabilité et l'indemnisation en cas d'accident."]],
+["Comprendre la surcharge",["Le PTAC correspond à la masse maximale autorisée du véhicule chargé.","Le PTRA concerne la masse maximale autorisée de l'ensemble véhicule et véhicule tracté.","Les informations figurent notamment sur les documents d'immatriculation et les plaques réglementaires.","Respecter aussi les limites de charge par essieu, les dimensions et les restrictions de tonnage."]],
+["Conséquences et prévention",["Une surcharge peut dégrader le freinage, la tenue de route et la durée de vie des composants.","Elle peut entraîner des sanctions et l'immobilisation du véhicule selon la situation.","En cas d'accident, la surcharge peut avoir des conséquences sur la responsabilité des acteurs du transport.","En cas de doute, faire vérifier la masse avant le départ."]]
+]},
+{
+titre:"6. Le dépassement",
+intro:"Le gabarit, la masse et l'inertie d'un véhicule lourd rendent les dépassements plus longs et plus délicats que pour une voiture.",
+sections:[
+["Avant de dépasser",["Vérifier la signalisation verticale et le marquage au sol.","S'assurer que le dépassement est autorisé pour le véhicule et dans la situation rencontrée.","Évaluer la visibilité, la distance disponible, la vitesse des autres usagers et le trafic en sens inverse.","Tenir compte de la faible capacité d'accélération d'un véhicule lourd.","Renoncer si l'espace disponible ou la différence de vitesse ne permet pas une manœuvre sûre."]],
+["Pendant le dépassement",["Maintenir une trajectoire maîtrisée et surveiller les rétroviseurs.","Respecter les distances latérales et longitudinales nécessaires.","Être attentif aux rafales de vent et aux changements d'exposition entre zones abritées et zones ouvertes.","Ne pas prolonger inutilement la manœuvre."]],
+["Après le dépassement",["Se rabattre uniquement lorsque l'espace est suffisant.","Pour un véhicule lourd ou un véhicule long relevant des règles correspondantes, conserver la distance réglementaire avant de se rabattre.","Contrôler les rétroviseurs et revenir à droite sans couper la route au véhicule dépassé."]],
+["Être dépassé et protections",["Conserver une allure régulière ou ralentir si nécessaire pour faciliter la manœuvre en sécurité.","Surveiller le déport lié au vent.","Les protections latérales contribuent à éviter qu'un usager, notamment un deux-roues, tombe sous les roues arrière.","Le dispositif arrière anti-encastrement vise à limiter le risque qu'un véhicule venant de l'arrière passe sous le poids lourd."]]
+]},
+{
+titre:"7. Dynamique du véhicule",
+intro:"La vitesse, la masse, le centre de gravité et la trajectoire influencent la stabilité et la distance nécessaire pour arrêter un véhicule lourd.",
+sections:[
+["Vitesse et énergie",["Un véhicule en mouvement possède une énergie cinétique.","À masse identique, augmenter la vitesse augmente fortement l'énergie à dissiper lors d'un freinage.","Un poids lourd a une masse importante : il nécessite une distance suffisante pour ralentir et s'arrêter.","La distance de réaction s'ajoute à la distance de freinage."]],
+["Centre de gravité",["Le centre de gravité dépend de la construction du véhicule et de son chargement.","Un chargement placé haut élève le centre de gravité et peut accroître le risque de renversement.","Un chargement mal réparti peut créer des déséquilibres et des mouvements de ballant.","Une conduite souple limite les transferts de charge brusques."]],
+["Force centrifuge",["Dans un virage, la force centrifuge tend à entraîner le véhicule vers l'extérieur de la courbe.","Elle augmente avec la masse et avec le carré de la vitesse.","Elle augmente lorsque le rayon du virage diminue.","Réduire la vitesse avant le virage aide à limiter le risque de déport ou de renversement."]],
+["Adapter la conduite",["Adapter la vitesse au chargement, à la courbe et à l'état de la route.","Éviter les changements brusques de direction et les freinages brutaux en virage.","Répartir et arrimer correctement le chargement.","Avec un tracteur routier circulant seul, l'absence de semi-remorque peut modifier l'adhérence et le comportement : adopter une conduite particulièrement souple et respecter les limitations applicables."]]
+]},
+{
+titre:"8. Alcool, stupéfiants et médicaments",
+intro:"L'alcool, les stupéfiants et certains médicaments modifient les capacités nécessaires à la conduite. Ils peuvent réduire la vigilance, allonger les réactions et augmenter les risques.",
+sections:[
+["Alcool : effets",["L'alcool agit sur le cerveau et le système nerveux.","Il peut réduire le champ visuel, altérer la vision, diminuer les réflexes et favoriser la somnolence.","Il peut aussi entraîner une euphorie, une prise de risque excessive ou une mauvaise évaluation du danger.","Le taux d'alcool varie selon de nombreux facteurs et ne peut pas être évalué de manière fiable au ressenti."]],
+["Alcool : élimination et sanctions",["Le café, une douche ou un autre prétendu remède ne permettent pas d'éliminer rapidement l'alcool.","Le taux baisse progressivement avec le temps, à un rythme variable selon les personnes.","Les seuils et sanctions dépendent de la catégorie de conducteur et des circonstances : il faut connaître les règles en vigueur.","Pour un conducteur professionnel, le plus sûr est de ne pas consommer d'alcool avant de conduire."]],
+["Stupéfiants",["Ils peuvent diminuer le contrôle de la trajectoire, prolonger le temps de réaction et réduire l'attention.","Ils peuvent donner une fausse impression de sécurité.","Le cannabis et l'alcool combinés augmentent fortement le risque d'accident.","La conduite après usage de stupéfiants expose à des sanctions pénales et administratives."]],
+["Médicaments",["Lire la notice et vérifier les pictogrammes relatifs à la conduite.","Demander conseil à un médecin ou à un pharmacien en cas de doute.","Certains médicaments provoquent de la somnolence, des vertiges ou une baisse de vigilance.","L'association de médicaments avec l'alcool peut augmenter les effets indésirables.","Ne pas prendre le volant lorsque l'on n'est pas en état de conduire en sécurité."]]
+]},
+{
+titre:"9. Éco-conduite et conduite citoyenne",
+intro:"L'éco-conduite vise à utiliser l'énergie efficacement tout en conservant une conduite sûre. Elle contribue à réduire la consommation, l'usure et certaines émissions.",
+sections:[
+["Les principes de l'éco-conduite",["Anticiper les ralentissements et les changements de circulation.","Accélérer progressivement et éviter les freinages inutiles.","Utiliser un régime moteur adapté et passer les rapports au moment approprié.","Exploiter l'inertie du véhicule lorsque la situation le permet.","Adapter la vitesse aux conditions de circulation, à la route et au chargement.","Entretenir le véhicule et vérifier les pressions des pneumatiques."]],
+["Démarrage à froid",["Après un démarrage à froid, faire monter progressivement le véhicule en température.","Éviter de laisser inutilement tourner le moteur à l'arrêt.","Les organes contenant de l'huile, comme la boîte de vitesses et le pont, ont également besoin de fonctionner dans des conditions adaptées."]],
+["Réduire le bruit",["Maintenir le système d'échappement et le silencieux en bon état.","Éviter les accélérations intempestives, notamment en agglomération.","Couper le moteur lors d'un stationnement lorsque cela est approprié.","Tenir compte du bruit produit par les équipements auxiliaires, notamment les groupes frigorifiques."]],
+["Réduire la pollution",["Entretenir le moteur et les systèmes antipollution.","Signaler les fumées anormales ou un dysfonctionnement du véhicule.","Les systèmes EGR et SCR participent à la réduction de certaines émissions polluantes.","Respecter les contrôles réglementaires et les consignes d'exploitation du véhicule."]]
+]},
+{
+titre:"10. Porte-à-faux et angles morts",
+intro:"Le porte-à-faux désigne la partie du véhicule qui dépasse l'axe d'une roue vers l'avant ou vers l'arrière. Les angles morts sont des zones que le conducteur ne voit pas directement depuis sa position.",
+sections:[
+["Porte-à-faux : comprendre le risque",["Connaître le gabarit et les porte-à-faux du véhicule.","Lors d'un virage, l'arrière peut balayer une zone différente de celle suivie par les roues avant.","Le porte-à-faux peut accrocher un obstacle, heurter un véhicule ou mettre en danger un piéton ou un cycliste.","Les manœuvres, les passages étroits et les changements de direction nécessitent une attention renforcée."]],
+["Bien manœuvrer",["Contrôler les rétroviseurs et observer le balayage de l'avant et de l'arrière.","Le regard doit porter vers la zone où le porte-à-faux risque de se déporter.","Adapter le placement du véhicule et prendre le virage à vitesse réduite.","En cas de doute sur un espace libre, s'arrêter et vérifier avant de poursuivre."]],
+["Angles morts",["Les véhicules lourds ont des zones de non-visibilité sur les côtés et à l'arrière.","Les angles morts sont particulièrement dangereux pour les deux-roues et les piétons.","Sur un véhicule articulé, les zones non visibles changent avec l'angle entre le tracteur et la semi-remorque.","Les rétroviseurs grand angle, d'accostage, les caméras et les dispositifs de vision avant améliorent la perception, mais ne suppriment pas tous les angles morts."]],
+["Précautions",["Vérifier soigneusement avant de changer de direction, de voie ou de reculer.","Sur une aire de manœuvre, demander à une personne de guider le conducteur si nécessaire.","Sur une zone privée ou non ouverte à la circulation, descendre pour vérifier l'espace si la visibilité est insuffisante et si cela peut se faire en sécurité.","Ne jamais supposer qu'un piéton ou un cycliste a vu le véhicule."]]
+]},
+{
+titre:"11. Tunnels et passages à niveau",
+intro:"Dans un tunnel, une panne ou un incendie peut rapidement devenir dangereux. Un passage à niveau présente également un risque majeur en raison de la longueur, de la masse et de l'inertie d'un véhicule lourd.",
+sections:[
+["Avant d'entrer dans un tunnel",["Vérifier l'ouverture du tunnel et les éventuelles restrictions de circulation.","Tenir compte du gabarit et des interdictions liées au véhicule ou à la marchandise transportée.","Vérifier que le carburant est suffisant pour franchir l'ouvrage.","Allumer les feux et respecter les limitations de vitesse et les distances prescrites.","Écouter les informations diffusées par la radio ou les équipements du tunnel lorsque cela est demandé."]],
+["En cas d'arrêt ou de panne",["Utiliser un emplacement d'arrêt prévu si possible.","Si le véhicule doit s'arrêter, allumer les feux de détresse et couper le moteur lorsque cela est indiqué par la procédure applicable.","Suivre les panneaux à messages variables et les instructions de l'exploitant.","Utiliser un dispositif d'appel d'urgence lorsqu'il est accessible en sécurité.","Ne pas faire demi-tour ni reculer dans le tunnel."]],
+["En cas d'incendie",["S'arrêter dès que possible dans un endroit adapté, couper le moteur et allumer les feux de détresse.","Ne pas tenter de faire demi-tour ou de repartir à contre-sens.","Quitter le véhicule et rejoindre l'issue de secours ou l'abri indiqué, en suivant la signalisation et les consignes.","Alerter les secours ou le poste de contrôle si cela peut être fait en sécurité.","Ne tenter d'utiliser un extincteur que si le feu peut être combattu sans s'exposer au danger."]],
+["Passages à niveau",["Il existe des passages sans barrières et des passages avec barrières ou demi-barrières.","La longueur, la masse et la garde au sol du véhicule doivent être prises en compte.","Avant de s'engager, vérifier qu'il existe un espace suffisant de l'autre côté pour dégager complètement la voie ferrée.","Ne pas s'engager si la circulation risque d'immobiliser le véhicule sur les rails.","Si les barrières s'abaissent alors que le véhicule est engagé, ne pas s'arrêter sur la voie : dégager le passage et appliquer les consignes d'urgence."]]
+]},
+{
+titre:"12. Systèmes de sécurité et aides à la conduite",
+intro:"Une aide à la conduite informe le conducteur, l'assiste ou peut intervenir pour réduire le risque d'accident. Elle ne remplace jamais son attention ni sa responsabilité.",
+sections:[
+["Aides au freinage et à la stabilité",["L'ABS aide à éviter le blocage des roues lors d'un freinage appuyé et permet de mieux conserver la capacité de diriger le véhicule.","L'ESP aide à stabiliser la trajectoire dans certaines situations.","L'AFU renforce l'efficacité du freinage d'urgence lorsque le système le détecte.","Ces systèmes ne suppriment ni les limites d'adhérence ni les distances d'arrêt."]],
+["Aides à la vigilance et à la distance",["Le régulateur maintient une vitesse choisie dans les conditions prévues par le système.","Le limiteur aide à ne pas dépasser une vitesse paramétrée.","Le radar de distance peut aider à conserver un intervalle avec le véhicule qui précède.","Les alertes de franchissement de ligne et les détecteurs de fatigue peuvent signaler une situation à risque.","Le GPS peut fournir des informations sur les travaux, les ralentissements ou l'itinéraire."]],
+["Aides à la visibilité et aux manœuvres",["Les caméras de recul et les radars de stationnement aident à détecter des obstacles.","Les rétroviseurs et systèmes de vision complémentaires améliorent la visibilité autour du véhicule.","Les essuie-glaces automatiques et les éclairages adaptatifs peuvent ajuster certaines fonctions aux conditions.","Le conducteur doit vérifier les alentours et ne pas se fier uniquement aux capteurs."]],
+["Limites et précautions",["Un système peut être indisponible, mal réglé ou ne pas détecter un obstacle.","Lire les consignes du constructeur et connaître les limites de chaque aide.","Ne pas régler un GPS ou un équipement complexe en conduisant.","Garder les yeux sur la route et anticiper les dangers.","En cas de panne d'une aide, adapter sa conduite et faire vérifier le système si nécessaire."]]
+]}
 ];
 
-document.getElementById("oralCards").innerHTML = fichesOrales.map(f =>
-  '<article class="oral"><h3>' + f[0] + '</h3><details><summary>Voir les points essentiels</summary><p>' + f[1] + '</p></details></article>'
+document.getElementById("oralCards").innerHTML=fichesOrales.map(f=>
+ '<article class="oral"><span class="tag">Fiche orale</span><h3>'+f.titre+'</h3><p>'+f.intro+'</p>'+
+ f.sections.map(s=>'<details><summary>'+s[0]+'</summary><ul>'+s[1].map(x=>'<li>'+x+'</li>').join('')+'</ul></details>').join('')+
+ '</article>'
 ).join("");
 
-/* Format : question, choix possibles, index de la bonne réponse, explication */
-const banques = {
-rse: [
-["Après combien de conduite continue faut-il normalement prendre une pause ?",["4 heures","4 h 30","5 heures"],1,"La pause réglementaire intervient après 4 h 30 de conduite continue."],
-["Quelle est la durée totale de la pause requise ?",["30 minutes","40 minutes","45 minutes"],2,"La pause totale est de 45 minutes."],
-["Quel fractionnement de la pause est prévu ?",["15 puis 30 minutes","30 puis 15 minutes","20 puis 25 minutes"],0,"Le fractionnement étudié est de 15 minutes puis 30 minutes."],
+/* Question, choix, index de la bonne réponse, explication */
+const banques={
+rse:[
+["Après combien de conduite continue une pause est-elle normalement requise ?",["4 heures","4 h 30","5 heures"],1,"La pause totale de 45 minutes est normalement requise après 4 h 30 de conduite."],
+["Quelle est la durée totale de la pause de conduite normalement requise ?",["30 minutes","40 minutes","45 minutes"],2,"La durée totale normale est de 45 minutes."],
+["Quel fractionnement de pause est prévu par la règle générale ?",["15 minutes puis 30 minutes","30 minutes puis 15 minutes","Trois pauses libres de 15 minutes"],0,"Le fractionnement étudié est une première pause d'au moins 15 minutes, suivie d'une seconde d'au moins 30 minutes."],
 ["Quelle est la durée journalière normale de conduite ?",["8 heures","9 heures","11 heures"],1,"La durée journalière normale est de 9 heures."],
-["Combien de fois par semaine la conduite journalière peut-elle atteindre 10 heures ?",["Une fois","Deux fois","Quatre fois"],1,"L'extension à 10 heures est possible deux fois par semaine, dans les conditions prévues."],
-["Quelle est la limite hebdomadaire de conduite ?",["45 heures","56 heures","60 heures"],1,"La limite hebdomadaire est de 56 heures."],
+["Combien de fois par semaine la conduite journalière peut-elle être portée à 10 heures ?",["Une fois","Deux fois","Tous les jours"],1,"L'extension à 10 heures est possible deux fois par semaine, dans les conditions réglementaires."],
+["Quelle est la limite hebdomadaire de conduite ?",["45 heures","56 heures","60 heures"],1,"La limite hebdomadaire de conduite est de 56 heures."],
 ["Quelle est la limite de conduite sur deux semaines consécutives ?",["80 heures","90 heures","100 heures"],1,"La limite cumulée sur deux semaines consécutives est de 90 heures."],
-["Quelle est la durée du repos journalier normal ?",["9 heures","10 heures","11 heures"],2,"Le repos journalier normal est de 11 heures."],
-["Quelle durée correspond au repos journalier réduit étudié ?",["8 heures","9 heures","10 heures"],1,"Le repos journalier réduit peut être de 9 heures, sous conditions."],
-["Quelle est la durée du repos hebdomadaire normal ?",["24 heures","36 heures","45 heures"],2,"Le repos hebdomadaire normal est de 45 heures."],
-["Quelle est la durée minimale généralement associée au repos hebdomadaire réduit ?",["24 heures","30 heures","36 heures"],0,"Le repos hebdomadaire réduit peut être ramené à 24 heures, sous conditions."],
-["Le temps de conduite et le temps de service sont-ils identiques ?",["Oui, toujours","Non, ce sont deux notions distinctes","Oui, uniquement la nuit"],1,"Le temps de conduite n'est qu'une partie possible du temps de service."],
-["Que désigne l'amplitude de la journée ?",["Uniquement la conduite","La période entre le début et la fin de la journée de travail","Uniquement les pauses"],1,"L'amplitude couvre la période entre le début et la fin de la journée de travail."],
-["Que faut-il faire pour une compensation de repos due ?",["L'ignorer","Respecter les délais et modalités réglementaires","La remplacer par une pause de 15 minutes"],1,"La compensation doit respecter les règles applicables."],
-["Quelle est la limite de conduite sur deux semaines ?",["90 heures","56 heures","45 heures"],0,"La limite sur deux semaines consécutives est de 90 heures."],
-["Un conducteur a conduit 4 h 30 sans interruption. Que doit-il normalement prévoir ?",["Une pause réglementaire","Un chargement supplémentaire","Une fin de semaine"],0,"Une pause totale de 45 minutes est normalement requise."],
-["Le repos journalier normal étudié est de…",["11 heures","9 heures","6 heures"],0,"La durée normale étudiée est de 11 heures."],
-["Quel repos hebdomadaire est considéré comme normal ?",["24 heures","45 heures","12 heures"],1,"Le repos hebdomadaire normal est de 45 heures."],
-["Le travail de nuit peut-il avoir des règles spécifiques ?",["Non, jamais","Oui, notamment sur le temps de service","Uniquement pour les véhicules légers"],1,"Le travail de nuit peut relever de règles spécifiques."],
-["Une pause de 45 minutes peut-elle être remplacée librement par 3 pauses de 15 minutes ?",["Oui, toujours","Non, le fractionnement doit respecter les règles applicables","Oui, si le trajet est court"],1,"Le fractionnement n'est pas libre : il doit respecter les conditions prévues."],
-["Le repos hebdomadaire réduit doit-il parfois être compensé ?",["Oui, selon les règles applicables","Non, jamais","Uniquement en cas de panne"],0,"La compensation dépend du type de repos et des conditions réglementaires."],
-["Peut-on conduire 90 heures en une seule semaine ?",["Oui","Non","Oui si l'on est deux"],1,"La limite hebdomadaire est de 56 heures ; 90 heures correspond à la limite sur deux semaines."],
-["Une journée de conduite à 10 heures est-elle possible ?",["Jamais","Oui, dans les limites et conditions prévues","Tous les jours sans limite"],1,"L'extension est possible deux fois par semaine dans les conditions réglementaires."],
-["Le repos journalier réduit peut-il être utilisé sans limite ?",["Oui","Non, il est soumis à des conditions et limites","Oui si le camion est vide"],1,"Le repos réduit est encadré par la réglementation."],
-["Quelle est la première chose à vérifier en cas de doute sur un temps de repos ?",["Les règles applicables à la situation","La consommation du véhicule","La couleur du tachygraphe"],0,"Les règles et les éventuelles exceptions doivent être vérifiées."]
+["Combien dure normalement le repos journalier normal ?",["9 heures","10 heures","11 heures"],2,"Le repos journalier normal est généralement de 11 heures."],
+["Quelle durée correspond au repos journalier réduit étudié ?",["8 heures","9 heures","10 heures"],1,"Le repos journalier réduit peut être de 9 heures, dans les conditions et limites prévues."],
+["Combien dure le repos hebdomadaire normal ?",["24 heures","36 heures","45 heures"],2,"Le repos hebdomadaire normal est de 45 heures."],
+["Quelle durée minimale correspond au repos hebdomadaire réduit prévu par la réglementation européenne générale ?",["24 heures","30 heures","36 heures"],0,"Le repos hebdomadaire réduit peut être ramené à 24 heures, sous conditions."],
+["Le temps de conduite et le temps de service désignent-ils la même chose ?",["Oui, dans toutes les situations","Non, ce sont deux notions distinctes","Oui, uniquement la nuit"],1,"Le temps de conduite ne représente qu'une partie des activités professionnelles possibles."],
+["Que désigne l'amplitude de la journée ?",["Uniquement les heures de conduite","La période entre le début et la fin de la journée de travail","Uniquement les pauses"],1,"L'amplitude correspond à la période séparant le début et la fin de la journée de travail."],
+["Que faut-il faire lorsqu'une compensation de repos est due ?",["L'ignorer si le trajet est terminé","Respecter les délais et modalités réglementaires","La remplacer par une pause de 15 minutes"],1,"Les compensations doivent respecter les règles applicables au repos concerné."],
+["Peut-on conduire 90 heures au cours d'une seule semaine ?",["Oui, si le véhicule est récent","Non, la limite hebdomadaire est de 56 heures","Oui, en double équipage dans tous les cas"],1,"Les 90 heures correspondent à la limite sur deux semaines consécutives, pas sur une seule semaine."],
+["Après 4 h 30 de conduite continue, que faut-il normalement prévoir ?",["Une pause réglementaire","Un chargement supplémentaire","Une fin de semaine"],0,"Il faut normalement prendre la pause réglementaire de 45 minutes."],
+["Le repos journalier réduit peut-il être utilisé sans limite ?",["Oui, tous les jours","Non, il est soumis à des conditions et limites","Oui si le camion est vide"],1,"Le repos réduit est encadré par la réglementation."],
+["Une période sans conduite est-elle automatiquement un repos journalier ?",["Oui, dans tous les cas","Non, cela dépend de la nature de la période et des règles applicables","Oui, dès que le véhicule roule"],1,"Une période sans conduite peut correspondre à une autre activité ou à une attente ; elle n'est pas automatiquement un repos."],
+["Le travail de nuit peut-il faire l'objet de règles spécifiques ?",["Non, jamais","Oui, notamment concernant le temps de travail","Uniquement pour les voitures"],1,"Le travail de nuit peut être soumis à des dispositions particulières selon le régime applicable."],
+["Peut-on fractionner librement une pause de 45 minutes en trois pauses de 15 minutes ?",["Oui, toujours","Non, le fractionnement doit respecter les règles prévues","Oui, si le trajet est court"],1,"Le fractionnement de la pause est encadré : il ne se fait pas librement."],
+["Un repos hebdomadaire réduit peut-il devoir être compensé ?",["Oui, selon les règles applicables","Non, jamais","Uniquement après une panne"],0,"Une compensation peut être nécessaire selon le type de repos réduit et les règles applicables."],
+["Une journée de conduite à 10 heures est-elle toujours autorisée ?",["Oui, chaque jour","Non, l'extension est limitée et encadrée","Oui, dès qu'on est deux"],1,"L'extension à 10 heures est limitée à deux fois par semaine dans les conditions prévues."],
+["Le conducteur doit-il vérifier le régime réglementaire applicable à son transport ?",["Oui, car certaines règles et exceptions dépendent du transport","Non, les mêmes règles s'appliquent sans exception","Uniquement après un contrôle"],0,"Le régime applicable et ses éventuelles exceptions doivent être vérifiés."],
+["Quel est le bon réflexe si l'on doute de la possibilité de poursuivre légalement le trajet ?",["Continuer jusqu'au client","Vérifier les temps enregistrés et les règles applicables avant de décider","Effacer les données du tachygraphe"],1,"Il faut vérifier la situation et organiser le trajet dans le respect des règles."],
+["Pourquoi garder une marge avant la limite de conduite ?",["Pour pouvoir gérer les aléas sans dépasser les limites","Pour augmenter la charge utile","Pour éviter d'utiliser les rétroviseurs"],0,"Anticiper les aléas aide à respecter les temps réglementaires et à conduire en sécurité."]
 ],
-double: [
-["Le double équipage signifie que…",["Deux conducteurs se relaient dans le cadre d'un même transport","Un conducteur conduit deux camions","Deux véhicules se suivent"],0,"Le double équipage correspond à une organisation avec deux conducteurs."],
-["Le double équipage supprime-t-il les règles de conduite et de repos ?",["Oui","Non","Uniquement sur autoroute"],1,"Les règles applicables continuent de s'imposer."],
-["Les conducteurs doivent-ils utiliser correctement le chronotachygraphe ?",["Oui","Non","Seulement le conducteur principal"],0,"Chaque conducteur doit respecter les règles d'utilisation de l'appareil."],
-["Le conducteur qui ne conduit pas est-il automatiquement en repos journalier ?",["Oui, toujours","Non, cela dépend de la situation et des règles applicables","Oui si le camion roule"],1,"Le fait de ne pas conduire ne signifie pas automatiquement qu'un repos journalier est pris."],
-["À quoi sert l'organisation du double équipage ?",["À permettre le relais entre conducteurs dans le cadre réglementaire","À supprimer les pauses","À dépasser toutes les limites"],0,"L'organisation permet les relais dans les conditions prévues."],
-["En double équipage, peut-on ignorer les indications du chronotachygraphe ?",["Oui","Non","Seulement à l'étranger"],1,"Les indications et obligations du chronotachygraphe doivent être respectées."],
-["Le conducteur doit-il rester vigilant lorsqu'il ne conduit pas ?",["Oui, notamment pour la sécurité et l'organisation du trajet","Non, il peut toujours dormir","Non, il n'a aucune responsabilité"],0,"Le conducteur reste responsable de ses actes et de la sécurité."],
-["Le double équipage permet-il de conduire sans aucune interruption ?",["Oui","Non, les pauses et repos restent encadrés","Oui si le trajet est international"],1,"Le double équipage ne supprime pas les règles de pause et de repos."],
-["Pourquoi coordonner les deux conducteurs ?",["Pour organiser les relais et respecter les temps réglementaires","Pour éviter les contrôles","Pour augmenter la charge utile"],0,"Une bonne coordination facilite l'organisation conforme du trajet."],
-["Un changement de conducteur doit-il être enregistré correctement ?",["Oui, selon les règles du chronotachygraphe","Non","Uniquement si le trajet dépasse 500 km"],0,"Les activités de chaque conducteur doivent être enregistrées correctement."],
-["La présence d'un deuxième conducteur autorise-t-elle une surcharge ?",["Oui","Non","Oui si le véhicule est récent"],1,"Les limites de masse et de chargement restent applicables."],
-["Le double équipage modifie-t-il les obligations de sécurité du chargement ?",["Non, elles restent applicables","Oui, l'arrimage devient facultatif","Oui, uniquement la nuit"],0,"Le chargement doit rester sûr quelle que soit l'organisation de conduite."],
-["Les deux conducteurs doivent-ils connaître l'itinéraire et les consignes ?",["Oui, c'est utile à l'organisation et à la sécurité","Non, seul le premier doit savoir","Uniquement en ville"],0,"La coordination et la préparation contribuent à la sécurité."],
-["Le conducteur peut-il modifier les données enregistrées pour masquer une activité ?",["Oui","Non","Oui sur demande du client"],1,"Les données doivent refléter fidèlement les activités."],
-["Quelle attitude adopter si le relais prévu n'est pas possible en sécurité ?",["Adapter l'organisation et s'arrêter si nécessaire dans un lieu sûr","Continuer coûte que coûte","Ignorer les règles de repos"],0,"La sécurité prime et les règles doivent être respectées."]
+double:[
+["Que signifie le double équipage ?",["Deux conducteurs se relaient dans le cadre d'un même transport","Un conducteur conduit deux véhicules","Deux camions se suivent obligatoirement"],0,"Le double équipage est une organisation dans laquelle deux conducteurs participent au même transport."],
+["La présence d'un deuxième conducteur supprime-t-elle les règles de conduite et de repos ?",["Oui","Non","Uniquement sur autoroute"],1,"Les règles de conduite, de pause et de repos restent applicables."],
+["Chaque conducteur doit-il enregistrer correctement ses activités ?",["Oui","Non, seul le conducteur principal le fait","Uniquement lors des trajets internationaux"],0,"Les activités de chaque conducteur doivent être enregistrées correctement."],
+["Le conducteur qui ne conduit pas est-il automatiquement en repos journalier ?",["Oui, toujours","Non, cela dépend de la situation et des règles applicables","Oui, dès que le camion roule"],1,"Ne pas conduire ne signifie pas automatiquement être en repos journalier."],
+["Pourquoi organiser les relais entre les deux conducteurs ?",["Pour assurer le transport dans le respect des règles et de la sécurité","Pour supprimer toutes les pauses","Pour dépasser les limites de masse"],0,"Les relais doivent être organisés de façon à respecter les temps réglementaires et la sécurité."],
+["Peut-on ignorer le chronotachygraphe en double équipage ?",["Oui","Non","Uniquement la nuit"],1,"Les deux conducteurs doivent respecter les règles d'utilisation du chronotachygraphe."],
+["Le deuxième conducteur doit-il rester attentif à la sécurité du trajet ?",["Oui","Non, il n'a plus aucune responsabilité","Uniquement lorsque le camion est arrêté"],0,"Chaque conducteur doit contribuer à la sécurité et respecter ses obligations."],
+["Le double équipage autorise-t-il une conduite sans aucune pause ?",["Oui","Non, les pauses et les repos restent encadrés","Oui si le trajet est long"],1,"Le double équipage ne supprime pas les règles de pause et de repos."],
+["Que faire si le relais prévu n'est pas possible en sécurité ?",["Adapter l'organisation et s'arrêter dans un lieu sûr si nécessaire","Continuer coûte que coûte","Ignorer les temps de repos"],0,"La sécurité prime ; l'organisation doit être adaptée sans enfreindre les règles."],
+["La présence de deux conducteurs autorise-t-elle une surcharge ?",["Oui","Non","Oui si le trajet est court"],1,"Les limites de masse et de chargement restent applicables."],
+["Le chargement doit-il être sécurisé même en double équipage ?",["Oui","Non, le second conducteur compense l'arrimage","Uniquement sur autoroute"],0,"L'arrimage reste indispensable quelle que soit l'organisation de conduite."],
+["Que faire si un conducteur constate une anomalie dans les activités enregistrées ?",["Vérifier et suivre la procédure de correction autorisée","Modifier les données au hasard","Ignorer l'anomalie"],0,"Les données doivent refléter fidèlement les activités et toute correction doit respecter la procédure applicable."],
+["La coordination entre conducteurs sert notamment à…",["Organiser les relais et suivre les temps de chacun","Éviter les contrôles routiers","Augmenter la masse autorisée"],0,"Une bonne coordination facilite une organisation sûre et conforme."],
+["Un conducteur peut-il utiliser la carte conducteur d'un collègue à sa place ?",["Oui, si le trajet est court","Non, chaque conducteur doit utiliser sa propre carte selon les règles","Oui, uniquement en double équipage"],1,"Chaque conducteur doit respecter les règles d'utilisation de sa propre carte conducteur."],
+["Avant le départ, les deux conducteurs devraient-ils connaître les consignes importantes du trajet ?",["Oui, pour faciliter la coordination et la sécurité","Non, seul le premier conducteur doit les connaître","Uniquement pour les trajets de nuit"],0,"La préparation commune facilite les relais, la sécurité et la gestion des aléas."]
 ],
-reglement: [
-["Que signifie « port dû » ?",["Le destinataire paie le transport","Le transport a déjà été payé","Le transport est gratuit"],0,"Port dû signifie que le transport reste à payer par le destinataire."],
-["Que signifie « port payé » ?",["Le transport a déjà été payé","Le destinataire doit obligatoirement payer deux fois","La marchandise est gratuite"],0,"Port payé signifie que le transport a déjà été réglé."],
-["Le transport pour compte d'autrui est réalisé…",["Pour un client","Uniquement avec ses propres marchandises","Sans document"],0,"Il s'agit d'un transport effectué pour un client."],
-["Le transport pour compte propre concerne…",["Les marchandises liées à l'activité de l'entreprise","Uniquement les marchandises dangereuses","Tous les transports internationaux"],0,"Le transport concerne les marchandises propres à l'activité de l'entreprise."],
-["À quoi sert la lettre de voiture ?",["À documenter une opération de transport","À remplacer le permis","À prouver le contrôle technique"],0,"La lettre de voiture accompagne et documente l'opération de transport."],
-["Avant de partir, le chargement doit être…",["Réparti et arrimé correctement","Seulement recouvert","Contrôlé uniquement à destination"],0,"Le chargement doit être stable et correctement arrimé."],
-["Que signifie PTAC ?",["Poids total autorisé en charge","Poids technique après contrôle","Puissance totale avec attelage"],0,"PTAC signifie poids total autorisé en charge."],
-["Peut-on dépasser les limites de charge par essieu si le PTAC est respecté ?",["Oui, toujours","Non","Oui si le trajet est court"],1,"Les limites par essieu doivent également être respectées."],
-["Que doit faire le conducteur face à une hauteur limitée incompatible avec son véhicule ?",["Choisir un itinéraire adapté","Passer lentement","Se fier uniquement au GPS"],0,"Il faut respecter la signalisation et éviter l'obstacle incompatible."],
-["Le conducteur doit-il contrôler visuellement le véhicule avant de partir ?",["Oui","Non, jamais","Uniquement après un accident"],0,"Le contrôle avant départ permet de repérer des défauts apparents."],
-["Un chargement mal arrimé peut-il se déplacer pendant le trajet ?",["Oui","Non","Uniquement sur autoroute"],0,"Les freinages, virages et changements de direction peuvent déplacer la charge."],
-["Une licence communautaire est-elle nécessaire pour toute conduite personnelle ?",["Oui","Non, elle concerne certaines opérations de transport professionnel","Oui pour chaque voiture particulière"],1,"Son application dépend de l'opération de transport et des règles en vigueur."],
-["Quel document concerne l'activité enregistrée par le chronotachygraphe ?",["Les données et enregistrements de conduite et d'activité","Le carnet d'entretien uniquement","Le bon de livraison uniquement"],0,"Le chronotachygraphe enregistre les activités et temps concernés."],
-["Que faire si un équipement de sécurité indispensable est défectueux ?",["Faire évaluer et traiter le défaut avant de poursuivre en sécurité","L'ignorer","Le cacher"],0,"Un défaut affectant la sécurité doit être traité avant de reprendre la route."],
-["Pourquoi respecter les limites de dimensions ?",["Pour éviter les obstacles et garantir la sécurité","Pour économiser le lave-glace","Pour augmenter le PTAC"],0,"Les dimensions doivent rester compatibles avec les restrictions de l'itinéraire."],
-["Un constat amiable constitue-t-il automatiquement une preuve définitive de responsabilité ?",["Oui, dans tous les cas","Non, il décrit les circonstances mais ne détermine pas à lui seul la responsabilité","Oui s'il est signé"],1,"Le constat décrit les faits ; l'appréciation de responsabilité dépend du dossier."],
-["Le gilet de haute visibilité est-il un équipement de sécurité utile en cas d'arrêt ?",["Oui","Non","Uniquement en été"],0,"Il améliore la visibilité du conducteur lorsqu'il doit sortir du véhicule."],
-["Pourquoi vérifier la pression des pneus ?",["Pour la sécurité, l'usure et la consommation","Pour augmenter la hauteur du camion","Pour changer le PTAC"],0,"Une pression adaptée contribue à la sécurité et limite l'usure."],
-["Le conducteur peut-il ignorer un panneau de limitation de hauteur si son GPS autorise le trajet ?",["Oui","Non, la signalisation doit être respectée","Oui si le camion est vide"],1,"Le GPS ne remplace pas la signalisation routière."],
-["Quelle est la meilleure attitude face à un document de transport incomplet ?",["Vérifier les informations et faire régulariser la situation selon les consignes","Inventer les données manquantes","Partir sans vérifier"],0,"Les documents doivent être vérifiés et les anomalies traitées."]
+reglement:[
+["Que signifie « port dû » sur un document de transport ?",["Le transport reste à payer par le destinataire selon les conditions convenues","Le transport a déjà été payé","La marchandise est gratuite"],0,"Le port dû indique que le coût du transport reste à régler par le destinataire selon les conditions convenues."],
+["Que signifie « port payé » ?",["Le coût du transport a déjà été réglé","Le destinataire doit payer deux fois","La marchandise ne coûte rien"],0,"Le port payé indique que le transport a déjà été payé."],
+["Le transport pour compte d'autrui est effectué…",["Pour un client","Uniquement avec les marchandises de l'entreprise","Sans contrat ni document"],0,"Le transport pour compte d'autrui est réalisé pour un client."],
+["Le transport pour compte propre concerne…",["Les marchandises liées à l'activité de l'entreprise qui les transporte","Uniquement les marchandises dangereuses","Tous les transports internationaux"],0,"Le compte propre concerne les marchandises liées à l'activité de l'entreprise."],
+["À quoi sert la lettre de voiture ?",["À documenter l'opération de transport et les informations utiles sur la marchandise","À remplacer le permis de conduire","À prouver le contrôle technique"],0,"La lettre de voiture documente l'opération de transport."],
+["Comment doit être organisé un chargement ?",["Réparti et arrimé pour éviter les déplacements dangereux","Posé librement sans contrôle","Contrôlé uniquement à destination"],0,"La charge doit être stable, répartie correctement et arrimée."],
+["Que signifie PTAC ?",["Poids total autorisé en charge","Puissance totale autorisée en conduite","Poids technique après contrôle"],0,"Le PTAC est le poids total autorisé en charge du véhicule."],
+["Le respect du PTAC suffit-il à garantir le respect de toutes les limites de masse ?",["Oui, dans toutes les situations","Non, les limites de charge par essieu et celles de l'ensemble doivent aussi être respectées","Oui si le camion est vide"],1,"Il faut également respecter les limites par essieu et les limites applicables à l'ensemble."],
+["Que faire si un ouvrage est limité à une hauteur inférieure à celle du véhicule ?",["Choisir un itinéraire compatible avec le gabarit","Passer lentement sans vérifier","Se fier uniquement au GPS"],0,"Il faut respecter la signalisation et choisir un itinéraire adapté au gabarit."],
+["Le conducteur doit-il vérifier l'état apparent du véhicule avant de partir ?",["Oui","Non","Uniquement après un accident"],0,"Le contrôle avant départ permet de repérer des défauts visibles pouvant compromettre la sécurité."],
+["Pourquoi un arrimage insuffisant est-il dangereux ?",["La marchandise peut se déplacer, tomber ou déséquilibrer le véhicule","Il augmente automatiquement la charge utile","Il réduit toujours la distance de freinage"],0,"Un arrimage insuffisant peut entraîner le déplacement de la charge et provoquer un accident."],
+["Le GPS remplace-t-il la signalisation routière ?",["Oui","Non, la signalisation doit être respectée","Oui si le trajet est plus court"],1,"Le GPS est une aide, mais il ne remplace pas la signalisation."],
+["À quoi sert le chronotachygraphe ?",["À enregistrer les temps et les activités concernés","À peser la marchandise","À mesurer la hauteur du véhicule"],0,"Le chronotachygraphe enregistre notamment les activités et les temps de conduite."],
+["Que faire lorsqu'un défaut affecte un équipement essentiel à la sécurité ?",["Faire traiter le défaut avant de circuler si nécessaire","L'ignorer si le trajet est court","Le cacher au responsable"],0,"Un défaut qui compromet la sécurité doit être traité avant de reprendre la route."],
+["Pourquoi vérifier les documents de transport ?",["Pour s'assurer que les informations correspondent à l'opération réalisée","Pour augmenter le PTAC","Pour remplacer les contrôles du véhicule"],0,"Les documents doivent être cohérents avec le transport et les marchandises."],
+["Quelle attitude adopter si une information essentielle manque sur un document ?",["La faire vérifier et corriger par la personne compétente","Inventer l'information","Ignorer le document"],0,"Les informations doivent être exactes ; il ne faut pas inventer les données manquantes."],
+["Pourquoi contrôler les pneumatiques ?",["Pour la sécurité, l'adhérence et l'usure","Pour augmenter la hauteur du camion","Pour changer le PTAC"],0,"L'état et la pression des pneumatiques influencent la sécurité et l'usure."],
+["Un chargement peut-il masquer les feux ou la plaque d'immatriculation ?",["Oui, sans conséquence","Non, le chargement ne doit pas compromettre la visibilité des dispositifs obligatoires","Oui sur les petits trajets"],1,"Les feux, la plaque et les dispositifs obligatoires doivent rester visibles conformément aux règles."],
+["Pourquoi tenir compte de la charge par essieu ?",["Parce qu'une limite peut être dépassée même si la masse totale semble correcte","Parce qu'elle détermine la couleur du véhicule","Parce qu'elle remplace le PTAC"],0,"Les limites de charge par essieu sont à respecter indépendamment de la masse totale."],
+["Que faire face à une restriction de tonnage sur l'itinéraire ?",["Vérifier la compatibilité du véhicule et choisir un trajet autorisé","Passer si le camion est vide sans vérifier","Suivre le GPS sans tenir compte du panneau"],0,"Le véhicule doit respecter les restrictions de tonnage et de circulation."]
 ],
-oral: [
-["En cas d'accident, quel ordre d'action faut-il retenir ?",["Protéger, alerter, secourir","Secourir, partir, revenir","Déplacer systématiquement les victimes"],0,"Il faut protéger sans se mettre en danger, alerter puis secourir."],
-["Quand installer le triangle de présignalisation ?",["Même si cela met en danger","Lorsque cela peut être fait sans danger et conformément aux règles applicables","Uniquement sur autoroute"],1,"La sécurité prime : ne pas installer le triangle si cela expose à un danger."],
-["En descente de montagne, quelle pratique faut-il éviter ?",["Utiliser le frein moteur","Choisir un rapport adapté","Descendre au point mort"],2,"Le point mort empêche de bénéficier correctement du frein moteur."],
-["Comment monter ou descendre de la cabine ?",["En sautant","Avec trois points d'appui","En se laissant tomber"],1,"Utiliser trois points d'appui et ne pas sauter."],
-["Avant un dépassement, que faut-il contrôler ?",["La visibilité et l'espace disponible","Uniquement la puissance moteur","Uniquement la couleur du véhicule"],0,"La manœuvre doit être possible sans danger."],
-["L'énergie cinétique augmente notamment avec…",["La masse et la vitesse","La couleur du véhicule","La hauteur des rétroviseurs"],0,"La masse et la vitesse influencent l'énergie cinétique."],
-["Face à un médicament pouvant provoquer une somnolence, il faut…",["Ignorer la notice","Vérifier ses effets et ne pas conduire si l'on n'est pas apte","Prendre un café systématiquement"],1,"Il faut tenir compte des effets du médicament sur la conduite."],
-["L'éco-conduite consiste à…",["Anticiper et conduire souplement","Freiner brutalement","Accélérer au maximum"],0,"L'anticipation réduit les accélérations et freinages inutiles."],
-["Qu'est-ce qu'un angle mort ?",["Une zone non visible depuis la position de conduite avec les rétroviseurs","Une zone de stationnement","Une partie du pare-brise"],0,"Un angle mort est une zone qui échappe à la visibilité du conducteur."],
-["Au passage à niveau, il faut s'engager seulement si…",["On peut traverser complètement","Le véhicule devant commence à avancer","Les barrières se ferment"],0,"Il faut pouvoir dégager entièrement le passage à niveau."],
-["À quoi sert l'ABS ?",["À aider à éviter le blocage des roues au freinage","À supprimer toute distance de freinage","À augmenter la charge utile"],0,"L'ABS aide à éviter le blocage, mais ne supprime pas les limites d'adhérence."],
-["Les aides à la conduite remplacent-elles la vigilance ?",["Oui","Non","Uniquement sur autoroute"],1,"Le conducteur reste responsable de la conduite."],
-["Pourquoi adapter la vitesse sous la pluie ?",["L'adhérence peut être réduite","La masse du véhicule disparaît","Le freinage devient toujours plus court"],0,"La pluie peut réduire l'adhérence et augmenter la distance de freinage."],
-["Pourquoi vérifier l'arrimage avant de partir ?",["Pour éviter le déplacement de la marchandise","Pour augmenter la vitesse maximale","Pour supprimer les angles morts"],0,"La charge doit rester stable durant le transport."],
-["Quelle est la bonne attitude en cas de fatigue importante ?",["Continuer coûte que coûte","S'arrêter en sécurité et se reposer","Ouvrir la fenêtre suffit toujours"],1,"La fatigue diminue la vigilance ; il faut s'arrêter dans un lieu sûr."]
+oral:[
+["Sous une pluie importante, quelle conduite adopter ?",["Réduire la vitesse et augmenter les distances de sécurité","Freiner brusquement pour tester l'adhérence","Utiliser systématiquement les feux arrière de brouillard"],0,"La pluie réduit l'adhérence : il faut ralentir, anticiper et augmenter les distances. Les feux arrière de brouillard ne sont pas à utiliser sous la pluie."],
+["Dans le brouillard, quel repère peut aider à guider le véhicule ?",["Le marquage au sol, en complément d'une vitesse adaptée","Les feux du véhicule précédent uniquement","Le bord du véhicule devant, sans distance"],0,"Le marquage au sol peut aider à se guider, mais la vitesse et les distances doivent rester adaptées."],
+["Pourquoi être particulièrement prudent en cas de vent latéral ?",["Une rafale peut déporter le véhicule, notamment au passage d'une zone abritée à une zone exposée","Le vent augmente toujours l'adhérence","Le vent ne concerne que les véhicules légers"],0,"Les rafales latérales peuvent provoquer des écarts de trajectoire, surtout pour un véhicule peu chargé."],
+["En descente de montagne, quelle pratique est à éviter ?",["Choisir un rapport adapté avant la pente","Utiliser le frein moteur","Descendre au point mort"],2,"Le point mort prive le conducteur de l'aide du frein moteur et réduit sa maîtrise de la vitesse."],
+["Comment descendre de la cabine en limitant le risque de chute ?",["Sauter pour gagner du temps","Conserver trois points d'appui et faire face aux marchepieds","Descendre en tournant le dos aux marchepieds"],1,"Trois points d'appui et une descente face aux marchepieds limitent le risque de chute."],
+["Quel est le bon ordre général en cas d'accident corporel ?",["Protéger, alerter, secourir","Secourir, déplacer, puis alerter","Partir, prévenir l'entreprise, revenir"],0,"La priorité est de protéger les personnes, d'alerter les secours et de secourir sans se mettre en danger."],
+["Que faut-il éviter de faire à une victime blessée ?",["Lui parler calmement","La couvrir si nécessaire","Lui donner à boire ou la déplacer sans nécessité"],2,"Il ne faut pas donner à boire à un blessé ni le déplacer, sauf nécessité immédiate liée à un danger grave."],
+["Avant un dépassement, que faut-il évaluer ?",["La visibilité, l'espace disponible et la circulation en sens inverse","Uniquement la puissance du moteur","Uniquement la longueur du véhicule dépassé"],0,"Le dépassement doit être autorisé et réalisable avec une marge de sécurité suffisante."],
+["Pourquoi un chargement placé très haut est-il dangereux ?",["Il élève le centre de gravité et peut augmenter le risque de renversement","Il réduit toujours le freinage","Il supprime le ballant"],0,"Un centre de gravité élevé peut rendre le véhicule plus instable."],
+["Que signifie l'éco-conduite ?",["Anticiper, conduire souplement et limiter les accélérations et freinages inutiles","Rouler toujours à la vitesse maximale autorisée","Laisser tourner le moteur à l'arrêt le plus longtemps possible"],0,"L'anticipation et la souplesse permettent de limiter la consommation et l'usure."],
+["Pourquoi contrôler le porte-à-faux en virage ?",["L'avant ou l'arrière peut balayer une zone différente de celle des roues","Le porte-à-faux n'a aucun effet sur la trajectoire","Il permet de réduire le gabarit du véhicule"],0,"Le porte-à-faux peut heurter un obstacle ou mettre en danger un usager lors d'un changement de direction."],
+["Que faire si l'on ne voit pas une zone nécessaire à une manœuvre ?",["S'arrêter et vérifier, ou demander un guidage adapté","Continuer lentement sans contrôle","Se fier uniquement à la caméra"],0,"En cas de visibilité insuffisante, il faut vérifier la zone et demander de l'aide si nécessaire."],
+["Au passage à niveau, quand faut-il s'engager ?",["Lorsqu'on est certain de pouvoir dégager entièrement la voie ferrée","Dès que le véhicule précédent démarre","Même si la circulation risque de bloquer le camion"],0,"Il faut s'assurer de pouvoir dégager complètement le passage avant de s'engager."],
+["Dans un tunnel en cas d'incendie, que faut-il faire ?",["Suivre les consignes et rejoindre une issue de secours ou un abri indiqué","Faire demi-tour immédiatement","Rester dans le véhicule quelle que soit la situation"],0,"Il faut suivre la signalisation et les consignes d'urgence, sans faire demi-tour ni revenir en arrière."],
+["Quel est le rôle de l'ABS ?",["Aider à éviter le blocage des roues au freinage","Supprimer toute distance de freinage","Remplacer la vigilance du conducteur"],0,"L'ABS aide à éviter le blocage des roues, mais ne supprime pas les limites d'adhérence."],
+["Pourquoi ne faut-il pas se fier uniquement aux aides à la conduite ?",["Elles peuvent être limitées ou défaillantes et ne remplacent pas l'attention du conducteur","Elles fonctionnent toujours parfaitement","Elles permettent de regarder ailleurs"],0,"Le conducteur reste responsable et doit anticiper, même lorsque des aides sont présentes."],
+["Que vérifier avant un trajet de nuit ?",["Le bon état, la propreté et le fonctionnement des feux","Uniquement le niveau sonore du moteur","Uniquement la pression du pneu arrière droit"],0,"La visibilité dépend notamment du fonctionnement et du réglage des feux."],
+["Quel effet l'alcool peut-il avoir sur la conduite ?",["Diminuer les réflexes et altérer l'évaluation du danger","Améliorer la vigilance","Réduire systématiquement la distance de freinage"],0,"L'alcool peut diminuer la vigilance, ralentir les réactions et favoriser la prise de risque."],
+["Comment limiter le risque d'échauffement des freins en montagne ?",["Choisir un rapport adapté et utiliser correctement le frein moteur et les ralentisseurs","Descendre au point mort et freiner en continu","Accélérer avant chaque virage"],0,"Le frein moteur et les ralentisseurs, utilisés correctement, aident à maîtriser la vitesse en descente."],
+["Que risque-t-on avec un chargement mal arrimé ?",["Un déplacement de la charge, un déséquilibre ou une chute de marchandises","Une amélioration automatique de la stabilité","Une réduction garantie de la consommation"],0,"La charge peut se déplacer ou tomber, avec un risque d'accident."],
+["Quel comportement adopter si un médicament provoque de la somnolence ?",["Ne pas conduire si l'on n'est pas apte et demander conseil à un professionnel de santé","Prendre le volant si le trajet est court","Boire du café et ignorer la notice"],0,"Il faut tenir compte des effets du médicament et ne pas conduire si la vigilance est altérée."],
+["Pourquoi éviter de régler un GPS en roulant ?",["Cela détourne l'attention de la circulation","Cela augmente la capacité de freinage","Cela améliore toujours la visibilité"],0,"La manipulation d'un appareil peut détourner l'attention et créer un risque."],
+["À quoi servent les protections latérales d'un poids lourd ?",["À limiter le risque qu'un usager tombe sous les roues arrière","À réduire la hauteur du véhicule","À remplacer les rétroviseurs"],0,"Ces protections visent notamment à éviter qu'un deux-roues tombe dans la trajectoire des roues arrière."],
+["Que faire si la visibilité est mauvaise et que la vitesse devient difficile à adapter ?",["Réduire encore l'allure et s'arrêter dans un lieu sûr si nécessaire","Accélérer pour sortir plus vite de la zone","Suivre de près un autre véhicule"],0,"Il faut adapter la vitesse à la visibilité et s'arrêter en sécurité si les conditions ne permettent plus de conduire correctement."],
+["Pourquoi vérifier l'état des routes avant un trajet en montagne ?",["Pour anticiper les fermetures, les conditions météo et les équipements nécessaires","Pour éviter d'utiliser les rétroviseurs","Pour augmenter la masse autorisée"],0,"L'information routière aide à choisir un itinéraire sûr et à anticiper les difficultés."]
 ],
-ecritC: [
-["Quelle catégorie de permis permet de conduire un véhicule isolé de transport de marchandises de catégorie C ?",["C","B uniquement","AM"],0,"Le permis C concerne les véhicules de transport de marchandises relevant de cette catégorie."],
-["Que signifie PTAC ?",["Poids total autorisé en charge","Poids technique après contrôle","Puissance totale autorisée en conduite"],0,"PTAC signifie poids total autorisé en charge."],
-["À quoi sert le chronotachygraphe ?",["À enregistrer les activités et temps concernés","À mesurer la pression des pneus","À peser la marchandise"],0,"Le chronotachygraphe enregistre notamment les temps de conduite et les activités."],
-["Quelle pause est normalement requise après 4 h 30 de conduite ?",["45 minutes","15 minutes seulement","10 minutes"],0,"La pause totale normale est de 45 minutes."],
-["Que signifie « port dû » ?",["Le destinataire paie le transport","Le transport est déjà payé","Le transport est gratuit"],0,"Le port dû reste à payer par le destinataire."],
-["Pourquoi arrimer la marchandise ?",["Pour éviter qu'elle se déplace et compromette la sécurité","Pour augmenter le PTAC","Pour réduire la longueur du véhicule"],0,"L'arrimage limite les déplacements dangereux de la charge."],
-["Que faut-il respecter en plus du PTAC ?",["Les limites de charge par essieu","Uniquement la couleur du véhicule","Uniquement le niveau de carburant"],0,"Les charges par essieu et les autres limites applicables doivent également être respectées."],
-["Face à une hauteur limitée inférieure à celle du véhicule, il faut…",["Choisir un itinéraire compatible","Passer lentement sans vérifier","Suivre obligatoirement le GPS"],0,"Il faut respecter la signalisation et éviter l'obstacle incompatible."],
-["Le transport pour compte d'autrui est réalisé…",["Pour un client","Uniquement pour soi-même","Sans marchandise"],0,"Le transport est réalisé pour un client."],
-["Le transport pour compte propre concerne…",["Les marchandises liées à l'activité de l'entreprise","Uniquement les marchandises dangereuses","Tous les transports internationaux"],0,"Il concerne les marchandises propres à l'activité de l'entreprise."],
-["Le conducteur doit-il vérifier l'état apparent du véhicule avant le départ ?",["Oui","Non","Uniquement après une panne"],0,"Le contrôle avant départ permet de repérer les défauts apparents."],
-["Une surcharge peut-elle affecter le freinage et la stabilité ?",["Oui","Non","Uniquement à l'arrêt"],0,"Une surcharge compromet la sécurité et peut dégrader le comportement du véhicule."],
-["Que doit faire le conducteur si le chargement masque sa visibilité ?",["Faire corriger la situation avant de partir","Partir plus lentement","Utiliser uniquement le GPS"],0,"La visibilité doit être suffisante et le chargement ne doit pas créer de danger."],
-["Une pression de pneus inadaptée peut-elle augmenter l'usure et la consommation ?",["Oui","Non","Uniquement en hiver"],0,"Une pression adaptée contribue à la sécurité, à la consommation et à l'usure."],
-["À quoi sert la lettre de voiture ?",["À documenter le transport","À remplacer le permis de conduire","À remplacer l'assurance"],0,"Elle accompagne et documente l'opération de transport."],
-["Que faire en cas de défaut de sécurité détecté avant le départ ?",["Faire traiter le défaut avant de rouler si nécessaire","L'ignorer","Le signaler uniquement au client après la livraison"],0,"Un défaut affectant la sécurité doit être traité avant de poursuivre."],
-["Un GPS remplace-t-il les panneaux de limitation de hauteur ?",["Oui","Non","Oui si l'itinéraire est plus court"],1,"La signalisation doit toujours être respectée."],
-["Pourquoi vérifier le chargement lors d'un arrêt lorsque c'est nécessaire ?",["Pour s'assurer qu'il reste correctement sécurisé","Pour augmenter la charge autorisée","Pour modifier le PTAC"],0,"Le chargement doit rester sécurisé tout au long du trajet."],
-["Le conducteur doit-il respecter les limitations de vitesse adaptées à son véhicule ?",["Oui","Non si le véhicule est vide","Uniquement en ville"],0,"Les limites applicables au véhicule et à la route doivent être respectées."],
-["Quelle attitude adopter face à un document de transport incomplet ?",["Vérifier et faire corriger les informations nécessaires","Inventer les données manquantes","Ignorer le document"],0,"Les informations doivent être exactes et les anomalies traitées."]
+ecritC:[
+["Quel permis correspond à la conduite d'un camion de catégorie C ?",["Le permis C","Le permis AM","Le permis A1"],0,"Le permis C correspond aux véhicules de transport de marchandises relevant de cette catégorie."],
+["Que signifie PTAC ?",["Poids total autorisé en charge","Puissance totale autorisée en conduite","Poids technique après contrôle"],0,"Le PTAC est la masse maximale autorisée du véhicule chargé."],
+["Quelle est la fonction principale du chronotachygraphe ?",["Enregistrer les temps et les activités concernés","Mesurer la hauteur du camion","Peser directement la marchandise"],0,"Le chronotachygraphe enregistre les activités et les temps de conduite concernés."],
+["Quelle pause est normalement requise après 4 h 30 de conduite ?",["45 minutes","15 minutes seulement","10 minutes"],0,"La pause totale normale est de 45 minutes, selon les conditions prévues."],
+["Que signifie « port dû » ?",["Le transport reste à payer par le destinataire selon les conditions convenues","Le transport a déjà été réglé","La marchandise est gratuite"],0,"Le port dû indique que le coût du transport reste à régler par le destinataire."],
+["Pourquoi arrimer la marchandise ?",["Pour empêcher son déplacement pendant le trajet","Pour augmenter le PTAC","Pour réduire la longueur du camion"],0,"Un arrimage correct évite les déplacements de charge qui peuvent compromettre la sécurité."],
+["Quelles limites faut-il respecter en plus de la masse totale autorisée ?",["Les limites de charge par essieu","Uniquement la couleur du véhicule","Uniquement le niveau de carburant"],0,"La charge par essieu doit également respecter les limites autorisées."],
+["Que faire si la hauteur du véhicule dépasse la hauteur maximale d'un ouvrage ?",["Choisir un itinéraire compatible","Passer très lentement sans vérifier","Suivre le GPS sans tenir compte du panneau"],0,"Il faut respecter la limitation de hauteur et choisir un itinéraire adapté."],
+["À qui s'adresse le transport pour compte d'autrui ?",["À un client","Uniquement à l'entreprise qui transporte ses propres marchandises","À personne en particulier"],0,"Le transport pour compte d'autrui est effectué pour un client."],
+["Quel est l'objectif d'un contrôle du véhicule avant départ ?",["Repérer les défauts visibles qui peuvent compromettre la sécurité","Augmenter la charge autorisée","Remplacer l'entretien périodique"],0,"Le contrôle avant départ aide à détecter les anomalies visibles avant de prendre la route."],
+["Que peut provoquer une surcharge ?",["Une dégradation du comportement et du freinage du véhicule","Une réduction garantie de la distance d'arrêt","Une augmentation de la visibilité"],0,"La surcharge peut compromettre la sécurité, notamment le freinage et la stabilité."],
+["Que faire si le chargement masque un feu obligatoire ?",["Faire corriger le chargement avant le départ","Partir plus lentement","Ignorer le défaut sur un trajet court"],0,"Les feux et dispositifs obligatoires doivent rester visibles conformément aux règles."],
+["Pourquoi contrôler la pression des pneumatiques ?",["Pour contribuer à la sécurité, à l'adhérence et à limiter l'usure","Pour augmenter le PTAC","Pour modifier la hauteur d'un pont"],0,"Une pression adaptée contribue à la sécurité et à la durée de vie des pneumatiques."],
+["Quel document permet de décrire l'opération de transport ?",["La lettre de voiture","Le permis de conduire","Le certificat de contrôle technique"],0,"La lettre de voiture documente l'opération de transport."],
+["Que faire lorsqu'un défaut important de sécurité est constaté avant le départ ?",["Faire traiter le défaut avant de circuler si nécessaire","L'ignorer si le trajet est court","Le signaler uniquement après la livraison"],0,"Un défaut qui compromet la sécurité doit être traité avant de reprendre la route."],
+["Le GPS autorise-t-il à ignorer un panneau de hauteur limitée ?",["Oui","Non, la signalisation doit être respectée","Oui si la route paraît dégagée"],1,"Le GPS ne remplace pas la signalisation routière."],
+["Pourquoi contrôler l'arrimage lors d'un arrêt lorsque c'est nécessaire ?",["Pour vérifier que la marchandise reste correctement sécurisée","Pour augmenter la masse autorisée","Pour modifier le PTAC"],0,"Le chargement doit rester sécurisé tout au long du trajet."],
+["Que doit faire le conducteur face à une restriction de circulation incompatible avec son camion ?",["Vérifier la restriction et choisir un itinéraire autorisé","Passer si le trajet est court","Suivre le GPS sans vérifier"],0,"Le véhicule doit respecter les restrictions applicables à son gabarit et à sa masse."],
+["Le transport pour compte propre correspond à quoi ?",["Au transport de marchandises liées à l'activité de l'entreprise","À tout transport réalisé à l'étranger","Au transport sans document"],0,"Le compte propre concerne les marchandises liées à l'activité de l'entreprise qui les transporte."],
+["Que faire si une donnée essentielle est manquante sur un document de transport ?",["Faire vérifier et compléter l'information par la personne compétente","Inventer la donnée manquante","Ignorer le document"],0,"Les informations doivent être exactes et les anomalies traitées."]
 ],
-ecritCE: [
-["Le permis CE concerne principalement…",["Un ensemble composé d'un véhicule tracteur et d'une remorque ou semi-remorque relevant de la catégorie","Une voiture particulière seule","Un deux-roues motorisé"],0,"Le permis CE concerne les ensembles de véhicules relevant de cette catégorie."],
-["Avant d'atteler une semi-remorque, il faut…",["Contrôler la compatibilité et sécuriser l'attelage","Se fier uniquement au bruit du verrouillage","Ignorer les flexibles"],0,"La compatibilité, le verrouillage et les raccordements doivent être vérifiés."],
-["Après l'attelage, il faut vérifier…",["Le verrouillage, les raccordements et les dispositifs de sécurité","Uniquement la peinture","Uniquement le niveau de carburant"],0,"Les contrôles après attelage sont essentiels à la sécurité."],
-["Pourquoi contrôler les raccordements pneumatiques ?",["Pour garantir le fonctionnement des systèmes concernés","Pour augmenter la charge utile","Pour réduire la longueur de l'ensemble"],0,"Les raccordements participent au fonctionnement des systèmes du véhicule tracté."],
-["La charge d'un ensemble routier doit respecter…",["Les limites de masse applicables à l'ensemble et aux essieux","Uniquement la masse du tracteur","Uniquement le volume de la remorque"],0,"Les limites de masse et de charge par essieu doivent être respectées."],
-["En virage, le porte-à-faux arrière de la remorque peut…",["Se déporter et heurter un obstacle","Réduire automatiquement la longueur de l'ensemble","Supprimer les angles morts"],0,"Le déport arrière doit être anticipé dans les virages."],
-["Avant une marche arrière avec un ensemble articulé, il faut…",["Contrôler la zone et manœuvrer lentement","Accélérer pour réduire le temps de manœuvre","Se fier uniquement aux capteurs"],0,"La zone doit être contrôlée et la manœuvre réalisée prudemment."],
-["Pourquoi vérifier les dispositifs d'attelage ?",["Pour prévenir un dételage ou un défaut de liaison","Pour améliorer la consommation uniquement","Pour augmenter le PTAC"],0,"Un attelage mal verrouillé peut provoquer un accident grave."],
-["Le conducteur doit-il contrôler les feux de la remorque ?",["Oui","Non","Uniquement la nuit"],0,"Les feux et signalisations de l'ensemble doivent fonctionner correctement."],
-["Le freinage de la remorque est-il important pour la sécurité de l'ensemble ?",["Oui","Non","Uniquement en descente"],0,"Le système de freinage de l'ensemble doit être en bon état et fonctionner correctement."],
-["Pourquoi augmenter la vigilance lors d'un changement de direction avec un ensemble long ?",["À cause du gabarit, des angles morts et du déport","Parce que les rétroviseurs deviennent inutiles","Parce que le PTAC augmente"],0,"Le gabarit et le déport de la remorque exigent une anticipation renforcée."],
-["Une remorque peut-elle être attelée sans vérifier sa compatibilité avec le tracteur ?",["Oui","Non","Uniquement sur terrain privé"],1,"La compatibilité des caractéristiques et des dispositifs doit être contrôlée."],
-["Que faut-il faire si un raccordement est endommagé ?",["Faire réparer ou sécuriser la situation avant de circuler","L'ignorer si le trajet est court","Le couvrir avec du ruban sans contrôle"],0,"Un défaut de raccordement peut compromettre la sécurité."],
-["Le GPS remplace-t-il le contrôle du gabarit de l'ensemble ?",["Oui","Non","Oui si la route est nationale"],1,"Le conducteur doit contrôler la compatibilité de l'itinéraire avec le gabarit."],
-["Pourquoi vérifier l'arrimage sur une semi-remorque ?",["Pour éviter le déplacement de la marchandise","Pour augmenter la charge autorisée","Pour rendre le freinage facultatif"],0,"Le chargement doit rester stable et sécurisé."],
-["Le tracteur et la semi-remorque doivent-ils être contrôlés avant le départ ?",["Oui","Non","Seulement le tracteur"],0,"Les deux parties de l'ensemble doivent être vérifiées."],
-["Que faire si l'ensemble est trop haut pour un ouvrage annoncé ?",["Choisir un autre itinéraire compatible","Passer lentement","Se fier uniquement à l'habitude"],0,"Il faut respecter la limitation de hauteur."],
-["Pourquoi vérifier les pneumatiques de la remorque ?",["Pour la sécurité, l'adhérence et l'usure","Pour augmenter le nombre d'essieux","Pour changer le PTAC"],0,"Les pneumatiques influencent la sécurité de l'ensemble."],
-["Le conducteur peut-il dépasser les limites de charge d'un essieu si la masse totale semble correcte ?",["Oui","Non","Oui pour une courte distance"],1,"Les limites par essieu doivent aussi être respectées."],
-["Quelle est la bonne attitude avant de reprendre la route après une anomalie d'attelage ?",["Vérifier et faire corriger l'anomalie avant de repartir","Repartir lentement sans contrôle","Attendre la prochaine livraison"],0,"L'attelage doit être sûr et correctement verrouillé avant le départ."]
+ecritCE:[
+["Quel type d'ensemble correspond principalement au permis CE ?",["Un véhicule tracteur avec une remorque ou semi-remorque relevant de cette catégorie","Une voiture particulière seule","Un deux-roues motorisé"],0,"Le permis CE concerne les ensembles de véhicules relevant de cette catégorie."],
+["Avant d'atteler une semi-remorque, que faut-il vérifier ?",["La compatibilité du matériel et les conditions d'attelage","Uniquement la couleur du tracteur","Uniquement le niveau de carburant"],0,"La compatibilité des véhicules et des dispositifs d'attelage doit être vérifiée."],
+["Après l'attelage, que faut-il contrôler ?",["Le verrouillage, les raccordements et les dispositifs de sécurité","Uniquement la peinture","Uniquement le kilométrage"],0,"Le verrouillage et les raccordements doivent être contrôlés avant le départ."],
+["Pourquoi vérifier les raccordements pneumatiques ?",["Pour assurer le fonctionnement des systèmes concernés","Pour augmenter la charge utile","Pour réduire la longueur de l'ensemble"],0,"Les raccordements doivent être correctement branchés et en bon état pour assurer le fonctionnement prévu."],
+["Quelles masses faut-il respecter pour un ensemble articulé ?",["Les limites de l'ensemble et les limites de charge par essieu","Uniquement la masse du tracteur","Uniquement le volume de la semi-remorque"],0,"Les limites de masse applicables à l'ensemble et aux essieux doivent être respectées."],
+["Pourquoi surveiller le déport arrière en virage ?",["La semi-remorque peut balayer une zone différente de celle des roues du tracteur","Le déport réduit automatiquement la longueur de l'ensemble","Le déport supprime les angles morts"],0,"Le déport arrière peut heurter un obstacle ou mettre en danger un usager."],
+["Avant une marche arrière avec un ensemble articulé, que faut-il faire ?",["Contrôler la zone et manœuvrer lentement","Accélérer pour finir plus vite","Se fier uniquement aux capteurs"],0,"La zone doit être contrôlée et la manœuvre réalisée lentement, avec un guidage si nécessaire."],
+["Pourquoi vérifier le verrouillage de l'attelage ?",["Pour prévenir un dételage et garantir une liaison sûre","Pour améliorer uniquement la consommation","Pour augmenter le PTAC"],0,"Un attelage mal verrouillé peut entraîner un accident grave."],
+["Quels feux faut-il contrôler sur un ensemble articulé ?",["Les feux et dispositifs de signalisation du tracteur et de la remorque","Uniquement les feux avant du tracteur","Uniquement les feux de détresse"],0,"Les feux et la signalisation de l'ensemble doivent fonctionner correctement."],
+["Pourquoi l'état du système de freinage de la remorque est-il important ?",["Il participe au freinage sûr de l'ensemble","Il augmente le volume de chargement","Il remplace l'attelage"],0,"Le système de freinage doit fonctionner correctement pour garantir la sécurité de l'ensemble."],
+["Pourquoi anticiper les changements de direction avec un ensemble long ?",["Le gabarit, les angles morts et le déport nécessitent davantage d'anticipation","Les rétroviseurs deviennent inutiles","Le PTAC augmente automatiquement"],0,"La longueur et le déport de la semi-remorque rendent les changements de direction plus délicats."],
+["Peut-on atteler une semi-remorque sans vérifier la compatibilité du matériel ?",["Oui, si elle semble tenir","Non, la compatibilité doit être vérifiée","Oui pour une courte distance"],1,"Le tracteur et la semi-remorque doivent être compatibles et correctement attelés."],
+["Que faire si un raccordement est endommagé ?",["Faire traiter le défaut avant de circuler si nécessaire","L'ignorer si le trajet est court","Le couvrir sans contrôle"],0,"Un raccordement défectueux peut compromettre le fonctionnement des systèmes concernés."],
+["Le GPS remplace-t-il la vérification du gabarit de l'ensemble ?",["Oui","Non, le conducteur doit vérifier les restrictions et la compatibilité de l'itinéraire","Oui si le trajet est connu"],1,"Le conducteur doit tenir compte du gabarit et de la signalisation, même si le GPS propose un trajet."],
+["Pourquoi arrimer la charge dans une semi-remorque ?",["Pour éviter son déplacement et maintenir la stabilité","Pour augmenter la masse autorisée","Pour rendre le freinage facultatif"],0,"La marchandise doit être correctement répartie et arrimée."],
+["Quelles parties de l'ensemble doivent être contrôlées avant le départ ?",["Le tracteur, la remorque ou semi-remorque et leurs liaisons","Uniquement le tracteur","Uniquement les pneumatiques arrière"],0,"Le contrôle doit couvrir l'ensemble et les dispositifs de liaison."],
+["Que faire si l'ensemble est trop haut pour un ouvrage ?",["Choisir un itinéraire compatible avec la hauteur du véhicule","Passer lentement","Se fier uniquement à son expérience"],0,"La hauteur du véhicule doit être compatible avec les ouvrages empruntés."],
+["Pourquoi contrôler les pneumatiques de la semi-remorque ?",["Pour la sécurité, l'adhérence et l'usure","Pour augmenter le nombre d'essieux","Pour modifier le PTAC"],0,"Les pneumatiques participent à la sécurité et doivent être en bon état."],
+["Peut-on dépasser une limite de charge par essieu si la masse totale est conforme ?",["Oui","Non, les limites par essieu doivent aussi être respectées","Oui pour un trajet court"],1,"Le respect de la masse totale ne permet pas de dépasser les limites par essieu."],
+["Que faire avant de repartir après avoir constaté un défaut d'attelage ?",["Vérifier et faire corriger le défaut avant de reprendre la route","Repartir lentement sans contrôle","Attendre la prochaine livraison"],0,"L'attelage doit être correctement verrouillé et les défauts de sécurité traités avant le départ."]
 ]
 };
 
 function melanger(tab){
-  const a=[...tab];
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
+ const a=[...tab];
+ for(let i=a.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [a[i],a[j]]=[a[j],a[i]];
+ }
+ return a;
 }
-
-const etat={};
-const nbQuestions=12;
 
 function afficherQuiz(type,containerId){
-  const banque=banques[type];
-  const questions=melanger(banque).slice(0,Math.min(nbQuestions,banque.length));
-  etat[type]={questions,corige:false};
-  const cible=document.getElementById(containerId);
+ const banque=banques[type];
+ const questions=melanger(banque).slice(0,Math.min(12,banque.length));
+ const cible=document.getElementById(containerId);
+ cible.innerHTML=
+  '<div class="small" id="'+type+'-indication">Question 1 sur '+questions.length+'</div>'+
+  '<div class="progress"><div id="'+type+'-bar"></div></div>'+
+  '<form id="'+type+'-form">'+
+  questions.map((q,i)=>
+   '<div class="quizq" id="'+type+'-q'+i+'" '+(i===0?'':'hidden')+'>'+
+   '<p>'+ (i+1)+'. '+q[0]+'</p>'+
+   q[1].map((rep,j)=>
+    '<label><input type="radio" name="'+type+'-'+i+'" value="'+j+'"> '+rep+'</label>'
+   ).join('')+
+   '<div class="feedback" id="'+type+'-fb'+i+'" hidden></div>'+
+   '<div class="toolbar">'+
+   (i>0?'<button type="button" data-prev="'+i+'">Précédente</button>':'')+
+   (i<questions.length-1?'<button class="primary" type="button" data-next="'+i+'">Suivante</button>':'')+
+   '</div></div>'
+  ).join('')+
+  '</form><div class="result" id="'+type+'-score"></div>'+
+  '<div class="toolbar"><button class="primary" type="button" id="'+type+'-corriger">Corriger mes réponses</button></div>';
 
-  cible.innerHTML=
-    '<div class="small">Question 1 sur '+questions.length+'</div>'+
-    '<div class="progress"><div id="'+type+'-bar"></div></div>'+
-    '<form id="'+type+'-form">'+
-    questions.map((q,i)=>
-      '<div class="quizq" id="'+type+'-q'+i+'" '+(i===0?'':'hidden')+'>'+
-      '<p>'+ (i+1)+'. '+q[0]+'</p>'+
-      q[1].map((rep,j)=>
-        '<label><input type="radio" name="'+type+'-'+i+'" value="'+j+'"> '+rep+'</label>'
-      ).join('')+
-      '<div class="feedback" id="'+type+'-fb'+i+'" hidden></div>'+
-      '<div class="toolbar">'+
-      (i>0?'<button type="button" data-prev="'+i+'">Précédente</button>':'')+
-      (i<questions.length-1?'<button class="primary" type="button" data-next="'+i+'">Suivante</button>':'')+
-      '</div></div>'
-    ).join('')+
-    '</form><div class="result" id="'+type+'-score"></div>'+
-    '<div class="toolbar"><button class="primary" type="button" id="'+type+'-corriger">Corriger mes réponses</button></div>';
+ function montrer(i){
+  questions.forEach((q,k)=>document.getElementById(type+'-q'+k).hidden=k!==i);
+  document.getElementById(type+'-bar').style.width=((i+1)/questions.length*100)+'%';
+  document.getElementById(type+'-indication').textContent='Question '+(i+1)+' sur '+questions.length;
+ }
+ cible.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>montrer(Number(b.dataset.next)+1)));
+ cible.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>montrer(Number(b.dataset.prev)-1)));
 
-  function montrer(i){
-    questions.forEach((q,k)=>document.getElementById(type+'-q'+k).hidden=k!==i);
-    document.getElementById(type+'-bar').style.width=((i+1)/questions.length*100)+'%';
-    const indication=cible.querySelector('.small');
-    if(indication)indication.textContent='Question '+(i+1)+' sur '+questions.length;
-  }
-
-  cible.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>montrer(Number(b.dataset.next)+1)));
-  cible.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>montrer(Number(b.dataset.prev)-1)));
-
-  document.getElementById(type+'-corriger').addEventListener('click',()=>{
-    let score=0;
-    questions.forEach((q,i)=>{
-      const choisi=cible.querySelector('input[name="'+type+'-'+i+'"]:checked');
-      const fb=document.getElementById(type+'-fb'+i);
-      fb.hidden=false;
-      if(choisi && Number(choisi.value)===q[2]){
-        score++;
-        fb.innerHTML='<strong>✓ Bonne réponse.</strong><br>'+q[3];
-        fb.style.color='#18794e';
-      }else{
-        fb.innerHTML='<strong>✗ Réponse incorrecte.</strong><br><strong>Bonne réponse : '+q[1][q[2]]+'.</strong><br>'+q[3];
-        fb.style.color='#a13b32';
-      }
-    });
-    cible.querySelectorAll('input').forEach(i=>i.disabled=true);
-    document.getElementById(type+'-score').textContent='Résultat : '+score+' / '+questions.length+' — '+Math.round(score/questions.length*100)+' %';
-    document.getElementById(type+'-corriger').disabled=true;
-    const nouveau=document.createElement('button');
-    nouveau.type='button';nouveau.className='primary';nouveau.textContent='Nouveau quiz — questions mélangées';
-    nouveau.addEventListener('click',()=>afficherQuiz(type,containerId));
-    cible.appendChild(nouveau);
+ document.getElementById(type+'-corriger').addEventListener('click',()=>{
+  let score=0;
+  questions.forEach((q,i)=>{
+   const choisi=cible.querySelector('input[name="'+type+'-'+i+'"]:checked');
+   const fb=document.getElementById(type+'-fb'+i);
+   fb.hidden=false;
+   if(choisi && Number(choisi.value)===q[2]){
+    score++;
+    fb.innerHTML='<strong>✓ Bonne réponse : '+q[1][q[2]]+'.</strong><br>'+q[3];
+    fb.style.color='#18794e';
+   }else{
+    fb.innerHTML='<strong>✗ Bonne réponse : '+q[1][q[2]]+'.</strong><br>'+q[3];
+    fb.style.color='#a13b32';
+   }
   });
+  cible.querySelectorAll('input').forEach(i=>i.disabled=true);
+  document.getElementById(type+'-score').textContent='Résultat : '+score+' / '+questions.length+' — '+Math.round(score/questions.length*100)+' %';
+  document.getElementById(type+'-corriger').disabled=true;
+  const nouveau=document.createElement('button');
+  nouveau.type='button';nouveau.className='primary';nouveau.textContent='Recommencer avec de nouvelles questions';
+  nouveau.addEventListener('click',()=>afficherQuiz(type,containerId));
+  cible.appendChild(nouveau);
+ });
 }
 
-const correspondance=[
+[
 ["rse","quiz-rse"],["double","quiz-double"],["reglement","quiz-reglement"],
 ["oral","quiz-oral"],["ecritC","quiz-ecritC"],["ecritCE","quiz-ecritCE"]
-];
-
-correspondance.forEach(([type,id])=>afficherQuiz(type,id));
+].forEach(([type,id])=>afficherQuiz(type,id));
 
 document.querySelectorAll("[data-tab]").forEach(b=>{
-  b.addEventListener("click",()=>{
-    document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));
-    document.querySelectorAll(".view").forEach(s=>s.hidden=s.id!==b.dataset.tab);
-  });
+ b.addEventListener("click",()=>{
+  document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));
+  document.querySelectorAll(".view").forEach(s=>s.hidden=s.id!==b.dataset.tab);
+  window.scrollTo({top:0,behavior:"smooth"});
+ });
 });
 </script>
 </body>
