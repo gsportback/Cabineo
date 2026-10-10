@@ -80,6 +80,23 @@ button:focus-visible{outline:3px solid #168ac4;outline-offset:3px}
 </style>
 </head>
 <body>
+
+<div style="display:flex;align-items:center;gap:10px;padding:12px 18px;background:#080808">
+  <button type="button"
+    onclick="history.length > 1 ? history.back() : location.href='/index.html'"
+    aria-label="Retour"
+    style="width:44px;height:44px;border:1px solid #454b55;border-radius:10px;background:#222832;color:white;font-size:26px;cursor:pointer">
+    &#8592;
+  </button>
+
+  <a href="/index.html"
+    aria-label="Accueil Cabineo"
+    title="Accueil Cabineo"
+    style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #454b55;border-radius:10px;background:#222832;color:#7fc7f2;font-size:26px;text-decoration:none">
+    &#8962;
+  </a>
+</div>
+
 <header class="hero">
 <div class="hero-inner">
 <div class="brand">Cabineo</div>
