@@ -137,4 +137,58 @@ $("suggest").addEventListener("click",()=>showModal("Suggérer un document",'<p>
 renderDocs();renderChecks();
 </script>
 </body>
+
+<section id="modeles-cabineo" style="max-width:1050px;margin:30px auto;padding:20px;background:#fff;color:#171a20;border:1px solid #e0e5eb;border-radius:18px;font-family:Arial,sans-serif">
+  <h2 style="font-size:1.6rem">Modèles pratiques à imprimer</h2>
+  <p style="color:#697381">Choisis une fiche, puis utilise le bouton d’impression pour l’imprimer ou l’enregistrer en PDF.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+    <button onclick="imprimerModele(0)" style="padding:16px;border:0;border-radius:12px;background:#8ed8ff;font-weight:bold;cursor:pointer">🚛 Contrôle avant départ</button>
+    <button onclick="imprimerModele(1)" style="padding:16px;border:0;border-radius:12px;background:#8ed8ff;font-weight:bold;cursor:pointer">📦 Suivi de livraison</button>
+    <button onclick="imprimerModele(2)" style="padding:16px;border:0;border-radius:12px;background:#8ed8ff;font-weight:bold;cursor:pointer">⚠️ Signalement d’anomalie</button>
+    <button onclick="imprimerModele(3)" style="padding:16px;border:0;border-radius:12px;background:#8ed8ff;font-weight:bold;cursor:pointer">📝 Prise de consignes</button>
+  </div>
+</section>
+<script>
+function imprimerModele(numero) {
+  const modeles = [
+    {
+      titre: "Fiche de contrôle avant départ",
+      champs: ["Date et heure", "Conducteur", "Véhicule / immatriculation", "Remorque", "Pneus et roues", "Éclairage et signalisation", "Vitrages et rétroviseurs", "État général / fuites", "Équipements vérifiés", "Anomalies constatées", "Personne informée", "Signature"]
+    },
+    {
+      titre: "Fiche de suivi de livraison",
+      champs: ["Date", "Conducteur", "Référence de mission", "Client / destinataire", "Adresse de livraison", "Marchandise / quantité", "Heure d’arrivée", "Heure de départ", "Résultat de livraison", "Réserves / dommages / manquants", "Nom du réceptionnaire", "Signature"]
+    },
+    {
+      titre: "Fiche de signalement d’anomalie",
+      champs: ["Date et heure", "Conducteur", "Véhicule / remorque", "Lieu précis", "Type d’anomalie", "Description détaillée", "Mesures prises", "Personne informée", "Suivi demandé", "Signature"]
+    },
+    {
+      titre: "Fiche de prise de consignes",
+      champs: ["Date / conducteur", "Référence de mission", "Véhicule / remorque", "Lieu et heure de chargement", "Lieu et heure de livraison", "Contact exploitation", "Contact sur site", "Marchandise / particularités", "Documents nécessaires", "Consignes de sécurité", "Restrictions signalées", "Notes complémentaires"]
+    }
+  ];
+  const m = modeles[numero];
+  if (!m) return;
+  const lignes = m.champs.map(c =>
+    '<div class="ligne"><strong>' + c + '</strong><div class="vide"></div></div>'
+  ).join("");
+  const fenetre = window.open("", "_blank");
+  if (!fenetre) {
+    alert("Autorise les fenêtres contextuelles pour imprimer cette fiche.");
+    return;
+  }
+  fenetre.document.write(
+    '<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>' +
+    m.titre +
+    '</title><style>body{font:14px Arial,sans-serif;color:#171a20;margin:15mm}.logo{font-size:22px;font-weight:900}.logo span{color:#17658c}h1{font-size:24px}.intro{color:#555;font-size:12px;margin-bottom:20px}.ligne{display:grid;grid-template-columns:38% 1fr;gap:12px;padding:12px 0;border-bottom:1px solid #dce2e8;break-inside:avoid}.vide{min-height:25px}.pied{margin-top:25px;color:#697381;font-size:11px}@media print{body{margin:10mm}}</style></head><body>' +
+    '<div class="logo">CABI<span>NEO</span></div><h1>' + m.titre +
+    '</h1><p class="intro">Modèle pratique à compléter. À adapter aux procédures de ton entreprise.</p>' +
+    lignes +
+    '<p class="pied">Cabineo — ce modèle ne remplace pas les documents réglementaires officiels.</p>' +
+    '<script>window.onload=function(){window.print()}<\/script></body></html>'
+  );
+  fenetre.document.close();
+}
+</script>
 </html>
