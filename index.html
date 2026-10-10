@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cabineo — La boîte à outils du chauffeur</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fb;
+      color: #10233f;
+    }
+    header {
+      background: #10233f;
+      color: white;
+      padding: 22px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    header span { color: #5e91ff; }
+    main {
+      max-width: 850px;
+      margin: 45px auto;
+      padding: 20px;
+    }
+    .hero {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 8px 30px #10233f10;
+    }
+    h1 { font-size: 35px; line-height: 1.15; }
+    p { color: #64748b; line-height: 1.7; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 22px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #e0e7f0;
+    }
+    .button {
+      display: inline-block;
+      background: #246bfd;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>cabi<span>neo</span>.</header>
+  <main>
+    <div class="hero">
+      <p>LA ROUTE, MIEUX PRÉPARÉE</p>
+      <h1>La boîte à outils du chauffeur.</h1>
+      <p>Des outils pratiques pour les conducteurs PL/SPL, des documents utiles et des ressources pour préparer ton avenir dans le transport routier.</p>
+      <a class="button" href="#outils">Découvrir les outils</a>
+    </div>
+    <div class="cards" id="outils">
+      <div class="card">
+        <h2>🧮 Outils pratiques</h2>
+        <p>Des calculateurs et des aides pour le quotidien du chauffeur.</p>
+      </div>
+      <div class="card">
+        <h2>📄 Documents</h2>
+        <p>Des modèles et des documents personnalisés selon tes besoins.</p>
+      </div>
+      <div class="card">
+        <h2>🎓 Formation CTRMP</h2>
+        <p>Des fiches de révision et des quiz pour préparer ton titre professionnel.</p>
+      </div>
+    </div>
+  </main>
+  <footer>Cabineo — Les bons outils pour les pros de la route.</footer>
+</body>
+</html>
