@@ -134,6 +134,52 @@ footer{background:#080808;color:#fff}
 <p>Cabineo rassemble progressivement les outils essentiels du métier dans une interface claire, conçue pour aller droit au but, sur le terrain comme à la maison.</p>
 </div>
 </section>
+
+<section class="section" id="contact">
+  <div class="section-kicker">CONTACT</div>
+  <h2>Une question ? Envoie-nous un message !</h2>
+  <p class="section-intro">
+    Une question sur une fiche, la réglementation PL/SPL ou l’utilisation de nos outils ?
+    Envoie-nous ton message, nous te répondrons par e-mail.
+  </p>
+
+  <form action="https://api.web3forms.com/submit" method="POST"
+        style="max-width:680px;display:grid;gap:16px">
+    <input type="hidden" name="access_key" value="83020624-2e9f-45df-a4e2-59ce6ca04c5e">
+    <input type="hidden" name="subject" value="Nouvelle question - Cabineo">
+    <input type="hidden" name="from_name" value="Cabineo">
+
+    <label>Ton prénom (facultatif)
+      <input type="text" name="name" autocomplete="given-name"
+             placeholder="Ton prénom"
+             style="display:block;width:100%;padding:14px;margin-top:6px">
+    </label>
+
+    <label>Ton adresse e-mail
+      <input type="email" name="email" autocomplete="email" required
+             placeholder="toi@exemple.fr"
+             style="display:block;width:100%;padding:14px;margin-top:6px">
+    </label>
+
+    <label>Sujet
+      <select name="topic" required
+              style="display:block;width:100%;padding:14px;margin-top:6px">
+        <option value="Question sur une fiche">Question sur une fiche</option>
+        <option value="Question sur la réglementation">Question sur la réglementation</option>
+        <option value="Question sur le calculateur">Question sur le calculateur</option>
+        <option value="Autre question">Autre question</option>
+      </select>
+    </label>
+
+    <label>Ton message
+      <textarea name="message" required rows="5"
+                placeholder="Écris ta question ici…"
+                style="display:block;width:100%;padding:14px;margin-top:6px"></textarea>
+    </label>
+
+    <button type="submit" class="button button-light">Envoyer mon message →</button>
+  </form>
+</section>
 <div class="disclaimer">Les calculs proposés sont indicatifs et ne remplacent pas les données du chronotachygraphe ni la réglementation applicable.</div>
 </main>
 <footer><div class="footer-inner"><div class="footer-logo">CABI<span>NEO</span></div><div class="footer-note">Les outils pratiques du transport routier.</div></div></footer>
