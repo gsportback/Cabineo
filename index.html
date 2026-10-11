@@ -321,7 +321,7 @@ body.cabineo-tool-open>header,body.cabineo-tool-open>main,body.cabineo-tool-open
   update();
 })();
 </script>
-<nav aria-label="Navigation Cabineo mobile" class="cabineo-liquid-nav">
+<nav aria-label="Navigation Cabinéo" class="cabineo-liquid-nav mobile-glass-nav">
 <button class="is-active" data-cabineo-page="home" type="button"><svg viewbox="0 0 24 24"><path d="M3.5 10.2 12 3.5l8.5 6.7"></path><path d="M5.5 9.6V20h13V9.6"></path><path d="M9.2 20v-6.2h5.6V20"></path></svg><span>Accueil</span></button>
 <button data-cabineo-page="driver" type="button"><svg viewbox="0 0 24 24"><path d="M3 6.5h12.5v11H3z"></path><path d="M15.5 10h3l2.5 3v4.5h-5.5z"></path><circle cx="7" cy="18.5" r="2"></circle><circle cx="18" cy="18.5" r="2"></circle></svg><span>Chauffeur</span></button>
 <button data-cabineo-page="calculator" type="button"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span>Calcul</span></button>
@@ -3626,7 +3626,16 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
 .site-header.is-compact .logo{font-size:32px}
 .site-header.is-compact .main-nav a{padding-top:9px;padding-bottom:9px}
 @media(max-width:760px){.home-hero-copy{font-size:15px!important;max-width:92%}.site-header .header-inner{padding-inline:16px;gap:12px}.site-header.is-compact .header-inner{min-height:58px}.site-header.is-compact .logo{font-size:28px}}
-</style></head><body><header class="top"><div class="top-inner"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="kicker">ESPACE APPRENANT · REPÈRES MÉTIER</div><h1>Checklist mission</h1><p>Une méthode simple pour préparer une opération, sécuriser le chargement et traiter correctement la livraison.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Enregistrer la checklist en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour aux modules</button></div><div class="intro"><strong>Comment l’utiliser ?</strong> Coche chaque point au fur et à mesure. Adapte toujours cette checklist au véhicule, à la marchandise, à la mission et aux procédures de ton entreprise.</div>
+</style>
+<style id="cabineo-nav-final-fix">
+.cabineo-liquid-nav{grid-template-columns:repeat(5,minmax(0,1fr))!important;width:min(620px,calc(100vw - 28px))!important;max-width:620px!important;left:50%!important;right:auto!important;transform:translateX(-50%) scale(1)!important;transform-origin:center bottom!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;gap:3px!important;padding:6px!important;background:rgba(255,255,255,.78)!important;backdrop-filter:blur(12px) saturate(135%)!important;-webkit-backdrop-filter:blur(12px) saturate(135%)!important;transition:transform .22s ease,padding .22s ease,background-color .22s ease,box-shadow .22s ease!important}
+.cabineo-liquid-nav.is-compact{transform:translateX(-50%) scale(.88)!important;padding:3px 5px!important;background:rgba(255,255,255,.88)!important;backdrop-filter:blur(8px) saturate(120%)!important;-webkit-backdrop-filter:blur(8px) saturate(120%)!important;box-shadow:0 7px 22px rgba(10,20,30,.1)!important}
+.cabineo-liquid-nav button{min-width:0!important;padding:0 2px!important;white-space:normal!important;font-size:clamp(9px,1.5vw,11px)!important;}
+.cabineo-liquid-nav button span{overflow-wrap:anywhere;text-align:center}
+@media(min-width:801px){.cabineo-liquid-nav button{min-height:54px!important}}
+@media(max-width:800px){.cabineo-liquid-nav{width:calc(100vw - 24px)!important;max-width:620px!important;}.cabineo-liquid-nav button{min-height:58px!important}}
+</style>
+</head><body><header class="top"><div class="top-inner"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="kicker">ESPACE APPRENANT · REPÈRES MÉTIER</div><h1>Checklist mission</h1><p>Une méthode simple pour préparer une opération, sécuriser le chargement et traiter correctement la livraison.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Enregistrer la checklist en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour aux modules</button></div><div class="intro"><strong>Comment l’utiliser ?</strong> Coche chaque point au fur et à mesure. Adapte toujours cette checklist au véhicule, à la marchandise, à la mission et aux procédures de ton entreprise.</div>
 <section class="card"><h2>1. Avant le chargement</h2><div class="checks"><label><input type="checkbox"> Comparer la marchandise réelle avec les informations de mission : nature, quantité, poids annoncé et destination.</label><label><input type="checkbox"> Examiner l’état extérieur des colis, palettes et emballages.</label><label><input type="checkbox"> Signaler et faire consigner les anomalies visibles avant la prise en charge.</label><label><input type="checkbox"> Vérifier que le véhicule et les équipements sont adaptés à la marchandise.</label><label><input type="checkbox"> Vérifier la répartition des masses et ne pas se fier au seul nombre de palettes pour conclure que le poids est conforme.</label><label><input type="checkbox"> Contrôler le calage, le blocage et l’arrimage, ainsi que l’état des dispositifs utilisés.</label><label><input type="checkbox"> Faire traiter toute situation dangereuse et prévenir l’interlocuteur prévu par l’entreprise.</label></div><div class="callout"><strong>À retenir :</strong> le nombre de palettes ne suffit pas à confirmer le respect du PTAC, des charges par essieu ou des exigences d’arrimage.</div></section>
 <section class="card"><h2>2. Repères sur les responsabilités</h2><h3>Expéditeur — repères généraux</h3><div class="checks"><label><input type="checkbox"> La marchandise est préparée, emballée et identifiée selon les exigences de l’envoi.</label><label><input type="checkbox"> Les informations nécessaires aux documents et les anomalies connues sont communiquées.</label><label><input type="checkbox"> Les conditions de chargement convenues et les règles applicables à l’opération sont prises en compte.</label></div><h3>Transporteur / conducteur — contrôles pratiques</h3><div class="checks"><label><input type="checkbox"> Vérifier la cohérence apparente entre marchandise, quantités déclarées et documents disponibles.</label><label><input type="checkbox"> Contrôler la sécurité du chargement et signaler toute anomalie ou divergence.</label><label><input type="checkbox"> Faire consigner les réserves et les anomalies selon la procédure de l’entreprise.</label><label><input type="checkbox"> Vérifier que les documents de suivi sont complétés et signés par les personnes concernées lorsque nécessaire.</label></div><p class="footer-note">Les responsabilités exactes dépendent notamment du contrat, de l’opération, du lieu de chargement/déchargement et des règles applicables. Cette checklist est un support pédagogique.</p></section>
 <section class="card"><h2>3. Pendant le transport</h2><div class="checks"><label><input type="checkbox"> Garder les documents de mission accessibles et protéger les informations qu’ils contiennent.</label><label><input type="checkbox"> Respecter les consignes de sécurité, les itinéraires et les contraintes d’accès connues.</label><label><input type="checkbox"> Si une anomalie de chargement ou un dommage est constaté, s’arrêter en sécurité si nécessaire et prévenir l’exploitation.</label><label><input type="checkbox"> Ne pas poursuivre une opération si une situation présente un danger immédiat ; demander les consignes adaptées.</label></div></section>
@@ -3692,37 +3701,15 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
     frame.style.display = "none"; toolPages.appendChild(frame);
     let embedded = readEmbeddedHtml(payload);
     const scrollBridge = `<script>(()=>{let last=window.scrollY||0;let busy=false;window.addEventListener('scroll',()=>{if(busy)return;busy=true;requestAnimationFrame(()=>{const y=window.scrollY||0;let dir='same';if(y>last+3)dir='down';else if(y<last-3)dir='up';parent.postMessage({type:'cabineo:scroll-direction',direction:dir,y},'*');last=y;busy=false;});},{passive:true});})();<\/script>`;
-    embedded = embedded.replace(/<\/body>/i, scrollBridge + '
+    embedded = embedded.replace(/<\/body>/i, scrollBridge + `
 <style id="cabineo-final-hero-contrast">
-/* Accroche d’accueil : discrète, lisible et blanche */
-.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
-  color:#fff !important;
-  opacity:1 !important;
-  font-size:16px !important;
-  font-weight:400 !important;
-  line-height:1.5 !important;
-  letter-spacing:0 !important;
-  max-width:680px !important;
-  margin:0 0 24px !important;
-  text-wrap:pretty;
-}
-.hero .home-hero-copy span {
-  display:block !important;
-  color:#fff !important;
-  opacity:1 !important;
-  font-size:inherit !important;
-  font-weight:400 !important;
-  line-height:inherit !important;
-  margin-top:2px !important;
-}
-.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
-.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
-@media(max-width:760px){
- .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
-}
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {color:#fff!important;opacity:1!important;font-size:16px!important;font-weight:400!important;line-height:1.5!important;letter-spacing:0!important;max-width:680px!important;margin:0 0 24px!important;text-wrap:pretty;}
+.hero .home-hero-copy span {display:block!important;color:#fff!important;opacity:1!important;font-size:inherit!important;font-weight:400!important;line-height:inherit!important;margin-top:2px!important;}
+.hero .button.button-light {background:#fff!important;color:#080808!important;opacity:1!important;}
+.hero .button.button-outline {color:#fff!important;border-color:rgba(255,255,255,.8)!important;}
+@media(max-width:760px){.hero .home-hero-copy,.hero p.hero-subtitle.home-hero-copy{font-size:15px!important;line-height:1.48!important;max-width:92%!important;margin-bottom:21px!important;}}
 </style>
-
-</body>');
+</body>`);
     frame.srcdoc = embedded; frames.set(page, frame); return frame;
   }
   function updateNav(page) {
@@ -3782,14 +3769,14 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
   window.addEventListener("message", event => {
     const data = event.data;
     if (!data || data.type !== "cabineo:scroll-direction") return;
-    const nav = document.querySelector(".mobile-glass-nav");
+    const nav = document.querySelector(".cabineo-liquid-nav");
     if (!nav) return;
     if (data.y <= 18 || data.direction === "up") navCompact = false;
     else if (data.direction === "down") navCompact = true;
     nav.classList.toggle("is-compact", navCompact);
   });
   window.addEventListener("scroll", () => {
-    const nav = document.querySelector(".mobile-glass-nav");
+    const nav = document.querySelector(".cabineo-liquid-nav");
     if (!nav || currentPage !== "home") return;
     if (window.scrollY <= 18) navCompact = false;
     else navCompact = true;
