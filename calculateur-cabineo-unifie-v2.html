@@ -89,6 +89,39 @@ input,select{width:100%;max-width:100%;min-width:0}
  .card{padding:17px 14px}
 }
 
+/* Correctifs iPhone : empêcher les champs et les grilles de dépasser et centrer le contenu */
+html, body { max-width:100%; overflow-x:clip; }
+body { margin:0; }
+.site-header, .hero, main, footer { width:100%; max-width:100%; }
+.header-inner, .hero-inner { width:100%; }
+main { margin-left:auto; margin-right:auto; }
+main > *, .card, .day-layout, .day-inputs, .day-summary, .optional,
+.field, .activity-row, .history-tools, .history-item { min-width:0; max-width:100%; }
+.day-layout { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+.day-inputs, .day-summary { width:100%; }
+input, select, textarea, button { max-width:100%; }
+input, select, textarea { min-width:0; }
+@media(max-width:820px) {
+  .day-layout { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:700px) {
+  .header-inner { align-items:center; }
+  .nav { justify-content:center; }
+  .hero-inner { margin:0 auto; }
+  main { padding-left:14px; padding-right:14px; }
+  .card { margin-left:auto; margin-right:auto; }
+  .day-layout, .day-layout > *, .day-inputs, .day-summary { width:100%; min-width:0; }
+  .activity-row { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+  .activity-row > * { min-width:0; }
+  .activity-row input, .activity-row select { width:100%; }
+}
+@media(max-width:380px) {
+  main { padding-left:10px; padding-right:10px; }
+  .card { padding-left:13px; padding-right:13px; }
+  .nav { width:100%; justify-content:center; }
+  .nav .nav-button { min-width:0; }
+}
+
 </style></head>
 <body>
 <header class="site-header">
