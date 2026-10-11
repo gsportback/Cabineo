@@ -97,6 +97,65 @@ footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); 
 .situation-body p{margin:9px 0;white-space:normal}
 @media(max-width:600px){.fiche-ecrite>summary,.fiche-oral>summary{padding:12px;font-size:.92rem;gap:8px}.fiche-count{display:none}.question-grid{padding:0 9px 10px}.question-content{align-items:flex-start}.question-panel{width:68px;max-height:72px}}
 
+
+/* Menus déroulants harmonisés avec les boutons Cabineo */
+#training-filters label{display:flex;flex-direction:column;gap:7px;font-weight:750;color:var(--texte);min-width:0}
+#training-filters select.field{
+ display:block;width:100%;min-width:0;min-height:46px;padding:11px 42px 11px 14px;
+ border:1px solid var(--ligne);border-radius:11px;background-color:#fff;color:var(--texte);
+ font:inherit;line-height:1.35;cursor:pointer;appearance:none;-webkit-appearance:none;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%231678a8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+ background-repeat:no-repeat;background-position:right 14px center;box-shadow:0 3px 12px #11131808;
+ transition:border-color .15s ease,box-shadow .15s ease,background-color .15s ease;
+}
+#training-filters select.field:hover{border-color:#8ed8ff;background-color:#fbfdff}
+#training-filters select.field:focus-visible{outline:3px solid #8ed8ff;border-color:#2795d2;outline-offset:2px}
+#training-filters select.field option{background:#fff;color:var(--texte)}
+.training-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.training-option{border:1px solid var(--ligne);border-radius:14px;padding:16px;background:#fff;text-align:left;cursor:pointer;color:var(--texte)}
+.training-option:hover,.training-option.selected{border-color:#2795d2;background:#eef8ff}
+.training-option strong{display:block;margin-bottom:6px}
+.training-option small{display:block;color:var(--gris);line-height:1.45}
+.training-question{border:1px solid var(--ligne);border-radius:16px;padding:20px;margin-top:16px}
+.training-tag{display:inline-block;background:#e7f4ff;color:#1769aa;border-radius:8px;padding:5px 9px;font-size:.78rem;font-weight:700;margin-right:6px}
+.training-content{background:#f4f8fb;border-radius:12px;padding:16px;margin-top:14px;line-height:1.65}
+.training-content ul{padding-left:22px;margin:10px 0 14px}
+.training-content li{margin:0 0 8px;line-height:1.55}
+.training-source{margin-top:14px}
+.training-source p{margin:0 0 10px;line-height:1.6}
+.training-instruction{line-height:1.65;margin:14px 0}
+.training-actions button:disabled{opacity:.5;cursor:not-allowed}
+.training-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.training-actions button{cursor:pointer}
+.training-progress{height:7px;background:#e5edf3;border-radius:99px;overflow:hidden;margin:12px 0}
+.training-progress span{display:block;height:100%;background:#2795d2;width:0;transition:width .2s}
+.rating-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.rating-buttons button{border:1px solid var(--ligne);background:white;border-radius:10px;padding:10px 12px;cursor:pointer}
+.rating-buttons button.selected{background:#e7f4ff;border-color:#2795d2}
+@media(max-width:700px){.training-options{grid-template-columns:1fr}.training-question{padding:14px}}
+
+
+.training-end-ratings{display:grid;gap:12px;margin:16px 0}.training-rating-card h3{margin-top:0}.training-rating-card .rating-buttons{display:flex;flex-wrap:wrap;gap:8px}.training-rating-card .rating-buttons button.selected{background:#dff2ff;border-color:#1685c5;color:#075985}
+.training-memo-intro{margin:8px 0 14px;line-height:1.55;color:#425466}
+.training-memo-module{margin:12px 0 16px;padding:12px 14px;border:1px solid #dce7ef;border-radius:10px;background:#f8fbfd}
+.training-memo-module h4{margin:0 0 8px;line-height:1.4;color:#126b9c;font-size:1rem}
+.training-memo-module ul{margin:0;padding-left:20px}
+.training-memo-module li{margin:0 0 7px;line-height:1.55}
+.training-memo-modules{display:grid;gap:9px;margin:12px 0}
+.training-memo-module{margin:0;padding:0;border:1px solid #d5e3ed;border-radius:10px;background:#fff;overflow:hidden}
+.training-memo-module>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;cursor:pointer;list-style:none;font-weight:700;color:#126b9c}
+.training-memo-module>summary::-webkit-details-marker{display:none}
+.training-memo-module>summary::after{content:'+';font-size:1.2rem;font-weight:600;color:#126b9c}
+.training-memo-module[open]>summary::after{content:'−'}
+.training-memo-module>.training-key-points{padding:0 16px 8px;margin:0 0 0 4px}
+.training-key-points{padding-left:22px;margin:10px 0 14px}
+.training-key-points li{margin:0 0 8px;line-height:1.55}
+#training-answer[hidden]{display:none!important}
+.training-source>summary{cursor:pointer;font-weight:600;color:#126b9c;padding:8px 0}
+.training-source-section{margin:12px 0;padding-bottom:8px;border-bottom:1px solid #dce7ef}
+.training-source-section h4{margin:0 0 8px;color:#126b9c}
+
+.training-instruction{line-height:1.65;white-space:normal}
 </style>
 </head>
 <body>
@@ -119,10 +178,11 @@ footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); 
 <nav class="module-grid" aria-label="Choisir un module">
 <button type="button" onclick="ouvrirModule('rse')" class="module active" data-tab="rse"><span class="module-icon">◷</span><strong>RSE / RSN</strong><small>Conduite, repos et temps de service</small></button>
 <button type="button" onclick="ouvrirModule('double')" class="module" data-tab="double"><span class="module-icon">⇄</span><strong>Double équipage</strong><small>Organisation de la journée à deux</small></button>
-<button type="button" onclick="ouvrirModule('oral')" class="module" data-tab="oral"><span class="module-icon">▤</span><strong>Fiches orales permis C</strong><small>Les 12 fiches à présenter</small></button>
-<button type="button" onclick="ouvrirModule('oralCE')" class="module" data-tab="oralCE"><span class="module-icon">▤</span><strong>Fiches orales permis CE</strong><small> Les 12 fiches C avec spécificités pour le CE</small></button>
+<button type="button" onclick="ouvrirModule('oral')" class="module" data-tab="oral"><span class="module-icon">▤</span><strong>Fiches orales permis C</strong><small>Les 12 thèmes à présenter</small></button>
+<button type="button" onclick="ouvrirModule('oralCE')" class="module" data-tab="oralCE"><span class="module-icon">▤</span><strong>Fiches orales permis CE</strong><small>Thèmes groupe lourd et spécificités CE</small></button>
 <button type="button" onclick="ouvrirModule('ecritC')" class="module" data-tab="ecritC"><span class="module-icon">▧</span><strong>Fiches écrites permis C</strong><small>Révision hors circulation</small></button>
 <button type="button" onclick="ouvrirModule('ecritCE')" class="module" data-tab="ecritCE"><span class="module-icon">▧</span><strong>Fiches écrites permis CE</strong><small>Révision ensemble articulé</small></button>
+<button type="button" onclick="ouvrirModule('entrainement')" class="module" data-tab="entrainement"><span class="module-icon">◉</span><strong>Entraînement oral</strong><small>Questions aléatoires et simulation</small></button>
 </nav>
 
 <section class="view" id="rse">
@@ -227,7 +287,7 @@ footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); 
 <p>Si la vitesse double, l’énergie cinétique sera quadruplée. Si la vitesse triple, l’énergie cinétique sera multipliée par 9.</p>
 <p>Exemple illustré pour un camion de 40 t : à 20 km/h, l’énergie indiquée est de 60 t ; à 40 km/h, elle est de 240 t ; à 60 km/h, elle est de 540 t. Cela montre que doubler la vitesse multiplie l’énergie par 4 et tripler la vitesse la multiplie par 9.</p>
 <p>Le document compare aussi l’énergie à la hauteur d’un bâtiment : 50 km/h correspond au 3e étage (8 m), 80 km/h au 8e étage (21 m), 90 km/h au 11e étage (27 m), 100 km/h au 13e étage (32 m) et 110 km/h au 16e étage (42 m).</p>
-</div></details><details class="situation"><summary>2- CENTRE DE GRAVITÉ</summary><div class="situation-body"><p>• Il est déterminé par le constructeur<br>• Il doit se situer le plus bas possible.<br>• Il varie en fonction du chargement (un chargement en hauteur rehausse le centre de gravité).<br>• Il peut influencer la conduire en créant des effets de ballant (différents types de ballants, élargissement des<br>trajectoires, risque de renversement…).</p></div></details><details class="situation"><summary>3- FORCE CENTRIFUGE</summary><div class="situation-body"><p>• C’est la force qui, dans un virage ou un changement de direction, entraîne le véhicule vers l’extérieur de la courbe.<br>• Elle varie : en fonction du carré de la vitesse, la masse du véhicule et le rayon de la courbe.<br>• Elle tend à élargir la trajectoire du véhicule en virage ou lors de changement de direction, ce qui peut surprendre le<br>conducteur.</p><p>Formule de la force centrifuge :<br>Fc = mv2/R<br>(masse X vitesse au carré) / rayon du virage</p></div></details><details class="situation"><summary>4- ADAPTATION A LA CONDUITE</summary><div class="situation-body"><p>• Réduire la vitesse du véhicule en fonction du chargement et de la configuration de la route (rayon de la<br>trajectoire).<br>• Adopter une conduite souple.<br>• Adapter la vitesse du véhicule aux circonstances rencontrées : (signalisation, situations de circulation, état de la<br>route, conditions de visibilité, d’éclairage).<br>• Connaître la règlementation spécifique des véhicules du groupe lourd en matière de limitations de vitesses, (en<br>fonction des catégories, du type de voie, apposition de disques de limitation à l’arrière des véhicules lourds,<br>des remorques…).<br>• Savoir que les véhicules du groupe lourd (hors BE) sont prévus, à la construction, pour ne pas dépasser une<br>certaine vitesse (limitateur, dispositif non réglable et non modifiable …).<br>• Savoir charger son véhicule et sa remorque le cas échéant (répartition, équilibre, arrimage).</p><p>*Spécifiques CE : conduite d’un tracteur routier en solo</p><p>Particularités :<br>• Confort réduit<br>• Freinage réduit (mauvaise adhérence des roues AR, absence de charge)<br>• Comportement routier dégradé.<br>Dangers :<br>• Instabilité<br>Précautions :<br>• Respecter la limitation de vitesse prévue par la règlementation et rappelée sur les disques apposés sur le<br>véhicule tracteur<br>• Conduite souple au volant et sur les commandes (embrayage, freins, ralentisseur, sélecteur de rapport de<br>vitesses).</p></div></details></div></details><details class="fiche-oral">
+</div></details><details class="situation"><summary>2- CENTRE DE GRAVITÉ</summary><div class="situation-body"><p>• Il est déterminé par construction.<br>• Il doit se situer le plus bas possible.<br>• Il varie en fonction du chargement (un chargement en hauteur rehausse le centre de gravité).<br>• Il peut influencer la conduire en créant des effets de ballant (différents types de ballants, élargissement des<br>trajectoires, risque de renversement…).</p></div></details><details class="situation"><summary>3- FORCE CENTRIFUGE</summary><div class="situation-body"><p>• C’est la force qui, dans un virage ou un changement de direction, entraîne le véhicule vers l’extérieur de la courbe.<br>• Elle varie : en fonction du carré de la vitesse, la masse du véhicule et le rayon de la courbe.<br>• Elle tend à élargir la trajectoire du véhicule en virage ou lors de changement de direction, ce qui peut surprendre le<br>conducteur.</p><p>Formule de la force centrifuge :<br>Fc = mv2/R<br>(masse X vitesse au carré) / rayon du virage</p></div></details><details class="situation"><summary>4- ADAPTATION A LA CONDUITE</summary><div class="situation-body"><p>• Réduire la vitesse du véhicule en fonction du chargement et de la configuration de la route (rayon de la<br>trajectoire).<br>• Adopter une conduite souple.<br>• Adapter la vitesse du véhicule aux circonstances rencontrées : (signalisation, situations de circulation, état de la<br>route, conditions de visibilité, d’éclairage).<br>• Connaître la règlementation spécifique des véhicules du groupe lourd en matière de limitations de vitesses, (en<br>fonction des catégories, du type de voie, apposition de disques de limitation à l’arrière des véhicules lourds,<br>des remorques…).<br>• Savoir que les véhicules du groupe lourd (hors BE) sont prévus, à la construction, pour ne pas dépasser une<br>certaine vitesse (limitateur, dispositif non réglable et non modifiable …).<br>• Savoir charger son véhicule et sa remorque le cas échéant (répartition, équilibre, arrimage).</p><p>*Spécifiques CE : conduite d’un tracteur routier en solo</p><p>Particularités :<br>• Confort réduit<br>• Freinage réduit (mauvaise adhérence des roues AR, absence de charge)<br>• Comportement routier dégradé.<br>Dangers :<br>• Instabilité<br>Précautions :<br>• Respecter la limitation de vitesse prévue par la règlementation et rappelée sur les disques apposés sur le<br>véhicule tracteur<br>• Conduite souple au volant et sur les commandes (embrayage, freins, ralentisseur, sélecteur de rapport de<br>vitesses).</p></div></details></div></details><details class="fiche-oral">
 <summary><span class="fiche-number">FICHE 08</span><span>Alcool - Stupéfiants – Médicaments</span></summary>
 <div class="fiche-oral-body"><details class="situation"><summary>1- ALCOOL</summary><div class="situation-body"><p>Le taux d’alcool limite à ne pas atteindre est de 0,5 g d’alcool pur par litre de sang soit 0,25 mg d’alcool pur par litre<br>d’air expiré.<br>Chaque verre (norme débit de boisson) consommé fait monter le taux d’alcool de 0,20 g à 0,25 g en moyenne.<br>Ce taux peut augmenter en fonction de l’état de santé,<br>du degré de fatigue, du stress ou des caractéristiques<br>physiques de la personne.<br>Le taux d’alcool maximal est atteint :<br>- ½ heure après absorption à jeun<br>- 1 heure après absorption au cours d’un repas.</p><p>L’alcoolémie baisse en moyenne<br>de 0,10g à 0,15g d’alcool pur par litre de sang en 1 heure.<br>Café salé, cuillerée d’huile …<br>Rien ne permet d’éliminer l’alcool plus rapidement.</p><p>Effets :</p><p>L’alcool agit sur le cerveau et sur tout le système nerveux,<br>ce qui provoque des conséquences graves pour le conducteur. Les conditions physiques sont amoindries :<br>- Champ visuel réduit, vision trouble, inattention, sommeil<br>- Perte de mémoire, perte des apprentissages, diminution des réflexes</p><p>Le comportement est modifié :<br>• Diminution de la peur et prise de risque exagérée<br>• Agressivité<br>• Euphorie</p><p>Sanctions :</p><p>Taux compris entre 0,50 g (0,20 g pour le transport en commun) et 0,80 g d’alcool pur par litre de sang :<br>• Amende de 135 € et retrait de 6 points sur le permis de conduire.</p><p>Taux égal ou supérieur à 0,80 g d’alcool pur par litre de sang (délit) :<br>• Retrait de 6 points sur le permis de conduire<br>• Amende pouvant aller jusqu’à 4500 €<br>• Immobilisation du véhicule<br>• Suspension (jusqu’à 3 ans) voire annulation du permis<br>• Peine de prison (jusqu’à 2 ans).</p></div></details><details class="situation"><summary>2- STUPÉFIANTS</summary><div class="situation-body"><p>Effets :</p><p>• Capacité à contrôler la trajectoire diminuée<br>• Temps de réaction allongé<br>• Déficit des mécanismes d’attention et de vigilance<br>• Fausse sensation de sécurité</p><p>L’usage seul du cannabis multiplie le risque moyen d’avoir un accident par 1,8.<br>L’usage combiné du cannabis avec une forte dose d’alcool multiplie ce risque par 14.</p><p>Sanctions :</p><p>Dépistage positif :<br>• Retrait de 6 points sur le permis de conduire<br>• Amende pouvant aller jusqu’à 4500 euros<br>• Immobilisation du véhicule<br>• Suspension (jusqu’à 3 ans) voire annulation du permis<br>• Peine de prison (jusqu’à 2 ans)</p><p>Les sanctions sont aggravées lorsque cette infraction est couplée avec un taux d’alcool prohibé : les peines sont<br>portées à 3 ans d’emprisonnement et 9000 € d’amende.</p></div></details><details class="situation"><summary>3- MÉDICAMENTS</summary><div class="situation-body"><p>Avant de conduire, il convient de lire attentivement les notices ou de demander conseil à son médecin. Certains<br>médicaments sont incompatibles avec la consommation d’alcool et entraînent un sur - risque d’accident considérable.</p></div></details></div></details><details class="fiche-oral">
 <summary><span class="fiche-number">FICHE 09</span><span>Eco-conduite et conduite citoyenne</span></summary>
@@ -265,7 +325,7 @@ footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); 
 <summary><span class="fiche-number">FICHE 06</span><span>Le dépassement</span></summary>
 <div class="fiche-oral-body"><details class="situation"><summary>1- PRÉCAUTIONS AVANT, PENDANT ET APRÈS LE DÉPASSEMENT</summary><div class="situation-body"><p>Les dépassements avec un véhicule du groupe lourd ou d’un ensemble de véhicules nécessitent une grande attention,<br>conséquence de gabarits imposants (poids et dimensions).</p><p>Précautions avant le dépassement</p><p> Respect de la signalisation horizontale et verticale.<br> Respect de la règlementation (interdiction de dépassement<br>sur la troisième voie pour les véhicules d’un poids total<br>autorisé en charge supérieur à 3,5 tonnes ou d’ensemble<br>d’une longueur supérieure à 7 mètres, interdiction de<br>dépassement lorsqu’au moins une voie de circulation est<br>couverte de neige…).<br> Importance de l’espace libre nécessaire.<br>• Importance de la différence d’allure avec le véhicule dépassé.<br>• Accélérations rendues difficiles par l’inertie du véhicule.<br>• Nécessité de connaître son véhicule (possibilité d’accélération, utilisation du limiteur/régulateur de vitesse…).<br>• Utiliser les avertisseurs (sonores et lumineux).</p><p>Précautions pendant le dépassement</p><p> Respecter les distances latérales et longitudinales, existence de règles prévues par<br>le code de la route (notamment avec les deux-roues ou les piétons) …<br> Surveillance à l’aide des dispositifs de rétrovision.</p><p>Précautions après le dépassement</p><p>• Respecter les distances lors du retour à droite (distances de sécurité (règle<br>du code de la route spécifique – R.412-12 – imposant une distance<br>minimale de 50 mètres pour les PTAC &gt; 3,5 tonnes ou dont la longueur &gt; 7<br>mètres).<br>• Se rabattre à droite.</p></div></details><details class="situation"><summary>2- DANGERS LIÉS AUX DÉPASSEMENTS</summary><div class="situation-body"><p>• Accrochage de l’usager dépassé à cause d’une mauvaise appréciation des distances.<br>• Mauvaise appréciation des vitesses.<br>• Déport dû au vent (passage d’une zone abritée à une zone non abritée).</p></div></details><details class="situation"><summary>3- ETRE DÉPASSÉ</summary><div class="situation-body"><p>• Maintenir son allure (ou éventuellement ralentir), rappel des règles du code de la route …<br>• Surveiller un déport éventuel dû au vent.</p><p>*Spécifique BE, C, CE</p><p>Les dispositifs latéraux et arrière de protection.</p><p>Dispositifs latéraux :<br>Objectif : protéger contre le risque de chute d’usagers (deux roues principalement) sur la trajectoire des roues arrière<br>du véhicule, de la remorque ou de l’ensemble de véhicules.</p><p>Dispositifs arrière-anti-encastrement :<br>Objectif : protéger contre le risque d’encastrement sous le véhicule d’usagers venant de l’arrière.</p></div></details></div></details><details class="fiche-oral">
 <summary><span class="fiche-number">FICHE 07</span><span>Dynamique du véhicule</span></summary>
-<div class="fiche-oral-body"><details class="situation"><summary>2- CENTRE DE GRAVITÉ</summary><div class="situation-body"><p>• Il est déterminé par le constructeur<br>• Il doit se situer le plus bas possible.<br>• Il varie en fonction du chargement (un chargement en hauteur rehausse le centre de gravité).<br>• Il peut influencer la conduire en créant des effets de ballant (différents types de ballants, élargissement des<br>trajectoires, risque de renversement…).</p></div></details><details class="situation"><summary>3- FORCE CENTRIFUGE</summary><div class="situation-body"><p>• C’est la force qui, dans un virage ou un changement de direction, entraîne le véhicule vers l’extérieur de la courbe.<br>• Elle varie : en fonction du carré de la vitesse, la masse du véhicule et le rayon de la courbe.<br>• Elle tend à élargir la trajectoire du véhicule en virage ou lors de changement de direction, ce qui peut surprendre le<br>conducteur.</p><p>Formule de la force centrifuge :<br>Fc = mv2/R<br>(masse X vitesse au carré) / rayon du virage</p></div></details><details class="situation"><summary>4- ADAPTATION A LA CONDUITE</summary><div class="situation-body"><p>• Réduire la vitesse du véhicule en fonction du chargement et de la configuration de la route (rayon de la<br>trajectoire).<br>• Adopter une conduite souple.<br>• Adapter la vitesse du véhicule aux circonstances rencontrées : (signalisation, situations de circulation, état de la<br>route, conditions de visibilité, d’éclairage).<br>• Connaître la règlementation spécifique des véhicules du groupe lourd en matière de limitations de vitesses, (en<br>fonction des catégories, du type de voie, apposition de disques de limitation à l’arrière des véhicules lourds,<br>des remorques…).<br>• Savoir que les véhicules du groupe lourd (hors BE) sont prévus, à la construction, pour ne pas dépasser une<br>certaine vitesse (limitateur, dispositif non réglable et non modifiable …).<br>• Savoir charger son véhicule et sa remorque le cas échéant (répartition, équilibre, arrimage).</p><p>*Spécifiques CE : conduite d’un tracteur routier en solo</p><p>Particularités :<br>• Confort réduit<br>• Freinage réduit (mauvaise adhérence des roues AR, absence de charge)<br>• Comportement routier dégradé.<br>Dangers :<br>• Instabilité<br>Précautions :<br>• Respecter la limitation de vitesse prévue par la règlementation et rappelée sur les disques apposés sur le<br>véhicule tracteur<br>• Conduite souple au volant et sur les commandes (embrayage, freins, ralentisseur, sélecteur de rapport de<br>vitesses).</p></div></details></div></details><details class="fiche-oral">
+<div class="fiche-oral-body"><details class="situation"><summary>2- CENTRE DE GRAVITÉ</summary><div class="situation-body"><p>• Il est déterminé par construction.<br>• Il doit se situer le plus bas possible.<br>• Il varie en fonction du chargement (un chargement en hauteur rehausse le centre de gravité).<br>• Il peut influencer la conduire en créant des effets de ballant (différents types de ballants, élargissement des<br>trajectoires, risque de renversement…).</p></div></details><details class="situation"><summary>3- FORCE CENTRIFUGE</summary><div class="situation-body"><p>• C’est la force qui, dans un virage ou un changement de direction, entraîne le véhicule vers l’extérieur de la courbe.<br>• Elle varie : en fonction du carré de la vitesse, la masse du véhicule et le rayon de la courbe.<br>• Elle tend à élargir la trajectoire du véhicule en virage ou lors de changement de direction, ce qui peut surprendre le<br>conducteur.</p><p>Formule de la force centrifuge :<br>Fc = mv2/R<br>(masse X vitesse au carré) / rayon du virage</p></div></details><details class="situation"><summary>4- ADAPTATION A LA CONDUITE</summary><div class="situation-body"><p>• Réduire la vitesse du véhicule en fonction du chargement et de la configuration de la route (rayon de la<br>trajectoire).<br>• Adopter une conduite souple.<br>• Adapter la vitesse du véhicule aux circonstances rencontrées : (signalisation, situations de circulation, état de la<br>route, conditions de visibilité, d’éclairage).<br>• Connaître la règlementation spécifique des véhicules du groupe lourd en matière de limitations de vitesses, (en<br>fonction des catégories, du type de voie, apposition de disques de limitation à l’arrière des véhicules lourds,<br>des remorques…).<br>• Savoir que les véhicules du groupe lourd (hors BE) sont prévus, à la construction, pour ne pas dépasser une<br>certaine vitesse (limitateur, dispositif non réglable et non modifiable …).<br>• Savoir charger son véhicule et sa remorque le cas échéant (répartition, équilibre, arrimage).</p><p>*Spécifiques CE : conduite d’un tracteur routier en solo</p><p>Particularités :<br>• Confort réduit<br>• Freinage réduit (mauvaise adhérence des roues AR, absence de charge)<br>• Comportement routier dégradé.<br>Dangers :<br>• Instabilité<br>Précautions :<br>• Respecter la limitation de vitesse prévue par la règlementation et rappelée sur les disques apposés sur le<br>véhicule tracteur<br>• Conduite souple au volant et sur les commandes (embrayage, freins, ralentisseur, sélecteur de rapport de<br>vitesses).</p></div></details></div></details><details class="fiche-oral">
 <summary><span class="fiche-number">FICHE 08</span><span>Alcool - Stupéfiants – Médicaments</span></summary>
 <div class="fiche-oral-body"><details class="situation"><summary>1- ALCOOL</summary><div class="situation-body"><p>Le taux d’alcool limite à ne pas atteindre est de 0,5 g d’alcool pur par litre de sang soit 0,25 mg d’alcool pur par litre<br>d’air expiré.<br>Chaque verre (norme débit de boisson) consommé fait monter le taux d’alcool de 0,20 g à 0,25 g en moyenne.<br>Ce taux peut augmenter en fonction de l’état de santé,<br>du degré de fatigue, du stress ou des caractéristiques<br>physiques de la personne.<br>Le taux d’alcool maximal est atteint :<br>- ½ heure après absorption à jeun<br>- 1 heure après absorption au cours d’un repas.</p><p>L’alcoolémie baisse en moyenne<br>de 0,10g à 0,15g d’alcool pur par litre de sang en 1 heure.<br>Café salé, cuillerée d’huile …<br>Rien ne permet d’éliminer l’alcool plus rapidement.</p><p>Effets :</p><p>L’alcool agit sur le cerveau et sur tout le système nerveux,<br>ce qui provoque des conséquences graves pour le conducteur. Les conditions physiques sont amoindries :<br>- Champ visuel réduit, vision trouble, inattention, sommeil<br>- Perte de mémoire, perte des apprentissages, diminution des réflexes</p><p>Le comportement est modifié :<br>• Diminution de la peur et prise de risque exagérée<br>• Agressivité<br>• Euphorie</p><p>Sanctions :</p><p>Taux compris entre 0,50 g (0,20 g pour le transport en commun) et 0,80 g d’alcool pur par litre de sang :<br>• Amende de 135 € et retrait de 6 points sur le permis de conduire.</p><p>Taux égal ou supérieur à 0,80 g d’alcool pur par litre de sang (délit) :<br>• Retrait de 6 points sur le permis de conduire<br>• Amende pouvant aller jusqu’à 4500 €<br>• Immobilisation du véhicule<br>• Suspension (jusqu’à 3 ans) voire annulation du permis<br>• Peine de prison (jusqu’à 2 ans).</p></div></details><details class="situation"><summary>2- STUPÉFIANTS</summary><div class="situation-body"><p>Effets :</p><p>• Capacité à contrôler la trajectoire diminuée<br>• Temps de réaction allongé<br>• Déficit des mécanismes d’attention et de vigilance<br>• Fausse sensation de sécurité</p><p>L’usage seul du cannabis multiplie le risque moyen d’avoir un accident par 1,8.<br>L’usage combiné du cannabis avec une forte dose d’alcool multiplie ce risque par 14.</p><p>Sanctions :</p><p>Dépistage positif :<br>• Retrait de 6 points sur le permis de conduire<br>• Amende pouvant aller jusqu’à 4500 euros<br>• Immobilisation du véhicule<br>• Suspension (jusqu’à 3 ans) voire annulation du permis<br>• Peine de prison (jusqu’à 2 ans)</p><p>Les sanctions sont aggravées lorsque cette infraction est couplée avec un taux d’alcool prohibé : les peines sont<br>portées à 3 ans d’emprisonnement et 9000 € d’amende.</p></div></details><details class="situation"><summary>3- MÉDICAMENTS</summary><div class="situation-body"><p>Avant de conduire, il convient de lire attentivement les notices ou de demander conseil à son médecin. Certains<br>médicaments sont incompatibles avec la consommation d’alcool et entraînent un sur - risque d’accident considérable.</p></div></details></div></details><details class="fiche-oral">
 <summary><span class="fiche-number">FICHE 09</span><span>Eco-conduite et conduite citoyenne</span></summary>
@@ -1617,26 +1677,31 @@ footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); 
     </div>
 </section>
 
-<section class="view" id="quizRse" hidden>
-<div class="panel">
-<h2>Quiz RSE / RSN</h2><button type="button" class="back-module" onclick="ouvrirModule('rse')">← Retour aux modules</button>
-<p class="muted">Questions détaillées sur la RSE / RSN. Chaque correction explique la règle à retenir.</p>
-<form id="formRse"></form>
-<button class="primary" type="button" onclick="corriger('formRse','scoreRse')">Corriger mon quiz</button>
-<div class="result" id="scoreRse" aria-live="polite"></div>
-</div>
-</section>
-
-<section class="view" id="quizOral" hidden>
-<div class="panel">
-<h2>Quiz fiches orales</h2><button type="button" class="back-module" onclick="ouvrirModule('oral')">← Retour aux modules</button>
-<p class="muted">Questions d’entraînement sur les 12 fiches. Une explication s’affiche avec chaque correction.</p>
-<form id="formOral"></form>
-<button class="primary" type="button" onclick="corriger('formOral','scoreOral')">Corriger mon quiz</button>
-<div class="result" id="scoreOral" aria-live="polite"></div>
-</div>
-</section>
 </main>
+
+
+<section class="view" id="entrainement" hidden>
+<div class="panel">
+<h2>Entraînement oral</h2>
+<p>Entraîne-toi à présenter les situations à voix haute, puis découvre les éléments à retenir issus des fiches orales.</p>
+<div class="training-options" role="group" aria-label="Mode d'entraînement">
+<button type="button" class="training-option selected" data-training-mode="cible" onclick="choisirModeEntrainement('cible',this)"><strong>Entraînement ciblé</strong><small>Choisis un permis, un thème ou une situation précise à réviser.</small></button>
+<button type="button" class="training-option" data-training-mode="examen" onclick="choisirModeEntrainement('examen',this)"><strong>Simulation d’oral aléatoire</strong><small>Cabineo tire 5 fiches complètes au hasard. Tu dois présenter toute la fiche, pas seulement une sous-catégorie.</small></button>
+</div>
+<div class="grid" id="training-filters">
+<label>Permis
+<select id="training-permis" class="field" onchange="remplirThemesEntrainement()">
+<option value="C">Permis C</option><option value="CE">Permis CE</option><option value="both">C et CE</option>
+</select></label>
+<label>Thème
+<select id="training-theme" class="field" onchange="remplirSituationsEntrainement()"><option value="">Tous les thèmes</option></select></label>
+<label>Situation
+<select id="training-situation" class="field"><option value="">Toutes les situations</option></select></label>
+</div>
+<div class="training-actions"><button type="button" class="primary" onclick="demarrerEntrainement()">Commencer</button><button type="button" class="secondary" onclick="reinitialiserEntrainement()">Réinitialiser la session</button></div>
+<div id="training-session" aria-live="polite"></div>
+</div>
+</section>
 
 <footer>Cabineo — Révisions transport routier de marchandises.</footer>
 
@@ -1660,98 +1725,7 @@ document.getElementById("oralCards").innerHTML = fiches.map(f =>
 '<article class="oral"><h3>'+f[0]+'</h3><details><summary>Voir les points à retenir</summary><p>'+f[1]+'</p></details></article>'
 ).join("");
 
-const qRse = [
-["Après combien de conduite continue faut-il prendre une pause ?",["4 h","4 h 30","5 h"],1,"Il faut retenir 4 h 30 de conduite continue avant une pause de 45 minutes."],
-["Comment fractionner la pause de 45 minutes ?",["30 puis 15 min","15 puis 30 min","20 puis 25 min"],1,"L'ordre compte : 15 minutes, puis 30 minutes, avant d'atteindre 4 h 30 de conduite."],
-["Quel maximum hebdomadaire de conduite il faut retenir-t-il ?",["45 h","56 h","60 h"],1,"Il faut retenir 56 heures de conduite maximum sur une semaine calendaire."],
-["Quel cumul de conduite sur deux semaines est indiqué ?",["80 h","90 h","100 h"],1,"Le cumul ne doit pas dépasser 90 heures sur deux semaines ."],
-["Quelle est la durée du repos journalier normal ?",["9 h","10 h","11 h"],2,"Le repos journalier normal indiqué est de 11 heures."],
-["Quelle est la durée du repos hebdomadaire normal ?",["24 h","36 h","45 h"],2,"Le repos hebdomadaire normal est de 45 heures minimum ."],
-["Quelle coupure est prévue après 6 h de service ?",["15 min","30 min","45 min"],1," RSN indique une coupure de 30 minutes après 6 heures de temps de service ; il décrit un fractionnement possible en deux périodes de 15 minutes avant les 6 heures."],
-["Que signifie « port dû » ?",["Le destinataire paie le transport","L'expéditeur a déjà payé le transport","Le chauffeur paie la marchandise"],0,"Port dû : le destinataire règle le transport au transporteur."],
-["Comment se prend le repos journalier fractionné ?",["2 h + 10 h","3 h puis 9 h","6 h + 6 h"],1,"Le fractionnement présenté est de 3 heures, puis 9 heures, soit 12 heures au total."],
-["Combien faut-il compenser après un repos hebdomadaire réduit de 24 h au lieu de 45 h ?",["15 h","21 h","24 h"],1,"La différence est de 21 heures. Il faut retenir que ce complément doit être rattrapé dans les trois semaines, accolé à un repos et pris en un seul bloc."],
-["Quelle plage horaire définit le travail de nuit ?",["22 h à 06 h","00 h à 05 h","01 h à 04 h"],1,"Le travail effectué entre minuit et 5 heures caractérise le travail de nuit. Le service peut commencer pendant cette plage, la traverser ou se terminer pendant celle-ci."],
-["Quelle limite de temps de service de nuit il faut retenir-t-il ?",["8 h","10 h","12 h"],1,"Il faut retenir un maximum de 10 heures de temps de service pour le travail de nuit, contre 12 heures en journée dans le cadre décrit."],
-["Dans le schéma de double équipage, quelle est la durée de repos simultané ?",["6 h","9 h","11 h"],1,"Le schéma fourni prévoit 9 heures de repos journalier prises simultanément par les deux conducteurs."],
-["Dans le schéma du double équipage, combien d'heures de conduite sont prévues au total ?",["9 h","15 h","18 h"],2,"Le schéma répartit 18 heures de conduite sur la période, soit deux périodes de 4 h 30 par conducteur."],
-["Que signifie « port payé » ?",["Le destinataire règle le transport à la livraison","L'expéditeur a déjà payé le transport","Le transport est gratuit"],1,"Port payé : le transport a déjà été payé par l'expéditeur."],
-["Que signifie « contre-remboursement » ?",["Le destinataire doit payer une somme pour obtenir la marchandise","Le transport est toujours gratuit","Le conducteur avance les frais de carburant"],0,"Le montant indiqué doit être perçu auprès du destinataire en échange de la marchandise. Il faut retenir de ne pas se mettre à quai tant que ce montant n'est pas acquitté."],
-["À quoi correspond la valeur déclarée dans la lettre de voiture ?",["Au poids total du camion","À la valeur de la marchandise déclarée à l'assurance en cas d'avarie","Au prix du carburant"],1," la présente comme la valeur de la marchandise déclarée à l'assurance en cas d'avarie."],
-["Que désigne le temps de service ?",["Uniquement le temps au volant","Le temps consacré aux activités professionnelles effectuées dans le cadre du service","Uniquement le chargement"],1,"Le temps de service comprend notamment la conduite et les autres activités professionnelles. Les temps d’attente, de disponibilité et les pauses doivent être distingués selon la situation."],
-["Comment définit-il l'amplitude ?",["Le temps de conduite uniquement","Le temps de service en incluant les pauses, mais pas le repos journalier ou hebdomadaire","Le temps passé à charger uniquement"],1,"L’amplitude correspond à la durée entre le début et la fin du service, pauses comprises. Elle se calcule à partir de l’insertion de la carte conducteur dans le chronotachygraphe jusqu’à son retrait."],
-[", quelle amplitude est associée à un repos journalier normal de 11 h ?",["12 h","13 h","15 h"],1,"Le calcul présenté est 24 h moins 11 h de repos, soit 13 h d'amplitude."],
-[", quelle amplitude est associée à un repos réduit de 9 h ?",["12 h","13 h","15 h"],2,"Le calcul présenté est 24 h moins 9 h de repos, soit 15 h d'amplitude."],
-["Quelle amplitude correspond au repos fractionné de 3 h + 9 h ?",["12 h","13 h","15 h"],0,"Il faut retenir 12 heures d'amplitude pour un repos fractionné de 3 heures + 9 heures."],
-["Dans le schéma de double équipage, combien de temps reste-t-il dans les 21 h d'amplitude après les 18 h de conduite ?",["1 h","3 h","6 h"],1,"21 heures d'amplitude moins 18 heures de conduite donnent 3 heures consacrées aux autres tâches dans le schéma ."],
-["D'après , que signifie le transport pour compte d'autrui ?",["L'entreprise transporte ses propres marchandises","L'entreprise transporte les marchandises d'un client","Le conducteur transporte ses affaires personnelles"],1,"Le transport pour compte d'autrui consiste à transporter pour un client. On retient notamment la lettre de voiture et, selon l'opération, la copie conforme de la licence communautaire."],
-["D'après , que signifie le transport pour compte propre ?",["L'entreprise transporte ses propres marchandises","L'entreprise transporte toujours à l'international","Le destinataire devient transporteur"],0,"Le transport pour compte propre correspond au transport des marchandises de l'entreprise pour ses propres besoins, selon la formulation ."],
-["Quel document on retient-t-il pour un transport international de marchandises pour compte d'autrui ?",["La CMR","Le carnet de santé","Le permis de conduire seul"],0,"On retient la lettre de voiture, ou la CMR lors d'un transport international."],
-["En RSN, quand commence et se termine la semaine de référence ?",["Dimanche 00 h au samedi 23 h 59","Lundi 00 h au dimanche 23 h 59","Le premier jour de chaque mois"],1,"La semaine de référence commence le lundi à 00 h et se termine le dimanche à 23 h 59."],
-[" RSN, combien de jours consécutifs au maximum peut-on travailler ?",["5 jours","6 jours","7 jours"],1,"Il faut retenir qu'on ne peut pas travailler plus de 6 jours consécutifs."],
-["Que faut-il faire du complément de repos hebdomadaire à récupérer ?",["Le diviser librement en petites pauses","Le prendre d'un seul bloc, accolé à un repos journalier ou hebdomadaire","Le remplacer par du temps de conduite"],1,"Il faut retenir que le complément doit être pris d'un seul bloc et accolé à un repos journalier ou hebdomadaire, dans le délai indiqué de trois semaines."],
-["Quelle est la différence entre conduite et temps de service ?",["Ce sont toujours des durées identiques","La conduite est une activité ; le temps de service comprend aussi les autres activités professionnelles","Le temps de service ne comprend que les pauses"],1,"La conduite correspond au temps passé au volant. Le temps de service comprend aussi les autres activités professionnelles, comme le chargement, le déchargement, les contrôles et les formalités liées au transport."]
-];
 
-const qOral = [
-["En cas d'accident, quel ordre retenir ?",["Alerter, partir, revenir","Protéger, alerter, secourir","Secourir puis déplacer"],1,"Il faut retenir l'ordre : protéger, alerter, secourir."],
-["En descente de montagne, que faut-il éviter ?",["Utiliser le frein moteur","Rétrograder avant la pente","Descendre au point mort"],2,"La règle à retenir est de de rétrograder avant la pente et d'utiliser le frein moteur et le ralentisseur ; il déconseille de descendre au point mort."],
-["Pour monter ou descendre de la cabine, que faut-il faire ?",["Utiliser trois points d'appui","Sauter pour gagner du temps","Tenir seulement la porte"],0,"La fiche gestes et postures recommande trois points d'appui et de ne jamais sauter de la cabine."],
-["Avant un dépassement, que faut-il vérifier ?",["Uniquement la puissance du camion","La visibilité et l'absence de danger","Que le camion devant ralentisse"],1,"Il faut contrôler la visibilité, la signalisation, la circulation en sens inverse, la distance disponible et l'absence de véhicule qui dépasse déjà."],
-["L'énergie cinétique dépend notamment…",["De la masse et de la vitesse","De la couleur du véhicule","Du lave-glace"],0,"La fiche dynamique du véhicule précise que l'énergie cinétique augmente avec la masse et la vitesse."],
-["Face à un médicament pouvant provoquer une somnolence, que faut-il faire ?",["Ignorer la notice","Vérifier les effets et ne pas conduire si l'on n'est pas apte","Boire du café et partir"],1,"Il faut lire la notice, tenir compte du pictogramme et du risque de somnolence."],
-["En éco-conduite, on cherche à…",["Accélérer et freiner fort","Anticiper et conduire souplement","Rouler au point mort"],1,"Anticiper permet d'utiliser l'inertie et d'éviter les arrêts inutiles ; la conduite doit rester souple et sûre."],
-["Le GPS spécial poids lourd aide notamment à…",["Remplacer le conducteur","Éviter les itinéraires incompatibles avec le gabarit","Supprimer les contrôles"],1,"Le GPS poids lourd peut aider à éviter les ponts trop bas et les routes interdites ou inadaptées, mais la signalisation réelle reste prioritaire."],
-["Au passage à niveau, on s'engage seulement si…",["Les barrières descendent","On peut traverser complètement","Le véhicule devant s'engage"],1,"La fiche indique qu'il ne faut s'engager que si l'on peut traverser complètement le passage à niveau."],
-["Sous la pluie, quelle distance de sécurité la règle à retenir est de-t-il ?",["1 seconde","4 à 5 secondes","10 secondes exactement"],1,"La fiche intempéries cite 4 à 5 secondes sous la pluie et jusqu'à 7 secondes sous la neige."],
-["Selon la fiche intempéries, que faut-il éviter dans le brouillard ?",["Les feux de croisement","Les feux de route qui risquent d'éblouir","Toute adaptation de vitesse"],1,"Ne jamais utiliser les feux de route dans le brouillard pour éviter l'éblouissement."],
-["Quels numéros appeler pour joindre les secours ?",["15, 17, 18 ou 112 selon la situation","Uniquement le 118","Le numéro de l'entreprise uniquement"],0,"Appeler le 15, le 17, le 18 ou le 112 selon la situation, en précisant le lieu, le nombre de véhicules, les blessés et les risques."],
-["En montée de montagne, quelle conduite est recommandée ?",["Choisir un rapport adapté et garder une allure régulière","Rouler au point mort","Freiner en continu"],0,"La fiche montagne recommande un rapport adapté et une vitesse régulière pour éviter de patiner et garder la maîtrise du véhicule."],
-["En descente, quand faut-il rétrograder ?",["Avant la pente","Après une surchauffe des freins","Uniquement à l'arrêt"],0,"La fiche recommande de rétrograder avant la pente et d'utiliser le frein moteur et le ralentisseur."],
-["Pour soulever ou manipuler une charge, quelle posture est recommandée ?",["Dos courbé et jambes tendues","Se rapprocher, plier les genoux et éviter les torsions","Tourner le dos pendant le port"],1,"La fiche gestes et postures recommande de se rapprocher de la charge, de plier les genoux et d'éviter les torsions."],
-["Comment répartir la charge selon la fiche ?",["Le plus haut possible","Charges lourdes au centre et le plus bas possible, dans les limites autorisées","Tout sur un seul côté"],1,"La fiche chargement recommande une charge répartie et sécurisée, avec les charges lourdes au centre et le plus bas possible, en respectant les limites par essieu."],
-["Quand peut-on se rabattre après un dépassement, ?",["Dès que le camion dépasse le pare-chocs du véhicule","Quand le véhicule dépassé est visible dans le rétroviseur intérieur et que le rabattement est sûr","Sans contrôler les rétroviseurs"],1,"La fiche recommande de se rabattre sans couper la route lorsque le véhicule dépassé est visible dans le rétroviseur intérieur."],
-["Dans un virage, vers où tend la force centrifuge ?",["Vers l'intérieur de la courbe","Vers l'extérieur de la courbe","Toujours vers le bas"],1,"La fiche dynamique explique que la force centrifuge tend à entraîner le véhicule vers l'extérieur du virage."],
-["Pourquoi faut-il éviter le sous-gonflage des pneus ?",["Il augmente la consommation et l'usure","Il réduit toujours la consommation","Il améliore toujours l'adhérence"],0,"La fiche éco-conduite indique que le sous-gonflage augmente la consommation et l'usure des pneus."],
-["Quel est l'ordre de priorité en cas d'accident ?",["Déplacer immédiatement toutes les victimes","Protéger les lieux, alerter les secours puis secourir sans se mettre en danger","Quitter les lieux"],1,"La fiche demande de protéger, alerter et secourir, sans déplacer une victime sauf danger immédiat."],
-["Qu'est-ce que le porte-à-faux ?",["La distance entre l'axe d'une roue et l'extrémité du véhicule","La hauteur totale du véhicule","La charge utile"],0,"La fiche porte-à-faux définit cette distance entre l'axe de la roue et l'extrémité avant ou arrière du véhicule."],
-["Lors d'un changement de direction, comment surveiller le porte-à-faux arrière ?",["Regarder uniquement devant","Contrôler les rétroviseurs et regarder du côté opposé au virage pour surveiller le balayage","Accélérer pour réduire le temps du virage"],1,"La fiche insiste sur les rétroviseurs et sur le regard vers l'arrière, du côté opposé à la direction empruntée, pour surveiller le balayage."],
-["Dans un tunnel, quelle règle de base rappelle ?",["Éteindre les feux","Allumer les feux de croisement et respecter les distances de sécurité","S'arrêter dans la voie sans raison"],1,"La fiche tunnels recommande les feux de croisement, une vitesse adaptée et le respect des distances de sécurité."],
-["En cas de panne sur un passage à niveau, que faut-il faire ?",["Attendre dans le véhicule sans prévenir personne","Évacuer le véhicule et prévenir immédiatement le service ferroviaire par le dispositif prévu","Essayer de pousser le véhicule seul sur les voies"],1,"La fiche demande d'évacuer le véhicule et de prévenir immédiatement le service ferroviaire via le dispositif d'appel spécialisé."],
-["À quoi sert l'ABS, selon la fiche aides à la conduite ?",["À empêcher le blocage des roues et aider à conserver la capacité de diriger","À supprimer toute distance de freinage","À remplacer l'attention du conducteur"],0,"L'ABS aide à éviter le blocage des roues lors d'un freinage appuyé et à conserver la capacité de diriger ; il ne supprime pas les limites d'adhérence."],
-["Le blocage de différentiel peut aider à…",["Améliorer la motricité dans certaines situations difficiles","Raccourcir toutes les distances de freinage","Remplacer les chaînes dans tous les cas"],0,"Il faut retenir qu'il peut aider à récupérer de la motricité sur un terrain difficile ou sinueux, en suivant les consignes du constructeur."],
-["Quelle est la bonne réaction si la visibilité est insuffisante pour dépasser ?",["Dépasser rapidement","Renoncer au dépassement","Suivre de très près le véhicule devant"],1,"La fiche dépassement recommande de renoncer si la visibilité ou la distance disponible ne permettent pas une manœuvre sûre."],
-["Pourquoi faut-il garder un centre de gravité bas et une charge bien répartie ?",["Pour limiter les risques de déséquilibre et de renversement","Pour augmenter le porte-à-faux","Pour éviter les contrôles"],0,"La fiche dynamique explique que la hauteur et la répartition du chargement influencent le centre de gravité et la stabilité du véhicule."],
-["Quelle est la bonne attitude concernant les aides à la conduite ?",["Le conducteur peut leur déléguer toute sa vigilance","Elles assistent le conducteur mais ne le remplacent pas","Elles garantissent l'absence d'accident"],1,"La fiche rappelle que les aides ne remplacent jamais la vigilance et que le conducteur reste responsable de sa conduite."],
-["Que faut-il contrôler après quelques kilomètres suivant le chargement ?",["Uniquement la radio","La stabilité et l'arrimage de la charge","Rien si le trajet est court"],1,"La fiche chargement recommande de refaire un contrôle après quelques kilomètres pour vérifier la stabilité et l'arrimage."]
-];
-
-function creerQuiz(id,questions) {
- document.getElementById(id).innerHTML = questions.map((q,i) =>
- '<div class="quizq"><p>'+(i+1)+'. '+q[0]+'</p>'+
- q[1].map((a,j)=>'<label><input type="radio" name="'+id+'_'+i+'" value="'+j+'"> '+a+'</label>').join('')+
- '<div class="muted" id="'+id+'_fb_'+i+'"></div></div>'
- ).join('');
-}
-
-function corriger(formId,scoreId) {
- const questions = formId === "formRse" ? qRse : qOral;
- let score = 0;
- questions.forEach((q,i) => {
- const choix = document.querySelector('input[name="'+formId+'_'+i+'"]:checked');
- const retour = document.getElementById(formId+'_fb_'+i);
- if (choix && Number(choix.value) === q[2]) {
- score++;
- retour.textContent = "✓ Bonne réponse. " + (q[3] || "");
- retour.style.color = "#18794e";
- } else {
- retour.textContent = "Réponse attendue : " + q[1][q[2]] + ". " + (q[3] || "");
- retour.style.color = "#a13b32";
- }
- });
- document.getElementById(scoreId).textContent =
- "Résultat : "+score+" / "+questions.length+". Recommence pour progresser.";
-}
 
 function ouvrirModule(id) {
  const target = document.getElementById(id);
@@ -1770,8 +1744,6 @@ function ouvrirQuiz(id) {
 }
 document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => ouvrirModule(b.dataset.tab)));
 
-creerQuiz("formRse",qRse);
-creerQuiz("formOral",qOral);
 </script>
 
 <script>
@@ -1797,5 +1769,225 @@ function filterWritten(cat, value){
 }
 </script>
 
+<script>
+
+let modeEntrainement = 'cible';
+let sessionEntrainement = [];
+let indexEntrainement = 0;
+let situationCourante = null;
+let evaluationCourante = '';
+
+function collecterSituationsOrales(){
+ const items=[];
+ ['oral','oralCE'].forEach(permisId=>{
+   const section=document.getElementById(permisId);
+   if(!section)return;
+   const permis=permisId==='oralCE'?'CE':'C';
+   section.querySelectorAll('details.fiche-oral').forEach(fiche=>{
+     const titreFiche=(fiche.querySelector(':scope > summary')?.innerText||'Fiche orale').trim().replace(/\s+/g,' ');
+     const body=fiche.querySelector('.fiche-oral-body');
+     if(!body)return;
+     const toutes=[...body.querySelectorAll('details.situation')];
+     const feuilles=toutes.filter(sit=>!sit.querySelector('details.situation'));
+     feuilles.forEach(situation=>{
+       const titreSituation=(situation.querySelector(':scope > summary')?.innerText||'Situation').trim().replace(/\s+/g,' ');
+       const parent=situation.parentElement?.closest('details.situation');
+       const parentTitre=parent?(parent.querySelector(':scope > summary')?.innerText||'').trim().replace(/\s+/g,' '):'';
+       const contenu=situation.querySelector(':scope > .situation-body');
+       const texte=contenu?contenu.innerText.trim():'';
+       if(texte)items.push({permis,titre:titreFiche,titreSituation:parentTitre?parentTitre+' — '+titreSituation:titreSituation,texte});
+     });
+     if(!toutes.length){
+       const texte=body.innerText.trim();
+       if(texte)items.push({permis,titre:titreFiche,titreSituation:'Fiche complète',texte});
+     }
+   });
+ });
+ return items;
+}
+function collecterFichesOrales(){
+ const items=[];
+ ['oral','oralCE'].forEach(permisId=>{
+  const section=document.getElementById(permisId);
+  if(!section)return;
+  const permis=permisId==='oralCE'?'CE':'C';
+  section.querySelectorAll('details.fiche-oral').forEach(fiche=>{
+   const titre=(fiche.querySelector(':scope > summary')?.innerText||'Fiche orale').trim().replace(/\s+/g,' ');
+   const body=fiche.querySelector(':scope > .fiche-oral-body');
+   if(!body)return;
+   const modules=[...body.children].filter(el=>el.matches('details.situation')).map(el=>{
+    const nom=(el.querySelector(':scope > summary')?.innerText||'Partie de la fiche').trim().replace(/\s+/g,' ');
+    const contenu=el.querySelector(':scope > .situation-body');
+    if(!contenu)return null;
+    const texte=contenu.innerText.trim();
+    return texte?{titre:nom,texte}:null;
+   }).filter(Boolean);
+   const texte=body.innerText.trim();
+   if(texte)items.push({permis,titre,titreSituation:'Fiche complète',texte,modules,type:'fiche'});
+  });
+ });
+ return items;
+}
+function choisirModeEntrainement(mode,button){
+ modeEntrainement=mode;
+ document.querySelectorAll('[data-training-mode]').forEach(b=>b.classList.toggle('selected',b===button));
+ const filters=document.getElementById('training-filters');
+ if(filters)filters.hidden=mode!=='cible';
+}
+function remplirThemesEntrainement(){
+ const permis=document.getElementById('training-permis').value;
+ const theme=document.getElementById('training-theme');
+ const items=collecterSituationsOrales().filter(x=>permis==='both'||x.permis===permis);
+ const titles=[...new Set(items.map(x=>x.titre))];
+ theme.innerHTML='<option value="">Tous les thèmes</option>'+titles.map(t=>'<option value="'+escapeTrain(t)+'">'+escapeTrain(t)+'</option>').join('');
+ remplirSituationsEntrainement();
+}
+function remplirSituationsEntrainement(){
+ const permis=document.getElementById('training-permis').value;
+ const titre=document.getElementById('training-theme').value;
+ const sel=document.getElementById('training-situation');
+ const items=collecterSituationsOrales().filter(x=>(permis==='both'||x.permis===permis)&&(!titre||x.titre===titre));
+ const names=[...new Set(items.map(x=>x.titreSituation))];
+ sel.innerHTML='<option value="">Toutes les situations</option>'+names.map(t=>'<option value="'+escapeTrain(t)+'">'+escapeTrain(t)+'</option>').join('');
+}
+function escapeTrain(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function demarrerEntrainement(){
+ window.evaluationsFinSession={};
+ let items=modeEntrainement==='examen'?collecterFichesOrales():collecterSituationsOrales();
+ if(modeEntrainement==='cible'){
+  const permis=document.getElementById('training-permis').value;
+  const titre=document.getElementById('training-theme').value;
+  const sit=document.getElementById('training-situation').value;
+  if(!sit){
+   // « Toutes les situations » : afficher une fiche complète avec toutes ses rubriques
+   // comme repères, plutôt que de tirer une seule sous-catégorie.
+   items=collecterFichesOrales().filter(x=>(permis==='both'||x.permis===permis)&&(!titre||x.titre===titre));
+  }else{
+   items=collecterSituationsOrales().filter(x=>(permis==='both'||x.permis===permis)&&(!titre||x.titre===titre));
+   const first=items.findIndex(x=>x.titreSituation===sit);
+   if(first>0){const selected=items.splice(first,1)[0];items.unshift(selected);}
+  }
+  items=items.sort(()=>Math.random()-.5);
+ }
+ if(!items.length){document.getElementById('training-session').innerHTML='<p>Aucune situation disponible pour ces critères. Vérifie que les fiches orales sont chargées.</p>';return;}
+ if(modeEntrainement!=='cible') items=items.sort(()=>Math.random()-.5);
+ sessionEntrainement=modeEntrainement==='examen'?items.slice(0,Math.min(5,items.length)):modeEntrainement==='cible'?items:[items[0]];
+ indexEntrainement=0;
+ afficherSituationEntrainement();
+}
+function afficherSituationEntrainement(){
+ const root=document.getElementById('training-session');
+ if(indexEntrainement>=sessionEntrainement.length){
+  root.innerHTML='<div class="training-question"><h3>Entraînement terminé</h3><p>Tu as terminé '+sessionEntrainement.length+' situation(s).</p><p>Tu peux recommencer pour tirer de nouvelles situations au hasard.</p><button type="button" class="primary" onclick="demarrerEntrainement()">Recommencer</button></div>';
+  return;
+ }
+ situationCourante=sessionEntrainement[indexEntrainement];evaluationCourante='';
+ const x=situationCourante;
+ const estFiche=x.type==='fiche';
+ const titreAffiche=String(estFiche?x.titre:x.titreSituation).replace(/(FICHE\s*\d{1,2})(?=\S)/i,'$1 ').replace(/\s+/g,' ').trim();
+ root.innerHTML='<div class="training-progress"><span style="width:'+Math.round(indexEntrainement/sessionEntrainement.length*100)+'%"></span></div>'+
+ '<div class="training-question"><div><span class="training-tag">PERMIS '+escapeTrain(x.permis)+'</span><span class="training-tag">Fiche '+(indexEntrainement+1)+' / '+sessionEntrainement.length+'</span></div>'+
+ '<p class="muted">'+(estFiche?'Simulation sur une fiche complète':'Entraînement ciblé')+'</p><h3>'+escapeTrain(titreAffiche)+'</h3>'+
+ '<p class="training-instruction">À toi de parler : présente la fiche entière à voix haute, sans la lire. Quand tu as terminé, affiche les points à retenir pour vérifier les éléments essentiels. Les titres du mémo t’aideront à garder le fil, sans te donner un texte à réciter.</p>'+
+ '<button type="button" class="primary" id="training-reveal-toggle" aria-expanded="false" aria-controls="training-answer" onclick="basculerElementsRetenir()">Afficher les éléments à retenir</button><div id="training-answer" hidden></div><div class="training-actions training-next-actions"><button type="button" class="primary" id="training-next-button" onclick="situationSuivante()">Suivante</button><button type="button" class="secondary" id="training-finish-button" onclick="terminerSeanceMaintenant()">Terminer la séance</button></div></div>';
+}
+function condenserReponseOrale(texte){
+ const propre=String(texte||'').replace(/\r/g,'').replace(/[ \t]+/g,' ').trim();
+ // Découper sur les retours à la ligne, les puces et les fins de phrase.
+ let morceaux=propre.split(/\n+|(?<=[.!?])\s+|\s*[•]\s*/)
+   .map(x=>x.replace(/^[•\-–—\s]+/,'').replace(/\s+/g,' ').trim())
+   .filter(x=>x.length>12);
+ if(morceaux.length<2){
+   morceaux=propre.split(/[;]+|,(?=\s+[A-ZÀ-ÖØ-Þ])/).map(x=>x.trim()).filter(x=>x.length>12);
+ }
+ const uniques=[];
+ morceaux.forEach(x=>{
+   if(!uniques.some(y=>y.toLocaleLowerCase('fr')===x.toLocaleLowerCase('fr'))){
+     // Terminer chaque élément par une ponctuation lisible.
+     x=x.replace(/[\s,;:]+$/,'');
+     if(!/[.!?…]$/.test(x))x+='.';
+     uniques.push(x);
+   }
+ });
+ return uniques.slice(0,5).map(x=>x.length>190?x.slice(0,187).replace(/\s+\S*$/,'')+'…':x);
+}
+function rendreMemoFiche(fiche){
+ const modules=fiche.modules||[];
+ if(!modules.length){
+  return '<ul class="training-key-points">'+condenserReponseOrale(fiche.texte).map(line=>'<li>'+escapeTrain(line)+'</li>').join('')+'</ul>';
+ }
+ // Les titres de chaque rubrique restent visibles pour servir de fil conducteur.
+ // Le contenu s'ouvre uniquement si l'apprenant souhaite vérifier un point.
+ return '<div class="training-memo-modules">'+modules.map((m,i)=>
+  '<details class="training-memo-module"><summary>'+escapeTrain(m.titre)+'</summary><ul class="training-key-points">'+
+  condenserReponseOrale(m.texte).slice(0,3).map(line=>'<li>'+escapeTrain(line)+'</li>').join('')+
+  '</ul></details>'
+ ).join('')+'</div>';
+}
+function basculerElementsRetenir(){
+ const answer=document.getElementById('training-answer');
+ const toggle=document.getElementById('training-reveal-toggle');
+ if(!answer||!toggle)return;
+ if(answer.hidden){
+  afficherCorrectionOrale();
+  answer.hidden=false;
+  toggle.textContent='Masquer les éléments à retenir';
+  toggle.setAttribute('aria-expanded','true');
+ }else{
+  answer.hidden=true;
+  toggle.textContent='Afficher les éléments à retenir';
+  toggle.setAttribute('aria-expanded','false');
+ }
+}
+function afficherCorrectionOrale(){
+ const root=document.getElementById('training-answer');
+ if(!root||!situationCourante)return;
+ const memo=situationCourante.type==='fiche'?rendreMemoFiche(situationCourante):'<ul class="training-key-points">'+condenserReponseOrale(situationCourante.texte).map(line=>'<li>'+escapeTrain(line)+'</li>').join('')+'</ul>';
+ const source=situationCourante.type==='fiche'?(situationCourante.modules||[]).map(m=>'<section class="training-source-section"><h4>'+escapeTrain(m.titre)+'</h4>'+m.texte.split(/\n+/).map(line=>line.trim()).filter(Boolean).map(line=>'<p>'+escapeTrain(line)+'</p>').join('')+'</section>').join('') : situationCourante.texte.split(/\n+/).map(line=>line.trim()).filter(Boolean).map(line=>'<p>'+escapeTrain(line)+'</p>').join('');
+ root.innerHTML=memo+'<details class="training-source"><summary>Voir le contenu complet de la fiche</summary><div>'+source+'</div></details>';
+}
+function situationSuivante(){
+ if(indexEntrainement+1<sessionEntrainement.length){indexEntrainement++;afficherSituationEntrainement();return;}
+ afficherBilanEntrainement();
+}
+function terminerSeanceMaintenant(){
+ afficherBilanEntrainement();
+}
+function afficherBilanEntrainement(){
+ const root=document.getElementById('training-session');
+ const cartes=sessionEntrainement.map((x,i)=>'<article class="training-content training-rating-card"><h3>'+escapeTrain(x.titre)+'</h3><p class="muted">'+escapeTrain(x.type==='fiche'?'Fiche complète':x.titreSituation)+'</p><div class="rating-buttons" role="group" aria-label="Autoévaluation '+escapeTrain(x.titre)+'">'+
+ '<button type="button" data-rating="maitrise" onclick="choisirEvaluationFin('+i+',\'maitrise\',this)">Maîtrisée</button>'+
+ '<button type="button" data-rating="partiel" onclick="choisirEvaluationFin('+i+',\'partiel\',this)">Partiellement maîtrisée</button>'+
+ '<button type="button" data-rating="revoir" onclick="choisirEvaluationFin('+i+',\'revoir\',this)">À revoir</button></div></article>').join('');
+ root.innerHTML='<div class="training-question"><h3>Séance terminée</h3><p>Tu as parcouru '+sessionEntrainement.length+' fiche(s). Prends maintenant un instant pour évaluer tes réponses, sans interrompre ton oral entre chaque fiche.</p><h4>Autoévaluation de fin de séance</h4><div class="training-end-ratings">'+cartes+'</div><div class="training-actions"><button type="button" class="primary" onclick="enregistrerBilanEntrainement()">Valider mon bilan</button><button type="button" class="secondary" onclick="demarrerEntrainement()">Recommencer</button></div><p id="training-rating-hint" class="muted">Évalue chaque fiche pour enregistrer ton bilan.</p></div>';
+}
+function choisirEvaluationFin(i,val,button){
+ if(!window.evaluationsFinSession)window.evaluationsFinSession={};
+ window.evaluationsFinSession[i]=val;
+ button.parentElement.querySelectorAll('button').forEach(b=>b.classList.toggle('selected',b===button));
+ const hint=document.getElementById('training-rating-hint');
+ if(hint)hint.textContent=Object.keys(window.evaluationsFinSession).length+' / '+sessionEntrainement.length+' fiche(s) évaluée(s).';
+}
+function enregistrerBilanEntrainement(){
+ const ratings=window.evaluationsFinSession||{};
+ if(sessionEntrainement.some((x,i)=>!ratings[i])){
+  const hint=document.getElementById('training-rating-hint');if(hint)hint.textContent='Évalue chaque fiche avant de valider ton bilan.';
+  return;
+ }
+ try{
+  const key='cabineo_oral_progress_v1';const data=JSON.parse(localStorage.getItem(key)||'{}');
+  sessionEntrainement.forEach((x,i)=>{const id=x.permis+'|'+x.titre+'|'+(x.titreSituation||'Fiche complète');data[id]={permis:x.permis,titre:x.titre,situation:x.titreSituation||'Fiche complète',niveau:ratings[i],date:new Date().toISOString()};});
+  localStorage.setItem(key,JSON.stringify(data));
+ }catch(e){}
+ document.getElementById('training-session').innerHTML='<div class="training-question"><h3>Bilan enregistré</h3><p>Ton autoévaluation de fin de séance a été enregistrée dans ce navigateur.</p><button type="button" class="primary" onclick="demarrerEntrainement()">Nouvelle séance</button><button type="button" class="secondary" onclick="reinitialiserEntrainement()">Retour aux choix</button></div>';
+}
+function reinitialiserEntrainement(){
+ sessionEntrainement=[];indexEntrainement=0;situationCourante=null;evaluationCourante='';window.evaluationsFinSession={};
+ document.getElementById('training-session').innerHTML='';
+ if(modeEntrainement!=='cible'){document.getElementById('training-filters').hidden=false;}
+}
+document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
+
+</script>
 </body>
 </html>
