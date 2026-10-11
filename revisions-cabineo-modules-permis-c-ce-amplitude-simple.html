@@ -1677,9 +1677,6 @@ footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); 
     </div>
 </section>
 
-</main>
-
-
 <section class="view" id="entrainement" hidden>
 <div class="panel">
 <h2>Entraînement oral</h2>
@@ -1702,6 +1699,10 @@ footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); 
 <div id="training-session" aria-live="polite"></div>
 </div>
 </section>
+</main>
+
+
+
 
 <footer>Cabineo — Révisions transport routier de marchandises.</footer>
 
@@ -1729,13 +1730,15 @@ document.getElementById("oralCards").innerHTML = fiches.map(f =>
 
 function ouvrirModule(id) {
  const target = document.getElementById(id);
- if (!target) { console.error("Module introuvable :", id); return; }
- document.querySelectorAll(".view").forEach(section => {
+ if (!target || !target.classList.contains("view")) { console.error("Module introuvable :", id); return; }
+ document.querySelectorAll("main .view").forEach(section => {
    section.hidden = section.id !== id;
  });
  document.querySelectorAll("button[data-tab]").forEach(button => {
    button.classList.toggle("active", button.dataset.tab === id);
  });
+ // Affiche toujours la rubrique demandée, sans laisser RSE/RSN visible derrière.
+ target.hidden = false;
  target.scrollIntoView({behavior:"smooth", block:"start"});
 }
 function ouvrirQuiz(id) {
