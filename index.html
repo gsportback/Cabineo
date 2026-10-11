@@ -120,6 +120,11 @@ a.cabineo-brand .cabineo-by{margin-left:4px;color:#fff;font-size:12px;font-weigh
 .cabineo-liquid-nav{position:fixed;z-index:9999;left:50%;transform:translateX(-50%);bottom:18px;width:min(620px,calc(100vw - 28px));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:7px;border:1px solid rgba(255,255,255,.88);border-radius:999px;background:rgba(255,255,255,.72);backdrop-filter:blur(28px) saturate(190%);-webkit-backdrop-filter:blur(28px) saturate(190%);box-shadow:0 12px 34px rgba(20,31,43,.15),inset 0 1px 0 rgba(255,255,255,.82)}.cabineo-liquid-nav button{min-width:0;min-height:56px;padding:0 5px;white-space:nowrap;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:transparent;border-radius:999px;color:#111;font-size:11px;font-weight:750;cursor:pointer}.cabineo-liquid-nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.cabineo-liquid-nav button.is-active{background:rgba(127,199,242,.7);color:#07131c}.cabineo-liquid-nav button:hover{background:rgba(127,199,242,.42)}body{padding-bottom:100px!important}
 @media(max-width:800px){.cabineo-liquid-nav button.is-active{background:rgba(127,199,242,.76);color:#07131c}}
 .home-hero-copy span{display:inline-block;font-size:.94em;margin-top:5px}.learner-intro{font-size:.94rem}
+
+/* Barre Liquid Glass adaptative : réduction douce au défilement dans la page ou un module */
+.mobile-glass-nav{transition:transform .24s ease, padding .24s ease, background-color .24s ease, box-shadow .24s ease, backdrop-filter .24s ease!important;backdrop-filter:blur(10px) saturate(125%)!important;-webkit-backdrop-filter:blur(10px) saturate(125%)!important;}
+.mobile-glass-nav.is-compact{transform:translateX(-50%) scale(.91)!important;padding:4px 8px!important;background:rgba(255,255,255,.82)!important;backdrop-filter:blur(9px) saturate(125%)!important;-webkit-backdrop-filter:blur(9px) saturate(125%)!important;box-shadow:0 8px 26px rgba(10,20,30,.10)!important}
+@media(prefers-reduced-motion:reduce){.mobile-glass-nav{transition:none!important}}
 </style>
 <style>
 
@@ -228,8 +233,8 @@ body.cabineo-tool-open>header,body.cabineo-tool-open>main,body.cabineo-tool-open
 <p>Retrouve les documents de référence et les sources utiles pour vérifier les informations de ta mission.</p>
 <div class="tool-link"><span>Accéder aux documents</span><span>↗</span></div>
 </a>
-<a class="tool-card" href="#fiche-pratique" data-open-page="fiche"><div class="tool-icon">▤</div><p class="label">Outil chauffeur</p><h3>Checklist marchandise</h3><p>Vérifie les colis, les quantités, l’état de la marchandise et les informations de livraison.</p><div class="tool-link"><span>Ouvrir la fiche pratique</span><span>↗</span></div></a>
-<a class="tool-card" href="#fiches-pratiques" data-open-page="forms"><div class="tool-icon">▤</div><p class="label">Outil chauffeur</p><h3>Fiches pratiques Cabinéo</h3><p>Remplis une fiche de mission, de livraison ou de signalement, puis enregistre-la en PDF.</p><div class="tool-link"><span>Ouvrir les fiches pratiques</span><span>↗</span></div></a> <a class="tool-card" href="#fiche-avant-depart" data-open-page="predeparture"><div class="tool-icon">✓</div><p class="label">Préparation</p><h3>Checklist porteur / tracteur solo</h3><p>Contrôle le véhicule, les documents et les équipements avant de prendre la route en porteur ou en tracteur solo.</p><div class="tool-link"><span>Ouvrir la fiche avant départ</span><span>↗</span></div></a>
+<a class="tool-card" href="#fiche-pratique" data-open-page="fiche"><div class="tool-icon">▤</div><p class="label">Outil chauffeur</p><h3>Checklist marchandise</h3><p>Vérifie les colis, les quantités, l’état de la marchandise et les informations de livraison.</p><div class="tool-link"><span>Ouvrir la checklist</span><span>↗</span></div></a>
+<a class="tool-card" href="#fiches-pratiques" data-open-page="forms"><div class="tool-icon">▤</div><p class="label">Outil chauffeur</p><h3>Fiches pratiques</h3><p>Remplis une fiche de mission, de livraison ou de signalement, puis enregistre-la en PDF.</p><div class="tool-link"><span>Ouvrir les fiches pratiques</span><span>↗</span></div></a> <a class="tool-card" href="#fiche-avant-depart" data-open-page="predeparture"><div class="tool-icon">✓</div><p class="label">Préparation</p><h3>Checklist porteur / tracteur solo</h3><p>Contrôle le véhicule, les documents et les équipements avant de prendre la route en porteur ou en tracteur solo.</p><div class="tool-link"><span>Ouvrir la fiche avant départ</span><span>↗</span></div></a>
 <div class="space-divider audience-heading" id="espace-apprenant" style="grid-column:1/-1"><p class="section-kicker">ESPACE APPRENANT</p><h2>Apprends, révise et entraîne‑toi.</h2><p class="section-intro learner-intro">Retrouve les règles RSE/RSN, les fiches orales et écrites C/CE, puis teste tes connaissances grâce aux entraînements ciblés et aux simulations.</p></div>
 <a class="tool-card" href="#learner" data-open-page="learner">
 <div class="tool-icon">▣</div>
@@ -438,6 +443,36 @@ function save(){localStorage.setItem(key(),JSON.stringify([...document.querySele
  window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(updateHeader);ticking=true;}},{passive:true});
 })();
 </script>
+
+
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
 
 </body></html>
 
@@ -731,13 +766,13 @@ a.cabineo-brand:not(.footer-brand) .cabineo-by{display:inline-block!important;ma
 <section class="card" id="tachograph-reminder" aria-labelledby="tachograph-title">
 <h2 id="tachograph-title">Repères tachygraphe : choisir la bonne activité</h2>
 <div class="grid">
-<div class="metric"><small>🚗 Conduite</small><strong>Volant</strong><p>Activité de conduite. Elle est généralement enregistrée automatiquement lorsque le véhicule roule.</p></div>
+<div class="metric"><small><span aria-hidden="true" style="font-size:1.35em">◉</span> Conduite</small><strong>Volant — symbole de conduite</strong><p>Activité de conduite. Elle est généralement enregistrée automatiquement lorsque le véhicule roule.</p></div>
 <div class="metric"><small>Autre tâche</small><strong>Outils</strong><p>Travail hors conduite : chargement, déchargement, nettoyage, entretien, formalités et autres tâches professionnelles.</p></div>
-<div class="metric"><small>Disponibilité</small><strong>Carré barré</strong><p>Période pendant laquelle le conducteur n’a pas à rester à son poste de travail, mais doit pouvoir répondre à une demande de reprise, selon les conditions prévues.</p></div>
+<div class="metric"><small><span aria-hidden="true" style="font-size:1.35em">▧</span> Disponibilité</small><strong>Carré barré</strong><p>Période pendant laquelle le conducteur n’a pas à rester à son poste de travail, mais doit pouvoir répondre à une demande de reprise, selon les conditions prévues.</p></div>
 <div class="metric"><small>Pause / repos</small><strong>Lit</strong><p>Période de repos ou de pause pendant laquelle le conducteur peut disposer librement de son temps. Choisis l’activité correspondant réellement à la situation.</p></div>
 </div>
-<div class="optional"><h3>🚢 Ferry / train — quand l’utiliser ?</h3><p>Ce mode sert à enregistrer un transport du véhicule par ferry ou train dans le cadre prévu par la réglementation, notamment lorsqu’un repos journalier normal ou un repos hebdomadaire réduit est interrompu pour embarquer ou débarquer. Il ne s’active pas simplement parce que le camion est sur un bateau ou un train.</p><p><strong>Attention à la couchette :</strong> l’exception permettant certaines interruptions du repos est soumise à des conditions précises, dont la possibilité pour le conducteur d’accéder à une couchette ou à une couchette-lit. Si ton camion ou le transport ne permet pas de respecter les conditions applicables, ne considère pas automatiquement que tu peux interrompre ton repos. Vérifie le règlement en vigueur, la notice du tachygraphe et les consignes d’exploitation avant de compter sur cette exception.</p><p class="muted">Sur l’appareil, sélectionne le mode ferry/train conformément à sa notice et à la situation réelle. Ce mode ne remplace pas l’enregistrement correct des activités.</p></div>
-<div class="optional"><h3>▧ OUT — hors champ d’application</h3><p>OUT signifie « hors champ d’application » : il peut être utilisé uniquement lorsque le véhicule ou l’activité est réellement exempté des règles européennes relatives au tachygraphe, selon les exemptions applicables au transport et au trajet. Il ne signifie ni « arrêt », ni « pause », ni « travail non rémunéré », et ne doit pas servir à masquer une conduite soumise aux règles.</p><p><strong>Exemples à vérifier au cas par cas :</strong> certains déplacements effectués dans des situations légalement exemptées ou avec un véhicule utilisé pour une activité exclue du champ d’application. Le simple fait de circuler à vide, sur un site privé, ou d’être à proximité du dépôt ne suffit pas à autoriser OUT.</p><p class="muted">Avant de l’utiliser, vérifie l’exemption exacte applicable au véhicule, à la mission et au territoire. En cas de doute, laisse le tachygraphe enregistrer l’activité réelle et demande confirmation à l’exploitation.</p></div>
+<div class="optional"><h3><span aria-hidden="true">⛴️</span> Ferry / train — quand l’utiliser ?</h3><p>Ce mode sert à enregistrer un transport du véhicule par ferry ou train dans le cadre prévu par la réglementation, notamment lorsqu’un repos journalier normal ou un repos hebdomadaire réduit est interrompu pour embarquer ou débarquer. Il ne s’active pas simplement parce que le camion est sur un bateau ou un train.</p><p><strong>Attention à la couchette :</strong> l’exception permettant certaines interruptions du repos est soumise à des conditions précises, dont la possibilité pour le conducteur d’accéder à une couchette ou à une couchette-lit. Si ton camion ou le transport ne permet pas de respecter les conditions applicables, ne considère pas automatiquement que tu peux interrompre ton repos. Vérifie le règlement en vigueur, la notice du tachygraphe et les consignes d’exploitation avant de compter sur cette exception.</p><p class="muted">Sur l’appareil, sélectionne le mode ferry/train conformément à sa notice et à la situation réelle. Ce mode ne remplace pas l’enregistrement correct des activités.</p></div>
+<div class="optional"><h3><span aria-hidden="true">OUT</span> — hors champ d’application</h3><p>OUT signifie « hors champ d’application » : il peut être utilisé uniquement lorsque le véhicule ou l’activité est réellement exempté des règles européennes relatives au tachygraphe, selon les exemptions applicables au transport et au trajet. Il ne signifie ni « arrêt », ni « pause », ni « travail non rémunéré », et ne doit pas servir à masquer une conduite soumise aux règles.</p><p><strong>Exemples à vérifier au cas par cas :</strong> certains déplacements effectués dans des situations légalement exemptées ou avec un véhicule utilisé pour une activité exclue du champ d’application. Le simple fait de circuler à vide, sur un site privé, ou d’être à proximité du dépôt ne suffit pas à autoriser OUT.</p><p class="muted">Avant de l’utiliser, vérifie l’exemption exacte applicable au véhicule, à la mission et au territoire. En cas de doute, laisse le tachygraphe enregistrer l’activité réelle et demande confirmation à l’exploitation.</p></div>
 <p class="muted">Référence officielle : <a href="https://transport.ec.europa.eu/transport-modes/road/social-provisions/driving-time-and-rest-periods_en" target="_blank" rel="noopener">Commission européenne — temps de conduite et repos</a> · <a href="https://transport.ec.europa.eu/transport-modes/road/mobility-package-i/tachographs_en" target="_blank" rel="noopener">Commission européenne — tachygraphes</a>.</p>
 </section>
 <script id="cabineo-pallet-calculator-script">(()=>{const ids=['pallet-length','pallet-width','pallet-size'];function calc(){const L=Number(document.getElementById(ids[0]).value),W=Number(document.getElementById(ids[1]).value),[a,b]=document.getElementById(ids[2]).value.split(',').map(Number);const long=Math.max(0,Math.floor((L+1e-8)/a)),wide=Math.max(0,Math.floor((W+1e-8)/b)),long2=Math.max(0,Math.floor((L+1e-8)/b)),wide2=Math.max(0,Math.floor((W+1e-8)/a));const n1=long*wide,n2=long2*wide2,best=Math.max(n1,n2);document.getElementById('pallet-long-count').textContent=best===n2&&n2>n1?long2:long;document.getElementById('pallet-wide-count').textContent=best===n2&&n2>n1?wide2:wide;document.getElementById('pallet-total').textContent=best;document.getElementById('pallet-area').textContent=(Math.max(0,L)*Math.max(0,W)).toLocaleString('fr-FR',{maximumFractionDigits:2})+' m²';document.getElementById('pallet-status').textContent=(!L||!W||L<0||W<0)?'Renseigne des dimensions valides.':'Capacité géométrique indicative : '+best+' palette(s) dans une disposition en rangées. Certaines dispositions mixtes peuvent changer le résultat ; vérifie le plan de chargement et les masses autorisées.'}ids.forEach(id=>document.getElementById(id).addEventListener('input',calc));ids.forEach(id=>document.getElementById(id).addEventListener('change',calc));calc()})();<\/script><script id=\"cabineo-charge-calculator-script\">(()=>{const a=document.getElementById('vehicle-ptac'),b=document.getElementById('vehicle-empty'),r=document.getElementById('vehicle-payload'),s=document.getElementById('vehicle-payload-status');function calc(){const ptac=Number(a.value),pv=Number(b.value),valid=a.value!==''&&b.value!==''&&ptac>0&&pv>=0;const v=ptac-pv;r.textContent=valid?v.toLocaleString('fr-FR')+' kg':'—';s.textContent=!valid?'Renseigne des masses valides.':v<0?'Attention : le poids à vide dépasse le PTAC saisi.':'Calcul théorique uniquement : contrôle aussi les charges par essieu et les limites de l’ensemble.'}a.addEventListener('input',calc);b.addEventListener('input',calc);calc()})();<\/script>
@@ -975,6 +1010,36 @@ async function importHistoryFile(event){
 })();
 <\/script>
 
+
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
 </body></html>
 </script>
 <script id="cabineo-payload-docs" type="application/x-cabineo-page">
@@ -1134,16 +1199,143 @@ renderDocs();
 })();
 <\/script>
 
+
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
 </body>
 
 <script id="cabineo-payload-fiche" type="application/x-cabineo-page">
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checklist marchandise — Cabinéo</title><style>.cabineo-brand{display:inline-flex;align-items:baseline;gap:0;color:#fff;text-decoration:none;line-height:1;font-size:34px;font-weight:950;letter-spacing:-1.5px}.cabineo-name{color:#fff!important;font-size:inherit;font-weight:950;letter-spacing:inherit}.cabineo-blue{color:var(--blue)!important}.cabineo-by{margin-left:4px;color:#fff!important;font-size:10px!important;font-weight:750;letter-spacing:0;line-height:1;white-space:nowrap}.top .cabineo-brand span{color:inherit}.top .cabineo-brand .cabineo-blue{color:var(--blue)!important}.top .cabineo-brand .cabineo-by{color:#fff!important}@media(max-width:600px){.cabineo-brand{font-size:29px}}:root{--blue:#7fc7f2;--ink:#121820;--muted:#66727f;--line:#dfe6ed}*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:var(--ink);font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:#080808;color:white;padding:24px clamp(18px,4vw,42px)}.brand{font-size:24px;font-weight:950;letter-spacing:-1px}.brand span{color:var(--blue)}.by{font-size:9px;margin-left:4px;font-weight:800;letter-spacing:0}.hero{max-width:1050px;margin:auto;padding:28px 0 14px}.kicker{color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:850}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-1.5px;margin:8px 0}.hero p{color:#d3dce4;max-width:720px}.wrap{max-width:1050px;margin:auto;padding:24px 18px 55px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #172a3a08}.card h2,.card h3{margin-top:0;line-height:1.2}.muted{color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:999px;padding:12px 18px;background:#080808;color:white;font:inherit;font-weight:800;cursor:pointer}.btn.secondary{background:#e8f5fc;color:#15374b;border:1px solid #b9e4fa}.pill{display:inline-block;background:#eaf7ff;color:#175879;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}.symbol{display:inline-grid;place-items:center;min-width:48px;height:48px;padding:5px;border-radius:14px;background:#e8f6ff;color:#153c54;font-size:27px;font-weight:900;flex-shrink:0}.item{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-bottom:1px solid #edf0f3}.item:last-child{border-bottom:0}.item p{margin:4px 0 0}.field{display:grid;gap:5px;font-weight:700;font-size:14px}.field input,.field textarea{width:100%;border:1px solid #d3dce4;border-radius:10px;padding:11px;font:inherit;font-weight:400}.checks{display:grid;gap:10px}.checks label{display:flex;gap:9px;align-items:flex-start}.checks input{margin-top:5px;accent-color:#147db2}.notice{background:#fff8e8;border:1px solid #f2dfae;border-radius:14px;padding:13px;color:#654b15;font-size:14px}.footer-note{color:#687482;font-size:12px;margin-top:22px}@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 13px 35px}.card{padding:17px}}@media print{body{background:white}.top{background:white;color:#111;padding:0 0 12px;border-bottom:2px solid #111}.top .kicker,.hero p{color:#333}.wrap{max-width:none;padding:12px 0}.card{box-shadow:none;break-inside:avoid}.actions,.no-print{display:none!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:14px 0}.hero h1{font-size:26px}.card{padding:12px;border-color:#bbb}}</style></head><body><header class="top"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="hero"><div class="kicker">OUTIL CHAUFFEUR · MARCHANDISE</div><h1>Checklist marchandise</h1><p>Vérifie la marchandise, les quantités et les informations utiles à la livraison.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Enregistrer la checklist en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour</button></div><section class="card"><h2>Identification de la mission</h2><div class="grid"><label class="field">Date et heure<input type="datetime-local"></label><label class="field">Conducteur<input placeholder="Nom et prénom"></label><label class="field">Tracteur / immatriculation<input placeholder="Immatriculation"></label><label class="field">Remorque / immatriculation<input placeholder="Si applicable"></label><label class="field">Client / lieu de livraison<input placeholder="Nom ou adresse"></label><label class="field">Référence de mission<input placeholder="N° de transport / commande"></label></div></section><section class="card" style="margin-top:14px"><h2>Repères à vérifier</h2><div class="checks"><label><input type="checkbox">Documents de bord et documents de transport disponibles.</label><label><input type="checkbox">État apparent du véhicule et de l’ensemble contrôlé.</label><label><input type="checkbox">Charge, répartition et arrimage adaptés à la marchandise.</label><label><input type="checkbox">Consignes du site, accès et équipements particuliers vérifiés.</label><label><input type="checkbox">Anomalies, réserves ou consignes particulières notées et transmises.</label></div><label class="field" style="margin-top:16px">Observations<textarea rows="4" placeholder="Anomalies, réserves, personnes informées, actions à suivre…"></textarea></label></section><section class="card" style="margin-top:14px"><h2>Avant de signer ou de repartir</h2><p>Vérifie que les informations correspondent à la situation réelle. En cas d’écart, de dommage ou de document manquant, signale-le selon la procédure de l’entreprise et conserve une trace factuelle.</p></section><p class="muted">Sur téléphone : appuie sur « Enregistrer la checklist en PDF », puis choisis « Enregistrer en PDF » ou « Enregistrer dans Fichiers » dans le menu d’impression/partage, selon ton appareil.</p><p class="footer-note">Support pédagogique Cabinéo. À adapter aux procédures de l’entreprise et à la situation réelle. Ce document ne remplace pas les documents réglementaires applicables.</p></main></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checklist marchandise — Cabinéo</title><style>.cabineo-brand{display:inline-flex;align-items:baseline;gap:0;color:#fff;text-decoration:none;line-height:1;font-size:34px;font-weight:950;letter-spacing:-1.5px}.cabineo-name{color:#fff!important;font-size:inherit;font-weight:950;letter-spacing:inherit}.cabineo-blue{color:var(--blue)!important}.cabineo-by{margin-left:4px;color:#fff!important;font-size:10px!important;font-weight:750;letter-spacing:0;line-height:1;white-space:nowrap}.top .cabineo-brand span{color:inherit}.top .cabineo-brand .cabineo-blue{color:var(--blue)!important}.top .cabineo-brand .cabineo-by{color:#fff!important}@media(max-width:600px){.cabineo-brand{font-size:29px}}:root{--blue:#7fc7f2;--ink:#121820;--muted:#66727f;--line:#dfe6ed}*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:var(--ink);font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:#080808;color:white;padding:24px clamp(18px,4vw,42px)}.brand{font-size:24px;font-weight:950;letter-spacing:-1px}.brand span{color:var(--blue)}.by{font-size:9px;margin-left:4px;font-weight:800;letter-spacing:0}.hero{max-width:1050px;margin:auto;padding:28px 0 14px}.kicker{color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:850}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-1.5px;margin:8px 0}.hero p{color:#d3dce4;max-width:720px}.wrap{max-width:1050px;margin:auto;padding:24px 18px 55px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #172a3a08}.card h2,.card h3{margin-top:0;line-height:1.2}.muted{color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:999px;padding:12px 18px;background:#080808;color:white;font:inherit;font-weight:800;cursor:pointer}.btn.secondary{background:#e8f5fc;color:#15374b;border:1px solid #b9e4fa}.pill{display:inline-block;background:#eaf7ff;color:#175879;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}.symbol{display:inline-grid;place-items:center;min-width:48px;height:48px;padding:5px;border-radius:14px;background:#e8f6ff;color:#153c54;font-size:27px;font-weight:900;flex-shrink:0}.item{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-bottom:1px solid #edf0f3}.item:last-child{border-bottom:0}.item p{margin:4px 0 0}.field{display:grid;gap:5px;font-weight:700;font-size:14px}.field input,.field textarea{width:100%;border:1px solid #d3dce4;border-radius:10px;padding:11px;font:inherit;font-weight:400}.checks{display:grid;gap:10px}.checks label{display:flex;gap:9px;align-items:flex-start}.checks input{margin-top:5px;accent-color:#147db2}.notice{background:#fff8e8;border:1px solid #f2dfae;border-radius:14px;padding:13px;color:#654b15;font-size:14px}.footer-note{color:#687482;font-size:12px;margin-top:22px}@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 13px 35px}.card{padding:17px}}@media print{body{background:white}.top{background:white;color:#111;padding:0 0 12px;border-bottom:2px solid #111}.top .kicker,.hero p{color:#333}.wrap{max-width:none;padding:12px 0}.card{box-shadow:none;break-inside:avoid}.actions,.no-print{display:none!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:14px 0}.hero h1{font-size:26px}.card{padding:12px;border-color:#bbb}}</style></head><body><header class="top"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="hero"><div class="kicker">OUTIL CHAUFFEUR · MARCHANDISE</div><h1>Checklist marchandise</h1><p>Vérifie la marchandise, les quantités et les informations utiles à la livraison.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Enregistrer la checklist en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour</button></div><section class="card"><h2>Identification de la mission</h2><div class="grid"><label class="field">Date et heure<input type="datetime-local"></label><label class="field">Conducteur<input placeholder="Nom et prénom"></label><label class="field">Tracteur / immatriculation<input placeholder="Immatriculation"></label><label class="field">Remorque / immatriculation<input placeholder="Si applicable"></label><label class="field">Client / lieu de livraison<input placeholder="Nom ou adresse"></label><label class="field">Référence de mission<input placeholder="N° de transport / commande"></label></div></section><section class="card" style="margin-top:14px"><h2>Repères à vérifier</h2><div class="checks"><label><input type="checkbox">Documents de bord et documents de transport disponibles.</label><label><input type="checkbox">État apparent du véhicule et de l’ensemble contrôlé.</label><label><input type="checkbox">Charge, répartition et arrimage adaptés à la marchandise.</label><label><input type="checkbox">Consignes du site, accès et équipements particuliers vérifiés.</label><label><input type="checkbox">Anomalies, réserves ou consignes particulières notées et transmises.</label></div><label class="field" style="margin-top:16px">Observations<textarea rows="4" placeholder="Anomalies, réserves, personnes informées, actions à suivre…"></textarea></label></section><section class="card" style="margin-top:14px"><h2>Avant de signer ou de repartir</h2><p>Vérifie que les informations correspondent à la situation réelle. En cas d’écart, de dommage ou de document manquant, signale-le selon la procédure de l’entreprise et conserve une trace factuelle.</p></section><p class="muted">Sur téléphone : appuie sur « Enregistrer la checklist en PDF », puis choisis « Enregistrer en PDF » ou « Enregistrer dans Fichiers » dans le menu d’impression/partage, selon ton appareil.</p><p class="footer-note">Support pédagogique Cabinéo. À adapter aux procédures de l’entreprise et à la situation réelle. Ce document ne remplace pas les documents réglementaires applicables.</p></main>
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
+</body></html>
 </script>
 <script id="cabineo-payload-predeparture" type="application/x-cabineo-page">
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checklist porteur / tracteur solo — Cabinéo</title><style>.cabineo-brand{display:inline-flex;align-items:baseline;gap:0;color:#fff;text-decoration:none;line-height:1;font-size:34px;font-weight:950;letter-spacing:-1.5px}.cabineo-name{color:#fff!important;font-size:inherit;font-weight:950;letter-spacing:inherit}.cabineo-blue{color:var(--blue)!important}.cabineo-by{margin-left:4px;color:#fff!important;font-size:10px!important;font-weight:750;letter-spacing:0;line-height:1;white-space:nowrap}.top .cabineo-brand span{color:inherit}.top .cabineo-brand .cabineo-blue{color:var(--blue)!important}.top .cabineo-brand .cabineo-by{color:#fff!important}@media(max-width:600px){.cabineo-brand{font-size:29px}}:root{--blue:#7fc7f2;--ink:#121820;--muted:#66727f;--line:#dfe6ed}*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:var(--ink);font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:#080808;color:white;padding:24px clamp(18px,4vw,42px)}.brand{font-size:24px;font-weight:950;letter-spacing:-1px}.brand span{color:var(--blue)}.by{font-size:9px;margin-left:4px;font-weight:800;letter-spacing:0}.hero{max-width:1050px;margin:auto;padding:28px 0 14px}.kicker{color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:850}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-1.5px;margin:8px 0}.hero p{color:#d3dce4;max-width:720px}.wrap{max-width:1050px;margin:auto;padding:24px 18px 55px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #172a3a08}.card h2,.card h3{margin-top:0;line-height:1.2}.muted{color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:999px;padding:12px 18px;background:#080808;color:white;font:inherit;font-weight:800;cursor:pointer}.btn.secondary{background:#e8f5fc;color:#15374b;border:1px solid #b9e4fa}.pill{display:inline-block;background:#eaf7ff;color:#175879;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}.symbol{display:inline-grid;place-items:center;min-width:48px;height:48px;padding:5px;border-radius:14px;background:#e8f6ff;color:#153c54;font-size:27px;font-weight:900;flex-shrink:0}.item{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-bottom:1px solid #edf0f3}.item:last-child{border-bottom:0}.item p{margin:4px 0 0}.field{display:grid;gap:5px;font-weight:700;font-size:14px}.field input,.field textarea{width:100%;border:1px solid #d3dce4;border-radius:10px;padding:11px;font:inherit;font-weight:400}.checks{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%}.checks label{display:flex;gap:9px;align-items:flex-start;width:100%;min-width:0;white-space:normal;line-height:1.55;overflow-wrap:anywhere}.checks input{margin-top:5px;accent-color:#147db2}.notice{background:#fff8e8;border:1px solid #f2dfae;border-radius:14px;padding:13px;color:#654b15;font-size:14px}.footer-note{color:#687482;font-size:12px;margin-top:22px}@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 13px 35px}.card{padding:17px}}@media print{body{background:white}.top{background:white;color:#111;padding:0 0 12px;border-bottom:2px solid #111}.top .kicker,.hero p{color:#333}.wrap{max-width:none;padding:12px 0}.card{box-shadow:none;break-inside:avoid}.actions,.no-print{display:none!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:14px 0}.hero h1{font-size:26px}.card{padding:12px;border-color:#bbb}}</style><style>.checks{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important;width:100%}.checks label{display:flex!important;align-items:flex-start!important;gap:9px!important;white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.55!important;min-width:0!important}.checks label input{flex:0 0 auto!important}</style></head><body><header class="top"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="hero"><div class="kicker">OUTIL CHAUFFEUR · VÉHICULE</div><h1>Checklist porteur / tracteur solo</h1><p>Contrôles adaptés au porteur et au tracteur utilisé sans semi-remorque.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Enregistrer la checklist en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour</button></div><section class="card"><h2>1. Véhicule et ensemble</h2><div class="checks"><label><input type="checkbox"> Pneus, roues et fixations : contrôle visuel effectué.</label><label><input type="checkbox"> Éclairage, signalisation, vitrages, rétroviseurs et visibilité vérifiés.</label><label><input type="checkbox"> Absence d’anomalie évidente, de fuite ou de dommage visible.</label><label><input type="checkbox"> Équipements de sécurité et équipements requis disponibles.</label><label><input type="checkbox"> Attelage, raccordements et remorque contrôlés si applicable.</label></div><label><input type="checkbox"> Porteur : état du hayon, commandes, arrêts d’urgence et dispositifs de sécurité contrôlés si le véhicule en est équipé.</label><label><input type="checkbox"> Porteur : caisse, portes, ridelles, bâche ou benne vérifiées selon la carrosserie.</label><label><input type="checkbox"> Tracteur solo : sellette et zone d’attelage visuellement contrôlées ; aucun élément ne gêne la circulation lorsque le tracteur roule sans semi-remorque.</label><label><input type="checkbox"> Tracteur solo : flexibles, raccords et câbles non utilisés rangés et protégés ; feux arrière et plaque visibles.</label><label><input type="checkbox"> Équipements spécifiques (prise de force, grue, hayon ou autre) vérifiés uniquement s’ils sont présents et utilisés.</label></section><section class="card" style="margin-top:14px"><h2>2. Documents et mission</h2><div class="checks"><label><input type="checkbox"> Permis, carte conducteur et documents requis disponibles.</label><label><input type="checkbox"> Carte tachygraphe insérée et activité correcte sélectionnée.</label><label><input type="checkbox"> Itinéraire, créneaux, restrictions et consignes de livraison connus.</label><label><input type="checkbox"> Documents de transport et informations sur la marchandise vérifiés.</label></div></section><section class="card" style="margin-top:14px"><h2>3. Chargement et arrimage</h2><div class="checks"><label><input type="checkbox"> Charge et répartition vérifiées au regard des limites applicables.</label><label><input type="checkbox"> Marchandise calée et arrimée avec des moyens adaptés.</label><label><input type="checkbox"> Portes, ridelles, bâche et dispositifs de retenue sécurisés.</label><label><input type="checkbox"> Anomalies ou réserves signalées avant le départ.</label></div></section><section class="card" style="margin-top:14px"><h2>4. Trace du contrôle</h2><div class="grid"><label class="field">Conducteur<input placeholder="Nom et prénom"></label><label class="field">Date / heure<input type="datetime-local"></label><label class="field">Immatriculation<input placeholder="Tracteur et remorque si applicable"></label><label class="field">Anomalies / actions<textarea rows="2" placeholder="Décrire l’écart et la personne informée"></textarea></label></div><p class="notice" style="margin-top:14px">Cette liste est un aide-mémoire général. Elle ne remplace pas les contrôles prévus par le constructeur, l’employeur, la mission ou les textes applicables. Une anomalie compromettant la sécurité doit être traitée avant de prendre la route.</p></section><p class="muted">Pour conserver la fiche : appuie sur « Enregistrer la checklist en PDF », puis choisis le PDF dans le menu d’impression ou de partage.</p><p class="footer-note">Support pédagogique Cabinéo. À adapter aux procédures de l’entreprise et à la situation réelle. Ce document ne remplace pas les documents réglementaires applicables.</p></main></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checklist porteur / tracteur solo — Cabinéo</title><style>.cabineo-brand{display:inline-flex;align-items:baseline;gap:0;color:#fff;text-decoration:none;line-height:1;font-size:34px;font-weight:950;letter-spacing:-1.5px}.cabineo-name{color:#fff!important;font-size:inherit;font-weight:950;letter-spacing:inherit}.cabineo-blue{color:var(--blue)!important}.cabineo-by{margin-left:4px;color:#fff!important;font-size:10px!important;font-weight:750;letter-spacing:0;line-height:1;white-space:nowrap}.top .cabineo-brand span{color:inherit}.top .cabineo-brand .cabineo-blue{color:var(--blue)!important}.top .cabineo-brand .cabineo-by{color:#fff!important}@media(max-width:600px){.cabineo-brand{font-size:29px}}:root{--blue:#7fc7f2;--ink:#121820;--muted:#66727f;--line:#dfe6ed}*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:var(--ink);font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:#080808;color:white;padding:24px clamp(18px,4vw,42px)}.brand{font-size:24px;font-weight:950;letter-spacing:-1px}.brand span{color:var(--blue)}.by{font-size:9px;margin-left:4px;font-weight:800;letter-spacing:0}.hero{max-width:1050px;margin:auto;padding:28px 0 14px}.kicker{color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:850}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-1.5px;margin:8px 0}.hero p{color:#d3dce4;max-width:720px}.wrap{max-width:1050px;margin:auto;padding:24px 18px 55px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #172a3a08}.card h2,.card h3{margin-top:0;line-height:1.2}.muted{color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:999px;padding:12px 18px;background:#080808;color:white;font:inherit;font-weight:800;cursor:pointer}.btn.secondary{background:#e8f5fc;color:#15374b;border:1px solid #b9e4fa}.pill{display:inline-block;background:#eaf7ff;color:#175879;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}.symbol{display:inline-grid;place-items:center;min-width:48px;height:48px;padding:5px;border-radius:14px;background:#e8f6ff;color:#153c54;font-size:27px;font-weight:900;flex-shrink:0}.item{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-bottom:1px solid #edf0f3}.item:last-child{border-bottom:0}.item p{margin:4px 0 0}.field{display:grid;gap:5px;font-weight:700;font-size:14px}.field input,.field textarea{width:100%;border:1px solid #d3dce4;border-radius:10px;padding:11px;font:inherit;font-weight:400}.checks{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%}.checks label{display:flex;gap:9px;align-items:flex-start;width:100%;min-width:0;white-space:normal;line-height:1.55;overflow-wrap:anywhere}.checks input{margin-top:5px;accent-color:#147db2}.notice{background:#fff8e8;border:1px solid #f2dfae;border-radius:14px;padding:13px;color:#654b15;font-size:14px}.footer-note{color:#687482;font-size:12px;margin-top:22px}@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 13px 35px}.card{padding:17px}}@media print{body{background:white}.top{background:white;color:#111;padding:0 0 12px;border-bottom:2px solid #111}.top .kicker,.hero p{color:#333}.wrap{max-width:none;padding:12px 0}.card{box-shadow:none;break-inside:avoid}.actions,.no-print{display:none!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:14px 0}.hero h1{font-size:26px}.card{padding:12px;border-color:#bbb}}
+/* Checklist harmonisée : une ligne par contrôle, cases séparées du texte */
+.checks{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;align-items:start!important}
+.checks label{display:grid!important;grid-template-columns:22px minmax(0,1fr)!important;align-items:start!important;gap:10px!important;width:100%!important;min-width:0!important;line-height:1.55!important;margin:0!important;padding:0 0 11px!important;border-bottom:1px solid #edf0f3!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important}
+.checks label input[type=checkbox]{display:block!important;width:18px!important;height:18px!important;min-width:18px!important;margin:5px 0 0!important;flex:none!important}
+.checks label span{display:block!important;min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important}
+.checks label:last-child{border-bottom:0!important}
+</style><style>.checks{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important;width:100%}.checks label{display:flex!important;align-items:flex-start!important;gap:9px!important;white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.55!important;min-width:0!important}.checks label input{flex:0 0 auto!important}</style></head><body><header class="top"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="hero"><div class="kicker">OUTIL CHAUFFEUR · VÉHICULE</div><h1>Checklist porteur / tracteur solo</h1><p>Contrôles adaptés au porteur et au tracteur utilisé sans semi-remorque.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Enregistrer la checklist en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour</button></div><section class="card"><h2>1. Véhicule et ensemble</h2><div class="checks"><label><input type="checkbox"> Pneus, roues et fixations : contrôle visuel effectué.</label><label><input type="checkbox"> Éclairage, signalisation, vitrages, rétroviseurs et visibilité vérifiés.</label><label><input type="checkbox"> Absence d’anomalie évidente, de fuite ou de dommage visible.</label><label><input type="checkbox"> Équipements de sécurité et équipements requis disponibles.</label><label><input type="checkbox"> Attelage, raccordements et remorque contrôlés si applicable.</label><label><input type="checkbox"> Porteur : état du hayon, commandes, arrêts d’urgence et dispositifs de sécurité contrôlés si le véhicule en est équipé.</label><label><input type="checkbox"> Porteur : caisse, portes, ridelles, bâche ou benne vérifiées selon la carrosserie.</label><label><input type="checkbox"> Tracteur solo : sellette et zone d’attelage visuellement contrôlées ; aucun élément ne gêne la circulation lorsque le tracteur roule sans semi-remorque.</label><label><input type="checkbox"> Tracteur solo : flexibles, raccords et câbles non utilisés rangés et protégés ; feux arrière et plaque visibles.</label><label><input type="checkbox"> Équipements spécifiques (prise de force, grue, hayon ou autre) vérifiés uniquement s’ils sont présents et utilisés.</label></div></section><section class="card" style="margin-top:14px"><h2>2. Documents et mission</h2><div class="checks"><label><input type="checkbox"> Permis, carte conducteur et documents requis disponibles.</label><label><input type="checkbox"> Carte tachygraphe insérée et activité correcte sélectionnée.</label><label><input type="checkbox"> Itinéraire, créneaux, restrictions et consignes de livraison connus.</label><label><input type="checkbox"> Documents de transport et informations sur la marchandise vérifiés.</label></div></section><section class="card" style="margin-top:14px"><h2>3. Chargement et arrimage</h2><div class="checks"><label><input type="checkbox"> Charge et répartition vérifiées au regard des limites applicables.</label><label><input type="checkbox"> Marchandise calée et arrimée avec des moyens adaptés.</label><label><input type="checkbox"> Portes, ridelles, bâche et dispositifs de retenue sécurisés.</label><label><input type="checkbox"> Anomalies ou réserves signalées avant le départ.</label></div></section><section class="card" style="margin-top:14px"><h2>4. Trace du contrôle</h2><div class="grid"><label class="field">Conducteur<input placeholder="Nom et prénom"></label><label class="field">Date / heure<input type="datetime-local"></label><label class="field">Immatriculation<input placeholder="Tracteur et remorque si applicable"></label><label class="field">Anomalies / actions<textarea rows="2" placeholder="Décrire l’écart et la personne informée"></textarea></label></div><p class="notice" style="margin-top:14px">Cette liste est un aide-mémoire général. Elle ne remplace pas les contrôles prévus par le constructeur, l’employeur, la mission ou les textes applicables. Une anomalie compromettant la sécurité doit être traitée avant de prendre la route.</p></section><p class="muted">Pour conserver la fiche : appuie sur « Enregistrer la checklist en PDF », puis choisis le PDF dans le menu d’impression ou de partage.</p><p class="footer-note">Support pédagogique Cabinéo. À adapter aux procédures de l’entreprise et à la situation réelle. Ce document ne remplace pas les documents réglementaires applicables.</p></main>
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
+</body></html>
 </script>
 <script id="cabineo-payload-tachy" type="application/x-cabineo-page">
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comprendre le chronotachygraphe — Cabinéo</title><style>.cabineo-brand{display:inline-flex;align-items:baseline;gap:0;color:#fff;text-decoration:none;line-height:1;font-size:34px;font-weight:950;letter-spacing:-1.5px}.cabineo-name{color:#fff!important;font-size:inherit;font-weight:950;letter-spacing:inherit}.cabineo-blue{color:var(--blue)!important}.cabineo-by{margin-left:4px;color:#fff!important;font-size:10px!important;font-weight:750;letter-spacing:0;line-height:1;white-space:nowrap}.top .cabineo-brand span{color:inherit}.top .cabineo-brand .cabineo-blue{color:var(--blue)!important}.top .cabineo-brand .cabineo-by{color:#fff!important}@media(max-width:600px){.cabineo-brand{font-size:29px}}:root{--blue:#7fc7f2;--ink:#121820;--muted:#66727f;--line:#dfe6ed}*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:var(--ink);font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:#080808;color:white;padding:24px clamp(18px,4vw,42px)}.brand{font-size:24px;font-weight:950;letter-spacing:-1px}.brand span{color:var(--blue)}.by{font-size:9px;margin-left:4px;font-weight:800;letter-spacing:0}.hero{max-width:1050px;margin:auto;padding:28px 0 14px}.kicker{color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:850}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-1.5px;margin:8px 0}.hero p{color:#d3dce4;max-width:720px}.wrap{max-width:1050px;margin:auto;padding:24px 18px 55px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #172a3a08}.card h2,.card h3{margin-top:0;line-height:1.2}.muted{color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:999px;padding:12px 18px;background:#080808;color:white;font:inherit;font-weight:800;cursor:pointer}.btn.secondary{background:#e8f5fc;color:#15374b;border:1px solid #b9e4fa}.pill{display:inline-block;background:#eaf7ff;color:#175879;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}.symbol{display:inline-grid;place-items:center;min-width:48px;height:48px;padding:5px;border-radius:14px;background:#e8f6ff;color:#153c54;font-size:27px;font-weight:900;flex-shrink:0}.item{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-bottom:1px solid #edf0f3}.item:last-child{border-bottom:0}.item p{margin:4px 0 0}.field{display:grid;gap:5px;font-weight:700;font-size:14px}.field input,.field textarea{width:100%;border:1px solid #d3dce4;border-radius:10px;padding:11px;font:inherit;font-weight:400}.checks{display:grid;gap:10px}.checks label{display:flex;gap:9px;align-items:flex-start}.checks input{margin-top:5px;accent-color:#147db2}.notice{background:#fff8e8;border:1px solid #f2dfae;border-radius:14px;padding:13px;color:#654b15;font-size:14px}.footer-note{color:#687482;font-size:12px;margin-top:22px}@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 13px 35px}.card{padding:17px}}@media print{body{background:white}.top{background:white;color:#111;padding:0 0 12px;border-bottom:2px solid #111}.top .kicker,.hero p{color:#333}.wrap{max-width:none;padding:12px 0}.card{box-shadow:none;break-inside:avoid}.actions,.no-print{display:none!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:14px 0}.hero h1{font-size:26px}.card{padding:12px;border-color:#bbb}}</style></head><body><header class="top"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="hero"><div class="kicker">RÉVISION CIBLÉE · PICTOGRAMMES</div><h1>Comprendre le chronotachygraphe</h1><p>Comprends les activités enregistrées, les symboles et les bons réflexes au quotidien.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Imprimer / enregistrer ce mémo en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour</button></div><div class="notice">Les pictogrammes ci-dessous sont des repères visuels simplifiés. Leur apparence exacte peut varier selon la marque et la génération du chronotachygraphe. Vérifie toujours le symbole affiché sur ton appareil.</div><div class="grid" style="margin-top:14px"><section class="card"><h2>Les activités principales</h2><div class="item"><span class="symbol">◉</span><div><h3>Conduite</h3><p>Temps passé à conduire. Sur un appareil numérique, l’activité est généralement enregistrée automatiquement lorsque le véhicule roule.</p></div></div><div class="item"><span class="symbol">🔨</span><div><h3>Autre travail</h3><p>Chargement, déchargement, entretien, formalités et autres tâches professionnelles. Ce n’est pas du repos.</p></div></div><div class="item"><span class="symbol">▣</span><div><h3>Disponibilité</h3><p>Période d’attente définie pendant laquelle le conducteur n’effectue pas de travail, mais doit rester disponible selon les conditions prévues. Une attente n’est pas automatiquement une disponibilité.</p></div></div><div class="item"><span class="symbol">🛏</span><div><h3>Pause / repos</h3><p>Période où le conducteur peut disposer librement de son temps, sous réserve des règles applicables. Ne l’utilise pas pour enregistrer une tâche de travail.</p></div></div></section><section class="card"><h2>Les opérations à connaître</h2><div class="item"><span class="symbol">↔</span><div><h3>Ferry / train</h3><p>Fonction spécifique à utiliser uniquement lorsque les conditions réglementaires de repos interrompu par un trajet en ferry ou en train sont réunies. Suis la procédure propre à ton appareil.</p></div></div><div class="item"><span class="symbol">OUT</span><div><h3>Hors champ (OUT)</h3><p>Indique une utilisation hors du champ d’application dans les situations où cela est autorisé. Ce n’est pas un mode pour contourner les limites de conduite ou masquer une activité.</p></div></div><div class="item"><span class="symbol">⇥</span><div><h3>Saisie manuelle</h3><p>À l’insertion de la carte, complète les périodes manquantes avec l’activité réellement effectuée : repos, autre travail ou disponibilité selon le cas.</p></div></div><div class="item"><span class="symbol">⌖</span><div><h3>Lieu de début / fin</h3><p>Renseigne les pays ou lieux demandés par le tachygraphe et les règles applicables. Avec certains tachygraphes intelligents, certaines données sont enregistrées automatiquement.</p></div></div></section><section class="card"><h2>Réflexes avant de repartir</h2><div class="checks"><label><input type="checkbox"> Vérifier que la bonne carte conducteur est insérée.</label><label><input type="checkbox"> Confirmer l’activité affichée et corriger si nécessaire.</label><label><input type="checkbox"> Compléter les activités manquantes après une période sans carte.</label><label><input type="checkbox"> Vérifier les avertissements et les saisies de début/fin demandées.</label><label><input type="checkbox"> En cas de panne, suivre la procédure réglementaire et celle de l’entreprise.</label></div></section><section class="card"><h2>Pour réviser</h2><p><strong>Question :</strong> tu décharges une palette chez un client. Quelle activité sélectionner ?</p><p><strong>Réponse :</strong> autre travail, car le déchargement est une tâche professionnelle.</p><hr><p><strong>Question :</strong> tu attends un créneau et dois rester disponible selon les conditions convenues. Est-ce automatiquement du repos ?</p><p><strong>Réponse :</strong> non. Il faut déterminer si la période répond aux critères de disponibilité ou relève d’une autre activité.</p><p class="muted">Référence technique : <a href="https://transport.ec.europa.eu/transport-modes/road/mobility-package-i/tachographs_en" target="_blank" rel="noopener">Commission européenne — Tachygraphes</a> · <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32014R0165" target="_blank" rel="noopener">Règlement (UE) nº 165/2014</a>.</p></section></div><p class="footer-note">Support pédagogique Cabinéo. À adapter aux procédures de l’entreprise et à la situation réelle. Ce document ne remplace pas les documents réglementaires applicables.</p></main></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comprendre le chronotachygraphe — Cabinéo</title><style>.cabineo-brand{display:inline-flex;align-items:baseline;gap:0;color:#fff;text-decoration:none;line-height:1;font-size:34px;font-weight:950;letter-spacing:-1.5px}.cabineo-name{color:#fff!important;font-size:inherit;font-weight:950;letter-spacing:inherit}.cabineo-blue{color:var(--blue)!important}.cabineo-by{margin-left:4px;color:#fff!important;font-size:10px!important;font-weight:750;letter-spacing:0;line-height:1;white-space:nowrap}.top .cabineo-brand span{color:inherit}.top .cabineo-brand .cabineo-blue{color:var(--blue)!important}.top .cabineo-brand .cabineo-by{color:#fff!important}@media(max-width:600px){.cabineo-brand{font-size:29px}}:root{--blue:#7fc7f2;--ink:#121820;--muted:#66727f;--line:#dfe6ed}*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:var(--ink);font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:#080808;color:white;padding:24px clamp(18px,4vw,42px)}.brand{font-size:24px;font-weight:950;letter-spacing:-1px}.brand span{color:var(--blue)}.by{font-size:9px;margin-left:4px;font-weight:800;letter-spacing:0}.hero{max-width:1050px;margin:auto;padding:28px 0 14px}.kicker{color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:850}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-1.5px;margin:8px 0}.hero p{color:#d3dce4;max-width:720px}.wrap{max-width:1050px;margin:auto;padding:24px 18px 55px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #172a3a08}.card h2,.card h3{margin-top:0;line-height:1.2}.muted{color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:999px;padding:12px 18px;background:#080808;color:white;font:inherit;font-weight:800;cursor:pointer}.btn.secondary{background:#e8f5fc;color:#15374b;border:1px solid #b9e4fa}.pill{display:inline-block;background:#eaf7ff;color:#175879;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}.symbol{display:inline-grid;place-items:center;min-width:48px;height:48px;padding:5px;border-radius:14px;background:#e8f6ff;color:#153c54;font-size:27px;font-weight:900;flex-shrink:0}.item{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-bottom:1px solid #edf0f3}.item:last-child{border-bottom:0}.item p{margin:4px 0 0}.field{display:grid;gap:5px;font-weight:700;font-size:14px}.field input,.field textarea{width:100%;border:1px solid #d3dce4;border-radius:10px;padding:11px;font:inherit;font-weight:400}.checks{display:grid;gap:10px}.checks label{display:flex;gap:9px;align-items:flex-start}.checks input{margin-top:5px;accent-color:#147db2}.notice{background:#fff8e8;border:1px solid #f2dfae;border-radius:14px;padding:13px;color:#654b15;font-size:14px}.footer-note{color:#687482;font-size:12px;margin-top:22px}@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 13px 35px}.card{padding:17px}}@media print{body{background:white}.top{background:white;color:#111;padding:0 0 12px;border-bottom:2px solid #111}.top .kicker,.hero p{color:#333}.wrap{max-width:none;padding:12px 0}.card{box-shadow:none;break-inside:avoid}.actions,.no-print{display:none!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:14px 0}.hero h1{font-size:26px}.card{padding:12px;border-color:#bbb}}</style></head><body><header class="top"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="hero"><div class="kicker">RÉVISION CIBLÉE · PICTOGRAMMES</div><h1>Comprendre le chronotachygraphe</h1><p>Comprends les activités enregistrées, les symboles et les bons réflexes au quotidien.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Imprimer / enregistrer ce mémo en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour</button></div><div class="notice">Les pictogrammes ci-dessous sont des repères visuels simplifiés. Leur apparence exacte peut varier selon la marque et la génération du chronotachygraphe. Vérifie toujours le symbole affiché sur ton appareil.</div><div class="grid" style="margin-top:14px"><section class="card"><h2>Les activités principales</h2><div class="item"><span class="symbol">◉</span><div><h3>Conduite</h3><p>Temps passé à conduire. Sur un appareil numérique, l’activité est généralement enregistrée automatiquement lorsque le véhicule roule.</p></div></div><div class="item"><span class="symbol">🔨</span><div><h3>Autre travail</h3><p>Chargement, déchargement, entretien, formalités et autres tâches professionnelles. Ce n’est pas du repos.</p></div></div><div class="item"><span class="symbol">▣</span><div><h3>Disponibilité</h3><p>Période d’attente définie pendant laquelle le conducteur n’effectue pas de travail, mais doit rester disponible selon les conditions prévues. Une attente n’est pas automatiquement une disponibilité.</p></div></div><div class="item"><span class="symbol">🛏</span><div><h3>Pause / repos</h3><p>Période où le conducteur peut disposer librement de son temps, sous réserve des règles applicables. Ne l’utilise pas pour enregistrer une tâche de travail.</p></div></div></section><section class="card"><h2>Les opérations à connaître</h2><div class="item"><span class="symbol">↔</span><div><h3>Ferry / train</h3><p>Fonction spécifique à utiliser uniquement lorsque les conditions réglementaires de repos interrompu par un trajet en ferry ou en train sont réunies. Suis la procédure propre à ton appareil.</p></div></div><div class="item"><span class="symbol">OUT</span><div><h3>Hors champ (OUT)</h3><p>Indique une utilisation hors du champ d’application dans les situations où cela est autorisé. Ce n’est pas un mode pour contourner les limites de conduite ou masquer une activité.</p></div></div><div class="item"><span class="symbol">⇥</span><div><h3>Saisie manuelle</h3><p>À l’insertion de la carte, complète les périodes manquantes avec l’activité réellement effectuée : repos, autre travail ou disponibilité selon le cas.</p></div></div><div class="item"><span class="symbol">⌖</span><div><h3>Lieu de début / fin</h3><p>Renseigne les pays ou lieux demandés par le tachygraphe et les règles applicables. Avec certains tachygraphes intelligents, certaines données sont enregistrées automatiquement.</p></div></div></section><section class="card"><h2>Réflexes avant de repartir</h2><div class="checks"><label><input type="checkbox"> Vérifier que la bonne carte conducteur est insérée.</label><label><input type="checkbox"> Confirmer l’activité affichée et corriger si nécessaire.</label><label><input type="checkbox"> Compléter les activités manquantes après une période sans carte.</label><label><input type="checkbox"> Vérifier les avertissements et les saisies de début/fin demandées.</label><label><input type="checkbox"> En cas de panne, suivre la procédure réglementaire et celle de l’entreprise.</label></div></section><section class="card"><h2>Pour réviser</h2><p><strong>Question :</strong> tu décharges une palette chez un client. Quelle activité sélectionner ?</p><p><strong>Réponse :</strong> autre travail, car le déchargement est une tâche professionnelle.</p><hr><p><strong>Question :</strong> tu attends un créneau et dois rester disponible selon les conditions convenues. Est-ce automatiquement du repos ?</p><p><strong>Réponse :</strong> non. Il faut déterminer si la période répond aux critères de disponibilité ou relève d’une autre activité.</p><p class="muted">Référence technique : <a href="https://transport.ec.europa.eu/transport-modes/road/mobility-package-i/tachographs_en" target="_blank" rel="noopener">Commission européenne — Tachygraphes</a> · <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32014R0165" target="_blank" rel="noopener">Règlement (UE) nº 165/2014</a>.</p></section></div><p class="footer-note">Support pédagogique Cabinéo. À adapter aux procédures de l’entreprise et à la situation réelle. Ce document ne remplace pas les documents réglementaires applicables.</p></main>
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
+</body></html>
 </script>
 <script id="cabineo-payload-learner" type="application/x-cabineo-page">
 
@@ -3354,11 +3546,71 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
 })();
 <\/script>
 
+
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
 </body>
 </html>
 </script>
 <script id="cabineo-payload-forms" type="application/x-cabineo-page">
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080808"><title>Fiches pratiques Cabinéo</title><style>body{margin:0;background:#f4f7f9;color:#171a20;font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:#080808;color:#fff;padding:22px clamp(18px,4vw,42px)}.top-inner,.wrap{max-width:1050px;margin:0 auto}.cabineo-brand{display:inline-flex;align-items:baseline;color:#fff;text-decoration:none;line-height:1;font-size:34px;font-weight:950;letter-spacing:-1.5px}.cabineo-blue{color:#7fc7f2}.cabineo-by{font-size:10px;margin-left:4px;font-weight:750}.kicker{margin-top:22px;color:#7fc7f2;font-size:12px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}h1{font-size:clamp(30px,4vw,44px);line-height:1.08;margin:8px 0}header p{color:#e1e8ed;margin:10px 0 0}.wrap{padding:22px clamp(14px,3vw,28px) 100px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}.btn{border:1px solid #111;background:#111;color:#fff;border-radius:999px;padding:11px 16px;font:inherit;font-size:.9rem;font-weight:800;cursor:pointer}.btn.secondary{background:#fff;color:#111;border-color:#d6dde4}.panel{max-width:1050px;margin:0 auto 18px;padding:20px;background:#fff;border:1px solid #e0e5eb;border-radius:18px}.fieldgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:block;margin:13px 0}.field span{display:block;font-weight:700;margin-bottom:6px}.field input,.field textarea,.field select{box-sizing:border-box;width:100%;padding:11px;border:1px solid #d5dce4;border-radius:9px;font:inherit;background:#fff;color:#171a20}.field textarea{min-height:100px;resize:vertical}@media(max-width:600px){.fieldgrid{grid-template-columns:1fr}.cabineo-brand{font-size:29px}}@media print{.no-print{display:none!important}body{background:#fff}.panel{border:0;padding:0}}</style></head><body><header class="top"><div class="top-inner"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span>Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="kicker">OUTILS CHAUFFEUR · DOCUMENTS DE MISSION</div><h1>Fiches pratiques Cabinéo</h1><p>Remplis une fiche sur ton téléphone, puis imprime-la ou enregistre-la en PDF. Aucun compte nécessaire.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Imprimer / enregistrer en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour à l’accueil</button></div><section class="panel"><label class="field"><span>Choisir une fiche</span><select id="choixModele"><option>Contrôle avant départ</option><option>Suivi de livraison</option><option>Signalement d’anomalie</option><option>Prise de consignes</option></select></label><div id="formFiche"></div><div class="actions no-print"><button class="btn" onclick="window.print()">Imprimer / PDF</button><button class="btn secondary" onclick="sauver()">Enregistrer sur cet appareil</button><button class="btn secondary" onclick="restaurer()">Restaurer la fiche</button><button class="btn secondary" onclick="effacer()">Effacer</button></div></section></main><script>const templates={"Contrôle avant départ":[["Date","date"],["Conducteur","text"],["Véhicule / immatriculation","text"],["Référence de mission","text"],["Documents vérifiés","textarea"],["Contrôles effectués","textarea"],["Anomalies constatées","textarea"]],"Suivi de livraison":[["Date","date"],["Conducteur","text"],["Référence de mission","text"],["Client / destinataire","text"],["Adresse de livraison","text"],["Marchandise / quantité","textarea"],["Heure d’arrivée","time"],["Heure de départ","time"],["Résultat de livraison","select"],["Réserves / dommages / manquants","textarea"],["Nom du réceptionnaire","text"],["Observations","textarea"]],"Signalement d’anomalie":[["Date et heure","datetime-local"],["Conducteur","text"],["Référence de mission","text"],["Lieu","text"],["Type d’anomalie","selectAnomaly"],["Description factuelle","textarea"],["Personne informée","text"],["Mesures prises","textarea"],["Photos / pièces jointes à conserver","textarea"]],"Prise de consignes":[["Date","date"],["Conducteur","text"],["Véhicule / immatriculation","text"],["Mission","text"],["Itinéraire / créneaux","textarea"],["Marchandise et consignes","textarea"],["Documents nécessaires","textarea"],["Risques / restrictions signalés","textarea"],["Notes complémentaires","textarea"]]};const key='cabineo-fiches-pratiques-v1';function render(){const name=document.getElementById('choixModele').value;document.getElementById('formFiche').innerHTML=templates[name].map(([label,type],i)=>{let control=type==='textarea'?'<textarea data-field="'+i+'"></textarea>':type==='select'||type==='selectAnomaly'?'<select data-field="'+i+'">'+(type==='select'?['À sélectionner','Livraison complète','Livraison partielle','Livraison refusée']:['À sélectionner','Véhicule','Chargement','Livraison','Sécurité','Autre']).map(v=>'<option>'+v+'</option>').join('')+'</select>':'<input data-field="'+i+'" type="'+type+'">';return '<label class="field"><span>'+label+'</span>'+control+'</label>'}).join('');restoreFields()}function save(){const data={template:document.getElementById('choixModele').value,fields:[...document.querySelectorAll('[data-field]')].map(x=>x.value)};try{localStorage.setItem(key,JSON.stringify(data));alert('Fiche enregistrée sur cet appareil.')}catch(e){alert('Enregistrement local indisponible dans ce navigateur. Utilise Imprimer / PDF.')}}function restoreFields(){try{const d=JSON.parse(localStorage.getItem(key)||'null');if(!d||d.template!==document.getElementById('choixModele').value)return;document.querySelectorAll('[data-field]').forEach((x,i)=>x.value=d.fields[i]||'')}catch(e){}}function restore(){try{const d=JSON.parse(localStorage.getItem(key)||'null');if(d){document.getElementById('choixModele').value=d.template;render();}}catch(e){}}function clearForm(){document.querySelectorAll('[data-field]').forEach(x=>x.value='');try{localStorage.removeItem(key)}catch(e){}}document.getElementById('choixModele').addEventListener('change',render);window.sauver=save;window.restaurer=restore;window.effacer=clearForm;render();<\/script></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080808"><title>Fiches pratiques</title><style>body{margin:0;background:#f4f7f9;color:#171a20;font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:#080808;color:#fff;padding:22px clamp(18px,4vw,42px)}.top-inner,.wrap{max-width:1050px;margin:0 auto}.cabineo-brand{display:inline-flex;align-items:baseline;color:#fff;text-decoration:none;line-height:1;font-size:34px;font-weight:950;letter-spacing:-1.5px}.cabineo-blue{color:#7fc7f2}.cabineo-by{font-size:10px;margin-left:4px;font-weight:750}.kicker{margin-top:22px;color:#7fc7f2;font-size:12px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}h1{font-size:clamp(30px,4vw,44px);line-height:1.08;margin:8px 0}header p{color:#e1e8ed;margin:10px 0 0}.wrap{padding:22px clamp(14px,3vw,28px) 100px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}.btn{border:1px solid #111;background:#111;color:#fff;border-radius:999px;padding:11px 16px;font:inherit;font-size:.9rem;font-weight:800;cursor:pointer}.btn.secondary{background:#fff;color:#111;border-color:#d6dde4}.panel{max-width:1050px;margin:0 auto 18px;padding:20px;background:#fff;border:1px solid #e0e5eb;border-radius:18px}.fieldgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:block;margin:13px 0}.field span{display:block;font-weight:700;margin-bottom:6px}.field input,.field textarea,.field select{box-sizing:border-box;width:100%;padding:11px;border:1px solid #d5dce4;border-radius:9px;font:inherit;background:#fff;color:#171a20}.field textarea{min-height:100px;resize:vertical}@media(max-width:600px){.fieldgrid{grid-template-columns:1fr}.cabineo-brand{font-size:29px}}@media print{.no-print{display:none!important}body{background:#fff}.panel{border:0;padding:0}}</style></head><body><header class="top"><div class="top-inner"><a class="cabineo-brand" href="#accueil" aria-label="Retour à l’accueil Cabinéo"><span>Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="kicker">OUTILS CHAUFFEUR · DOCUMENTS DE MISSION</div><h1>Fiches pratiques</h1><p>Remplis une fiche sur ton téléphone, puis imprime-la ou enregistre-la en PDF. Aucun compte nécessaire.</p></div></header><main class="wrap"><div class="actions no-print"><button class="btn" onclick="window.print()">Imprimer / enregistrer en PDF</button><button class="btn secondary" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">Retour à l’accueil</button></div><section class="panel"><label class="field"><span>Choisir une fiche</span><select id="choixModele"><option>Contrôle avant départ</option><option>Suivi de livraison</option><option>Signalement d’anomalie</option><option>Prise de consignes</option></select></label><div id="formFiche"></div><div class="actions no-print"><button class="btn" onclick="window.print()">Imprimer / PDF</button><button class="btn secondary" onclick="sauver()">Enregistrer sur cet appareil</button><button class="btn secondary" onclick="restaurer()">Restaurer la fiche</button><button class="btn secondary" onclick="effacer()">Effacer</button></div></section></main><script>const templates={"Contrôle avant départ":[["Date","date"],["Conducteur","text"],["Véhicule / immatriculation","text"],["Référence de mission","text"],["Documents vérifiés","textarea"],["Contrôles effectués","textarea"],["Anomalies constatées","textarea"]],"Suivi de livraison":[["Date","date"],["Conducteur","text"],["Référence de mission","text"],["Client / destinataire","text"],["Adresse de livraison","text"],["Marchandise / quantité","textarea"],["Heure d’arrivée","time"],["Heure de départ","time"],["Résultat de livraison","select"],["Réserves / dommages / manquants","textarea"],["Nom du réceptionnaire","text"],["Observations","textarea"]],"Signalement d’anomalie":[["Date et heure","datetime-local"],["Conducteur","text"],["Référence de mission","text"],["Lieu","text"],["Type d’anomalie","selectAnomaly"],["Description factuelle","textarea"],["Personne informée","text"],["Mesures prises","textarea"],["Photos / pièces jointes à conserver","textarea"]],"Prise de consignes":[["Date","date"],["Conducteur","text"],["Véhicule / immatriculation","text"],["Mission","text"],["Itinéraire / créneaux","textarea"],["Marchandise et consignes","textarea"],["Documents nécessaires","textarea"],["Risques / restrictions signalés","textarea"],["Notes complémentaires","textarea"]]};const key='cabineo-fiches-pratiques-v1';function render(){const name=document.getElementById('choixModele').value;document.getElementById('formFiche').innerHTML=templates[name].map(([label,type],i)=>{let control=type==='textarea'?'<textarea data-field="'+i+'"></textarea>':type==='select'||type==='selectAnomaly'?'<select data-field="'+i+'">'+(type==='select'?['À sélectionner','Livraison complète','Livraison partielle','Livraison refusée']:['À sélectionner','Véhicule','Chargement','Livraison','Sécurité','Autre']).map(v=>'<option>'+v+'</option>').join('')+'</select>':'<input data-field="'+i+'" type="'+type+'">';return '<label class="field"><span>'+label+'</span>'+control+'</label>'}).join('');restoreFields()}function save(){const data={template:document.getElementById('choixModele').value,fields:[...document.querySelectorAll('[data-field]')].map(x=>x.value)};try{localStorage.setItem(key,JSON.stringify(data));alert('Fiche enregistrée sur cet appareil.')}catch(e){alert('Enregistrement local indisponible dans ce navigateur. Utilise Imprimer / PDF.')}}function restoreFields(){try{const d=JSON.parse(localStorage.getItem(key)||'null');if(!d||d.template!==document.getElementById('choixModele').value||!Array.isArray(d.fields))return;document.querySelectorAll('[data-field]').forEach((x,i)=>x.value=d.fields[i]??'')}catch(e){}}function restore(){try{const d=JSON.parse(localStorage.getItem(key)||'null');if(d){document.getElementById('choixModele').value=d.template;render();}}catch(e){}}function clearForm(){document.querySelectorAll('[data-field]').forEach(x=>x.value='');try{localStorage.removeItem(key)}catch(e){}}document.getElementById('choixModele').addEventListener('change',render);window.sauver=save;window.restaurer=restore;window.effacer=clearForm;render();<\/script>
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
+</body></html>
 </script>
 <script id="cabineo-payload-mission">
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080808"><title>Checklist mission — Cabinéo</title><style>
@@ -3380,7 +3632,37 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
 <section class="card"><h2>3. Pendant le transport</h2><div class="checks"><label><input type="checkbox"> Garder les documents de mission accessibles et protéger les informations qu’ils contiennent.</label><label><input type="checkbox"> Respecter les consignes de sécurité, les itinéraires et les contraintes d’accès connues.</label><label><input type="checkbox"> Si une anomalie de chargement ou un dommage est constaté, s’arrêter en sécurité si nécessaire et prévenir l’exploitation.</label><label><input type="checkbox"> Ne pas poursuivre une opération si une situation présente un danger immédiat ; demander les consignes adaptées.</label></div></section>
 <section class="card"><h2>4. À la livraison</h2><div class="checks"><label><input type="checkbox"> Comparer le nombre de colis ou de palettes avec les documents de transport.</label><label><input type="checkbox"> Observer l’état extérieur des colis et palettes avant de conclure la livraison.</label><label><input type="checkbox"> En cas de dommage, manque ou refus, noter des faits précis : quantité, nature, date/heure et personnes informées.</label><label><input type="checkbox"> Prendre des photos si la procédure de l’entreprise et les conditions du site le permettent.</label><label><input type="checkbox"> Prévenir l’exploitation et suivre les instructions avant de repartir.</label><label><input type="checkbox"> Lire les documents avant signature et vérifier que les réserves précises convenues y figurent.</label></div><div class="callout"><strong>Évite les réserves vagues.</strong> Décris le dommage ou le manque constaté aussi précisément que possible, sans ajouter de faits non vérifiés.</div></section>
 <section class="card"><h2>5. Livraisons particulières et accès au site</h2><div class="checks"><label><input type="checkbox"> Confirmer l’adresse exacte, le créneau, les restrictions de circulation et les conditions d’accès.</label><label><input type="checkbox"> Vérifier la présence d’une zone de manutention adaptée et les équipements disponibles sur place.</label><label><input type="checkbox"> Confirmer à l’avance les consignes si la livraison est chez un particulier, dans un commerce, sur un chantier ou dans une zone difficile d’accès.</label><label><input type="checkbox"> Pour les opérations particulières, confirmer avec l’exploitation les règles et responsabilités applicables avant d’accepter une procédure inhabituelle.</label></div><p>Les notes de cours mentionnent des situations spécifiques pour certains envois de moins de 3 tonnes. Ce repère ne doit pas être appliqué comme une règle universelle : vérifie les conditions réglementaires et contractuelles propres à la mission.</p></section>
-<section class="card"><h2>6. Informations de mission</h2><label class="field">Date<input type="date"></label><label class="field">Conducteur<input type="text" placeholder="Nom et prénom"></label><label class="field">Véhicule / immatriculation<input type="text" placeholder="Immatriculation"></label><label class="field">Référence de mission<input type="text" placeholder="Référence ou numéro de livraison"></label><label class="field">Anomalies / observations<textarea style="display:block;width:100%;min-height:100px;margin-top:4px;border:1px solid #dce3e9;border-radius:9px;padding:10px;font:inherit"></textarea></label></section><p class="footer-note">Support pédagogique Cabinéo. Cette checklist ne remplace pas les documents de transport, les procédures de l’entreprise ni les règles applicables à chaque opération.</p></main></body></html>
+<section class="card"><h2>6. Informations de mission</h2><label class="field">Date<input type="date"></label><label class="field">Conducteur<input type="text" placeholder="Nom et prénom"></label><label class="field">Véhicule / immatriculation<input type="text" placeholder="Immatriculation"></label><label class="field">Référence de mission<input type="text" placeholder="Référence ou numéro de livraison"></label><label class="field">Anomalies / observations<textarea style="display:block;width:100%;min-height:100px;margin-top:4px;border:1px solid #dce3e9;border-radius:9px;padding:10px;font:inherit"></textarea></label></section><p class="footer-note">Support pédagogique Cabinéo. Cette checklist ne remplace pas les documents de transport, les procédures de l’entreprise ni les règles applicables à chaque opération.</p></main>
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
+</body></html>
 </script>
 <script>
 (() => {
@@ -3391,7 +3673,7 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
     "documents-cabineo-v1.html": "docs",
     "revisions-cabineo-modules-permis-c-ce-amplitude-simple.html": "learner"
   };
-  const navLabels = { home: "Accueil", driver: "Chauffeur", calculator: "Calcul", docs: "Documents", learner: "Formation", fiche: "Checklist marchandise", predeparture: "Checklist porteur / tracteur solo", tachy: "Chronotachygraphe", mission: "Checklist mission", forms: "Fiches pratiques Cabinéo" };
+  const navLabels = { home: "Accueil", driver: "Chauffeur", calculator: "Calcul", docs: "Documents", learner: "Formation", fiche: "Checklist marchandise", predeparture: "Checklist porteur / tracteur solo", tachy: "Chronotachygraphe", mission: "Checklist mission", forms: "Fiches pratiques" };
   const toolView = document.getElementById("cabineo-tool-view");
   const toolPages = document.getElementById("cabineo-tool-pages");
   const frames = new Map();
@@ -3407,7 +3689,41 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
     const frame = document.createElement("iframe");
     frame.className = "cabineo-tool-frame"; frame.title = "Cabineo — " + (navLabels[page] || page);
     frame.setAttribute("loading", "eager"); frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-    frame.style.display = "none"; toolPages.appendChild(frame); frame.srcdoc = readEmbeddedHtml(payload); frames.set(page, frame); return frame;
+    frame.style.display = "none"; toolPages.appendChild(frame);
+    let embedded = readEmbeddedHtml(payload);
+    const scrollBridge = `<script>(()=>{let last=window.scrollY||0;let busy=false;window.addEventListener('scroll',()=>{if(busy)return;busy=true;requestAnimationFrame(()=>{const y=window.scrollY||0;let dir='same';if(y>last+3)dir='down';else if(y<last-3)dir='up';parent.postMessage({type:'cabineo:scroll-direction',direction:dir,y},'*');last=y;busy=false;});},{passive:true});})();<\/script>`;
+    embedded = embedded.replace(/<\/body>/i, scrollBridge + '
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
+</body>');
+    frame.srcdoc = embedded; frames.set(page, frame); return frame;
   }
   function updateNav(page) {
     const navPage = (page === "fiche" || page === "predeparture") ? "driver" : ((page === "tachy" || page === "mission") ? "learner" : page);
@@ -3462,6 +3778,23 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
     const data = event.data; if (!data || data.type !== "cabineo:navigate") return;
     if (data.page === "home") showHome({push:true, hash:data.hash}); else if (payloadIds.includes(data.page)) showPage(data.page, {push:true});
   });
+  let navCompact = false;
+  window.addEventListener("message", event => {
+    const data = event.data;
+    if (!data || data.type !== "cabineo:scroll-direction") return;
+    const nav = document.querySelector(".mobile-glass-nav");
+    if (!nav) return;
+    if (data.y <= 18 || data.direction === "up") navCompact = false;
+    else if (data.direction === "down") navCompact = true;
+    nav.classList.toggle("is-compact", navCompact);
+  });
+  window.addEventListener("scroll", () => {
+    const nav = document.querySelector(".mobile-glass-nav");
+    if (!nav || currentPage !== "home") return;
+    if (window.scrollY <= 18) navCompact = false;
+    else navCompact = true;
+    nav.classList.toggle("is-compact", navCompact);
+  }, {passive:true});
   window.addEventListener("popstate", event => {
     const page = event.state && event.state.cabineoPage;
     if (page && payloadIds.includes(page)) showPage(page, {push:false}); else showHome({push:false});
@@ -3470,5 +3803,35 @@ document.addEventListener('DOMContentLoaded',remplirThemesEntrainement);
   const initialPage = location.hash.slice(1); if (payloadIds.includes(initialPage)) showPage(initialPage, {push:false});
 })();
 </script>
+
+<style id="cabineo-final-hero-contrast">
+/* Accroche d’accueil : discrète, lisible et blanche */
+.hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  letter-spacing:0 !important;
+  max-width:680px !important;
+  margin:0 0 24px !important;
+  text-wrap:pretty;
+}
+.hero .home-hero-copy span {
+  display:block !important;
+  color:#fff !important;
+  opacity:1 !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  margin-top:2px !important;
+}
+.hero .button.button-light {background:#fff !important;color:#080808 !important;opacity:1 !important;}
+.hero .button.button-outline {color:#fff !important;border-color:rgba(255,255,255,.8) !important;}
+@media(max-width:760px){
+ .hero .home-hero-copy, .hero p.hero-subtitle.home-hero-copy {font-size:15px !important;line-height:1.48 !important;max-width:92% !important;margin-bottom:21px !important;}
+}
+</style>
+
 </body>
 </html>
