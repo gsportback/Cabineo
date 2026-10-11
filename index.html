@@ -4,18 +4,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080808">
+<meta name="theme-color" content="#f5f8fb">
 <title>Cabineo — Les outils des chauffeurs PL/SPL</title>
 <style>
 :root{--black:#080808;--white:#fff;--blue:#7fc7f2;--blue-pale:#a9ddfb;--ink:#141414;--muted:#60636a;--line:#e6e6e6}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{margin:0;background:#fff;color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .site-header{position:sticky;top:0;z-index:5;background:#080808;color:#fff}
 .header-inner{max-width:1240px;min-height:86px;margin:auto;padding:0 30px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo{font-weight:950;font-size:39px;letter-spacing:-2px;text-decoration:none;color:#fff;line-height:1}
 .logo span,.footer-logo span{color:var(--blue)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .logo-word{color:#fff}
+.logo .logo-word span{color:var(--blue)}
+.logo .logo-by{font-size:9px;font-weight:800;letter-spacing:1px;color:#fff;align-self:flex-end;margin-bottom:2px;white-space:nowrap}
 .nav{display:flex;align-items:center;gap:26px}
 .nav a{color:#fff;text-decoration:none;font-size:14px;font-weight:650}
 .nav .nav-button{background:#fff;color:#000;padding:13px 19px;border-radius:7px;font-weight:800}
@@ -70,7 +74,7 @@ footer{background:#080808;color:#fff}
 .creator-note .creator-mark{font-size:20px;flex:0 0 auto}
 @media(max-width:800px){
 .header-inner{min-height:74px;padding:0 22px}
-.logo{font-size:35px}
+.logo{font-size:35px}.logo .logo-by{font-size:8px}
 .nav{gap:12px}
 .nav a:not(.nav-button){display:none}
 .nav .nav-button{padding:11px 12px;font-size:12px}
@@ -91,51 +95,61 @@ footer{background:#080808;color:#fff}
 }
 @media(min-width:801px){.hero-actions .button{min-width:220px}}
 
-/* Logo Cabineo byGSDRIVE */
-a.logo.cabineo-brand {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0;
-  white-space: nowrap;
-  text-decoration: none;
+/* Signature de marque et barre mobile flottante inspirée des navigations Meta */
+.footer-brand{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none}
+.footer-brand .footer-logo{line-height:1}
+.footer-brand small{font-size:8px;font-weight:800;letter-spacing:1.15px;color:#fff}
+.mobile-glass-nav{display:none}
+@media(max-width:800px){
+ body{padding-bottom:112px}
+ .site-header{position:sticky;top:0;z-index:10}
+ .header-inner{min-height:72px}
+ .mobile-glass-nav{
+  position:fixed;z-index:30;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;
+  padding:7px;border:1px solid rgba(255,255,255,.88);border-radius:999px;
+  background:rgba(255,255,255,.64);backdrop-filter:blur(28px) saturate(190%);
+  -webkit-backdrop-filter:blur(28px) saturate(190%);
+  box-shadow:0 12px 34px rgba(20,31,43,.15),inset 0 1px 0 rgba(255,255,255,.82);
+ }
+ .mobile-glass-nav a{min-width:0;min-height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  border-radius:999px;text-decoration:none;color:#111;font-size:10px;font-weight:750;line-height:1.1;
+  transition:background .18s ease,color .18s ease,transform .18s ease}
+ .mobile-glass-nav a:active{transform:scale(.96)}
+ .mobile-glass-nav a:focus-visible{outline:2px solid #287db5;outline-offset:2px}
+ .mobile-glass-nav a.is-active{background:rgba(127,199,242,.28);color:#2464d8}
+ .mobile-glass-nav svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:2.15;stroke-linecap:round;stroke-linejoin:round}
+}
+@media(min-width:801px){.mobile-glass-nav{display:none}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .mobile-glass-nav{background:rgba(255,255,255,.93)}
 }
 
-a.logo.cabineo-brand .cabineo-name {
-  font-size: 1em;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  color: #ffffff;
+@media(max-width:380px){
+ .mobile-glass-nav{left:7px;right:7px;padding:5px}
+ .mobile-glass-nav a{min-height:58px;font-size:9px}
+ .mobile-glass-nav svg{width:23px;height:23px}
 }
 
-a.logo.cabineo-brand .cabineo-blue {
-  color: var(--blue);
+/* Identité visuelle Cabineo byGSDRIVE — harmonisée avec les pages récentes */
+a.cabineo-brand{display:inline-flex;align-items:baseline;gap:0;flex-shrink:0;white-space:nowrap;text-decoration:none;line-height:1}
+a.cabineo-brand .cabineo-name{color:#fff;font-size:inherit;font-weight:950;letter-spacing:inherit}
+a.cabineo-brand .cabineo-blue{color:var(--blue)}
+a.cabineo-brand .cabineo-by{margin-left:4px;color:#fff;font-size:12px;font-weight:750;letter-spacing:0;line-height:1}
+.logo.cabineo-brand{font-size:39px;letter-spacing:-1.7px;gap:0}
+.footer-brand.cabineo-brand{font-size:24px;letter-spacing:-1px;align-items:baseline;gap:0}
+.footer-brand.cabineo-brand .cabineo-by{font-size:10px;margin-left:4px}
+@media(max-width:800px){
+ .logo.cabineo-brand{font-size:35px;letter-spacing:-1.5px}
+ .logo.cabineo-brand .cabineo-by{font-size:10px;margin-left:3px}
 }
 
-a.logo.cabineo-brand .cabineo-by {
-  display: inline-block;
-  margin-left: 3px;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-}
-
-@media (max-width: 800px) {
-  a.logo.cabineo-brand .cabineo-by {
-    font-size: 8px;
-    margin-left: 2px;
-  }
-}
 </style>
 </head>
-<body>
+<body id="top">
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="logo cabineo-brand" aria-label="Cabineo by GSDRIVE">
-  <span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span>
-</a>
-</a>
+<a class="logo cabineo-brand" href="/" aria-label="Cabineo byGSDRIVE"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a>
 <nav class="nav" aria-label="Navigation principale">
 <a href="#outils">Les outils</a>
 <a href="#apropos">À propos</a>
@@ -153,14 +167,14 @@ a.logo.cabineo-brand .cabineo-by {
 <p>Des outils pratiques pour suivre vos temps de conduite, préparer vos journées et retrouver les informations utiles au métier du transport routier.</p>
 <div class="hero-actions">
 
-<a class="button button-light" href="/calculateur-cabineo-unifie-v2.html">Ouvrir le calculateur →</a>
-<a class="button button-outline" href="/revisions-cabineo-modules-permis-c-ce-amplitude-simple.html">Aide à la formation →</a>
+<a class="button button-light" href="#espace-chauffeur">Espace chauffeur →</a>
+<a class="button button-outline" href="#espace-apprenant">Espace apprenant →</a>
 
 </div>
 </div>
 </section>
 <section class="section" id="outils">
-<p class="section-kicker">Cabineo · Outils pratiques</p>
+<p class="section-kicker" id="espace-chauffeur">ESPACE CHAUFFEUR · Outils pratiques</p>
 <h2>À chacun ses outils.</h2>
 <p class="section-intro">L’essentiel pour les conducteurs routiers, présenté simplement et accessible depuis ton téléphone ou ton ordinateur.</p>
 <div class="tool-grid">
@@ -182,11 +196,15 @@ a.logo.cabineo-brand .cabineo-by {
 <div class="tool-link"><span>Accéder aux documents</span><span>↗</span></div>
 </a>
 
+<div class="space-divider" id="espace-apprenant" style="grid-column:1/-1;padding-top:26px;margin-top:10px;border-top:1px solid #e6e6e6">
+<p class="section-kicker" style="margin-bottom:8px">ESPACE APPRENANT · Formation et révisions</p>
+<p style="margin:0 0 4px;color:#555b63;font-size:15px;line-height:1.6">Les cours et entraînements pour préparer ton titre professionnel, séparés des outils du quotidien.</p>
+</div>
 <a class="tool-card" href="/revisions-cabineo-modules-permis-c-ce-amplitude-simple.html">
 <div class="tool-icon">▣</div>
 <p class="label">Apprentissage</p>
 <h3>Formation CTRMP / CE</h3>
-<p>Prépare ton titre professionnel avec de la RSE/RSN, les 12 fiches orales et écrites du permis C/CE et des entraînements oraux pour tester tes connaissances.</p>
+<p>Prépare ton titre professionnel avec les fiches RSE/RSN, les 12 fiches orales du permis C/CE et des quiz interactifs pour tester tes connaissances.</p>
 <div class="tool-link"><span>Accéder aux révisions</span><span>↗</span></div>
 </a>
 
@@ -203,9 +221,8 @@ a.logo.cabineo-brand .cabineo-by {
   <div class="section-kicker">CONTACT</div>
   <h2>Une question ? Envoie-nous un message !</h2>
   <p class="section-intro">
-    Une question sur une fiche, la réglementation PL/SPL, l’utilisation de nos outils ou une suggestion de contenu ?
-<br>
-<br>Envoie-nous ton message, nous te répondrons par e-mail.
+    Une question sur une fiche, la réglementation PL/SPL ou l’utilisation de nos outils ?
+    Envoie-nous ton message, nous te répondrons par e-mail.
   </p>
 
   <form action="https://api.web3forms.com/submit" method="POST"
@@ -244,10 +261,54 @@ a.logo.cabineo-brand .cabineo-by {
 
     <button type="submit" class="button button-light">Envoyer mon message →</button>
   </form>
-  <div class="creator-note"><span class="creator-mark" aria-hidden="true">🚛</span><span><strong></strong> Cabinéo est né d’une idée simple : Rendre les outils du transport routier plus pratiques, accessibles et utiles au quotidien, tout en accompagnant les futurs conducteurs dans leur apprentissage.</span></div>
 </section>
 <div class="disclaimer">Les calculs proposés sont indicatifs et ne remplacent pas les données du chronotachygraphe ni la réglementation applicable.</div>
 </main>
-<footer><div class="footer-inner"><div class="footer-logo">CABI<span>NEO</span></div><div class="footer-note">Les outils pratiques du transport routier.</div></div></footer>
+<footer><div class="footer-inner"><a class="footer-brand cabineo-brand" href="#top" aria-label="Cabineo byGSDRIVE"><span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span></a><div class="footer-note">Les outils pratiques du transport routier.</div></div></footer>
+
+<nav class="mobile-glass-nav" aria-label="Navigation mobile">
+ <a href="#top" class="is-active" data-section="top" aria-label="Accueil">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.2 12 3.5l8.5 6.7"/><path d="M5.5 9.6V20h13V9.6"/><path d="M9.2 20v-6.2h5.6V20"/></svg><span>Accueil</span>
+ </a>
+ <a href="#espace-chauffeur" data-section="espace-chauffeur" aria-label="Espace chauffeur">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5h12.5v11H3z"/><path d="M15.5 10h3l2.5 3v4.5h-5.5z"/><circle cx="7" cy="18.5" r="2"/><circle cx="18" cy="18.5" r="2"/></svg><span>Chauffeur</span>
+ </a>
+ <a href="#espace-apprenant" data-section="espace-apprenant" aria-label="Espace apprenant">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 5.5v15.2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg><span>Apprenant</span>
+ </a>
+ <a href="#contact" data-section="contact" aria-label="Contact">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 17V7A1.5 1.5 0 0 1 4 5.5z"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg><span>Contact</span>
+ </a>
+</nav>
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('.mobile-glass-nav a[data-section]')];
+  const sections = tabs.map(tab => document.getElementById(tab.dataset.section)).filter(Boolean);
+  const activate = (id) => {
+    tabs.forEach(tab => {
+      const active = tab.dataset.section === id;
+      tab.classList.toggle('is-active', active);
+      if (active) tab.setAttribute('aria-current', 'location');
+      else tab.removeAttribute('aria-current');
+    });
+  };
+  const update = () => {
+    let current = 'top';
+    const marker = window.scrollY + window.innerHeight * 0.35;
+    for (const section of sections) {
+      if (section.id === 'top' || section.getBoundingClientRect().top + window.scrollY <= marker) current = section.id;
+    }
+    if (current === 'espace-chauffeur' || current === 'outils') current = 'espace-chauffeur';
+    if (current === 'espace-apprenant') current = 'espace-apprenant';
+    if (current === 'contact') current = 'contact';
+    activate(current);
+  };
+  tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.dataset.section)));
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('hashchange', update);
+  update();
+})();
+</script>
+
 </body>
 </html>
