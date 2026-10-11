@@ -47,26 +47,63 @@ button:focus-visible{outline:3px solid #168ac4;outline-offset:3px}
 .history-actions button{min-height:42px}
 #historyBackupStatus{margin-top:10px;font-weight:650}
 @media(max-width:600px){.history-actions{display:grid;grid-template-columns:1fr}.history-actions button{width:100%}}
+
+/* En-tête Cabineo harmonisé avec index.html */
+:root{--blue:#7fc7f2;--bluepale:#a9ddfb}
+html{width:100%;overflow-x:hidden}
+body{width:100%;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.site-header{position:relative;z-index:5;background:#080808;color:#fff;width:100%}
+.header-inner{max-width:1240px;min-height:86px;margin:0 auto;padding:0 30px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo.cabineo-brand{display:inline-flex;align-items:baseline;flex-shrink:0;white-space:nowrap;text-decoration:none;color:#fff;font-size:39px;font-weight:950;letter-spacing:-2px;line-height:1}
+.cabineo-name{color:#fff}
+.cabineo-blue{color:var(--blue)}
+.logo.cabineo-brand .cabineo-by{font-size:9px;font-weight:700;letter-spacing:0;margin-left:3px;color:#fff}
+.nav{display:flex;align-items:center;gap:12px}
+.nav .nav-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 17px;border:1px solid #454b55;border-radius:9px;background:transparent;color:#fff;text-decoration:none;font-size:14px;font-weight:750;white-space:nowrap}
+.nav .nav-menu{background:var(--blue);border-color:var(--blue);color:#080808}
+.hero{background:#080808;padding:34px 30px 38px;border-bottom:4px solid var(--blue)}
+.hero-inner{max-width:1180px;margin:0 auto}
+.hero p{margin:0;color:#d0d0d2;font-size:clamp(17px,2vw,22px);line-height:1.65}
+main{width:100%;max-width:1240px;margin:0 auto;padding:22px 30px 34px}
+.day-layout,.day-inputs,.day-summary,.field{min-width:0}
+input,select{width:100%;max-width:100%;min-width:0}
+@media(max-width:700px){
+ .header-inner{min-height:0;padding:22px 22px 18px;display:flex;align-items:flex-start;flex-direction:column;gap:22px}
+ .logo.cabineo-brand{font-size:35px}
+ .nav{width:100%;gap:10px;flex-wrap:nowrap}
+ .nav .nav-button{min-height:48px;padding:12px 14px;font-size:14px}
+ .hero{padding:28px 22px 30px;background:#080808}
+ main{padding:18px 16px 30px}
+ .card{width:100%;max-width:100%;padding:20px 18px}
+ .day-layout{grid-template-columns:minmax(0,1fr)}
+ .day-layout>*{min-width:0;width:100%}
+ .day-inputs{width:100%;min-width:0}
+ .field{width:100%;min-width:0}
+ input,select{font-size:16px}
+}
+@media(max-width:380px){
+ .header-inner{padding-left:16px;padding-right:16px}
+ .nav{gap:7px}
+ .nav .nav-button{padding:10px 9px;font-size:12px}
+ main{padding-left:12px;padding-right:12px}
+ .card{padding:17px 14px}
+}
+
 </style></head>
 <body>
-
-
-<div style="background:#080808;padding:18px 22px">
-  <div style="max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-    <a href="/index.html" style="font-size:30px;font-weight:950;letter-spacing:-1.7px;text-decoration:none;color:#fff;white-space:nowrap">CABI<span style="color:#7fc7f2">NEO</span></a>
-    <nav style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-      <a href="/index.html" style="border:1px solid #405064;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:750;color:#fff;text-decoration:none;white-space:nowrap">← Accueil</a>
-      <a href="/index.html" style="border:1px solid #7fc7f2;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:750;background:#7fc7f2;color:#08131c;text-decoration:none;white-space:nowrap">⌂ Menu Cabineo</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo cabineo-brand" href="/index.html" aria-label="Cabineo byGSDRIVE">
+      <span class="cabineo-name">CABI<span class="cabineo-blue">NEO</span></span><span class="cabineo-by">byGSDRIVE</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="nav-button nav-back" href="/index.html">← Accueil</a>
+      <a class="nav-button nav-menu" href="/index.html">⌂ Menu Cabineo</a>
     </nav>
   </div>
-</div>
-
-  
-<header class="hero">
-  <div class="hero-inner">
-    <p>Estime tes durées restantes avant de prendre la route.</p>
-  </div>
 </header>
+
+<header class="hero"><div class="hero-inner"><p>Estime tes durées restantes avant de prendre la route.</p></div></header>
 <main>
 <section class="card">
 <h2>1. Ta journée</h2>
