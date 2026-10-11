@@ -90,12 +90,54 @@ footer{background:#080808;color:#fff}
 .footer-inner{padding:25px 22px;align-items:flex-start;flex-direction:column}
 }
 @media(min-width:801px){.hero-actions .button{min-width:220px}}
+
+/* Logo Cabineo byGSDRIVE */
+.cabineo-brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.cabineo-name {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 800;
+  letter-spacing: inherit;
+  color: #ffffff;
+}
+
+.cabineo-blue {
+  color: #70c9ff;
+}
+
+.cabineo-by {
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 480px) {
+  .cabineo-brand {
+    gap: 4px;
+  }
+
+  .cabineo-by {
+    font-size: 8px;
+  }
+}
 </style>
 </head>
 <body>
 <header class="site-header">
 <div class="header-inner">
-<a class="logo" href="/" aria-label="Cabineo accueil">CABI<span>NEO</span></a>
+<a href="index.html" class="cabineo-brand" aria-label="Cabineo by GSDRIVE">
+  <span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span>
+  <span class="cabineo-by">byGSDRIVE</span>
+</a>
 <nav class="nav" aria-label="Navigation principale">
 <a href="#outils">Les outils</a>
 <a href="#apropos">À propos</a>
