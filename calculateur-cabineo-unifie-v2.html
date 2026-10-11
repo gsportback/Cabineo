@@ -142,6 +142,60 @@ input, select, textarea { min-width:0; }
   .metric small { font-size:.78rem; }
   .metric p { font-size:.8rem; }
 }
+
+/* Correctif ciblé iPhone : champs horaires et section 3 */
+.card, .card > *, .day-layout, .day-layout > *, .day-inputs, .day-summary,
+.field, .optional, #soloActivities, #soloActivityResults, #weekResults,
+.history-tools, .history-actions, .history-item {
+  min-width: 0;
+  max-width: 100%;
+}
+/* Safari iOS réserve parfois une largeur interne aux champs type time. */
+input[type="time"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.activity-row {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.activity-row .field { width: 100%; min-width: 0; }
+.activity-row input[type="time"], .activity-row select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 8px 5px;
+  font-size: 16px;
+}
+.activity-row .field:first-child, .activity-row button { grid-column: 1 / -1; }
+#weekResults .metric, #dailyResults .metric, #soloActivityResults .metric {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .card { min-width: 0; }
+  .day-layout { grid-template-columns: minmax(0, 1fr); }
+  .day-layout > * { min-width: 0; }
+  .activity-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; padding: 10px; }
+  .activity-row input[type="time"] { padding-left: 3px; padding-right: 3px; }
+  #weekResults, #dailyResults, #soloActivityResults { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 380px) {
+  .activity-row { gap: 6px; padding: 8px; }
+  .activity-row input[type="time"] { padding-left: 0; padding-right: 0; }
+  #weekResults, #dailyResults, #soloActivityResults { gap: 6px; }
+  #weekResults .metric, #dailyResults .metric, #soloActivityResults .metric { padding: 10px 8px; }
+}
+
 </style></head>
 <body>
 <header class="site-header">
