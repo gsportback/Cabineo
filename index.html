@@ -92,37 +92,39 @@ footer{background:#080808;color:#fff}
 @media(min-width:801px){.hero-actions .button{min-width:220px}}
 
 /* Logo Cabineo byGSDRIVE */
-.cabineo-brand {
+a.logo.cabineo-brand {
   display: inline-flex;
   align-items: baseline;
   gap: 0;
   white-space: nowrap;
   text-decoration: none;
+}
+
+a.logo.cabineo-brand .cabineo-name {
+  font-size: 1em;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: #ffffff;
+}
+
+a.logo.cabineo-brand .cabineo-blue {
+  color: var(--blue);
+}
+
+a.logo.cabineo-brand .cabineo-by {
+  display: inline-block;
+  margin-left: 3px;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
   line-height: 1;
 }
 
-.cabineo-name {
-  font: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-}
-.cabineo-blue {
-  color: #70c9ff;
-}
-
-.cabineo-name {
-  font: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-}
-
-@media (max-width: 480px) {
-  .cabineo-brand {
-    gap: 4px;
-  }
-
-  .cabineo-by {
+@media (max-width: 800px) {
+  a.logo.cabineo-brand .cabineo-by {
     font-size: 8px;
+    margin-left: 2px;
   }
 }
 </style>
@@ -130,9 +132,9 @@ footer{background:#080808;color:#fff}
 <body>
 <header class="site-header">
 <div class="header-inner">
-<a href="index.html" class="cabineo-brand" aria-label="Cabineo by GSDRIVE">
-  <span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span>
-  <span class="cabineo-by">byGSDRIVE</span>
+<a href="/" class="logo cabineo-brand" aria-label="Cabineo by GSDRIVE">
+  <span class="cabineo-name">Cabi<span class="cabineo-blue">neo</span></span><span class="cabineo-by">byGSDRIVE</span>
+</a>
 </a>
 <nav class="nav" aria-label="Navigation principale">
 <a href="#outils">Les outils</a>
