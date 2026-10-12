@@ -4167,13 +4167,14 @@ document.getElementById('calcEssieu').addEventListener('click',()=>{const m=n('e
     let embedded = readEmbeddedHtml(payload);
     if (!embedded.includes("Retour aux modules")) {
       const returnStyle = `<style>.cabineo-return-row{max-width:1080px;margin:0 auto;padding:14px 18px 0}.cabineo-return-row button{border:1px solid #d5e1e9;background:#fff;color:#152632;border-radius:999px;padding:10px 15px;font:inherit;font-size:14px;font-weight:800;cursor:pointer}.cabineo-return-row button:hover{background:#eaf7ff;border-color:#7fc7f2}@media(max-width:700px){.cabineo-return-row{padding:12px 13px 0}}</style>`;
-      embedded = embedded.replace(/<\/head>/i, returnStyle + "<style id="cabineo-unified-logo">
+      const unifiedLogoStyle = `<style id="cabineo-unified-logo">
 a.cabineo-brand{display:inline-flex!important;align-items:baseline!important;gap:0!important;white-space:nowrap!important;text-decoration:none!important;color:#fff!important;font-size:39px!important;font-weight:950!important;letter-spacing:-1.7px!important;line-height:1!important;flex-shrink:0!important}
 a.cabineo-brand .cabineo-name{color:#fff!important;font-size:inherit!important;font-weight:950!important;letter-spacing:inherit!important}
 a.cabineo-brand .cabineo-blue{color:#7fc7f2!important}
 a.cabineo-brand .cabineo-by{display:inline-block!important;margin-left:4px!important;color:#fff!important;font-size:10px!important;font-weight:750!important;letter-spacing:0!important;line-height:1!important}
 @media(max-width:800px){a.cabineo-brand{font-size:35px!important;letter-spacing:-1.5px!important}a.cabineo-brand .cabineo-by{font-size:8px!important;margin-left:3px!important}}
-</style></head>");
+</style>`;
+      embedded = embedded.replace(/<\/head>/i, returnStyle + unifiedLogoStyle + "</head>");
       const returnRow = `<div class="cabineo-return-row"><button type="button" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">← Retour aux modules</button></div>`;
       if (/<main\b/i.test(embedded)) embedded = embedded.replace(/<main\b/i, returnRow + "<main");
       else if (/<body[^>]*>/i.test(embedded)) embedded = embedded.replace(/<body[^>]*>/i, m => m + returnRow);
