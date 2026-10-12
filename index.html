@@ -300,7 +300,6 @@ body.cabineo-tool-open>header,body.cabineo-tool-open>main,body.cabineo-tool-open
 }
 </style>
 
-</head>
 <style id="cabineo-layout-brand-tabs-v4">
 @media (min-width:801px){
 #outils .tool-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch}
@@ -315,6 +314,8 @@ a.cabineo-brand{display:inline-flex!important;align-items:baseline!important;gap
 a.cabineo-brand .cabineo-name{color:#fff!important;font-size:inherit!important;font-weight:950!important;letter-spacing:inherit!important}a.cabineo-brand .cabineo-blue{color:#7fc7f2!important}a.cabineo-brand .cabineo-by{display:inline-block!important;margin-left:4px!important;color:#fff!important;font-size:10px!important;font-weight:750!important;letter-spacing:0!important;line-height:1!important}
 @media(max-width:800px){a.cabineo-brand{font-size:35px!important;letter-spacing:-1.5px!important}a.cabineo-brand .cabineo-by{font-size:8px!important;margin-left:3px!important}}
 </style>
+</head>
+
 <body id="top">
 <header class="site-header">
 <div class="header-inner">
@@ -4179,7 +4180,7 @@ a.cabineo-brand .cabineo-by{display:inline-block!important;margin-left:4px!impor
     }
     const scrollBridge = `<script>(()=>{let last=window.scrollY||0;let busy=false;window.addEventListener('scroll',()=>{if(busy)return;busy=true;requestAnimationFrame(()=>{const y=window.scrollY||0;let dir='same';if(y>last+3)dir='down';else if(y<last-3)dir='up';parent.postMessage({type:'cabineo:scroll-direction',direction:dir,y},'*');last=y;busy=false;});},{passive:true});})();<\/script>`;
     embedded = embedded.replace(/<\/body>/i, scrollBridge + "</body>");
-    embedded = embedded.replace('</body>', `<script id="cabineo-tab-guard">(function(){function init(){const bs=[...document.querySelectorAll('[data-tab]')],ps=[...document.querySelectorAll('[data-panel]')];if(!bs.length||!ps.length)return;function show(n){if(!ps.some(p=>p.dataset.panel===n))return;bs.forEach(b=>{const a=b.dataset.tab===n;b.classList.toggle('active',a);b.setAttribute('aria-selected',a?'true':'false')});ps.forEach(p=>{const a=p.dataset.panel===n;p.hidden=!a;p.style.display=a?'':'none'})}bs.forEach(b=>{if(b.dataset.cabineoGuard)return;b.dataset.cabineoGuard='1';b.type='button';b.addEventListener('click',()=>show(b.dataset.tab))});const first=bs.find(b=>b.classList.contains('active')&&ps.some(p=>p.dataset.panel===b.dataset.tab))||bs.find(b=>ps.some(p=>p.dataset.panel===b.dataset.tab));if(first)show(first.dataset.tab)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init()})();</script></body>`); frame.srcdoc = embedded; frames.set(page, frame); return frame;
+    frame.srcdoc = embedded; frames.set(page, frame); return frame;
   }
   function updateNav(page) {
     const navPage = (page === "fiche" || page === "predeparture") ? "driver" : ((page === "tachy" || page === "mission") ? "learner" : page);
