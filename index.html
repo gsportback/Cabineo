@@ -4449,7 +4449,6 @@ a.cabineo-brand .cabineo-by{display:inline-block!important;margin-left:4px!impor
       nav.nav a[href="../index.html"]{display:none!important}
       @media(max-width:700px){.cabineo-return-row,.module-actions,.actions.no-print{padding:12px 13px 0!important}}
     </style>`;
-    embedded = embedded.replace(/<\/head>/i, sharedModuleStyleV5 + "</head>");
     // Remove only the redundant home/menu links, leaving unrelated module navigation intact.
     embedded = embedded.replace(/<a\b[^>]*>\s*(?:←\s*)?Accueil\s*<\/a>/gi, "");
     embedded = embedded.replace(/<a\b[^>]*>\s*(?:⌂\s*)?Menu\s+Cabin[eé]o\s*<\/a>/gi, "");
