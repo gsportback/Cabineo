@@ -153,24 +153,26 @@ a.cabineo-brand .cabineo-by{margin-left:4px;color:#fff;font-size:12px;font-weigh
   line-height:1.25 !important;
   opacity:1 !important;
 }
-/* Même hiérarchie typographique pour les deux titres d'espaces. */
+```css
+/* Même taille et même apparence pour les deux gros titres */
 #outils > h2,
 #espace-apprenant > h2 {
-  font-family:inherit !important;
-  font-size:clamp(26px,3vw,34px) !important;
-  font-weight:800 !important;
-  line-height:1.2 !important;
-  letter-spacing:-.035em !important;
-  color:#fff !important;
-  margin-top:14px !important;
-  margin-bottom:14px !important;
+  font-family: inherit !important;
+  font-size: clamp(37px, 6vw, 68px) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: -2.6px !important;
+  color: #141414 !important;
+  margin: 0 0 18px !important;
 }
-/* Le slogan apprenant utilise exactement le même traitement que « À chacun ses outils. » */
-#espace-apprenant > h2 {
-  font-size:clamp(26px,3vw,34px) !important;
-  font-weight:800 !important;
-  letter-spacing:-.035em !important;
+
+@media (max-width: 800px) {
+  #outils > h2,
+  #espace-apprenant > h2 {
+    letter-spacing: -1.6px !important;
+  }
 }
+```
 /* Conserver le bleu distinctif des deux espaces même avec les anciennes règles !important. */
 #espace-chauffeur .section-kicker,
 #espace-apprenant .section-kicker { color:#168bd0 !important; }
