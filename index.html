@@ -269,10 +269,10 @@ a.cabineo-brand .cabineo-by{margin-left:4px;color:#fff;font-size:12px;font-weigh
 .hero h1 .highlight{color:#D6F28A!important}
 .hero .hero-subtitle{font-size:clamp(32px,3.2vw,42px)!important;font-weight:900!important;line-height:1.12!important;letter-spacing:-.045em!important;color:#fff!important;margin:36px 0 16px!important}
 @media(max-width:800px){.hero .hero-subtitle{font-size:clamp(27px,7vw,34px)!important;margin:28px 0 14px!important}}
-#cabineo-tool-view.cabineo-tool-view{position:fixed;inset:0;z-index:10000;max-width:none;min-width:0;width:100%;height:100%;margin:0;padding:0;background:#fff;overflow:hidden}
+#cabineo-tool-view.cabineo-tool-view{position:fixed;inset:0;z-index:10000;max-width:none;min-width:0;width:100%;height:100%;margin:0;padding:0;background:#0B0D0A;overflow:hidden}
 #cabineo-tool-view[hidden]{display:none!important}
-#cabineo-tool-pages{position:absolute;inset:0;width:100%;height:100%;background:#fff}
-.cabineo-tool-frame{display:block;width:100%;height:100%;min-height:100%;border:0;margin:0;padding:0;background:#fff}
+#cabineo-tool-pages{position:absolute;inset:0;width:100%;height:100%;background:#0B0D0A}
+.cabineo-tool-frame{display:block;width:100%;height:100%;min-height:100%;border:0;margin:0;padding:0;background:#0B0D0A}
 body.cabineo-tool-open{overflow:hidden!important;padding-bottom:0!important}
 body.cabineo-tool-open>header,body.cabineo-tool-open>main,body.cabineo-tool-open>footer{display:none!important} body.cabineo-tool-open>.cabineo-liquid-nav{display:grid!important;z-index:10002}
 
@@ -4903,6 +4903,13 @@ html[data-spl-theme="light"] #spl-theme-toggle{background:#fff;color:#171A14;bor
    cards.forEach(card=>{
      const clone=card.cloneNode(true);
      clone.removeAttribute('id');
+     // Les cartes visibles sont des copies de présentation : déléguer l'ouverture
+     // au lien original conservé dans #outils pour utiliser le routeur historique.
+     clone.addEventListener('click',function(event){
+       event.preventDefault();
+       event.stopImmediatePropagation();
+       card.click();
+     },true);
      (learnerIds.has(card.dataset.openPage)?lg:dg).appendChild(clone);
    });
    const originalDivider=grid.querySelector('.space-divider');
