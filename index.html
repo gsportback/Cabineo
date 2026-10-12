@@ -4052,7 +4052,32 @@ document.getElementById('calcEssieu').addEventListener('click',()=>{const m=n('e
 @media(max-width:760px){#outils .tool-grid{grid-template-columns:repeat(1,minmax(0,1fr))!important}#espace-chauffeur .section-kicker,#espace-apprenant .section-kicker{font-size:16px!important}}
 </style>
 
-<style id="cabineo-remove-liquid-nav">.cabineo-liquid-nav,.mobile-glass-nav{display:none!important}body{padding-bottom:0!important}body.cabineo-tool-open>.cabineo-liquid-nav{display:none!important}</style>
+<style id="cabineo-remove-liquid-nav">
+/* Masquer la navigation Liquid Glass sur ordinateur uniquement */
+@media (min-width: 801px) {
+  .cabineo-liquid-nav,
+  .mobile-glass-nav {
+    display: none !important;
+  }
+}
+
+/* Afficher la navigation Liquid Glass sur mobile si elle existe */
+@media (max-width: 800px) {
+  .cabineo-liquid-nav,
+  .mobile-glass-nav {
+    display: grid !important;
+  }
+
+  body {
+    padding-bottom: 100px !important;
+  }
+}
+
+/* Ne pas afficher la barre par-dessus les pages outils */
+body.cabineo-tool-open > .cabineo-liquid-nav {
+  display: none !important;
+}
+</style>
 
 <style id="cabineo-toolview-no-toolbar">.cabineo-tool-globalbar{display:none!important}#cabineo-tool-view{padding-top:0!important}</style>
 
