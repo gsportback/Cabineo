@@ -1079,7 +1079,25 @@ input[type="time"] {
 }
 
 
-.sp-plan-card .sp-kicker{margin:0 0 5px;color:#FF6633;font-size:.76rem;font-weight:800;letter-spacing:.16em}.sp-plan-card>h2{margin:0 0 10px}.sp-form{display:grid;gap:14px;margin-top:18px}.sp-form label{display:grid;gap:6px;font-weight:700}.sp-form input,.sp-form textarea{width:100%;min-width:0;border:1px solid #503744;border-radius:12px;padding:11px 13px;background:#171219;color:#FFF7F2;font:inherit}.sp-form input:focus,.sp-form textarea:focus{outline:2px solid #FF6633;outline-offset:1px}.sp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.sp-route-stop{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,.45fr) auto auto auto;gap:8px;align-items:end;margin-top:10px}.sp-form-actions{display:flex;flex-wrap:wrap;gap:10px}.sp-subtitle{font-size:1.05rem;margin:22px 0 10px}.sp-list{display:grid;gap:9px}.sp-list-item{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px;border:1px solid #503744;border-radius:14px;background:#211923}.sp-list-item p{margin:5px 0 0;color:#CBBFC7;white-space:pre-wrap}.sp-list-actions{display:flex;gap:8px;flex-wrap:wrap}.sp-list-actions button{padding:8px 11px;font-size:.85rem}.sp-result{margin:14px 0;padding:14px;border:1px solid #FF6633;border-radius:14px;background:#211923;color:#FFF7F2;font-weight:750}.sp-result span{display:block;color:#CBBFC7;font-size:.9rem;font-weight:500;margin-top:4px}@media(max-width:700px){.sp-grid{grid-template-columns:1fr}.sp-route-stop{grid-template-columns:1fr 1fr}.sp-route-stop button{grid-column:auto;justify-self:start}.sp-route-stop button[data-remove-stop]{grid-column:1/-1}.sp-list-item{flex-direction:column}.sp-list-actions{width:100%}}
+.calc-disclosure{padding:0!important;overflow:hidden}
+.calc-disclosure>.calc-disclosure-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:clamp(18px,2.5vw,28px);cursor:pointer;color:#FFF7F2;font-weight:850}
+.calc-disclosure>.calc-disclosure-summary::-webkit-details-marker{display:none}
+.calc-disclosure>.calc-disclosure-summary::after{content:'+';flex:0 0 auto;color:#FF6633;font-size:1.5rem;line-height:1}
+.calc-disclosure[open]>.calc-disclosure-summary::after{content:'−'}
+.calc-disclosure-summary:focus-visible{outline:3px solid #FF6633;outline-offset:-4px}
+.calc-disclosure-heading{display:grid;gap:5px;min-width:0}
+.calc-disclosure .calc-disclosure-title{display:block;color:#FFF7F2;font-size:19px;font-weight:850;line-height:1.25;letter-spacing:-.2px}
+.calc-disclosure .sp-kicker{margin:0;color:#FF6633;font-size:.76rem;font-weight:800;letter-spacing:.16em}
+.calc-disclosure-content{padding:0 clamp(18px,2.5vw,28px) clamp(18px,2.5vw,28px)}
+.calc-disclosure-content>h2:first-child{margin-top:0}
+.calc-subdisclosure{margin-top:16px;padding-top:12px;border-top:1px solid #503744}
+.calc-subdisclosure>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;color:#FFF7F2;font-size:1.08rem;font-weight:800}
+.calc-subdisclosure>summary::-webkit-details-marker{display:none}
+.calc-subdisclosure>summary::after{content:'+';color:#FF6633;font-size:1.25rem}
+.calc-subdisclosure[open]>summary::after{content:'−'}
+.calc-subdisclosure>summary:focus-visible{outline:3px solid #FF6633;outline-offset:3px}
+.calc-subdisclosure-content{padding-top:10px}
+.sp-form{display:grid;gap:14px;margin-top:18px}.sp-form label{display:grid;gap:6px;font-weight:700}.sp-form input,.sp-form textarea{width:100%;min-width:0;border:1px solid #503744;border-radius:12px;padding:11px 13px;background:#171219;color:#FFF7F2;font:inherit}.sp-form input:focus,.sp-form textarea:focus{outline:2px solid #FF6633;outline-offset:1px}.sp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.sp-route-stop{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,.45fr) auto auto auto;gap:8px;align-items:end;margin-top:10px}.sp-form-actions{display:flex;flex-wrap:wrap;gap:10px}.sp-subtitle{font-size:1.05rem;margin:22px 0 10px}.sp-list{display:grid;gap:9px}.sp-list-item{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px;border:1px solid #503744;border-radius:14px;background:#211923}.sp-list-item p{margin:5px 0 0;color:#CBBFC7;white-space:pre-wrap}.sp-list-actions{display:flex;gap:8px;flex-wrap:wrap}.sp-list-actions button{padding:8px 11px;font-size:.85rem}.sp-result{margin:14px 0;padding:14px;border:1px solid #FF6633;border-radius:14px;background:#211923;color:#FFF7F2;font-weight:750}.sp-result span{display:block;color:#CBBFC7;font-size:.9rem;font-weight:500;margin-top:4px}@media(max-width:700px){.calc-disclosure>.calc-disclosure-summary{padding:18px}.calc-disclosure-content{padding:0 18px 18px}.sp-grid{grid-template-columns:1fr}.sp-route-stop{grid-template-columns:1fr 1fr}.sp-route-stop button{grid-column:auto;justify-self:start}.sp-route-stop button[data-remove-stop]{grid-column:1/-1}.sp-list-item{flex-direction:column}.sp-list-actions{width:100%}}
 </style><style>
 /* SPLink byGSDRIVE — logo commun aux outils intégrés */
 a.cabineo-brand:not(.footer-brand){display:inline-flex!important;align-items:baseline!important;gap:0!important;white-space:nowrap!important;text-decoration:none!important;font-size:39px!important;font-weight:950!important;letter-spacing:-1.7px!important;line-height:1!important;color:#fff!important;flex-shrink:0!important}
@@ -1186,8 +1204,9 @@ html body .spl-table-wrap{overflow-x:auto}
 <header class="hero calculator-hero"><div class="hero-inner"><div class="kicker">OUTILS DU CHAUFFEUR</div><h1>Calcul du temps de conduite</h1><p>Deux outils distincts pour préparer ta journée : calcule tes temps de conduite et de service, puis estime la charge utile et la capacité de chargement. Les résultats restent indicatifs et ne remplacent pas les documents du véhicule ni les règles applicables.</p></div></header>
 <div class="spl-return-row"><button type="button" class="spl-return-btn" onclick="parent.postMessage({type:'cabineo:navigate',page:'home'},'*')">← Retour aux modules</button></div><main>
 
-<section class="card" id="calcul-temps">
-<h2>1. Ta journée</h2>
+<details class="card calc-disclosure" id="calcul-temps">
+<summary class="calc-disclosure-summary"><span class="calc-disclosure-title" role="heading" aria-level="2">1. Ta journée</span></summary>
+<div class="calc-disclosure-content">
 <div class="day-layout"><div class="day-inputs">
 <div class="field"><label for="start">Heure de début de service</label><input id="start" type="time" value="06:00"><p class="help">Sert à calculer le temps écoulé depuis le début du service. Cela ne modifie pas à lui seul la limite de conduite.</p></div>
 <div class="field"><label for="ref">Heure du calcul</label><input id="ref" type="time"><p class="help">Indique l’heure actuelle, ou l’heure pour laquelle tu veux estimer les durées.</p></div>
@@ -1199,17 +1218,19 @@ html body .spl-table-wrap{overflow-x:auto}
 </div><aside class="day-summary"><div class="results-title" id="dayResultsTitle">2. Résultats estimés</div>
 <div id="dailyResults" class="results"><div class="metric"><small>Conduite avant la coupure</small><strong>—</strong><p>Jusqu’à 4 h 30 de conduite</p></div><div class="metric"><small>Conduite restante</small><strong>—</strong><p>Selon la limite sélectionnée</p></div><div class="metric"><small>Coupure à prévoir au plus tard</small><strong>—</strong><p>Estimation si tu conduis sans interruption</p></div><div class="metric"><small>Fin théorique de conduite</small><strong>—</strong><p>Sans compter coupures, chargement ni autres tâches</p></div><div class="metric"><small>Temps écoulé depuis le début du service</small><strong>—</strong><p>Entre l’heure de début et l’heure de référence</p></div></div>
 <div id="dayStatus" class="status">Renseigne tes données puis lance le calcul.</div></aside></div>
-<div class="optional">
-<h3>Autres activités de ta journée (facultatif)</h3>
+<details class="optional calc-subdisclosure">
+<summary><span role="heading" aria-level="3">Autres activités de ta journée (facultatif)</span></summary>
+<div class="calc-subdisclosure-content">
 <p class="help">Tu peux détailler tes heures de travail, disponibilité, pauses et repos même en conduite seul. Ce détail ne bloque jamais le calcul de conduite.</p>
 <div id="soloActivities"></div>
 <div class="actions"><button class="secondary" onclick="addSoloActivity()">+ Ajouter une activité</button><button onclick="calculateSoloActivities()">Calculer le récapitulatif</button></div>
 <div id="soloActivityResults" class="results"></div>
-</div>
-</section>
+</div></details>
+</div></details>
 
-<section class="card">
-<h2>3. Tes compteurs semaine et deux semaines</h2>
+<details class="card calc-disclosure">
+<summary class="calc-disclosure-summary"><span class="calc-disclosure-title" role="heading" aria-level="2">3. Tes compteurs semaine et deux semaines</span></summary>
+<div class="calc-disclosure-content">
 <p class="muted">Quand tu calcules ta journée, SPLink enregistre automatiquement le total de conduite de cette date. Pour les jours précédents, saisis leur total une seule fois ci-dessous. Les compteurs se mettent à jour automatiquement.</p>
 <div class="field"><label for="entryDate">Date à ajouter ou corriger</label><input id="entryDate" type="date"></div>
 <div class="field"><label for="entryHours">Conduite totale de cette journée</label><input id="entryHours" type="text" inputmode="numeric" placeholder="Ex. 8:30"><p class="help">Saisis les heures et les minutes : 08:30 signifie 8 h 30.</p></div>
@@ -1229,11 +1250,12 @@ html body .spl-table-wrap{overflow-x:auto}
 </div>
 <div id="history" class="history"></div>
 <p class="help">Plafonds usuels : 56 h sur une semaine et 90 h sur deux semaines consécutives. Les semaines vont du lundi au dimanche. L’historique est sauvegardé sur cet appareil ; il ne remplace pas les données du tachygraphe.</p>
-</section>
+</div></details>
 
 
-<section class="card sp-plan-card" id="trip-planner" aria-labelledby="trip-planner-title">
-<p class="sp-kicker">PRÉPARATION</p><h2 id="trip-planner-title">Planifie ta tournée</h2>
+<details class="card sp-plan-card calc-disclosure" id="trip-planner">
+<summary class="calc-disclosure-summary"><span class="calc-disclosure-heading"><span class="sp-kicker">PRÉPARATION</span><span class="calc-disclosure-title" role="heading" aria-level="2" id="trip-planner-title">Planifie ta tournée</span></span></summary>
+<div class="calc-disclosure-content">
 <p class="help">Note ton départ, ta destination, tes étapes et tes horaires prévus. Aucune route poids lourd ni compatibilité d’accès n’est calculée.</p>
 <form id="spl-route-form" class="sp-form">
 <div class="sp-grid"><label>Départ<input name="from" required maxlength="120" autocomplete="off" placeholder="Ville ou adresse"></label><label>Destination<input name="to" required maxlength="120" autocomplete="off" placeholder="Ville ou adresse"></label></div>
@@ -1244,16 +1266,17 @@ html body .spl-table-wrap{overflow-x:auto}
 <p class="help">Les horaires sont prévisionnels et saisis par toi. Cet outil ne calcule ni itinéraire, ni durée de route, ni temps de conduite réglementaire.</p>
 <div class="sp-form-actions"><button type="submit">Enregistrer la tournée</button><button type="button" class="secondary" id="spl-route-cancel" hidden>Annuler la modification</button></div>
 </form><div><h3 class="sp-subtitle">Tournées enregistrées</h3><div id="spl-route-list" class="sp-list" aria-live="polite"></div></div>
-</section>
-<section class="card sp-plan-card" id="trip-cost" aria-labelledby="trip-cost-title">
-<p class="sp-kicker">ESTIMATION</p><h2 id="trip-cost-title">Estime le coût d’un trajet</h2>
+</div></details>
+<details class="card sp-plan-card calc-disclosure" id="trip-cost">
+<summary class="calc-disclosure-summary"><span class="calc-disclosure-heading"><span class="sp-kicker">ESTIMATION</span><span class="calc-disclosure-title" role="heading" aria-level="2" id="trip-cost-title">Estime le coût d’un trajet</span></span></summary>
+<div class="calc-disclosure-content">
 <p class="help">Saisis tes hypothèses pour estimer le carburant, les péages et les autres frais. Il ne s’agit pas d’un devis.</p>
 <form id="spl-cost-form" class="sp-form">
 <div class="sp-grid"><label>Nom du scénario<input name="name" maxlength="80" placeholder="Ex. Trajet avec remorque"></label><label>Distance (km)<input name="distance" type="number" min="0" step="any" required></label><label>Consommation (L/100 km)<input name="consumption" type="number" min="0" step="any" required></label><label>Prix du carburant (€/L)<input name="fuelPrice" type="number" min="0" step="any" required></label><label>Péages (€)<input name="tolls" type="number" min="0" step="any" value="0" required></label><label>Autres frais (€)<input name="other" type="number" min="0" step="any" value="0" required></label></div>
 <div class="sp-form-actions"><button type="submit">Calculer et enregistrer</button></div>
 </form><div id="spl-cost-result" class="sp-result" aria-live="polite">Renseigne les valeurs pour calculer une estimation.</div><div><h3 class="sp-subtitle">Estimations enregistrées</h3><div id="spl-cost-list" class="sp-list" aria-live="polite"></div></div>
 <p class="help">Litres estimés = distance × consommation ÷ 100. Le coût est calculé avec les prix saisis. Aucun tarif de carburant ou de péage n’est récupéré automatiquement.</p>
-</section>
+</div></details>
 </main><section class="card" id="calcul-charge" aria-labelledby="charge-title">
 <h2 id="charge-title">Vérifier la charge utile théorique</h2>
 <p class="muted">Calcul de base : charge utile théorique = PTAC − poids à vide. Les masses réelles, la charge par essieu, les limites de l’ensemble et les documents de transport restent à contrôler séparément.</p>
