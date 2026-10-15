@@ -969,6 +969,88 @@ renderRoutes();renderCosts();
 }
 </style>
 
+
+<style id="splink-account-bubble-size-match">
+/* La bulle Mon espace ne doit plus être plus large que les cartes voisines. */
+.spl-account-panel {
+  width: min(100%, 620px) !important;
+  max-width: 620px !important;
+  max-height: min(84vh, 760px) !important;
+  box-sizing: border-box !important;
+  border-radius: 18px !important;
+}
+#spl-account .spl-account-auth-card,
+#spl-account .spl-account-dashboard,
+#spl-account .spl-account-section,
+#spl-account .spl-account-sync,
+#spl-account .spl-profile-card {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+}
+@media (max-width: 700px) {
+  .spl-account-panel {
+    width: calc(100vw - 28px) !important;
+    max-width: calc(100vw - 28px) !important;
+    max-height: 86vh !important;
+  }
+}
+</style>
+
+
+<style id="splink-final-request-fixes">
+/* Accueil connecté : pseudo et « aujourd’hui » en orange Sunset Racing. */
+.splink-greeting-accent,
+#splink-user-greeting .splink-greeting-accent,
+.home-hero-title .splink-greeting-accent {
+  color: #FF6633 !important;
+  -webkit-text-fill-color: #FF6633 !important;
+  font-style: inherit !important;
+}
+/* Espace net entre QUESTION XX et RÉPONSE sur toutes les fiches C et CE. */
+.answer-question-meta {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: baseline !important;
+  flex-wrap: wrap !important;
+  column-gap: 12px !important;
+  row-gap: 4px !important;
+}
+.answer-question-label {
+  display: inline-block !important;
+  margin-right: 4px !important;
+  padding-right: 0 !important;
+  white-space: nowrap !important;
+}
+.answer-question-meta .answer-status {
+  display: inline-block !important;
+  margin-left: 0 !important;
+  white-space: nowrap !important;
+}
+</style>
+<script id="splink-close-account-after-auth">
+(() => {
+  const closeAccountSurface = () => {
+    const close = document.querySelector('[data-account-close], [aria-label="Fermer mon espace"], .spl-account-close, .account-modal-close');
+    if (close && close.offsetParent !== null) close.click();
+    const candidates = [
+      document.querySelector('#spl-account-modal'),
+      document.querySelector('#spl-account-overlay'),
+      document.querySelector('.spl-account-overlay'),
+      document.querySelector('[data-account-modal]')
+    ].filter(Boolean);
+    candidates.forEach(el => {
+      if (el.matches('[role="dialog"], .modal, .overlay') || /modal|overlay/i.test(el.id + ' ' + el.className)) {
+        el.hidden = true;
+        el.setAttribute('aria-hidden', 'true');
+      }
+    });
+  };
+  window.addEventListener('splink:account-session', e => {
+    if (e.detail && e.detail.user) closeAccountSurface();
+  });
+})();
+</script>
+
 </body></html>
 
 </script>
