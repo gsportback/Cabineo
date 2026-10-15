@@ -498,7 +498,7 @@ html, body { background-color: #171219; }
 .answer-question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:0 12px 12px}
 .answer-question-card{min-width:0;padding:15px;border:1px solid #503744;border-radius:12px;background:#211923;color:#FFF7F2}
 .answer-question-meta{display:flex;justify-content:flex-start;align-items:center;column-gap:12px;row-gap:4px;margin-bottom:10px;color:#CBBFC7;font-size:11px;font-weight:850;letter-spacing:.04em}
-.answer-question-meta .answer-status{color:#FF8A5B;margin-left:4px;white-space:nowrap}.answer-question-label{padding-right:4px;white-space:nowrap}
+.answer-question-meta .answer-status{color:#FF8A5B;margin-left:12px!important;padding-left:2px;white-space:nowrap;display:inline-block;flex:0 0 auto}.answer-question-label{padding-right:8px!important;margin-right:4px!important;white-space:nowrap;display:inline-block;flex:0 0 auto}
 .answer-question-card p{margin:0;color:#FFF7F2;line-height:1.55}
 .answer-question-card .answer-missing{color:#CBBFC7}
 @media(max-width:650px){.answer-question-grid{grid-template-columns:1fr}.answer-fiche>summary{gap:8px;padding:14px}.answer-fiche .fiche-number{font-size:10px;padding:6px 7px}}
@@ -935,7 +935,41 @@ if($('#spl-route-form'))$('#spl-route-form').addEventListener('submit',e=>{e.pre
 if($('#spl-cost-form'))$('#spl-cost-form').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;if(!f.reportValidity())return;const n=k=>Number(f.elements[k].value),vals=['distance','consumption','fuelPrice','tolls','other'].map(n);if(vals.some(x=>!Number.isFinite(x)||x<0)){f.reportValidity();return}const [distance,consumption,fuelPrice,tolls,other]=vals;if(distance<=0){$('#spl-cost-result').textContent='La distance doit être supérieure à zéro pour calculer le coût au kilomètre.';f.elements.distance.focus();return}const liters=distance*consumption/100,fuelCost=liters*fuelPrice,total=fuelCost+tolls+other,perKm=total/distance,name=safe(f.elements.name.value);$('#spl-cost-result').replaceChildren(node('strong','',`Carburant estimé : ${liters.toLocaleString('fr-FR',{maximumFractionDigits:2})} L · ${money(fuelCost)}. Total estimé : ${money(total)} · ${money(perKm)}/km.`),node('span','','Estimation budgétaire calculée à partir des valeurs saisies.'));const row={id:uid(),name,distance,consumption,fuelPrice,tolls,other,liters,fuelCost,total,perKm,createdAt:new Date().toISOString()};const arr=read(COSTS);arr.unshift(row);write(COSTS,arr.slice(0,50));renderCosts();f.reset();f.elements.tolls.value='0';f.elements.other.value='0'});
 renderRoutes();renderCosts();
 })();
-<\/script></body></html>
+<\/script>
+<style id="splink-account-bubble-match-contact">
+/* Harmonisation visuelle de la bulle utilisateur avec les cartes de la rubrique « Nous écrire » */
+#spl-account .spl-account-panel,
+#spl-account .spl-account-auth-card,
+#spl-account .spl-account-dashboard,
+#spl-account .spl-account-section,
+#spl-account .spl-account-sync,
+#spl-account .spl-profile-card {
+  border: 1px solid var(--spl-line, #503744) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12) !important;
+}
+#spl-account .spl-account-panel {
+  background: var(--spl-surface-2, #30232C) !important;
+  overflow: hidden;
+}
+#spl-account .spl-account-auth-card,
+#spl-account .spl-account-section,
+#spl-account .spl-account-sync,
+#spl-account .spl-profile-card {
+  background: var(--spl-surface, #211923) !important;
+}
+#spl-account .spl-account-header,
+#spl-account .spl-account-userbar {
+  border-color: var(--spl-line, #503744) !important;
+}
+#spl-account .spl-account-auth-card,
+#spl-account .spl-account-section,
+#spl-account .spl-account-sync {
+  margin-bottom: 14px;
+}
+</style>
+
+</body></html>
 
 </script>
 <script id="cabineo-payload-calculator" type="application/x-cabineo-page">
@@ -6131,8 +6165,15 @@ async function refresh(){if(!client||!user)return;fillProfile();await renderJour
   window.SPLINK_USER_PSEUDO=pseudo;window.SPLINK_USER_CONNECTED=!!user;
   if(user){
    if(eyebrow)eyebrow.textContent='Sélectionne l’espace où tu veux te rendre';
-   if(title)title.textContent=pseudo?'Que veux-tu faire aujourd’hui, '+pseudo+' ?':'Que veux-tu faire aujourd’hui ?';
+   if(title){
+    title.replaceChildren();
+    title.append(document.createTextNode('Que veux-tu faire '));
+    if(pseudo){const name=document.createElement('span');name.className='splink-greeting-accent';name.textContent=pseudo;title.append(name,document.createTextNode(' '));}
+    const today=document.createElement('span');today.className='splink-greeting-accent';today.textContent='aujourd’hui';title.append(today,document.createTextNode(' ?'));
+   }
    if(copy)copy.textContent='Retrouve tes outils et poursuis ton parcours là où tu l’as laissé.';
+   // Une fois la session confirmée, fermer la fenêtre d’accès/connexion si elle est encore ouverte.
+   document.querySelector('[data-account-close]')?.click();
    if(link){
     link.classList.add('splink-signed-in');link.replaceChildren();link.setAttribute('aria-label',pseudo?'Espace personnel de '+pseudo:'Mon espace personnel');
     const fallback=document.createElement('span');fallback.className='splink-nav-fallback';fallback.textContent=(pseudo||user.email||'S').trim().charAt(0).toUpperCase();
@@ -6304,3 +6345,9 @@ window.addEventListener('splink:module-open',e=>{const id=e.detail?.page;if(!mod
 </script>
 </body>
 </html>
+
+<style id="splink-final-spacing-and-greeting">
+.splink-greeting-accent{color:#FF6633!important;font-style:inherit}
+.answer-question-meta .answer-question-label{margin-right:8px!important;padding-right:4px!important}
+.answer-question-meta .answer-status{margin-left:8px!important;padding-left:4px!important}
+</style>
