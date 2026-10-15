@@ -524,6 +524,7 @@ html, body { background-color: #171219; }
 <a href="#top" data-spl-home="1" class="spl-home-nav">Accueil</a>
 <a href="#outils" data-spl-anchor="#outils">Les espaces</a>
 <a href="#contact" data-spl-anchor="#contact">Nous écrire</a>
+<button class="nav-button spl-study-nav" type="button" data-splink-study-path-open>Parcours C/CE</button>
 <a class="nav-button" href="#compte" data-account-open="1">Mon espace</a>
 </nav>
 </div>
@@ -1914,6 +1915,19 @@ footer { max-width:1000px; margin:auto; padding:0 14px 25px; color:var(--gris); 
 
 /* Modules de révision interactifs : questions extraites et situations orales */
 .written-full,.oral-full{margin-bottom:22px}
+/* Fiches écrites C/CE : reprendre les surfaces et accents Sunset Racing du module réponses. */
+.written-list>.fiche-ecrite{border:1px solid #503744;border-radius:14px;background:#30232C;color:#FFF7F2}
+.written-list>.fiche-ecrite>summary{display:flex;align-items:center;gap:12px;padding:15px 16px;color:#FFF7F2}
+.written-list>.fiche-ecrite>summary>.fiche-number{flex:0 0 auto;background:#FF6633;border:1px solid #FF6633;color:#171219;font-weight:850}
+.written-list>.fiche-ecrite>summary>span:not(.fiche-number):not(.fiche-count){min-width:0;line-height:1.45}
+.written-list>.fiche-ecrite>summary>.fiche-count{margin-left:auto;color:#CBBFC7}
+.written-list>.fiche-ecrite>summary:after{color:#FF8A5B}
+.written-list>.fiche-ecrite .question-card{border-color:#503744;background:#211923;color:#FFF7F2}
+.written-list>.fiche-ecrite .question-meta{color:#CBBFC7}
+.written-list>.fiche-ecrite .question-ref{background:#30232C;border:1px solid #503744;color:#FFB199}
+#ecritC .question-search,#ecritCE .question-search{background:#211923;color:#FFF7F2;border-color:#503744}
+#ecritC .question-search::placeholder,#ecritCE .question-search::placeholder{color:#CBBFC7}
+@media(max-width:600px){.written-list>.fiche-ecrite>summary{gap:10px;padding:12px}.written-list>.fiche-ecrite>summary>.fiche-count{display:none}}
 .question-search-label{display:block;font-weight:800;margin:18px 0 6px}
 .question-search{display:block;width:100%;padding:13px 14px;border:1px solid #cbd5df;border-radius:12px;font:inherit;background:#fff;color:#171a20}
 .search-status{font-size:.9rem;color:#687381}
@@ -2314,7 +2328,7 @@ Exemple : début à 6 h, fin à 18 h = 12 h d’amplitude, même si une pause d�
 <div class="panel written-full">
 <h2>Fiches écrites Permis C — 2026</h2>
 <p>Les questions et références sont extraites des fiches écrites 2026. Les illustrations affichées sont découpées depuis la page originale lorsqu’un panneau coloré est présent. Un corrigé catégorie C 2026 ENPC/EDISER est consultable dans un document PDF externe publié par le centre Sécurité & Conduite.</p><p class="written-disclaimer">Un doute ou une erreur repérée ? Vérifie aussi de ton côté auprès d’une source officielle ou de ton centre de formation : ce support peut contenir des erreurs.</p>
-<p><a href="" target="_blank" rel="noopener noreferrer">Consulter le corrigé externe des fiches C (PDF 2026)</a></p>
+
 <label class="question-search-label" for="search-C">Rechercher une question ou une référence</label>
 <input class="question-search" id="search-C" oninput="filterWritten('C',this.value)" placeholder="Ex. hauteur, chronotachygraphe, RC80…" type="search"/>
 <p class="search-status" id="status-C">200 questions — 20 fiches</p>
@@ -3059,7 +3073,7 @@ Avez-vous le droit de prendre la route?</p></div>
 <div class="panel written-full">
 <h2>Fiches écrites Permis CE — 2026</h2>
 <p>Les questions et références sont extraites des fiches écrites 2026. Les illustrations affichées sont découpées depuis la page originale lorsqu’un panneau coloré est présent. Un corrigé catégorie CE 2026 ENPC/EDISER est consultable dans un document PDF externe publié par le centre Sécurité & Conduite.</p><p class="written-disclaimer">Un doute ou une erreur repérée ? Vérifie aussi de ton côté auprès d’une source officielle ou de ton centre de formation : ce support peut contenir des erreurs.</p>
-<p><a href="" target="_blank" rel="noopener noreferrer">Consulter le corrigé externe des fiches CE (PDF 2026)</a></p>
+
 <label class="question-search-label" for="search-CE">Rechercher une question ou une référence</label>
 <input class="question-search" id="search-CE" oninput="filterWritten('CE',this.value)" placeholder="Ex. hauteur, chronotachygraphe, RC80…" type="search"/>
 <p class="search-status" id="status-CE">200 questions — 20 fiches</p>
@@ -6007,7 +6021,7 @@ html[data-spl-theme="light"] .cabineo-liquid-nav button{color:#211923!important}
 html[data-spl-theme="light"]
 
 
-.site-header .nav a.nav-button.splink-signed-in{display:inline-flex;align-items:center;gap:8px;max-width:180px;min-height:40px;padding:6px 11px;border-radius:999px;background:#FF6633;color:#171219}
+.site-header .nav a.nav-button.splink-signed-in{display:inline-flex;align-items:center;gap:8px;max-width:180px;min-height:40px;padding:2px 11px;border-radius:999px;background:#FF6633;color:#171219}
 .splink-nav-photo,.splink-nav-fallback{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;overflow:hidden;border-radius:50%;background:#171219;color:#FF6633;font-size:15px;font-weight:900}
 .splink-nav-photo{object-fit:cover}.splink-nav-name{max-width:116px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:800}
 @media(max-width:520px){.site-header .nav a.nav-button.splink-signed-in{max-width:136px;padding:5px 8px}.splink-nav-name{max-width:76px}}
@@ -6022,7 +6036,7 @@ html[data-spl-theme] .site-header,html[data-spl-theme] footer{background:#171219
 html[data-spl-theme] .site-header .logo .cabineo-name,html[data-spl-theme] .site-header .logo .logo-word{color:#FFF7F2!important;-webkit-text-fill-color:#FFF7F2!important}
 html[data-spl-theme] .site-header .logo .cabineo-blue,html[data-spl-theme] .site-header .logo .logo-word span{color:#FF6633!important;-webkit-text-fill-color:#FF6633!important}
 html[data-spl-theme] .site-header .logo .cabineo-by,html[data-spl-theme] .site-header .nav a:not(.nav-button){color:#FFF7F2!important;-webkit-text-fill-color:#FFF7F2!important}
-html[data-spl-theme] .site-header .nav .nav-button,html[data-spl-theme] .site-header .nav .splink-signed-in{background:#211923!important;color:#FFF7F2!important;border:1px solid #211923!important;border-radius:999px!important}
+html[data-spl-theme] .site-header .nav .nav-button:not(.splink-signed-in){background:#211923!important;color:#FFF7F2!important;border:1px solid #211923!important;border-radius:999px!important}
 
 html[data-spl-theme] footer .footer-logo,html[data-spl-theme] footer .footer-note,html[data-spl-theme] footer .footer-inner,html[data-spl-theme] footer a{color:#FFF7F2!important;-webkit-text-fill-color:#FFF7F2!important}
 html[data-spl-theme] footer .footer-logo span,html[data-spl-theme] footer .footer-logo .cabineo-blue{color:#FF6633!important;-webkit-text-fill-color:#FF6633!important}
@@ -6241,13 +6255,13 @@ async function refresh(){if(!client||!user)return;fillProfile();await renderJour
  const defaultTitle='Le transport de demain';let avatarToken=0;
  function update({client,user}){const token=++avatarToken;
   const meta=user&&user.user_metadata||{},pseudo=String(meta.splink_pseudo||'').trim().slice(0,40);
-  window.SPLINK_USER_PSEUDO=pseudo;window.SPLINK_USER_CONNECTED=!!user;
+  window.SPLINK_USER_PSEUDO=pseudo;window.SPLINK_USER_CONNECTED=!!user;if(title)title.dataset.greetingState=user?'signed-in':'signed-out';
   if(user){
    if(eyebrow)eyebrow.textContent='Sélectionne l’espace où tu veux te rendre';
    if(title){
     title.replaceChildren();
     title.append(document.createTextNode('Que veux-tu faire '));
-    const today=document.createElement('span');today.className='splink-greeting-accent';today.setAttribute('data-greeting-accent','today');today.style.cssText='color:#FF6633!important;-webkit-text-fill-color:#FF6633!important;background:transparent!important;text-shadow:none!important;opacity:1!important;';today.textContent='aujourd’hui';title.append(today);
+    const today=document.createElement('span');today.setAttribute('data-greeting-accent','today');today.textContent='aujourd’hui';title.append(today);
     if(pseudo){title.append(document.createTextNode(', '));const name=document.createElement('span');name.className='splink-greeting-accent';name.setAttribute('data-greeting-accent','pseudo');name.style.cssText='color:#FF6633!important;-webkit-text-fill-color:#FF6633!important;background:transparent!important;text-shadow:none!important;opacity:1!important;';name.textContent=pseudo;title.append(name);}
     title.append(document.createTextNode(' ?'));
    }
@@ -6262,7 +6276,10 @@ async function refresh(){if(!client||!user)return;fillProfile();await renderJour
    }
   }else{
    if(eyebrow)eyebrow.textContent='La route progresse, vos outils aussi.';
-   if(title)title.innerHTML=defaultTitle+'<br><em>se prépare aujourd’hui.</em>';
+   if(title){
+    title.replaceChildren(document.createTextNode('Que veux-tu faire '));
+    const today=document.createElement('span');today.setAttribute('data-greeting-accent','today');today.className='splink-greeting-accent';today.textContent='aujourd’hui';title.append(today,document.createTextNode(' ?'));
+   }
    if(copy)copy.innerHTML='Que vous soyez déjà sur la route ou en train de vous y préparer.<br><span>SPLink vous accompagne à chaque étape.</span>';
    if(link){link.classList.remove('splink-signed-in');link.replaceChildren(document.createTextNode('Mon espace'));link.setAttribute('aria-label','Mon espace')}
   }
@@ -6421,9 +6438,64 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-revision-t
 window.addEventListener('splink:module-open',e=>{const id=e.detail?.page;if(!modules.some(x=>x[0]===id))return;const a=read('history',[]).filter(x=>x.id!==id);a.unshift({id,at:new Date().toISOString()});write('history',a.slice(0,20));render()});window.addEventListener('splink:account-session',e=>{window.SPLINK_USER_CONNECTED=!!e.detail?.user;render()});window.addEventListener('splink:profile-updated',render);window.SPLINK_USER_CONNECTED=!!window.SPLINK_AUTH_USER;render();
 })();
 </script>
+<style id="splink-study-path-styles">
+.spl-study-nav{cursor:pointer}
+.spl-study-dialog{width:min(820px,calc(100vw - 28px));max-height:min(88vh,900px);padding:0;border:1px solid #503744;border-radius:18px;background:#171219;color:#FFF7F2;box-shadow:0 24px 90px rgba(0,0,0,.72)}
+.spl-study-dialog::backdrop{background:rgba(8,6,10,.76);backdrop-filter:blur(7px)}
+.spl-study-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;background:#211923;border-bottom:1px solid #503744}
+.spl-study-head strong{color:#FFF7F2}.spl-study-close{width:38px;height:38px;border:1px solid #503744;border-radius:50%;background:#30232C;color:#FFF7F2;font-size:22px;cursor:pointer}
+.spl-study-content{padding:20px;overflow:auto;max-height:calc(88vh - 72px)}
+.spl-study-content h2,.spl-study-content h3{color:#FFF7F2}.spl-study-content p,.spl-study-content small{color:#CBBFC7}
+.spl-study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spl-study-card{min-width:0;padding:16px;border:1px solid #503744;border-radius:14px;background:#30232C}
+.spl-study-card label{display:grid;gap:6px;color:#FFF7F2;font-weight:700}.spl-study-card input,.spl-study-content input,.spl-study-content select{width:100%;min-width:0;padding:10px 12px;border:1px solid #503744;border-radius:9px;background:#211923;color:#FFF7F2;font:inherit}
+.spl-study-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.spl-study-actions button,.spl-study-content button{padding:10px 14px;border:1px solid #FF6633;border-radius:999px;background:#FF6633;color:#171219;font:inherit;font-weight:800;cursor:pointer}
+.spl-study-actions .secondary,.spl-study-content button.secondary{border-color:#503744;background:#30232C;color:#FFF7F2}
+.spl-study-status{min-height:1.5em;color:#FFB199!important}
+.spl-study-progress{height:10px;overflow:hidden;border:1px solid #503744;border-radius:999px;background:#211923}.spl-study-progress span{display:block;height:100%;background:#FF6633;transition:width .2s ease}
+.spl-study-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.spl-study-section{min-width:0;padding:14px;border:1px solid #503744;border-radius:14px;background:#211923}
+.spl-study-section h3{margin:0 0 8px;color:#FF8A5B}.spl-study-item{margin-top:10px;padding:11px;border:1px solid #503744;border-radius:10px;background:#30232C}
+.spl-study-item strong{display:block;overflow-wrap:anywhere}.spl-study-steps{display:grid;gap:6px;margin-top:9px}.spl-study-steps label{display:flex;align-items:flex-start;gap:8px;color:#CBBFC7;font-size:13px}.spl-study-steps input{width:auto;margin-top:3px;accent-color:#FF6633}
+.spl-study-note{padding:12px;border-left:3px solid #FF6633;border-radius:0 8px 8px 0;background:#211923;color:#CBBFC7}
+.spl-study-track-form{display:grid;grid-template-columns:minmax(0,1fr) 180px auto;align-items:end;gap:9px;margin:12px 0}
+.spl-study-vehicle-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(max-width:700px){.spl-study-columns{grid-template-columns:1fr}.spl-study-dialog{width:calc(100vw - 16px);max-height:92vh}.spl-study-content{padding:14px;max-height:calc(92vh - 70px)}.spl-study-grid,.spl-study-vehicle-form{grid-template-columns:1fr}.spl-study-track-form{grid-template-columns:1fr}.site-header .nav .spl-study-nav{padding:8px 9px;font-size:11px}}
+</style>
+<dialog class="spl-study-dialog" id="splink-study-path" aria-labelledby="spl-study-title">
+  <header class="spl-study-head"><strong id="spl-study-title">Parcours guidé C / CE</strong><button class="spl-study-close" type="button" data-study-close aria-label="Fermer">×</button></header>
+  <div class="spl-study-content" id="spl-study-content" aria-live="polite"></div>
+</dialog>
+<script id="splink-study-path-controller">
+(()=>{'use strict';
+const KEY='splink_user_study_path_v1',dialog=document.getElementById('splink-study-path'),content=document.getElementById('spl-study-content');if(!dialog||!content)return;
+const sections=[['socle1','Socle 1'],['socle2','Socle 2'],['themes','Thèmes']];
+const read=()=>{try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'?x:{}}catch(_){return {}}};
+let data=read(),pendingPermit=null,cloudTimer=null,lastSaveMessage="";
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fields=permit=>permit==='C'?[['vehicleMake','Marque / modèle du porteur'],['ptac','PTAC (kg)'],['emptyMass','Poids à vide (kg)'],['payload','Charge utile indiquée (kg)'],['length','Longueur (m)'],['width','Largeur (m)'],['height','Hauteur (m)']]:[['tractorMake','Marque / modèle du tracteur'],['trailerMake','Marque / modèle de la semi-remorque'],['gcw','PTRA de l’ensemble (kg)'],['tractorEmpty','Poids à vide du tracteur (kg)'],['trailerEmpty','Poids à vide de la semi-remorque (kg)'],['length','Longueur de l’ensemble (m)'],['width','Largeur de l’ensemble (m)'],['height','Hauteur de l’ensemble (m)']];
+function track(permit){data=read();data.tracks=data.tracks&&typeof data.tracks==='object'?data.tracks:{};let t=data.tracks[permit];if(!t||typeof t!=='object')t=data.tracks[permit]={permit,vehicle:{},tasks:[],lastLocation:null,startedAt:new Date().toISOString()};t.vehicle=t.vehicle&&typeof t.vehicle==='object'?t.vehicle:{};t.tasks=Array.isArray(t.tasks)?t.tasks:[];return t}
+async function save(message){data.updatedAt=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){setStatus('Sauvegarde locale impossible : '+e.message);return false}let msg=message||'Progression enregistrée sur cet appareil.';if(window.SPLINK_USER_CONNECTED&&window.SPLINK_SYNC_NOW){try{const ok=await window.SPLINK_SYNC_NOW();msg=ok?'Progression enregistrée et synchronisée avec ton compte.':'Progression conservée sur cet appareil ; synchronisation du compte à vérifier.'}catch(_){msg='Progression conservée sur cet appareil ; synchronisation du compte impossible pour le moment.'}}lastSaveMessage=msg;setStatus(msg);return true}
+function setStatus(text){const el=content.querySelector('.spl-study-status');if(el)el.textContent=text}
+function open(){data=read();dialog.showModal();render()}
+function render(){data=read();const active=data.activePermit,has=active&&data.tracks&&data.tracks[active];if(has){if(!has.configComplete||has.editingVehicle){pendingPermit=active;renderVehicle(active)}else renderDashboard(active);return}renderChoose()}
+function renderChoose(){content.innerHTML='<h2>Choisis ton parcours</h2><p>Le parcours démarre uniquement lorsque tu le choisis. Les fiches, outils et quiz classiques restent accessibles sans le commencer.</p><div class="spl-study-grid"><button type="button" data-study-permit="C">Commencer le parcours permis C</button><button type="button" data-study-permit="CE">Commencer le parcours permis CE</button></div><p class="spl-study-status" role="status"></p>';}
+function renderVehicle(permit){pendingPermit=permit;const t=track(permit);data.activePermit=permit;try{data.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(data))}catch(_){}const f=fields(permit);content.innerHTML='<h2>Préparons ton véhicule d’examen — permis '+permit+'</h2><p>'+(permit==='C'?'Configuration pour un camion porteur rigide.':'Configuration pour un ensemble tracteur et semi-remorque.')+'</p><p class="spl-study-note">Saisis seulement les caractéristiques que tu connais. Les champs vides restent « à confirmer » et ne bloquent pas le parcours. Aucune valeur n’est préremplie.</p><form id="spl-study-vehicle-form" class="spl-study-vehicle-form">'+f.map(([key,label])=>'<label>'+esc(label)+'<input name="'+key+'" '+(/Make$/.test(key)?'type="text"':'type="number" min="0" step="any"')+' value="'+esc(t.vehicle[key]||'')+'" placeholder="À confirmer"></label>').join('')+'<div class="spl-study-actions"><button type="submit">Enregistrer et continuer</button><button class="secondary" type="button" data-study-skip-vehicle>Continuer sans compléter</button><button class="secondary" type="button" data-study-back>Retour</button></div></form><p class="spl-study-status" role="status"></p>';}
+function renderDashboard(permit){const t=track(permit),taskMap=new Map();t.tasks.forEach(x=>{const key=(x.section||'')+'|'+String(x.title||'').trim().toLocaleLowerCase('fr');if(!taskMap.has(key))taskMap.set(key,x)});const tasks=[...taskMap.values()],done=tasks.filter(x=>Array.isArray(x.steps)&&x.steps.length===3&&x.steps.every(Boolean)).length,total=tasks.length,pct=total?Math.round(done/total*100):0;const missing=fields(permit).filter(([k])=>!String(t.vehicle[k]||'').trim()).map(x=>x[1]),vehicleSummary=fields(permit).map(([k,label])=>'<p>'+esc(label)+': '+(String(t.vehicle[k]||'').trim()?esc(t.vehicle[k]):'À confirmer')+'</p>').join('');const sectionsHtml=sections.map(([key,label])=>{const own=tasks.filter(x=>x.section===key);return '<section class="spl-study-section"><h3>'+label+'</h3><p>'+own.length+' contenu'+(own.length>1?'s':'')+' · '+own.filter(x=>x.steps?.every(Boolean)).length+' terminé(s)</p>'+own.map(task=>'<article class="spl-study-item"><strong>'+esc(task.title)+'</strong><div class="spl-study-steps">'+['Comprendre','S’entraîner','Vérifier ses acquis'].map((step,i)=>'<label><input type="checkbox" data-study-step="'+esc(task.id)+'" data-step-index="'+i+'" '+(task.steps?.[i]?'checked':'')+'> <span>'+step+'</span></label>').join('')+'</div></article>').join('')+'<form class="spl-study-track-form" data-study-add="'+key+'"><label>Intitulé exact de la fiche ou du thème<input name="title" maxlength="120" required placeholder="Reprends le titre de ton support"></label><span></span><button type="submit">Ajouter à '+label+'</button></form></section>'}).join('');const last=t.lastLocation?(sections.find(x=>x[0]===t.lastLocation.section)?.[1]+' · ')+esc(t.lastLocation.title)+' · '+esc(t.lastLocation.step):'Pas encore commencé';content.innerHTML='<h2>Ton parcours permis '+permit+'</h2><p class="spl-study-note">Les supports pédagogiques de classement Socle 1, Socle 2 et Thèmes ne figurent pas dans cette copie. Aucun contenu n’est classé automatiquement : ajoute les intitulés en suivant le classement exact de ton centre de formation.</p><div class="spl-study-card"><strong>Progression générale</strong><p>'+done+' contenu'+(done>1?'s':'')+' terminé(s) sur '+total+' · '+pct+' %</p><div class="spl-study-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><span style="width:'+pct+'%"></span></div><p>Dernière étape : '+last+'</p><p>À confirmer sur le véhicule : '+(missing.length?missing.map(esc).join(' · '):'aucun champ manquant')+'</p><div class="spl-study-card"><strong>Caractéristiques enregistrées</strong>'+vehicleSummary+'</div><p>Statut des sections : '+sections.map(([k,n])=>n+' · '+(tasks.some(x=>x.section===k&&x.steps?.every(Boolean))?'terminée':tasks.some(x=>x.section===k)?'en cours':'à commencer')).join(' · ')+'</p><div class="spl-study-actions"><button type="button" data-study-resume>Reprendre la formation</button><button type="button" class="secondary" data-study-edit-vehicle>Caractéristiques du véhicule</button><button type="button" class="secondary" data-study-new>Choisir un autre parcours</button></div></div><h3>Ta progression par section</h3><div class="spl-study-columns">'+sectionsHtml+'</div><p class="spl-study-note">La dernière étape et les coches sont tes repères personnels. Elles ne constituent pas un résultat de quiz ni une validation officielle. Les fiches écrites et les quiz d’origine restent dans Formation CTRMP / CE.</p><p class="spl-study-status" role="status"></p>';}
+function resume(){const state=read(),permit=state.activePermit,t=state.tracks?.[permit],last=t?.lastLocation;dialog.close();const b=document.querySelector('[data-open-page="learner"]');if(b)b.click();let attempts=0;const openSaved=()=>{const frame=document.querySelector('.cabineo-tool-frame[data-page="learner"]');const w=frame?.contentWindow,d=frame?.contentDocument;if(!w||!d||typeof w.ouvrirModule!=='function'){if(attempts++<20)setTimeout(openSaved,150);return}const match=last?.title?.match(/fiche(?: écrite)?\s*0*(\d{1,2})/i);if(!match)return;const n=Number(match[1]),module=permit==='CE'?'repCE':'repC';w.ouvrirModule(module);setTimeout(()=>{const list=d.getElementById(module+'-list'),item=list?.querySelectorAll('.answer-fiche')[n-1];if(item){item.open=true;item.scrollIntoView({block:'center',behavior:'smooth'})}},120)};setTimeout(openSaved,400)}
+document.addEventListener('click',e=>{if(e.target.closest('[data-splink-study-path-open]')){e.preventDefault();open();return}if(e.target.closest('[data-study-close]')){dialog.close();return}const permit=e.target.closest('[data-study-permit]');if(permit){pendingPermit=permit.dataset.studyPermit;const existing=read().tracks?.[pendingPermit];if(existing&&existing.configComplete){data=read();data.activePermit=pendingPermit;save().then(ok=>{if(ok)renderDashboard(pendingPermit)})}else renderVehicle(pendingPermit);return}if(e.target.closest('[data-study-skip-vehicle]')){if(!pendingPermit)return;const t=track(pendingPermit);t.configComplete=true;t.editingVehicle=false;data.activePermit=pendingPermit;save().then(ok=>{if(ok)renderDashboard(pendingPermit)});return}if(e.target.closest('[data-study-back]')){renderChoose();return}if(e.target.closest('[data-study-edit-vehicle]')){const permit=read().activePermit;renderVehicle(permit);const t=track(permit);t.editingVehicle=true;try{data.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(data))}catch(_){}return}if(e.target.closest('[data-study-new]')){renderChoose();return}if(e.target.closest('[data-study-resume]')){resume();return}});
+content.addEventListener('input',e=>{if(!e.target.closest('#spl-study-vehicle-form')||!pendingPermit)return;const form=e.target.form,t=track(pendingPermit);for(const [key] of fields(pendingPermit)){const v=form.elements[key]?.value?.trim()||'';if(v)t.vehicle[key]=v;else delete t.vehicle[key]}data.activePermit=pendingPermit;try{data.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(data));setStatus('Configuration partielle conservée sur cet appareil.');clearTimeout(cloudTimer);if(window.SPLINK_USER_CONNECTED&&window.SPLINK_SYNC_NOW)cloudTimer=setTimeout(()=>window.SPLINK_SYNC_NOW().then(ok=>setStatus(ok?'Configuration synchronisée avec ton compte.':'Configuration conservée sur cet appareil ; synchronisation à vérifier.')).catch(()=>setStatus('Configuration conservée sur cet appareil ; synchronisation impossible pour le moment.')),1000)}catch(err){setStatus('Sauvegarde locale impossible : '+err.message)}});
+content.addEventListener('submit',e=>{if(e.target.id==='spl-study-vehicle-form'){e.preventDefault();if(!pendingPermit)return;const t=track(pendingPermit);for(const [key] of fields(pendingPermit)){const v=e.target.elements[key]?.value?.trim()||'';if(v)t.vehicle[key]=v;else delete t.vehicle[key]}t.configComplete=true;t.editingVehicle=false;data.activePermit=pendingPermit;save().then(ok=>{if(ok)renderDashboard(pendingPermit)});return}const form=e.target.closest('[data-study-add]');if(form){e.preventDefault();const title=form.elements.title.value.trim();if(!title)return;const t=track(read().activePermit),normalized=title.toLocaleLowerCase('fr');if(t.tasks.some(x=>x.section===form.dataset.studyAdd&&String(x.title||'').trim().toLocaleLowerCase('fr')===normalized)){setStatus('Ce contenu est déjà présent dans cette section.');return}t.tasks.push({id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random()),section:form.dataset.studyAdd,title,steps:[false,false,false],createdAt:new Date().toISOString()});form.elements.title.value='';save().then(ok=>{if(ok){render();setStatus(lastSaveMessage)}})}});
+content.addEventListener('change',e=>{const input=e.target.closest('[data-study-step]');if(!input)return;const t=track(read().activePermit),task=t.tasks.find(x=>x.id===input.dataset.studyStep),idx=Number(input.dataset.stepIndex);if(!task||idx<0||idx>2)return;task.steps=Array.isArray(task.steps)?task.steps:[false,false,false];task.steps[idx]=input.checked;t.lastLocation={section:task.section,title:task.title,step:['Comprendre','S’entraîner','Vérifier ses acquis'][idx],at:new Date().toISOString()};save().then(ok=>{if(ok){render();setStatus(lastSaveMessage)}})});
+dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});window.addEventListener('splink:account-session',()=>{if(dialog.open){const active=read().activePermit;if(active&&read().tracks?.[active])renderDashboard(active)}});window.addEventListener('storage',e=>{if(e.key===KEY&&dialog.open)render()});
+})();
+</script>
 </body>
 </html>
 
 <style id="splink-final-spacing-and-greeting">
-html[data-spl-theme] .hero h1.home-hero-title .splink-greeting-accent,.splink-greeting-accent{color:#FF6633!important;-webkit-text-fill-color:#FF6633!important;background:transparent!important;text-shadow:none!important;opacity:1!important;font-style:inherit}
+html[data-spl-theme] .hero h1.home-hero-title [data-greeting-accent="pseudo"]{color:#FF6633!important;-webkit-text-fill-color:#FF6633!important;background:transparent!important;text-shadow:none!important;opacity:1!important;font-style:inherit}
+html[data-spl-theme] .hero h1.home-hero-title [data-greeting-accent="today"]{color:inherit!important;-webkit-text-fill-color:currentColor!important;background:transparent!important;text-shadow:none!important;opacity:1!important;font-style:inherit}
+html[data-spl-theme] .hero h1.home-hero-title[data-greeting-state="signed-out"] [data-greeting-accent="today"]{color:#FF6633!important;-webkit-text-fill-color:#FF6633!important}
 </style>
